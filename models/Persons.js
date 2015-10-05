@@ -1,24 +1,29 @@
 Schema = {};
 
-Sexs = new Mongo.Collection('Sexs');
-
-Schema.Sexs = new SimpleSchema({
-  name: { type: String }
-});
-
-Sexs.attachSchema(Schema.Sexs);
-
-if (Meteor.isServer && Sexs.find().count() == 0 ) {
-  Sexs.insert({name: "Hombre"});
-  Sexs.insert({name: "Mujer"});
-  Sexs.insert({name: "Otro"});
-  Sexs.insert({name: "Desconocido"});
-}
-
 defaultDate = function(label) {
-  return  { type: Date, optional: true, label: label, autoform: { type: "bootstrap-datepicker", datePickerOptions: { format: "dd/mm/yyyy", language: "es" } } };
+  return  {
+    type: Date,
+    optional: true,
+    label: label,
+    autoform: {
+      type: "bootstrap-datepicker",
+      datePickerOptions: {
+        /*format: "dd/MM/yyyy",*/
+        language: "es"
+      }
+    }
+  };
 }
+
 defaultMap = function(label) {
+  return {
+    type: String,
+    label: label,
+    optional: true
+  }
+}
+
+defaultAutoMap = function(label) {
   return {
     type: String,
     label: label,
@@ -45,9 +50,9 @@ Persons.attachSchema(
     nombreCompleto: { type: String, label: "Nombre completo del niño/a:" },
     fechaNacimiento: defaultDate("Fecha de nacimiento:"),
     fechaNacimientoEsAprox: { type: Boolean, label: "¿La fecha de nacimiento es aproximada?", autoValue: function() { return false; } },
-    sexo: { type: Schema.Sexs, label: "Sexo:" },
+    sexo: { type: String, label: "Sexo:", allowedValues: ["Desconocido", "Hombre", "Mujer", "Otro" ] },
     // geocomplete!!! https://atmospherejs.com/jeremy/geocomplete
-    lugarNacimiento: defaultMap("Lugar de nacimiento (indique en el mapa el nombre o dirección del hospital si lo conoce):"),
+    lugarNacimiento: defaultMap("Lugar de nacimiento:"),
     fechaFallecimiento: defaultDate("Fecha del fallecimiento:"),
     fechaFallecimientoEsAprox: { type: Boolean, label: "¿La fecha del fallecimiento es aproximada?", autoValue: function() { return false; } },
     nombreCompletoMadre: { type: String, optional: true, label: "Nombre completo de la madre:" },

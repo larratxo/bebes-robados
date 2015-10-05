@@ -1,6 +1,6 @@
 <template name="home">
   {{#autoForm collection="Persons" id="addPersonForm" type="insert"}}
-  <legend>Añade un bebe</legend>
+  <legend>Añade un bebe robado</legend>
 
     <ul class="nav nav-tabs nav-justified bebe-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
@@ -19,9 +19,17 @@
           {{> afQuickField name="fechaNacimientoEsAprox"}}
         </div>
 
-        {{> afQuickField name="lugarNacimiento" }}
+        {{> afQuickField name="lugarNacimiento" id="lugarNacimiento" placeholder="Nombre o dirección del hospital si lo conoce" }}
+        <div id="lugarNacimientoMap"></div>
+        <div id="lugarNacimientoDetalle">
+          Latitude:     <span data-geo="lat"></span>
+          Longitude:    <span data-geo="lng"></span>
+          Dirección:      <span data-geo="formatted_address"></span>
+          Comunidad: <span data-geo="administrative_area_level_1"></span>
+          País: <span data-geo="country"></span>
+        </div>
         {{> afQuickField name='nombreCompleto' placeholder="Nombre y apellidos" }}
-        {{> afQuickField name="sexo" options=sexList firstOption="» Selecciona uno"}}
+        {{> afQuickField name="sexo" options="allowed" firstOption="» Selecciona uno"}}
         {{> afQuickField name="nombreCompletoMadre" placeholder="Nombre y apellidos" }}
         {{> afQuickField name="nombreCompletoPadreOConyuge" placeholder="Nombre y apellidos" }}
       </div>
@@ -53,7 +61,8 @@
         {{/if}}
         {{/if}}
 
-        {{> afQuickField name="cementerioEnterrado"}}
+        {{> afQuickField name="cementerioEnterrado" id="cementerioEnterrado" placeholder="Nombre o dirección del cementerio si lo conoce"}}
+        <div id="cementerioEnterradoMap"></div>
 
         <div class="form-inline">
           {{> afQuickField name="posibilidadPruebasADN"}}
