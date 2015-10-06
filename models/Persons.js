@@ -49,16 +49,16 @@ Persons.attachSchema(
   new SimpleSchema({
     nombreCompleto: { type: String, label: "Nombre completo del niño/a:" },
     fechaNacimiento: defaultDate("Fecha de nacimiento:"),
-    fechaNacimientoEsAprox: { type: Boolean, label: "¿La fecha de nacimiento es aproximada?", autoValue: function() { return false; } },
+    fechaNacimientoEsAprox: { type: Boolean, optional: true, label: "¿La fecha de nacimiento es aproximada?", defaultValue:false},
     sexo: { type: String, label: "Sexo:", allowedValues: ["Desconocido", "Hombre", "Mujer", "Otro" ] },
     // geocomplete!!! https://atmospherejs.com/jeremy/geocomplete
     lugarNacimiento: defaultMap("Lugar de nacimiento:"),
     fechaFallecimiento: defaultDate("Fecha del fallecimiento:"),
-    fechaFallecimientoEsAprox: { type: Boolean, label: "¿La fecha del fallecimiento es aproximada?", autoValue: function() { return false; } },
+    fechaFallecimientoEsAprox: { type: Boolean, optional:true, label: "¿La fecha del fallecimiento es aproximada?", defaultValue:false},
     nombreCompletoMadre: { type: String, optional: true, label: "Nombre completo de la madre:" },
-    nombreCompletoPadreOConyuge: { type: String, optional: true, label: "Nombre completo del padre o conyuge:" },
+    nombreCompletoPadreOConyuge: { type: String, optional: true, label: "Nombre completo del padre o cónyuge:" },
     motivoMuerte: { type: String, optional: true, label: "Motivo de la muerte:" },
-    vistoCadaver: {type: Boolean, label: "¿Vio algún miembro de la familia el cadaver?",
+    vistoCadaver: {type: Boolean, optional: true, label: "¿Vio algún miembro de la familia el cadaver?",
                    autoform: { afFieldInput: { type: "boolean-radios", trueLabel: "Sí", falseLabel: "No"}}},
     noVistoCadaverRazon: {
       type: String, optional: true, label: "¿Por qué no lo vio?",
@@ -75,7 +75,7 @@ Persons.attachSchema(
       }
     },
     noVistoCadaverOtrasRazones: {type: String, optional: true, label: "¿Qué otras razones?" },
-    entierroPorHospital: {type: Boolean, label: "¿Se hizo cargo del entierro el hospital?",
+    entierroPorHospital: {type: Boolean, optional: true, label: "¿Se hizo cargo del entierro el hospital?",
                           autoform: { afFieldInput: { type: "boolean-radios", trueLabel: "Sí", falseLabel: "No"}}},
     entierroPorHospitalMotivos: {
       type: String, optional: true, label: "¿Por qué se hizo cargo del entierro el hospital?",
@@ -119,7 +119,31 @@ Persons.attachSchema(
     denunciaEnFiscaliaEstadoTramitacion: {type: String, optional: true },
     denunciaEnJuzgado: {type: Boolean, optional: true, label: "¿Ha puesto denuncia en el Juzgado?",
                         autoform: { afFieldInput: { type: "boolean-radios", trueLabel: "Sí", falseLabel: "No"}}},
-    denunciaEnJuzgadoEstadoTramitacion: {type: String, optional: true }
+    denunciaEnJuzgadoEstadoTramitacion: {type: String, optional: true },
+    createdAt: {
+      type: Date,
+      autoValue: function() {
+        if (this.isInsert) {
+          return new Date;
+        } else if (this.isUpsert) {
+          return {$setOnInsert: new Date};
+        } else {
+          this.unset();  // Prevent user from supplying their own value
+        }
+      }
+    },
+    // Force value to be current date (on server) upon update
+    // and don't allow it to be set upon insert.
+    updatedAt: {
+      type: Date,
+      autoValue: function() {
+        if (this.isUpdate) {
+          return new Date();
+        }
+      },
+      denyInsert: true,
+      optional: true
+    }
   })
 );
 

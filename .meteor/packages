@@ -11,7 +11,6 @@ aldeed:collection2
 iron:router
 raix:handlebar-helpers
 matteodem:easy-security
-audit-argument-checks
 fastclick
 zimme:iron-router-active
 manuelschoebel:ms-seo
@@ -40,8 +39,10 @@ ian:accounts-ui-bootstrap-3
 yogiben:autoform-map
 dburles:google-maps
 twbs:bootstrap
-accounts-google
-accounts-twitter
 aldeed:autoform-bs-datepicker
 rajit:bootstrap3-datepicker
 jeremy:geocomplete
+aldeed:tabular
+rcy:nouislider
+mrt:bootstrap-growl
+momentjs:moment

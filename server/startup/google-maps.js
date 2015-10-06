@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-   console.log("GMaps key: " + process.env.GMAPS_KEY);
+   // console.log("GMaps key: " + process.env.GMAPS_KEY);
 });
 
 Meteor.methods({

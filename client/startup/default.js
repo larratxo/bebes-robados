@@ -13,7 +13,7 @@ Meteor.startup(function () {
 
 
   Meteor.call("getMapKey", function (error, result) {
-    console.log("Your application is running with google maps " + result + " key.");
+    // console.log("Your application is running with google maps " + result + " key.");
     if (typeof(result) !== 'undefined') {
       GoogleMaps.load({
         key: result,

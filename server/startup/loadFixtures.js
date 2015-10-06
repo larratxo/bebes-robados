@@ -9,4 +9,10 @@ function loadFixture(fixtures, collection) {
 
 Meteor.startup(function () {
   //loadFixture(Fixtures['dummyFixture'], DummyCollection);
+  if (Persons.find().count() == 0) {
+    console.log("Loading persons fixtures.");
+    loadFixture(Fixtures['persons'], Persons);
+  } else {
+    console.log("Not loading persons fixtures.");
+  }
 });
