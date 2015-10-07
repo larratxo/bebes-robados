@@ -39,11 +39,11 @@ renderDate = function (val, type, doc) {
   } else {
     return "NS/NC";
   }
-}
+};
 
 renderAprox = function (val, type, doc) {
-  return val == true? "≈": "";
-}
+  return val === true? "≈": "";
+};
 
 TabularTables.Persons = new Tabular.Table({
   name: "Persons",
@@ -65,7 +65,7 @@ TabularTables.Persons = new Tabular.Table({
     {data: "fechaFallecimiento", title: "Fecha fallecimiento", render: renderDate },
     {data: "nombreCompletoMadre", title: "Nombre de la madre"},
     {data: "nombreCompletoPadreOConyuge", title: "Nombre del cónyuge"},
-    {data: "lugarNacimiento", title: "Lugar de nacimiento"},
-    {data: "cementerioEnterrado", title: "Cementerio"}
+    {data: "lugarNacimiento", title: "Lugar de nacimiento"}
+    // {data: "cementerioEnterrado", title: "Cementerio"}
   ]
 });

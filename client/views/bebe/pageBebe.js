@@ -1,3 +1,3 @@
 Template.nuevoBebe.onRendered(function() {
-//   AutoForm.resetForm("#editaBebeForm");
+  AutoForm.resetForm("#editaBebeForm");
 });

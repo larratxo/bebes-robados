@@ -34,17 +34,25 @@ white-space: nowrap;
   height: 500px;
 }
 
+.navbar {
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+}
+
+.navbar-brand,
+.navbar-default .navbar-nav > li > a {
+  text-transform: uppercase;
+}
+
 .navbar-brand {
-font-size: 24px;
+  font-size: 24px;
 }
 
 .year {
- /* font-weight: bold; */
   color: #338ab7;
 }
 
 #yearSlider {
-margin: 10px 0 30px;
+  margin: 10px 0 30px;
 }
 
 /* http://refreshless.com/nouislider/examples/ */
@@ -52,4 +60,9 @@ margin: 10px 0 30px;
 #yearSlide .connect {
   background: #80C9F5;
   box-shadow: inset 0 0 3px rgba(51,51,51,0.45);
+}
+
+[data-required] label:after {
+  content: ' *';
+  color: brown;
 }

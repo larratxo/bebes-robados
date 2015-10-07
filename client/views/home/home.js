@@ -22,7 +22,9 @@ Template.home.helpers({
         center: new google.maps.LatLng(36.5270612, -6.2885962), // Cadiz
         // center: new google.maps.LatLng(37.3880961, -5.9823299), // Sevilla (para que se vea Canarias)
         // center: new google.maps.LatLng(40.4167754, -3.7037902), // Madrid
-        zoom: 5
+
+        // zoom: 5
+        zoom: 4
       };
     }
   }
@@ -36,10 +38,9 @@ Template.home.onCreated(function() {
     // Add a marker to the map once it's ready
     var cursor = Persons.find();
     cursor.forEach(function (person) {
-      console.log("lug: " + person.lugarNacimiento);
+      // console.log("lug: " + person.lugarNacimiento);
       geocoder.geocode({'address': person.lugarNacimiento}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-          resultsMap.setCenter(results[0].geometry.location);
           var marker = new google.maps.Marker({
             map: map.instance,
             position: results[0].geometry.location

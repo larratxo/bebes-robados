@@ -53,6 +53,9 @@ Persons.attachSchema(
     sexo: { type: String, label: "Sexo:", allowedValues: ["Desconocido", "Hombre", "Mujer", "Otro" ] },
     // geocomplete!!! https://atmospherejs.com/jeremy/geocomplete
     lugarNacimiento: defaultMap("Lugar de nacimiento:"),
+    //lugarNacimiento.poblacion: {type: String, optional: true, label: "Lugar de nacimiento. Población:"},
+    //lugarNacimiento.provincia: {type: String, optional: true, label: "Lugar de nacimiento. Población:"},
+    //lugarNacimiento.pais: {type: String, optional: true, label: "Lugar de nacimiento. Población:"},
     fechaFallecimiento: defaultDate("Fecha del fallecimiento:"),
     fechaFallecimientoEsAprox: { type: Boolean, optional:true, label: "¿La fecha del fallecimiento es aproximada?", defaultValue:false},
     nombreCompletoMadre: { type: String, optional: true, label: "Nombre completo de la madre:" },

@@ -5,7 +5,7 @@ Session.setDefault("minBornYear", initYear);
 Session.setDefault("maxBornYear", thisYear);
 
 Deps.autorun(function () {
-  console.log("min: " + Session.get("minBornYear") + ", max: " + Session.get("maxBornYear"));
+  // console.log("min: " + Session.get("minBornYear") + ", max: " + Session.get("maxBornYear"));
 });
 
 Template.personsList.helpers({

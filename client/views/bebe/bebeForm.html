@@ -1,6 +1,6 @@
 <template name="bebeForm">
    {{#autoForm collection="Persons" doc=doc id=id type=type }}
-  <legend>{{title}}</legend>
+  <h2>{{title}}</h2>
 
     <ul class="nav nav-tabs nav-justified bebe-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
@@ -16,11 +16,18 @@
 
         <div class="form-inline">
           {{> afQuickField name="fechaNacimiento" buttonClasses="glyphicon glyphicon-calendar" }}
-          {{> afQuickField name="fechaNacimientoEsAprox"}}
+          {{> afQuickField name="fechaNacimientoEsAprox" defaultValue=false}}
         </div>
 
         {{> afQuickField name="lugarNacimiento" id="lugarNacimiento" placeholder="Nombre o dirección del hospital si lo conoce" }}
+        <div class="form-inline">
+          <select class="form-control"><option>España</option></select>
+          <select class="form-control ps-prov"></select>
+          <select class="form-control ps-mun"></select>
+        </div>
+        <span class="help-block"></span>
         <div id="lugarNacimientoMap"></div>
+
         <div id="lugarNacimientoDetalle">
           Latitude:     <span data-geo="lat"></span>
           Longitude:    <span data-geo="lng"></span>
@@ -115,7 +122,12 @@
         {{/if}}
       </div>
     </div>
-
-    <button type="submit" value="Submit"  class="btn btn-primary">{{btnTitle}}</button>
+    <p class="navbar-text">
+      <button type="submit" value="Submit"  class="btn btn-primary">{{btnTitle}}</button>
+      {{#if isEqual type "update"}}
+      <a class="btn btn-default" href="{{pathFor 'underConstruction'}}" role="button">{{_"Comment"}}</a>
+      {{/if}}
+      <a class="btn btn-default" href="{{pathFor 'personsList'}}" role="button">{{_"Cancel"}}</a>
+    </p>
   {{/autoForm}}
 </template>

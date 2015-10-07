@@ -60,10 +60,10 @@ Schema.User = new SimpleSchema({
   // Option 2: [String] type
   // If you are sure you will never need to use role groups, then
   // you can specify [String] as the type
-  roles: {
-    type: [String],
-    optional: true
-  }
+  //roles: {
+  //    type: [String],
+  //optional: true
+  //}
 });
 
 Meteor.users.attachSchema(Schema.User);

@@ -9,7 +9,9 @@ function loadUser(user) {
 Meteor.startup(function () {
   var users = YAML.eval(Assets.getText('users.yml'));
 
-  for (key in users) if (users.hasOwnProperty(key)) {
-    loadUser(users[key]);
+  for (var key in users) {
+    if (users.hasOwnProperty(key)) {
+      loadUser(users[key]);
+    }
   }
 });
