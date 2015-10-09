@@ -1,12 +1,18 @@
 <template name="bebeForm">
    {{#autoForm collection="Persons" doc=doc id=id type=type }}
   <h2>{{title}}</h2>
+  <div class="form-inline">
+    {{> afQuickField name="buscasBebe" defaultValue=false}}
+  </div>
+  <span class="help-block"></span>
 
-    <ul class="nav nav-tabs nav-justified bebe-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
+  <ul class="nav nav-tabs nav-justified bebe-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
+    {{#if afFieldValueIs name="buscasBebe" value=true}}
       <li role="presentation"><a href="#fallecimiento" aria-controls="fallecimiento" role="tab" data-toggle="tab">Fallecimiento</a></li>
       <li role="presentation"><a href="#infomedica" aria-controls="infomedica" role="tab" data-toggle="tab">Personal médico</a></li>
       <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
+      {{/if}}
       <li role="presentation"><a href="#otros" aria-controls="otros" role="tab" data-toggle="tab">Otras informaciones</a></li>
     </ul>
 
@@ -19,13 +25,17 @@
           {{> afQuickField name="fechaNacimientoEsAprox" defaultValue=false}}
         </div>
 
-        {{> afQuickField name="lugarNacimiento" id="lugarNacimiento" placeholder="Nombre o dirección del hospital si lo conoce" }}
+        {{> afQuickField name="lugarNacimiento" id="lugarNacimiento" placeholder="Nombre del hospital si lo conoce" }}
+        {{> afQuickField name="lugarNacimientoDireccion" id="lugarNacimientoDireccion" placeholder="Dirección del lugar de nacimiento si lo conoce" }}
         <div class="form-inline">
-          <select class="form-control"><option>España</option></select>
-          <select class="form-control ps-prov"></select>
-          <select class="form-control ps-mun"></select>
+
+          {{> afQuickField name="lugarNacimientoPais" options="allowed" firstOption=false value="España" label-style="display: none" }}
+          {{#if afFieldValueIs name="lugarNacimientoPais" value="España"}}          {{/if}}
+          {{> afQuickField name="lugarNacimientoProvincia" type="select" firstOption=false class="ps-prov" label-style="display: none" }}
+          {{> afQuickField name="lugarNacimientoMunicipio" type="select"  firstOption=false class="ps-mun" label-style="display: none" }}
+
         </div>
-        <span class="help-block"></span>
+
         <div id="lugarNacimientoMap"></div>
 
         <div id="lugarNacimientoDetalle">

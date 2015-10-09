@@ -4,6 +4,8 @@ Template.bebeForm.onRendered(function() {
   var provinceDefaultText = 'Provincia';
   var municipeDefaultText = 'Municipio';
 
+  // console.log(AutoForm.getFormValues("editaBebeForm").updateDoc.$set);
+
   // Set default text
   $(provinceCssSelector).append($('<option>').text(provinceDefaultText).attr('value', -1));
   $(municipeCssSelector).append($('<option>').text(municipeDefaultText).attr('value', -1));
@@ -12,6 +14,11 @@ Template.bebeForm.onRendered(function() {
   $.each(provinces, function(number, province) {
     $(provinceCssSelector).append($('<option>').text(province.name).attr('value', province.code));
   });
+
+  // https://github.com/aldeed/meteor-autoform/#getting-current-field-values
+  //console.log(AutoForm.getFormValues("nuevoBebeForm")); //Template.nuevoBebe, Schema.Persons, true));
+  // console.log(AutoForm.getFormValues("editaBebeForm").updateDoc.$set); // .lugarNacimientoProvincia); //.lugarNacimientoMunicipio); //, Template.bebePage, Schema.Persons, true));
+  // console.log(AutoForm.getFormValues("editaBebeForm").updateDoc.$set.lugarNacimientoMunicipio); //.lugarNacimientoMunicipio); //, Template.bebePage, Schema.Persons, true));
 
   // When selected province changes, populate municipe select
   $(provinceCssSelector).change(function() {
@@ -24,5 +31,4 @@ Template.bebeForm.onRendered(function() {
       }
     });
   });
-
 });

@@ -1,5 +1,10 @@
 <template name="basicLayout">
   {{> header}}
+  <section id="lorem-photos">
+    {{#each photos}}
+    <img src="/images/lorem-photos/{{this}}.jpg">
+    {{/each}}
+  </section>
   <div class="container">
     <div id="main" class="row-fluid">
       {{> yield}}

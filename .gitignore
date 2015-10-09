@@ -1,3 +1,4 @@
 .idea/*
 *.~[0-9]~
 node_modules
+private/cli/mup/mup.json

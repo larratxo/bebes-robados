@@ -1,18 +1,3 @@
-Template.nuevoBebe.onRendered(function() {
-  this.autorun(function () {
-    if (GoogleMaps.loaded()) {
-      $("#lugarNacimiento").geocomplete( {
-        map: "#lugarNacimientoMap",
-        details: "#lugarNacimientoDetalle",
-        detailsAttribute: "data-geo"
-      });
-      $("#cementerioEnterrado").geocomplete({
-        map: "#cementerioEnterradoMap"
-      });
-    }
-  });
-});
-
 Template.home.helpers({
   mainMapOptions: function() {
     // Make sure the maps API has loaded
@@ -32,6 +17,9 @@ Template.home.helpers({
 
 Template.home.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
+
+  // DISABLED
+  return;
   GoogleMaps.ready('mainMap', function(map) {
     var geocoder = new google.maps.Geocoder();
 

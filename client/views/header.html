@@ -10,8 +10,11 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="{{pathFor 'home'}}">
-          <img style="max-width:50%; display: inline; margin-top: -10px;" src="/images/logo40.png">
-          {{ _"main_title"}}
+          <img style="max-width:50%; display: inline; margin-top: -10px;" src="/images/logo60.png">
+          <div class="navbar-brand-titles">
+          <div class="navbar-brand-main">NOMBRE DE LA INICIATIVA</div>
+          <div class="navbar-brand-sub">{{ _"main_title"}}</div>
+          </div>
         </a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
@@ -26,6 +29,7 @@
             <ul class="dropdown-menu">
               <li><a class="active" href="{{ pathFor 'underConstruction'}}">{{_"About"}}</a></li>
               <li><a class="active" href="{{ pathFor 'underConstruction'}}">{{_"OurBanners"}}</a></li>
+              <li><a class="active" href="{{ pathFor 'underConstruction'}}">{{_"Ayudanos a traducir"}}</a></li>
               <li><a href="{{ pathFor 'underConstruction'}}">{{_"Contact"}}</a></li>
               <li role="separator" class="divider"></li>
               <!-- <li class="dropdown-header">{{_"Others"}}</li> -->

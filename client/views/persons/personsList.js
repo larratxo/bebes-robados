@@ -10,9 +10,17 @@ Deps.autorun(function () {
 
 Template.personsList.helpers({
   selector: function () {
-    return { "fechaNacimiento":
-                          {$gte: new Date(Session.get("minBornYear"),0,1),
-                           $lte: new Date(Session.get("maxBornYear"),11,31)}};}
+    if (Session.get("minBornYear") !== initYear || Session.get("maxBornYear") !== thisYear) {
+      return { "fechaNacimiento":
+               {$gte: new Date(Session.get("minBornYear"),0,1),
+                $lte: new Date(Session.get("maxBornYear"),11,31)
+               }};
+    }
+    else {
+      // Also show null
+      return {};
+    }
+  }
 });
 
 Template.personsList.events({

@@ -3,23 +3,25 @@ function getTVal(e, name) {
 }
 
 Template.nuevoBebe.onRendered(function() {
-  AutoForm.resetForm("nuevoBebeForm");
+  // Commented, this clear default values
+  // AutoForm.resetForm("nuevoBebeForm");
 });
 
 AutoForm.hooks({
   nuevoBebeForm: {
-    onSubmit: function (insertDoc, updateDoc, currentDoc) {
-      $.bootstrapGrowl("Submit");
-      var id = Persons.insert(insertDoc);
-      if (id !== null) {
-        this.done();
-        $.bootstrapGrowl("Guardado", {type: 'success', align: 'center'} );
-        //        Router.go('bebePage', { _id: id });
-        Router.go('personsList');
-      } else {
-        this.done(new Error("Submission failed"));
+    after: {
+      // Replace `formType` with the form `type` attribute to which this hook applies
+      insert: function(error, result) {
+        if (error === undefined) {
+          $.bootstrapGrowl("Guardado", {type: 'success', align: 'center'} );
+          Router.go('personsList');
+          AutoForm.resetForm("nuevoBebeForm");
+          // Router.go('bebePage', { _id: id });
+        } else {
+          $.bootstrapGrowl("Error guardando, " + error, {type: 'danger', align: 'center'} );
+          console.log("Error inserting " + error);
+        }
       }
-      return false;
     }
   }
 });
