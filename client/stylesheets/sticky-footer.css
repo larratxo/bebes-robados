@@ -25,6 +25,8 @@ body {
 body > .container {
   padding: 100px 40px 20px 40px;
   background-color: white;
+  min-height: 600px !important;
+  padding-bottom: 80px;
 }
 
 .container .text-muted {

@@ -3,6 +3,16 @@ Router.route('/', function () {
   SEO.set({ title: 'Inicio -' + Meteor.App.NAME });
 }, {name: 'home'});
 
+
+var requireLogin = function() {
+  if (! Meteor.user()) {
+    this.render('accessDenied');
+    this.stop();
+  } else {
+    this.next();
+  }
+}
+
 Router.map(function() {
   this.route('personsList', { path: '/bebes' });
   this.route('nuevoBebe', { path: '/nuevoBebe' });
@@ -14,5 +24,6 @@ Router.map(function() {
     path: '/bebe/:_id',
     data: function() { return Persons.findOne(this.params._id); }
   });
-
 });
+
+// Router.before(requireLogin, {only: ['nuevoBebe', 'bebePage'] } );

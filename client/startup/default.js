@@ -8,7 +8,7 @@ Meteor.startup(function () {
     monthsShort:["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
     today:"Hoy", clear:"Borrar", weekStart:1, format:"dd/MM/yyyy"};
 
-  $.bootstrapGrowl("<b>No metas datos reales</b><br>Estamos solo en pruebas y los borraremos de tanto en tanto", {type: 'danger', delay: 10000} );
+  $.bootstrapGrowl("<b>No metas datos reales</b><br>Estamos solo en pruebas y los borraremos de tanto en tanto.<br>También hemos desactivado los usuarios/permisos para que las pruebas sean más cómodas.", {type: 'danger', delay: 10000} );
 
   Meteor.call("getMapKey", function (error, result) {
     // console.log("Your application is running with google maps " + result + " key.");
