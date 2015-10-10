@@ -1,0 +1,7 @@
+* Desarrollo
+** Conectar usuarios-bebes
+** Bebe encontrado o no encontrado?
+** Publicidad
+** Markers in a circle
+https://jsfiddle.net/kaiser/wzcst/light/
+https://developers.google.com/maps/documentation/javascript/shapes#circles
