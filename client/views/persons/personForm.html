@@ -20,6 +20,9 @@
       <div role="tabpanel" class="tab-pane active" id="datosbasicos">
         <legend>Datos del presunto robo</legend>
 
+        {{> afQuickField name='nombreCompleto' placeholder="Nombre y apellidos" }}
+        {{> afQuickField name="sexo" options="allowed" firstOption="» Selecciona uno"}}
+
         <div class="form-inline">
           {{> afQuickField name="fechaNacimiento" buttonClasses="glyphicon glyphicon-calendar" }}
           {{> afQuickField name="fechaNacimientoEsAprox" defaultValue=false}}
@@ -31,22 +34,16 @@
 
           {{> afQuickField name="lugarNacimientoPais" options="allowed" firstOption=false value="España" label-style="display: none" }}
           {{#if afFieldValueIs name="lugarNacimientoPais" value="España"}}          {{/if}}
-          {{> afQuickField name="lugarNacimientoProvincia" type="select" firstOption=false class="ps-prov" label-style="display: none" }}
-          {{> afQuickField name="lugarNacimientoMunicipio" type="select"  firstOption=false class="ps-mun" label-style="display: none" }}
-
+          {{> afQuickField name="lugarNacimientoProvincia" id="lugarNacimientoProvincia" type="select" firstOption=false class="ps-prov" label-style="display: none" }}
+          {{> afQuickField name="lugarNacimientoMunicipio" id="lugarNacimientoMunicipio" type="select"  firstOption=false class="ps-mun" label-style="display: none" }}
+          {{> afQuickField name="lugarNacimientoProvinciaNombre" id="lugarNacimientoProvinciaNombre" label-style="display: none" }}
+          {{> afQuickField name="lugarNacimientoMunicipioNombre" id="lugarNacimientoMunicipioNombre" label-style="display: none" }}
+          {{> afQuickField name="lugarNacimientoLatitud" id="lugarNacimientoLatitud" label-style="display: none" }}
+          {{> afQuickField name="lugarNacimientoLongitud" id="lugarNacimientoLongitud" label-style="display: none" }}
         </div>
 
-        <div id="lugarNacimientoMap"></div>
+        <!-- <div class="lugarNacimientoMap" id="lugarNacimientoMap"></div> -->
 
-        <div id="lugarNacimientoDetalle">
-          Latitude:     <span data-geo="lat"></span>
-          Longitude:    <span data-geo="lng"></span>
-          Dirección:      <span data-geo="formatted_address"></span>
-          Comunidad: <span data-geo="administrative_area_level_1"></span>
-          País: <span data-geo="country"></span>
-        </div>
-        {{> afQuickField name='nombreCompleto' placeholder="Nombre y apellidos" }}
-        {{> afQuickField name="sexo" options="allowed" firstOption="» Selecciona uno"}}
         {{> afQuickField name="nombreCompletoMadre" placeholder="Nombre y apellidos" }}
         {{> afQuickField name="nombreCompletoPadreOConyuge" placeholder="Nombre y apellidos" }}
       </div>
@@ -98,7 +95,7 @@
 
       <div role="tabpanel" class="tab-pane" id="infomedica">
         <legend>Personal médico que pudiera tener información o estar implicada en el presunto robo:</legend>
-        {{> afQuickField name="nombreCompletoMedico" placeholder="Nombre y apellidos, sobrenombre o apodo" }}
+        {{> afQuickField name="nombreCompletoMedico" }}
         {{> afQuickField name="nombreCompletoMatrona" placeholder="Nombre y apellidos, sobrenombre o apodo"}}
         {{> afQuickField name="nombreCompletoEnfermera" placeholder="Nombre y apellidos, sobrenombre o apodo"}}
         {{> afQuickField name="nombreOtroPersonalMedico" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=4}}

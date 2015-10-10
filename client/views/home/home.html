@@ -1,14 +1,52 @@
 <template name="home">
 
- <div class="jumbotron">
-   <h2>Tras 300.000 casos de bebes robados</h2>
-   <h1>queremos reencontrarnos</h1>
+  <div class="jumbotron">
+    <h2>Tras más 300.000 casos de bebes robados<br>
+      <b>queremos reencontrarnos</b></h2>
+    <br><br>
+    <h3>(Descripción de la iniciativa de ejemplo) Durante décadas ha habido infinidad de robos de recién nacidos en España, adopciones irregulares, etc. bla bla bla
+      <br>
+      <br>
+      Esta iniciativa tiene varios objetivos:</h3>
 
-   <p>Descripción de la iniciativa y diferentes objectivos</p>
+  </div>
 
-    <div class="map-container">
-      {{> googleMap name="mainMap" options=mainMapOptions}}
+
+
+  <div class="ui four column main-content features grid">
+
+    <div class="center aligned column">
+      <a href="/nuevoBebe" class="ui unstyled no-hover-styles no-underline link icon header">
+        <span class="headline">Registrar esos casos</span>
+        <i class="fa fa-archive icon"></i>
+      </a>
+    </div>
+
+    <div class="center aligned column">
+      <a href="/bebes" class="ui unstyled no-hover-styles no-underline link icon header">
+        <span class="headline">Facilitar el reencuentro</span>
+        <i class="fa fa-search icon"></i>
+      </a>
+    </div>
+
+    <div class="center aligned column">
+      <a href="/en-construccion" class="ui unstyled no-hover-styles no-underline link icon header">
+        <span class="headline">Servir de denuncia</span>
+        <i class="fa fa-shield icon"></i>
+      </a>
+    </div>
+
+    <div class="center aligned column">
+      <a href="/en-construccion" class="ui unstyled no-hover-styles no-underline link icon header">
+        <span class="headline">Facilitar la difusión</span>
+        <i class="fa fa-bullhorn icon"></i>
+      </a>
     </div>
 
   </div>
+  <div class="map-container">
+    {{> googleMap name="mainMap" options=mainMapOptions}}
+  </div>
+
+
 </template>

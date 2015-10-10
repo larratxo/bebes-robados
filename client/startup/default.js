@@ -6,18 +6,15 @@ Meteor.startup(function () {
     daysMin:["Do","Lu","Ma","Mi","Ju","Vi","Sa","Do"],
     months:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
     monthsShort:["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
-    today:"Hoy",
-    clear:"Borrar",
-    weekStart:1,
-    format:"dd/MM/yyyy"};
+    today:"Hoy", clear:"Borrar", weekStart:1, format:"dd/MM/yyyy"};
 
+  $.bootstrapGrowl("<b>No metas datos reales</b><br>Estamos solo en pruebas y los borraremos de tanto en tanto", {type: 'danger', delay: 10000} );
 
   Meteor.call("getMapKey", function (error, result) {
     // console.log("Your application is running with google maps " + result + " key.");
     if (typeof(result) !== 'undefined') {
-      GoogleMaps.load({
-        key: result,
-        libraries: 'places'  // also accepts an array if you need more than one
+      GoogleMaps.load({ key: result, libraries: 'places'
+        // also accepts an array if you need more than one
       });
     }
   });

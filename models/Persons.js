@@ -11,11 +11,6 @@ defaultDate = function(label) {
       afFieldInput: {
         type: "date"
       }
-      //type: "bootstrap-datepicker", /* i18n problems */
-      //datePickerOptions: {
-      //  /*format: "dd/MM/yyyy",*/
-      //  language: "es"
-      //}
     }
   };
 }
@@ -26,6 +21,58 @@ defaultMap = function(label) {
     label: label,
     optional: true
   }
+}
+
+defaultAutocomplete = function(field, textarea) {
+  if (Meteor.isClient) {
+    var template;
+    switch (field) {
+      case "nombreCompletoMedico":
+        template=Template.autoMedico;
+        break;
+      case "nombreCompletoMatrona":
+        template=Template.autoMatrona;
+        break;
+      case "nombreCompletoEnfermera":
+        template=Template.autoEnfermera;
+        break;
+      case "nombreOtroPersonalMedico":
+        template=Template.autoOtroMedico;
+        break;
+      case "nombreFuncionariosRegCivil":
+        template=Template.autoFuncionariosRegCivil;
+        break;
+      case "nombreFuncionariosCementario":
+        template=Template.autoFuncionariosCementario;
+        break;
+      case "nombreTrabajadoresFuneraria":
+        template=Template.nombreTrabajadoresFuneraria;
+        break;
+      case "nombreOtrosFuncionariosOTrabajadores":
+        template=Template.autoOtrosFuncionariosOTrabajadores;
+        break;
+    }
+    return {
+      afFieldInput: {
+        type: textarea? 'autocomplete-textarea' : 'autocomplete-input',
+        placeholder: textarea? "Lista de nombres y apellidos, sobrenombres o apodos" : "Nombre y apellidos, sobrenombre o apodo",
+        settings: function() {
+          return {
+            position: "bottom",
+            limit: 5,
+            rules: [ {
+              // token: '@',
+              collection: Persons,
+              field: field,
+              template: template,
+              noMatchTemplate: Template.noautocomplete
+            }]
+          };
+        }
+      }
+    }
+  }
+  return {}
 }
 
 defaultAutoMap = function(label) {
@@ -60,12 +107,12 @@ Schema.Persons =  new SimpleSchema({
   lugarNacimiento: defaultMap("Lugar de nacimiento:"),
   lugarNacimientoDireccion: {type: String, optional: true, label: "Dirección:"},
   lugarNacimientoProvincia: {type: String, optional: true, label: "Provincia:"},
-  lugarNacimientoProvinciaNombre: {type: String, optional: true, label: "Provincia:"},
+  lugarNacimientoProvinciaNombre: {type: String, optional: true, label: "Provincia:", autoform: { type: 'hidden' } },
   lugarNacimientoMunicipio: {type: String, optional: true, label: "Municipio:"},
-  lugarNacimientoMunicipioNombre: {type: String, optional: true, label: "Municipio:"},
-  lugarNacimientoPais: {type: String, optional: true, label: "País:", allowedValues: ["España", "Otro" ]},
-  lugarNacimientoLatitud: {type: String, optional: true, label: "Latitud:"},
-  lugarNacimientoLongitud: {type: String, optional: true, label: "Longitud:"},
+  lugarNacimientoMunicipioNombre: {type: String, optional: true, label: "Municipio:", autoform: { type: 'hidden'} },
+  lugarNacimientoPais: {type: String, optional: true, label: "País:", allowedValues: ["España", "Otro" ] },
+  lugarNacimientoLatitud: {type: String, optional: true, label: "Latitud:", autoform: { type: 'hidden'} },
+  lugarNacimientoLongitud: {type: String, optional: true, label: "Longitud:", autoform: { type: 'hidden'} },
   fechaFallecimiento: defaultDate("Fecha del fallecimiento:"),
   fechaFallecimientoEsAprox: { type: Boolean, optional:true, label: "¿La fecha del fallecimiento es aproximada?",
                                autoform: { afFieldInput: { type: "boolean-radios", trueLabel: "Sí", falseLabel: "No"}}},
@@ -106,6 +153,8 @@ Schema.Persons =  new SimpleSchema({
   },
   entierroPorHospitalOtrasRazones: {type: String, optional: true, label: "¿Qué otras razones?" },
   cementerioEnterrado: defaultMap("¿En qué cementerio fue enterrado?"),
+  cementerioEnterradoLatitud: {type: String, optional: true, label: "Latitud:"},
+  cementerioEnterradoLongitud: {type: String, optional: true, label: "Longitud:"},
   posibilidadPruebasADN: {type: Boolean, label: "¿Esta en una sepultura perpetua con posibilidades de exhumación para realizar pruebas de ADN?", optional: true,
                           autoform: { afFieldInput: { type: "boolean-radios", trueLabel: "Sí", falseLabel: "No"}}},
   sepulturaTemporalPruebasADN: {type: Boolean, label: "¿Está en una sepultura temporal colectiva (5 o más cuerpos) con posibilidades de exhumación para realizar pruebas de ADN?", optional: true,
@@ -114,16 +163,22 @@ Schema.Persons =  new SimpleSchema({
                   autoform: { afFieldInput: { type: "boolean-radios", trueLabel: "Sí", falseLabel: "No"}}},
   enOsarioComunDesdeFecha: defaultDate("¿Desde que fecha en osario común?"),
   motivosSospecha: {type: String, optional: true, label: "Motivos por el que sospecha de que el niño/a no falleció realmente y pudo ser robado:" },
-  nombreCompletoMedico: { type: String, optional: true, label: "Nombre completo del médico:" },
-  nombreCompletoMatrona: { type: String, optional: true, label: "Nombre completo de la matrona:" },
-  nombreCompletoEnfermera: { type: String, optional: true, label: "Nombre completo de la enfermera:" },
-  nombreOtroPersonalMedico: { type: String, label: "Nombre de algún otro miembro del personal médico, de enfermería, de dirección o administración del centro médico:", optional: true },
-
-  nombreFuncionariosRegCivil: { type: String, optional: true, label: "Nombres de funcionarios del Registro Civil:" },
-  nombreFuncionariosCementario: { type: String, optional: true, label: "Nombres de funcionarios del cementerio:" },
-  nombreTrabajadoresFuneraria: { type: String, optional: true, label: "Nombres de trabajadores de funerarias:" },
-  nombreOtrosFuncionariosOTrabajadores: { type: String, optional: true, label: "Nombres de otros funcionarios o trabajadores:" },
-
+  nombreCompletoMedico: { type: String, optional: true, label: "Nombre completo del médico:", index: 1,
+                          autoform: defaultAutocomplete("nombreCompletoMedico", false) },
+  nombreCompletoMatrona: { type: String, optional: true, label: "Nombre completo de la matrona:", index: 1,
+                           autoform: defaultAutocomplete("nombreCompletoMatrona", false) },
+  nombreCompletoEnfermera: { type: String, optional: true, label: "Nombre completo de la enfermera:", index: 1,
+                             autoform: defaultAutocomplete("nombreCompletoEnfermera", false) },
+  nombreOtroPersonalMedico: { type: String, label: "Nombre de algún otro miembro del personal médico, de enfermería, de dirección o administración del centro médico:", optional: true, index: 1,
+                              autoform: defaultAutocomplete("nombreOtroPersonalMedico", true) },
+  nombreFuncionariosRegCivil: { type: String, optional: true, label: "Nombres de funcionarios del Registro Civil:", index: 1,
+                                autoform: defaultAutocomplete("nombreFuncionariosRegCivil", false) },
+  nombreFuncionariosCementario: { type: String, optional: true, label: "Nombres de funcionarios del cementerio:", index: 1,
+                                  autoform: defaultAutocomplete("nombreFuncionariosCementario", false) },
+  nombreTrabajadoresFuneraria: { type: String, optional: true, label: "Nombres de trabajadores de funerarias:", index:1,
+                                 autoform: defaultAutocomplete("nombreTrabajadoresFuneraria", false) },
+  nombreOtrosFuncionariosOTrabajadores: { type: String, optional: true, label: "Nombres de otros funcionarios o trabajadores:", index: 1,
+                                          autoform: defaultAutocomplete("nombreOtrosFuncionariosOTrabajadores", true) },
   gestionesRealizadasYDocumentos: {type: String, optional: true, label: "Gestiones realizadas y documentos conseguidos:" },
   denunciaEnComisaria: {type: Boolean, optional: true, label: "¿Ha puesto denuncia en la Comisaría?",
                         autoform: { afFieldInput: { type: "boolean-radios", trueLabel: "Sí", falseLabel: "No"}}},
@@ -175,23 +230,5 @@ if (Meteor.isServer) {
     remove : function () {
       return true;
     }
-  });
-}
-
-if (Meteor.isServer) {
-  Persons.before.insert(function (userId, doc) {
-    console.log(doc.lugarNacimientoProvincia);
-    console.log(doc.lugarNacimientoMunicipio);
-    var prov = parseInt(doc.lugarNacimientoProvincia);
-    var muni = parseInt(doc.lugarNacimientoMunicipio);
-    if (!isNaN(prov) && prov >= 0) {
-      doc.lugarNacimientoProvinciaNombre = provincia(prov);
-    }
-    if (!isNaN(muni) && muni >= 0) {
-      doc.lugarNacimientoMunicipioNombre = municipio(prov, muni);
-
-    }
-    console.log(doc.lugarNacimientoProvinciaNombre);
-    console.log(doc.lugarNacimientoMunicipioNombre);
   });
 }

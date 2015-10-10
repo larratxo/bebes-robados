@@ -12,13 +12,13 @@ AutoForm.hooks({
     after: {
       // Replace `formType` with the form `type` attribute to which this hook applies
       insert: function(error, result) {
-        if (error === undefined) {
+        if (typeof error === "undefined") {
           $.bootstrapGrowl("Guardado", {type: 'success', align: 'center'} );
           Router.go('personsList');
           AutoForm.resetForm("nuevoBebeForm");
           // Router.go('bebePage', { _id: id });
         } else {
-          $.bootstrapGrowl("Error guardando, " + error, {type: 'danger', align: 'center'} );
+          $.bootstrapGrowl(error, {type: 'danger', align: 'center'} );
           console.log("Error inserting " + error);
         }
       }

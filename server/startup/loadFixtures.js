@@ -24,7 +24,7 @@ Meteor.startup(function () {
     console.log("Loading municipes fixtures.");
     var m = Fixtures.municipios;
     for (var i = 0; i < m.length; i+= 1) {
-      Municipios.insert({cod_prov : parseInt(m[i].cod_prov), cod_mun : parseInt(m[i].cod_mun), name: m[i].name });
+      Municipios.insert({cod_id: parseInt(m[i].id), cod_prov : parseInt(m[i].cod_prov), cod_mun : parseInt(m[i].cod_mun), name: m[i].name });
     }
   }
 });

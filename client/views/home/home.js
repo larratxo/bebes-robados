@@ -5,42 +5,76 @@ Template.home.helpers({
       // Map initialization options
       return {
         center: new google.maps.LatLng(36.5270612, -6.2885962), // Cadiz
-        // center: new google.maps.LatLng(37.3880961, -5.9823299), // Sevilla (para que se vea Canarias)
-        // center: new google.maps.LatLng(40.4167754, -3.7037902), // Madrid
-
-        // zoom: 5
-        zoom: 4
+        // mapTypeId: google.maps.MapTypeId.SATELLITE,
+        zoomControl: true,
+        // Sin nombres ni carreteras
+        // styles: [{ featureType: "road", stylers: [  {visibility: "on"} ] } ],
+        zoom: 5
+        // Maybe:
+        // https://stackoverflow.com/questions/9555499/apply-mask-to-google-map
       };
     }
   }
 });
 
 Template.home.onCreated(function() {
+
   // We can use the `ready` callback to interact with the map API once the map is ready.
-
-  // DISABLED
-  return;
   GoogleMaps.ready('mainMap', function(map) {
-    var geocoder = new google.maps.Geocoder();
-
     // Add a marker to the map once it's ready
+
+    var infowindow = new google.maps.InfoWindow();
+    var markers = {}
+    var createMarker = function (map, person) {
+      var lat = person.lugarNacimientoLatitud;
+      var long = person.lugarNacimientoLongitud;
+      if (typeof lat === "string" && typeof long === "string" && long.length > 0 && lat.length > 0) {
+        var marker = new google.maps.Marker({
+          map: map.instance,
+          // https://developers.google.com/maps/documentation/javascript/examples/map-latlng-literal
+          icon: person.buscasBebe? '/images/gmaps-pointer.png': '/images/gmaps-pointer-familia.png',
+          position:  {lat: parseInt(lat), lng: parseInt(long)}
+        });
+
+        markers[person._id] = marker;
+
+        // https://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
+        google.maps.event.addListener(marker, 'click', (function(marker, person) {
+          return function() {
+            infowindow.setContent("<a href='/bebe/" + person._id + "/'>" +
+                                    (person.buscasBebe?
+                                     "Buscamos bebe ":
+                                     "Busco a mi familia biológica ") +
+                                  renderSexo(person.sexo) +
+                                   (person.fechaNacimiento instanceof Date? " nacido el ": "") +
+                                  renderAprox(person.fechaNacimientoEsAprox) +
+                                  renderDate(person.fechaNacimiento) +
+                                  "</a>");
+            infowindow.open(map.instance, marker);
+          }
+        })(marker, person));
+      }
+    };
+
     var cursor = Persons.find();
     cursor.forEach(function (person) {
-      // console.log("lug: " + person.lugarNacimiento);
-      geocoder.geocode({'address': person.lugarNacimiento}, function(results, status) {
-        if (status === google.maps.GeocoderStatus.OK) {
-          var marker = new google.maps.Marker({
-            map: map.instance,
-            position: results[0].geometry.location
-          });
-        } else {
-          console.log('Geocode was not successful for the following reason: ' + status);
-        }
-      });
+      createMarker(map, person);
     });
-    var marker = new google.maps.Marker({
-      position: map.options.center,
-      map: map.instance
+
+    Persons.find().observe({
+      // http://meteorcapture.com/how-to-create-a-reactive-google-map/
+      added: function(document) {
+        createMarker(map, document);
+      },
+      changed: function(newDocument, oldDocument) {
+        markers[newDocument._id].setPosition({ lat: parseInt(newDocument.lugarNacimientoLatitud),
+                                               lng: parseInt(newDocument.lugarNacimientoLongitud) });
+      },
+      removed: function(oldDocument) {
+        markers[oldDocument._id].setMap(null);
+        google.maps.event.clearInstanceListeners(markers[oldDocument._id]);
+        delete markers[oldDocument._id];
+      }
     });
   });
 });

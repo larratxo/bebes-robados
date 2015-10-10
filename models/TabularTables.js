@@ -47,6 +47,14 @@ function indent(val) {
 
 renderSexo = function (val, type, doc) {
   return val === "Hombre"? indent("♂"): val === "Mujer"? indent("♀") : val === "Desconocido"? indent("?"): "Otro";
+}
+
+renderIndentSexo = function (val, type, doc) {
+  return val === "Hombre"? indent("♂"): val === "Mujer"? indent("♀") : val === "Desconocido"? indent("?"): "Otro";
+};
+
+renderSexo = function (val, type, doc) {
+  return val === "Hombre"? "♂": val === "Mujer"? "♀" : val === "Desconocido"? "": "";
 };
 
 renderAprox = function (val, type, doc) {
@@ -62,7 +70,7 @@ renderProvincia = function (val, type, doc) {
 }
 
 renderMunicipio = function (val, type, doc) {
-  return municipio(doc.lugarNacimientoProvincia, doc.lugarNacimientoMunicipio);
+  return municipio(doc.lugarNacimientoMunicipio);
 }
 
 TabularTables.Persons = new Tabular.Table({
@@ -77,9 +85,10 @@ TabularTables.Persons = new Tabular.Table({
   columns: [
     {data: "createdAt", title: "Creado", render: renderDate, visible: false},
     {data: "updatedAt", title: "Actualizado", render: renderDate, visible: false},
-    {data: "buscasBebe", title: "Busca Bebe o Familia", render: renderBuscasBebe},
+
     {data: "nombreCompleto", title: "Nombre del niño/a"},
-    {data: "sexo", title: "Sexo", render: renderSexo},
+    {data: "sexo", title: "Sexo", render: renderIndentSexo},
+    {data: "buscasBebe", title: "Busca Bebe o Familia", render: renderBuscasBebe},
     {data: "fechaNacimientoEsAprox", title: "", render: renderAprox },
     {data: "fechaNacimiento", title: "Fecha nacimiento", render: renderDate },
     {data: "fechaFallecimientoEsAprox", title: "", render: renderAprox },
@@ -87,10 +96,12 @@ TabularTables.Persons = new Tabular.Table({
     {data: "nombreCompletoMadre", title: "Nombre de la madre"},
     {data: "nombreCompletoPadreOConyuge", title: "Nombre del cónyuge"},
     {data: "lugarNacimiento", title: "Lugar de nacimiento"},
-    {data: "lugarNacimientoProvincia", title: "Provincia", render: renderProvincia},
     {data: "lugarNacimientoProvinciaNombre", title: "Provincia" },
-    {data: "lugarNacimientoMunicipioNombre", title: "Municipio" },
-    {data: "lugarNacimientoMunicipio", title: "Municipio", render: renderMunicipio}
+   // {data: "lugarNacimientoLongitud", title: "long" },
+    // {data: "lugarNacimientoLatitud", title: "lat" },
+    {data: "lugarNacimientoMunicipioNombre", title: "Municipio" }
+
+
     // {data: "lugarNacimientoPais", title: "País"}
     // {data: "cementerioEnterrado", title: "Cementerio"}
   ]
