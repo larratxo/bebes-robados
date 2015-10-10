@@ -45,8 +45,8 @@ Template.home.onCreated(function() {
                                     (person.buscasBebe?
                                      "Buscamos bebe ":
                                      "Busco a mi familia biológica ") +
-                                  renderSexo(person.sexo) +
-                                   (person.fechaNacimiento instanceof Date? " nacido el ": "") +
+                                  renderSexoAlt(person.sexo) +
+                                  (person.fechaNacimiento instanceof Date? (person.buscasBebe? " nacido aquí el ": " nací aquí el "): " nacido aquí ") +
                                   renderAprox(person.fechaNacimientoEsAprox) +
                                   renderDate(person.fechaNacimiento) +
                                   "</a>");

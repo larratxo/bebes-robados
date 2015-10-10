@@ -45,43 +45,42 @@ function indent(val) {
   return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + val;
 }
 
+sexosAbrev    = {"Hombre" : "♂", "Mujer" : "♀", "Desconocido": "?", "Otro": "Otro" };
+sexosAbrevAlt = {"Hombre" : "♂", "Mujer" : "♀", "Desconocido": "", "Otro": "" };
+
 renderSexo = function (val, type, doc) {
-  return val === "Hombre"? indent("♂"): val === "Mujer"? indent("♀") : val === "Desconocido"? indent("?"): "Otro";
+  return sexosAbrev[val];
+}
+
+renderSexoAlt = function (val) {
+  return sexosAbrevAlt[val];
 }
 
 renderIndentSexo = function (val, type, doc) {
-  return val === "Hombre"? indent("♂"): val === "Mujer"? indent("♀") : val === "Desconocido"? indent("?"): "Otro";
+  return indent(sexosAbrev[val]);
 };
 
-renderSexo = function (val, type, doc) {
-  return val === "Hombre"? "♂": val === "Mujer"? "♀" : val === "Desconocido"? "": "";
-};
+var abrev = { true: "≈", false: "", undefined: "" };
 
 renderAprox = function (val, type, doc) {
-  return val === true? "≈": "";
+  return abrev[val];
 };
 
 decorateNacAprox = function (val, type, doc) {
   var date = renderDate(val, type, doc);
-  return doc.fechaNacimientoEsAprox === true? "≈" + date : date;
+  return abrev[doc.fechaNacimientoEsAprox] + date;
 };
 
 decorateFallAprox = function (val, type, doc) {
   var date = renderDate(val, type, doc);
-  return doc.fechaFallecimientoEsAprox === true? "≈" + date : date;
+  return abrev[doc.fechaFallecimientoEsAprox] + date;
 };
+
+var abrevBebeOFamilia = { true: "B", false: "F"};
 
 renderBuscasBebe = function (val, type, doc) {
-  return val === true? indent("B"): indent("F");
+  return indent(abrevBebeOFamilia[val]);
 };
-
-renderProvincia = function (val, type, doc) {
-  return provincia(val);
-}
-
-renderMunicipio = function (val, type, doc) {
-  return municipio(doc.lugarNacimientoMunicipio);
-}
 
 TabularTables.Persons = new Tabular.Table({
   name: "Persons",
