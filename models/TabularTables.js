@@ -61,6 +61,16 @@ renderAprox = function (val, type, doc) {
   return val === true? "≈": "";
 };
 
+decorateNacAprox = function (val, type, doc) {
+  var date = renderDate(val, type, doc);
+  return doc.fechaNacimientoEsAprox === true? "≈" + date : date;
+};
+
+decorateFallAprox = function (val, type, doc) {
+  var date = renderDate(val, type, doc);
+  return doc.fechaFallecimientoEsAprox === true? "≈" + date : date;
+};
+
 renderBuscasBebe = function (val, type, doc) {
   return val === true? indent("B"): indent("F");
 };
@@ -89,10 +99,10 @@ TabularTables.Persons = new Tabular.Table({
     {data: "nombreCompleto", title: "Nombre del niño/a"},
     {data: "sexo", title: "Sexo", render: renderIndentSexo},
     {data: "buscasBebe", title: "Busca Bebe o Familia", render: renderBuscasBebe},
-    {data: "fechaNacimientoEsAprox", title: "", render: renderAprox },
-    {data: "fechaNacimiento", title: "Fecha nacimiento", render: renderDate },
-    {data: "fechaFallecimientoEsAprox", title: "", render: renderAprox },
-    {data: "fechaFallecimiento", title: "Fecha fallecimiento", render: renderDate },
+    {data: "fechaNacimientoEsAprox", title: "", render: renderAprox, visible: false },
+    {data: "fechaNacimiento", title: "Fecha nacimiento", render: decorateNacAprox },
+    {data: "fechaFallecimientoEsAprox", title: "", render: renderAprox, visible: false },
+    {data: "fechaFallecimiento", title: "Fecha fallecimiento", render: decorateFallAprox },
     {data: "nombreCompletoMadre", title: "Nombre de la madre"},
     {data: "nombreCompletoPadreOConyuge", title: "Nombre del cónyuge"},
     {data: "lugarNacimiento", title: "Lugar de nacimiento"},
