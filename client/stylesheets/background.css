@@ -9,7 +9,7 @@
 
 #lorem-photos img {
   opacity: 0.15;
-  margin: 0 -2px;
+  margin: 0px;
   filter: alpha(opacity=15); /* For IE8 and earlier */
 }
 
