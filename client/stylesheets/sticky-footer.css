@@ -29,6 +29,10 @@ body > .container {
   padding-bottom: 80px;
 }
 
+body > .container.Home {
+  background: none;
+}
+
 .container .text-muted {
   margin: 20px 0;
 }
