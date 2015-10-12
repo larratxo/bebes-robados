@@ -28,7 +28,7 @@ Template.home.onCreated(function() {
     var createMarker = function (map, person) {
       var lat = person.lugarNacimientoLatitud;
       var long = person.lugarNacimientoLongitud;
-      if (typeof lat === "string" && typeof long === "string" && long.length > 0 && lat.length > 0) {
+      if (isValidLatLng(lat) && isValidLatLng(long)) {
         var marker = new google.maps.Marker({
           map: map.instance,
           // https://developers.google.com/maps/documentation/javascript/examples/map-latlng-literal

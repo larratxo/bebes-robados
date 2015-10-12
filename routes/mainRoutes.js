@@ -18,6 +18,7 @@ Router.map(function() {
   this.route('nuevoBebe', { path: '/nuevoBebe' });
   this.route('underConstruction', { path: '/en-construccion' });
   this.route('quienesSomos', { path: '/quienesSomos' });
+  this.route('userUpdate', { path: '/yo' });
   this.route('legal', { path: '/legal' });
   this.route('donaciones', { path: '/donaciones' });
   this.route('bebePage', {

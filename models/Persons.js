@@ -189,30 +189,8 @@ Schema.Persons =  new SimpleSchema({
   denunciaEnJuzgado: {type: Boolean, optional: true, label: "¿Ha puesto denuncia en el Juzgado?",
                       autoform: { afFieldInput: { type: "boolean-radios", trueLabel: "Sí", falseLabel: "No"}}},
   denunciaEnJuzgadoEstadoTramitacion: {type: String, optional: true },
-  createdAt: {
-    type: Date,
-    autoValue: function() {
-      if (this.isInsert) {
-        return new Date;
-      } else if (this.isUpsert) {
-        return {$setOnInsert: new Date};
-      } else {
-        this.unset();  // Prevent user from supplying their own value
-      }
-    }
-  },
-  // Force value to be current date (on server) upon update
-  // and don't allow it to be set upon insert.
-  updatedAt: {
-    type: Date,
-    autoValue: function() {
-      if (this.isUpdate || this.isInsert) {
-        return new Date();
-      }
-    },
-    // denyInsert: true,
-    optional: true
-  }
+  createdAt: defaultCreatedAt,
+  updatedAt: defaultUpdateAt
 });
 
 Persons.attachSchema(Schema.Persons);

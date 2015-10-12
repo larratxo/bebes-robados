@@ -31,9 +31,8 @@ Schema.User = new SimpleSchema({
   "emails.$.verified": {
     type: Boolean
   },
-  createdAt: {
-    type: Date
-  },
+  createdAt: defaultCreatedAt,
+  updatedAt: defaultUpdateAt,
   profile: {
     type: Schema.UserProfile,
     optional: true

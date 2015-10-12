@@ -82,6 +82,10 @@ renderBuscasBebe = function (val, type, doc) {
   return indent(abrevBebeOFamilia[val]);
 };
 
+renderGeo = function (val, type, doc) {
+  return isValidLatLng(val)? indent("<i title='Geolocalizado' class='fa fa-map-marker'></i>"): "";
+}
+
 TabularTables.Persons = new Tabular.Table({
   name: "Persons",
   collection: Persons,
@@ -100,16 +104,14 @@ TabularTables.Persons = new Tabular.Table({
     {data: "buscasBebe", title: "Busca Bebe o Familia", render: renderBuscasBebe},
     {data: "fechaNacimientoEsAprox", title: "", render: renderAprox, visible: false },
     {data: "fechaNacimiento", title: "Fecha nacimiento", render: decorateNacAprox },
-    {data: "fechaFallecimientoEsAprox", title: "", render: renderAprox, visible: false },
-    {data: "fechaFallecimiento", title: "Fecha fallecimiento", render: decorateFallAprox },
+    //{data: "fechaFallecimientoEsAprox", title: "", render: renderAprox, visible: false },
+    //{data: "fechaFallecimiento", title: "Fecha fallecimiento", render: decorateFallAprox },
     {data: "nombreCompletoMadre", title: "Nombre de la madre"},
     {data: "nombreCompletoPadreOConyuge", title: "Nombre del cónyuge"},
     {data: "lugarNacimiento", title: "Lugar de nacimiento"},
     {data: "lugarNacimientoProvinciaNombre", title: "Provincia" },
-   // {data: "lugarNacimientoLongitud", title: "long" },
-    // {data: "lugarNacimientoLatitud", title: "lat" },
-    {data: "lugarNacimientoMunicipioNombre", title: "Municipio" }
-
+    {data: "lugarNacimientoMunicipioNombre", title: "Municipio" },
+    {data: "lugarNacimientoLongitud", title: "Geo", render: renderGeo }
 
     // {data: "lugarNacimientoPais", title: "País"}
     // {data: "cementerioEnterrado", title: "Cementerio"}

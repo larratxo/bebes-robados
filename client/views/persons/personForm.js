@@ -59,13 +59,15 @@ geocode = function(event, template) {
   var lugarProv = $("#lugarNacimientoProvinciaNombre").val();
   var lugarMuni = $("#lugarNacimientoMunicipioNombre").val();
   var lat, long = "";
+  $("#lugarNacimientoLatitud").val("");
+  $("#lugarNacimientoLongitud").val("");
   var geocoder = new google.maps.Geocoder();
   var direccion = (typeof lugar === "string"? lugar: "") + " " + (typeof lugarDire === "string"? lugarDire : "") + " " + lugarMuni + " " + lugarProv;
   console.log("Buscando " + direccion);
   geocoder.geocode({'address': direccion }, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
-      lat = results[0].geometry.location.J;
-      long = results[0].geometry.location.M;
+      lat = results[0].geometry.location.J.toString();
+      long = results[0].geometry.location.M.toString();
       // console.log('Geocode was successful');
     } else {
       console.log('Geocode was not successful for the following reason: ' + status);

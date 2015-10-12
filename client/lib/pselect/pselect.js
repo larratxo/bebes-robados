@@ -31,6 +31,8 @@ Template.bebeForm.onRendered(function() {
   $(provinceCssSelector).change(function() {
     var prov = this.value;
     changeMuni(prov);
+    // Clear muni
+    $(municipeName).val("");
     if (!isNaN(prov) && prov >= 0) {
       $(provinceName).val(provincia(prov));
     } else {
