@@ -20,8 +20,8 @@
       <div role="tabpanel" class="tab-pane active" id="datosbasicos">
         <legend>Datos del presunto robo</legend>
 
-        {{> afQuickField name='nombreCompleto' placeholder="Nombre y apellidos" }}
-        {{> afQuickField name="sexo" options="allowed" firstOption="» Selecciona uno"}}
+        {{> afQuickField name='nombreCompleto' placeholder="Nombre y apellidos" id="nombreCompleto" }}
+        {{> afQuickField name="sexo" options="allowed" firstOption="» Selecciona uno" id="sexo" }}
 
         <div class="form-inline">
           {{> afQuickField name="fechaNacimiento" buttonClasses="glyphicon glyphicon-calendar" }}

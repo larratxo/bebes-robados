@@ -27,4 +27,5 @@ Router.map(function() {
   });
 });
 
+// https://iron-meteor.github.io/iron-router/#hooks
 // Router.before(requireLogin, {only: ['nuevoBebe', 'bebePage'] } );
