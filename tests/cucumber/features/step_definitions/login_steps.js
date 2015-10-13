@@ -24,6 +24,7 @@ module.exports = function () {
   this.Given(/^I am on the home page$/, function (callback) {
     client.url(process.env.ROOT_URL);
     expect(client.isVisible('.Home')).toBe(true);
+    expect(client.getTitle()).toBe("Inicio");
     callback();
   });
 
@@ -41,7 +42,7 @@ module.exports = function () {
     callback();
   });
 
-    this.When(/^I enter my email and password$/, function (callback) {
+  this.When(/^I enter my email and password$/, function (callback) {
     this.AuthenticationHelper.loginEmail(username, email, passwd);
     callback();
   });
@@ -53,7 +54,7 @@ module.exports = function () {
 
   this.When(/^I enter incorrect authentication information$/, function (callback) {
     this.AuthenticationHelper.loginUsername("foo", "foo", "foo");
-     callback();
+    callback();
   });
 
   this.Then(/^I should see a user not found error$/, function (callback) {
@@ -61,4 +62,9 @@ module.exports = function () {
     callback();
   });
 
+  this.Then(/^I can edit my profile$/, function (callback) {
+    pending();
+    client.setValue('input[name="DNI"]', "000000000N");
+    callback();
+  });
 };

@@ -18,6 +18,7 @@ Template.home.helpers({
 });
 
 Template.home.onCreated(function() {
+  Session.set("DocumentTitle","Inicio");
 
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('mainMap', function(map) {

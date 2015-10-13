@@ -5,6 +5,7 @@ function getTVal(e, name) {
 Template.nuevoBebe.onRendered(function() {
   // Commented, this clear default values
   // AutoForm.resetForm("nuevoBebeForm");
+  Session.set("DocumentTitle","Añade un bebe");
 });
 
 AutoForm.hooks({

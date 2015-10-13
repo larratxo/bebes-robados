@@ -34,6 +34,7 @@ Template.personsList.events({
 
 Template.personsList.onRendered( function() {
   // http://refreshless.com/nouislider/examples/
+  Session.set("DocumentTitle", "Busca bebe");
 
   var dataTable = $('#personsTable').closest('table').DataTable();
   var initSpan = this.$("#initSliderYear");
