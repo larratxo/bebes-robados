@@ -1,3 +1,4 @@
 <template name="usersForm">
-  {{> quickForm collection="Users" id="usersForm" schema="Schema.User" type=type}}
+  <h2>{{title}}</h2>
+  {{> quickForm collection="Meteor.users" id=id schema=Schema.User template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" doc=doc type=type buttonContent=btnTitle omitFields="emails.$.verified"}}
 </template>

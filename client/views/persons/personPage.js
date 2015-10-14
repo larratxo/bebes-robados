@@ -1,5 +1,4 @@
 Template.bebePage.onRendered(function() {
-  AutoForm.resetForm("editaBebeForm");
   Session.set("DocumentTitle", "Edita un bebe");
 });
 

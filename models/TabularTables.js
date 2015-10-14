@@ -1,3 +1,6 @@
+/* global TabularTables:true,moment,tabLanguageEs:true,renderDate:true,
+   isValidLatLng,renderSexo:true,renderSexoAlt:true,renderGeo:true,renderAprox:true,
+   decorateNacAprox:true*/
 // https://github.com/aldeed/meteor-tabular
 // Comparison: http://reactive-table.meteor.com/
 
@@ -32,7 +35,7 @@ tabLanguageEs = {
 // Move this to other place
 moment.locale("es");
 
-renderDate = function (val, type, doc) {
+renderDate = function (val) {
   // http://momentjs.com/docs/#/displaying/
   if (val instanceof Date) {
     return moment(val).format('DD-MMM-YYYY');
@@ -41,28 +44,22 @@ renderDate = function (val, type, doc) {
   }
 };
 
-function indent(val) {
-  return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + val;
-}
+var sexosAbrev    = {"Hombre" : "♂",
+                     "Mujer" : "♀", "Desconocido": "?", "Otro": "Otro" };
+var sexosAbrevAlt = {"Hombre" : "♂",
+                     "Mujer" : "♀", "Desconocido": "", "Otro": "" };
 
-sexosAbrev    = {"Hombre" : "♂", "Mujer" : "♀", "Desconocido": "?", "Otro": "Otro" };
-sexosAbrevAlt = {"Hombre" : "♂", "Mujer" : "♀", "Desconocido": "", "Otro": "" };
-
-renderSexo = function (val, type, doc) {
+renderSexo = function (val) {
   return sexosAbrev[val];
-}
+};
 
 renderSexoAlt = function (val) {
   return sexosAbrevAlt[val];
-}
-
-renderIndentSexo = function (val, type, doc) {
-  return indent(sexosAbrev[val]);
 };
 
 var abrev = { true: "≈", false: "", undefined: "" };
 
-renderAprox = function (val, type, doc) {
+renderAprox = function (val) {
   return abrev[val];
 };
 
@@ -71,20 +68,16 @@ decorateNacAprox = function (val, type, doc) {
   return abrev[doc.fechaNacimientoEsAprox] + date;
 };
 
-decorateFallAprox = function (val, type, doc) {
-  var date = renderDate(val, type, doc);
-  return abrev[doc.fechaFallecimientoEsAprox] + date;
-};
-
 var abrevBebeOFamilia = { true: "B", false: "F"};
 
-renderBuscasBebe = function (val, type, doc) {
-  return indent(abrevBebeOFamilia[val]);
+var renderBuscasBebe = function (val) {
+  return abrevBebeOFamilia[val];
 };
 
-renderGeo = function (val, type, doc) {
-  return isValidLatLng(val)? indent("<i title='Geolocalizado' class='fa fa-map-marker'></i>"): "";
-}
+var renderGeo = function (val) {
+  return isValidLatLng(val)?
+         "<i title='Geolocalizado' class='fa fa-map-marker'></i>": "";
+};
 
 TabularTables.Persons = new Tabular.Table({
   name: "Persons",
@@ -97,22 +90,25 @@ TabularTables.Persons = new Tabular.Table({
   scrollX: true,
   columns: [
     {data: "createdAt", title: "Creado", render: renderDate, visible: false},
-    {data: "updatedAt", title: "Actualizado", render: renderDate, visible: false},
-
+    {data: "updatedAt", title: "Actualizado", render:
+     renderDate, visible: false},
     {data: "nombreCompleto", title: "Nombre del niño/a"},
-    {data: "sexo", title: "Sexo", render: renderIndentSexo},
-    {data: "buscasBebe", title: "Busca Bebe o Familia", render: renderBuscasBebe},
-    {data: "fechaNacimientoEsAprox", title: "", render: renderAprox, visible: false },
-    {data: "fechaNacimiento", title: "Fecha nacimiento", render: decorateNacAprox },
-    //{data: "fechaFallecimientoEsAprox", title: "", render: renderAprox, visible: false },
-    //{data: "fechaFallecimiento", title: "Fecha fallecimiento", render: decorateFallAprox },
+    {data: "sexo", title: "Sexo", render: renderSexo,
+     className: "column-center"},
+    {data: "buscasBebe", title: "Busca Bebe o Familia",
+     render: renderBuscasBebe, className: "column-center"},
+    {data: "fechaNacimientoEsAprox", title: "",
+     render: renderAprox, visible: false },
+    {data: "fechaNacimiento", title: "Fecha nacimiento",
+     render: decorateNacAprox },
     {data: "nombreCompletoMadre", title: "Nombre de la madre"},
     {data: "nombreCompletoPadreOConyuge", title: "Nombre del cónyuge"},
     {data: "lugarNacimiento", title: "Lugar de nacimiento"},
     {data: "lugarNacimientoProvinciaNombre", title: "Provincia" },
     {data: "lugarNacimientoMunicipioNombre", title: "Municipio" },
-    {data: "lugarNacimientoLongitud", title: "Geo", render: renderGeo }
-
+    // {data: "lugarNacimientoLongitud", title: "Geo1"},
+    {data: "lugarNacimientoLongitud", title: "Geo", render: renderGeo,
+     className: "column-center" }
     // {data: "lugarNacimientoPais", title: "País"}
     // {data: "cementerioEnterrado", title: "Cementerio"}
   ]

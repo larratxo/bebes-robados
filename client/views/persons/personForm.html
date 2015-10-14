@@ -32,7 +32,7 @@
         {{> afQuickField name="lugarNacimientoDireccion" id="lugarNacimientoDireccion" placeholder="Dirección del lugar de nacimiento si lo conoce" }}
         <div class="form-inline">
 
-          {{> afQuickField name="lugarNacimientoPais" options="allowed" firstOption=false value="España" label-style="display: none" }}
+          {{> afQuickField name="lugarNacimientoPais" id="lugarNacimientoPais" options="allowed" firstOption=false value="España" label-style="display: none" }}
           {{#if afFieldValueIs name="lugarNacimientoPais" value="España"}}          {{/if}}
           {{> afQuickField name="lugarNacimientoProvincia" id="lugarNacimientoProvincia" type="select" firstOption=false class="ps-prov" label-style="display: none" }}
           {{> afQuickField name="lugarNacimientoMunicipio" id="lugarNacimientoMunicipio" type="select"  firstOption=false class="ps-mun" label-style="display: none" }}
@@ -41,8 +41,9 @@
           {{> afQuickField name="lugarNacimientoLatitud" id="lugarNacimientoLatitud" label-style="display: none" }}
           {{> afQuickField name="lugarNacimientoLongitud" id="lugarNacimientoLongitud" label-style="display: none" }}
         </div>
-
-        <!-- <div class="lugarNacimientoMap" id="lugarNacimientoMap"></div> -->
+        <div class="lugarNacimientoMap-container">
+          {{> googleMap name="lugarNacimientoMap" options=mapOptions }}
+        </div>
 
         {{> afQuickField name="nombreCompletoMadre" placeholder="Nombre y apellidos" }}
         {{> afQuickField name="nombreCompletoPadreOConyuge" placeholder="Nombre y apellidos" }}

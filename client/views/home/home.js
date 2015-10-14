@@ -18,7 +18,7 @@ Template.home.helpers({
 });
 
 Template.home.onCreated(function() {
-  Session.set("DocumentTitle","Inicio");
+  Session.set("DocumentTitle", "Inicio");
 
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('mainMap', function(map) {
@@ -32,11 +32,22 @@ Template.home.onCreated(function() {
       if (isValidLatLng(lat) && isValidLatLng(long)) {
         //console.log("Adding new marker to map");
         var isNew = person.updatedAt > lastDay();
+        // https://developers.google.com/maps/documentation/javascript/markers
+        var image = {
+          url: isNew ? '/images/gmaps-pointer-new.png': person.buscasBebe? '/images/gmaps-pointer.png': '/images/gmaps-pointer-familia.png',
+          // This marker is 20 pixels wide by 32 pixels high.
+          size: new google.maps.Size(29, 50),
+          // The origin for this image is (0, 0).
+          scaledSize: new google.maps.Size(29, 50),
+          origin: new google.maps.Point(0, 0),
+          // The anchor for this image is the base of the flagpole at (0, 32).
+          anchor: new google.maps.Point(14, 50)
+        };
         var marker = new google.maps.Marker({
           map: map.instance,
           // https://developers.google.com/maps/documentation/javascript/examples/map-latlng-literal
-          icon: isNew ? '/images/gmaps-pointer-new.png': person.buscasBebe? '/images/gmaps-pointer.png': '/images/gmaps-pointer-familia.png',
-          position:  {lat: parseInt(lat), lng: parseInt(long)}
+          icon: image,
+          position:  {lat: parseFloat(lat), lng: parseFloat(long)}
         });
 
         markers[person._id] = marker;
@@ -65,8 +76,8 @@ Template.home.onCreated(function() {
       },
       changed: function(newDocument, oldDocument) {
         // console.log("Changed marker");
-        markers[newDocument._id].setPosition({ lat: parseInt(newDocument.lugarNacimientoLatitud),
-                                               lng: parseInt(newDocument.lugarNacimientoLongitud) });
+        markers[newDocument._id].setPosition({ lat: parseFloat(newDocument.lugarNacimientoLatitud),
+                                               lng: parseFloat(newDocument.lugarNacimientoLongitud) });
       },
       removed: function(oldDocument) {
         markers[oldDocument._id].setMap(null);

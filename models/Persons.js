@@ -210,3 +210,8 @@ if (Meteor.isServer) {
     }
   });
 }
+
+if (Meteor.isClient) {
+  // https://github.com/aldeed/meteor-autoform#should-the-value-of-schema-and-collection-have-quotation-marks-around-it
+  Template.registerHelper("Schema", Schema);
+}

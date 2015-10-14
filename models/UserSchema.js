@@ -1,31 +1,38 @@
 Schema.UserProfile = new SimpleSchema({
-  nombreCompleto: { type: String, optional: true, label: "Nombre completo:" },
-  dni: { type: String, optional: true, label: "DNI (número y letra):" },
-  parentesco: { type: String, optional: true, label: "Parentesco con el presunto niño/a robado:" },
-  telefono: { type: String, optional: true, label: "Teléfono:"},
+  nombreCompleto: { type: String, optional: true, label: "Nombre completo:",
+                    autoform: {afFieldInput: {placeholder: "Nombre y apellidos"} } },
+  dni: { type: String, optional: true, label: "DNI (número y letra):",
+         autoform:  {afFieldInput: {regex: "/^\d{8}[a-zA-Z]$/"}} },
+  // parentesco: { type: String, optional: true, label: "Parentesco con el presunto niño/a robado:" },
+  telefono: { type: String, optional: true, label: "Teléfono de contacto:"},
   fax: { type: String, optional: true, label: "Fax:"}
 });
 
 Schema.User = new SimpleSchema({
   username: {
     type: String,
+    label: "Usuario/a",
     // For accounts-password, either emails or username is required, but not both. It is OK to make this
     // optional here because the accounts-password package does its own validation.
     // Third-party login packages may not require either. Adjust this schema as necessary for your usage.
+    autoform: { readonly: true, disabled: true },
     optional: true
   },
   emails: {
     type: Array,
+    label: "Lista de emails de contacto",
     // For accounts-password, either emails or username is required, but not both. It is OK to make this
     // optional here because the accounts-password package does its own validation.
     // Third-party login packages may not require either. Adjust this schema as necessary for your usage.
     optional: true
   },
   "emails.$": {
+    label: false,
     type: Object
   },
   "emails.$.address": {
     type: String,
+    label: "Email",
     regEx: SimpleSchema.RegEx.Email
   },
   "emails.$.verified": {
@@ -35,12 +42,14 @@ Schema.User = new SimpleSchema({
   updatedAt: defaultUpdateAt,
   profile: {
     type: Schema.UserProfile,
+    label: "Otros datos",
     optional: true
   },
   // Make sure this services field is in your schema if you're using any of the accounts packages
   services: {
     type: Object,
     optional: true,
+    autoform: { type: 'hidden' },
     blackbox: true
   },
   // Add `roles` to your schema if you use the meteor-roles package.
@@ -54,6 +63,7 @@ Schema.User = new SimpleSchema({
   roles: {
     type: Object,
     optional: true,
+    autoform: { type: 'hidden' },
     blackbox: true
   },
   // Option 2: [String] type

@@ -1,109 +1,177 @@
 // Main styles
 
-.bebe-tabs {
+.bebe-tabs
+{
   margin-bottom: 0px;
-}
+  }
 
-.bebe-tab-content {
+.bebe-tab-content
+{
   padding: 20px;
   background-color: #F2F2F2;
-}
+  }
 
-ul.bebe-tabs li.active a  {
+ul.bebe-tabs .active a
+{
   background-color: #e0e0e0 !important;
-}
+  }
 
-ul.bebe-tabs li a {
-overflow: hidden;
-white-space: nowrap;
-}
+ul.bebe-tabs li a
+{
+  overflow: hidden;
+  white-space: nowrap;
+  }
 
-#lugarNacimientoMap, #cementerioEnterradoMap {
+
+.lugarNacimientoMap-container,
+#cementerioEnterradoMap
+{
   width: 100%;
   height: 150px;
   margin-bottom: 20px;
-}
+  }
 
-#lugarNacimientoDetalle {
+#lugarNacimientoDetalle
+{
   display: none;
-}
+  }
 
-.map-container {
+.map-container
+{
   width: 100%;
   max-width: 100%;
   height: 500px;
-}
+  }
 
-.navbar, .headline  {
+.navbar, .headline
+{
   font-family: 'Roboto', 'Open Sans', sans-serif;
-}
+  }
 
-i.icon {
-font-size: 60px !important;
-padding: 10px !important;
-color: #005500;
-}
+i.icon
+{
+  font-size: 60px !important;
+  padding: 10px !important;
+  color: #005500;
+  }
 
-.headline {
-text-transform: uppercase;
-font-size: 18px;
-font-weight: normal;
-}
+.headline
+{
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: normal;
+  }
 
 kia.navbar-brand,
-.navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav > li > a
+{
   text-transform: uppercase;
-}
+  }
 
-.navbar-brand-sub {
-font-size: 14px;
-display: table-row;
-text-transform: uppercase;
-}
+.navbar-brand-sub
+{
+  font-size: 14px;
+  display: table-row;
+  text-transform: uppercase;
+  }
 
-.navbar-brand-titles {
-display: inline;
-float: right;
-margin: -7px 0 0 5px;
-}
+.navbar-brand-titles
+{
+  display: inline;
+  float: right;
+  margin: -7px 0 0 5px;
+  }
 
-.navbar-brand-main {
-display: table-row;
-}
+.navbar-brand-main
+{
+  display: table-row;
+  }
 
-.navbar-brand img {
+.navbar-brand img
+{
+ }
 
-}
-
-.navbar-brand {
+.navbar-brand
+{
   font-size: 22px;
-}
+  }
 
-.year {
+.year
+{
   color: #338ab7;
-}
+  }
 
-#yearSlider {
+#yearSlider
+{
   margin: 10px 0 30px;
-}
+  }
 
 /* http://refreshless.com/nouislider/examples/ */
 
-#yearSlide .connect {
+#yearSlide .connect
+{
   background: #80C9F5;
   box-shadow: inset 0 0 3px rgba(51,51,51,0.45);
-}
+  }
 
-[data-required] label:after {
+[data-required] label:after
+{
   content: ' *';
   color: brown;
-}
+  }
 
-.jumbotron h2 {
+.jumbotron h2
+{
   font-size: 40px;
-margin-bottom: -20px;
-}
+  margin-bottom: -20px;
+  }
 
-.is-new {
+.is-new
+{
   color: #ff7f2a;
-}
+  }
+
+.column-center
+{
+  text-align: center;
+  }
+
+/* icons */
+dropdown-menu a
+{
+  white-space: normal;
+  }
+
+.dropdown-menu > li > a
+{
+  position: relative;
+  margin-left: 10px;
+  }
+
+.dropdown-menu > li > a > i
+{
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  }
+
+/* custom icon https://stackoverflow.com/questions/19435997/use-image-icons-in-twitter-bootstrap-3 */
+[class^="icon-"],
+[class*=" icon-"]
+{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  *margin-right: .3em;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+  margin-top: 1px;
+  }
+
+.icon-bebes
+{
+  background-image: url("/images/icon14.png");
+  background-position: center center;
+  }
