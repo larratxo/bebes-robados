@@ -8,7 +8,7 @@ Feature: Allow users to login and logout
     Given I have an account
     Given I am signed out
 
-    @watch
+  @watch
   Scenario: A user can login with username
     Given I am on the home page
     When I click on sign in link

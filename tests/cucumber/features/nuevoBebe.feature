@@ -1,7 +1,7 @@
 # language: es
 Característica: Alta de bebes correcta
 
-
+@watch
   Escenario: Verifico que un bebe que se busca se puede dar de alta con la información básica
     Dado una lista de bebes que se buscan
     | Francisco Javier                              | Hombre      | F | Murcia   | Cartagena | Hospital | Marta   | Germán  |

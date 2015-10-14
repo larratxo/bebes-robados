@@ -46,9 +46,9 @@ module.exports = function () {
         // http://webdriver.io/api/protocol/executeAsync.html
         client.executeAsync(function (username, email, passwd, done) {
           Accounts.createUser({
-            username: username,
-            email: email,
-            password: passwd
+              username: username,
+              email: email,
+              password: passwd
           }, done);
         }, username, email, passwd);
       }
