@@ -70,6 +70,7 @@ geocode = function() {
                       lng: results[0].geometry.location.lng() },
           map: map
         });
+        map.setZoom(10);
         nacimientoMarker = newMarker;
         map.setCenter(newMarker.getPosition());
       } else {
