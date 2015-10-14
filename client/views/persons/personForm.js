@@ -24,12 +24,13 @@ Template.bebeForm.helpers({
 
 Template.bebeForm.onCreated(function() {
   AutoForm.resetForm("editaBebeForm");
+  AutoForm.resetForm("nuevoBebeForm");
   GoogleMaps.ready('lugarNacimientoMap', function(map) {
     resetMarker();
     geocode();
   });
   GoogleMaps.ready('cementerioEnterradoMap', function(map) {
-    $.bootstrapGrowl("Funca 2");
+    // $.bootstrapGrowl("Funca 2");
   });
 });
 
@@ -50,8 +51,14 @@ geocode = function() {
   var lugarPais = $("#lugarNacimientoPais").val();
 
   var lat, long = "";
+  if (!google) {
+    // Not yet ready
+    return;
+  }
   var geocoder = new google.maps.Geocoder();
-  var direccion = ((typeof lugar === "string"? lugar: "") + " " + (typeof lugarDire === "string"? lugarDire : "") + " " + lugarMuni + " " + lugarProv + " " + lugarPais).trim();
+  var direccion = ((typeof lugar === "string"? lugar: "") + " " +
+                  (typeof lugarDire === "string"? lugarDire : "") + " " +
+                   lugarMuni + " " + lugarProv + " " + lugarPais).trim();
   // Delete marker if exists
   resetMarker();
   if (direccion.length > 0) {

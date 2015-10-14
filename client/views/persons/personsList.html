@@ -1,18 +1,8 @@
 <template name="personsList">
+  {{> yearSlider header="Puedes afinar la búsqueda indicando un rango de años, o por nombre, etc."
+  subheader="Limitar la búsqueda entre los años"
+  }}
 
-  <div class="row">Puedes afinar la búsqueda indicando un rango de años, o por nombre, etc.</div>
-  <br/>
-  <div class="row">
-
-    <div class="col-xs-6">
-      <div class="row">
-        <div title="Mover los tiradores">Limitar la búsqueda entre los años <span class="year" id="initSliderYear"></span> y <span class="year" id="endSliderYear"></span>:</div>
-      </div>
-      <div class="row"><div title="Mover los tiradores" id="yearSlider"></div></div>
-    </div>
-
-    <div class="col-xs-6"></div>
-  </div>
-  {{> tabular id="personsTable" selector=selector table=TabularTables.Persons class="table table-striped table-condensed"}}
+  {{> tabular id="personsTable" selector=selector table=TabularTables.Persons class="table table-striped table-condensed"  }}
 
 </template>

@@ -1,4 +1,5 @@
 module.exports = function () {
+  require("../_support/test-helper.js");
 
   var username;
   var email;
@@ -13,9 +14,9 @@ module.exports = function () {
   this.Given(/^I have an account$/, function (callback) {
     // https://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
     goHome();
-    username = Math.random().toString(36).substring(7);
-    email = Math.random().toString(36).substring(7) + "@example.com";
-    passwd = Math.random().toString(36).substring(7);
+    username = randomUsername();
+    email = randomEmail();
+    passwd = randomPassword();
     this.AuthenticationHelper.createAccount(username, email, passwd);
     this.AuthenticationHelper.checkCurrentUser(username);
     callback();
@@ -67,6 +68,7 @@ module.exports = function () {
   });
 
   this.Then(/^I can edit my profile$/, function (callback) {
+    pending();
     client.waitForVisible('input[name="profile.dni"]');
     client.setValue('input[name="profile.dni"]', "000000000N");
     callback();

@@ -1,11 +1,13 @@
+// https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript
+var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
 Schema.UserProfile = new SimpleSchema({
   nombreCompleto: { type: String, optional: true, label: "Nombre completo:",
                     autoform: {afFieldInput: {placeholder: "Nombre y apellidos"} } },
-  dni: { type: String, optional: true, label: "DNI (número y letra):",
-         autoform:  {afFieldInput: {regex: "/^\d{8}[a-zA-Z]$/"}} },
+  dni: { type: String, optional: true, label: "DNI (número y letra):", regEx: /^\d{8}[a-zA-Z]$/ },
   // parentesco: { type: String, optional: true, label: "Parentesco con el presunto niño/a robado:" },
-  telefono: { type: String, optional: true, label: "Teléfono de contacto:"},
-  fax: { type: String, optional: true, label: "Fax:"}
+  telefono: { type: String, optional: true, label: "Teléfono de contacto:", regEx: phoneRegex},
+  fax: { type: String, optional: true, label: "Fax:", regEx: phoneRegex}
 });
 
 Schema.User = new SimpleSchema({

@@ -2,13 +2,15 @@
 // http://docs.meteor.com/#accounts_oncreateuser
 
 Accounts.onLogin(function () {
+  // Only on sign-in (not if remember your login)
+
   // if (undef(Meteor.user().profile.dni)) {
   //  Router.go('userUpdate');
   // }
 });
 
 AutoForm.hooks({
-  userUpdate: {
+  usersForm: {
     after: {
       update: function(error) {
         if (typeof error === "undefined") {

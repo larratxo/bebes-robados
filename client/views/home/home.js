@@ -17,15 +17,80 @@ Template.home.helpers({
   }
 });
 
-Template.home.onCreated(function() {
+var markers = {};
+
+var markerVisibility = function(person, min, max) {
+  return min <= person.fechaNacimiento && person.fechaNacimiento <= max;
+};
+
+var fitMarkers = function() {
+  return;
+  // does not work
+  var bounds = new google.maps.LatLngBounds();
+  var map = GoogleMaps.maps.mainMap.instance;
+
+  var keys = Object.keys(markers);
+  for (var i = 0; i < keys.length; i++) {
+    var id = keys[i];
+    bounds.extend(markers[id].getPosition());
+  }
+
+  //center the map to a specific spot (city)
+  // map.setCenter(center);
+
+  //center the map to the geometric center of all markers
+  map.setCenter(bounds.getCenter());
+
+  map.fitBounds(bounds);
+
+  //remove one zoom level to ensure no marker is on the edge.
+  map.setZoom(map.getZoom()-1);
+
+  // set a minimum zoom
+  // if you got only 1 marker or all markers are on the same address map will be zoomed too much.
+  if(map.getZoom() > 12){
+    map.setZoom(12);
+  }
+};
+
+Template.home.onRendered(function() {
   Session.set("DocumentTitle", "Inicio");
 
+  onSliderRender(function() {
+    // TODO https://stackoverflow.com/questions/19304574/center-set-zoom-of-map-to-cover-all-markers-visible-markers
+
+    // repaint markers in some year
+    var min = new Date(Session.get("minBornYear"),0,1);
+    var max = new Date(Session.get("maxBornYear"),11,31);
+    var showAll = calcShowAll();
+    var keys = Object.keys(markers);
+    for (var i = 0; i < keys.length; i++) {
+      var id = keys[i];
+      var marker = markers[id];
+      if (noUndef(marker)) {
+        if (showAll) {
+          // show all markers
+          marker.setVisible(true);
+        } else {
+          var person = Persons.find(id);
+          if (person.count() === 1) {
+            marker.setVisible(markerVisibility(person.fetch()[0], min, max));
+          }
+        }
+      }
+    }
+    fitMarkers();
+  });
+});
+
+Template.home.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('mainMap', function(map) {
     // Add a marker to the map once it's ready
+    var min = new Date(Session.get("minBornYear"),0,1);
+    var max = new Date(Session.get("maxBornYear"),11,31);
 
     var infowindow = new google.maps.InfoWindow();
-    var markers = {}
     var createMarker = function (map, person) {
       var lat = person.lugarNacimientoLatitud;
       var long = person.lugarNacimientoLongitud;
@@ -49,7 +114,7 @@ Template.home.onCreated(function() {
           icon: image,
           position:  {lat: parseFloat(lat), lng: parseFloat(long)}
         });
-
+        marker.setVisible(markerVisibility(person, min, max));
         markers[person._id] = marker;
 
         // https://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
@@ -66,6 +131,7 @@ Template.home.onCreated(function() {
           }
         })(marker, person));
       }
+      fitMarkers();
     };
 
     Persons.find().observe({

@@ -18,6 +18,9 @@ function shuffle(array) {
   return array;
 }
 
+Template.basicLayout.onRendered(function() {
+});
+
 Template.basicLayout.helpers({
   template: function () {
     route = Router.current();

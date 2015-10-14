@@ -1,6 +1,8 @@
 /*global client, Meteor, module */
 
 module.exports = function () {
+  require("../_support/test-helper.js");
+
   this.Before(function () {
 
     var loginBegin = function (client) {
@@ -51,6 +53,15 @@ module.exports = function () {
               password: passwd
           }, done);
         }, username, email, passwd);
+      },
+
+      createSomeAccount: function(done) {
+        var username = randomUsername();
+        var email = randomEmail();
+        var passwd = randomPassword();
+        this.AuthenticationHelper.createAccount(username, email, passwd);
+        this.AuthenticationHelper.checkCurrentUser(username);
+        done();
       }
     };
   });
