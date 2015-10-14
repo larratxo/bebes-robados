@@ -76,13 +76,21 @@ Template.home.onCreated(function() {
       },
       changed: function(newDocument, oldDocument) {
         // console.log("Changed marker");
-        markers[newDocument._id].setPosition({ lat: parseFloat(newDocument.lugarNacimientoLatitud),
-                                               lng: parseFloat(newDocument.lugarNacimientoLongitud) });
+        var oldMarker = markers[newDocument._id];
+        if (typeof oldMarker !== 'undefined') {
+          oldMarker.setPosition({ lat: parseFloat(newDocument.lugarNacimientoLatitud),
+                                  lng: parseFloat(newDocument.lugarNacimientoLongitud) });
+        } else {
+          createMarker(map, newDocument);
+        }
       },
       removed: function(oldDocument) {
-        markers[oldDocument._id].setMap(null);
-        google.maps.event.clearInstanceListeners(markers[oldDocument._id]);
-        delete markers[oldDocument._id];
+        var oldMarker = markers[newDocument._id];
+        if (typeof oldMarker !== 'undefined') {
+          oldMarker.setMap(null);
+          google.maps.event.clearInstanceListeners(markers[oldDocument._id]);
+          delete markers[oldDocument._id];
+        }
       }
     });
   });
