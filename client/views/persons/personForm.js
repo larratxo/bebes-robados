@@ -50,13 +50,12 @@ geocode = function() {
   var lugarPais = $("#lugarNacimientoPais").val();
 
   var lat, long = "";
-  $("#lugarNacimientoLatitud").val("");
-  $("#lugarNacimientoLongitud").val("");
   var geocoder = new google.maps.Geocoder();
   var direccion = ((typeof lugar === "string"? lugar: "") + " " + (typeof lugarDire === "string"? lugarDire : "") + " " + lugarMuni + " " + lugarProv + " " + lugarPais).trim();
   // Delete marker if exists
   resetMarker();
   if (direccion.length > 0) {
+    var map = GoogleMaps.maps.lugarNacimientoMap.instance;
     console.log("Buscando " + direccion);
     geocoder.geocode({'address': direccion }, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
@@ -64,22 +63,25 @@ geocode = function() {
         lat = results[0].geometry.location.lat().toString();
         long = results[0].geometry.location.lng().toString();
         console.log('Geocode was successful');
-        var map = GoogleMaps.maps.lugarNacimientoMap.instance;
         var newMarker = new google.maps.Marker({
           position: { lat: results[0].geometry.location.lat(),
                       lng: results[0].geometry.location.lng() },
           map: map
         });
-        map.setZoom(10);
         nacimientoMarker = newMarker;
         map.setCenter(newMarker.getPosition());
+        map.setZoom(11);
       } else {
+        map.setZoom(4);
         console.log(
           'Geocode was not successful for the following reason: ' + status);
       }
       $("#lugarNacimientoLatitud").val(lat);
       $("#lugarNacimientoLongitud").val(long);
     });
+  } else {
+    $("#lugarNacimientoLatitud").val("");
+    $("#lugarNacimientoLongitud").val("");
   }
 };
 
