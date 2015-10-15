@@ -17,6 +17,21 @@ Template.home.helpers({
   }
 });
 
+Template.home.events({
+  'keypress #home-main-search': function (event) {
+    if (event.which === 13) {
+      event.preventDefault();
+      var search = event.target.value
+      Session.set("main-home-search", search);
+      Router.go('personsList');
+    }
+  },
+  'submit form' : function (event) {
+    event.preventDefault();
+  }
+});
+
+
 var markers = {};
 
 var markerVisibility = function(person, min, max) {

@@ -4,9 +4,12 @@ var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 Schema.UserProfile = new SimpleSchema({
   nombreCompleto: { type: String, optional: true, label: "Nombre completo:",
                     autoform: {afFieldInput: {placeholder: "Nombre y apellidos"} } },
-  dni: { type: String, optional: true, label: "DNI (número y letra):", regEx: /^\d{8}[a-zA-Z]$/ },
+  dni: { type: String, optional: true, label: "DNI (número y letra):",
+         regEx: /^\d{8}[a-zA-Z]$/,  autoform:{ mask: '99999999-a' } },
   // parentesco: { type: String, optional: true, label: "Parentesco con el presunto niño/a robado:" },
-  telefono: { type: String, optional: true, label: "Teléfono de contacto:", regEx: phoneRegex},
+  telefono: { type: String, optional: true, label: "Teléfono de contacto:", regEx: phoneRegex,
+    autoform: {afFieldInput: {placeholder: "Teléfono móvil preferiblemente"} }
+  },
   fax: { type: String, optional: true, label: "Fax:", regEx: phoneRegex}
 });
 

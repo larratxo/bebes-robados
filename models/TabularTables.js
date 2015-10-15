@@ -1,13 +1,13 @@
 /* global TabularTables:true,moment,tabLanguageEs:true,renderDate:true,
    isValidLatLng,renderSexo:true,renderSexoAlt:true,renderGeo:true,renderAprox:true,
-   decorateNacAprox:true*/
+   decorateNacAprox:true,setEmptyTable:true*/
 // https://github.com/aldeed/meteor-tabular
 // Comparison: http://reactive-table.meteor.com/
 
 TabularTables = {};
 
 // https://datatables.net/reference/option/
-tabLanguageEs = {
+var tabLanguageEs = {
   "sProcessing":     "Procesando...",
   "sLengthMenu":     "Mostrar _MENU_ resultados",
   "sZeroRecords":    "No se encontraron resultados",
@@ -32,8 +32,10 @@ tabLanguageEs = {
   }
 };
 
-// Move this to other place
-moment.locale("es");
+setEmptyTable = function(text) {
+  tabLanguageEs.sEmptyTable=text;
+  TabularTables.Persons.options.language=tabLanguageEs;
+};
 
 renderDate = function (val) {
   // http://momentjs.com/docs/#/displaying/
@@ -83,6 +85,12 @@ TabularTables.Persons = new Tabular.Table({
   name: "Persons",
   collection: Persons,
   language: tabLanguageEs,
+  fnPreDrawCallback: function() {
+    // console.log("Searching");
+  },
+  fnDrawCallback: function() {
+    // console.log("Not searching");
+  },
   // displayLength: 20,
   // https://datatables.net/examples/basic_init/table_sorting.htmlv
   order: [[1, "desc"], [ 0, "desc" ]],

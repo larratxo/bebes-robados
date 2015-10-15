@@ -1,0 +1,10 @@
+<template name="viewPerson">
+  {{> bebeForm title="Información sobre este bebe robado" doc=this type="readonly" btnTitle="Editar" id="viewBebeForm" }}
+
+  <div id="comentarios"></div>
+
+  <div class="comment-section">
+    {{> commentsBox id=this._id}}
+  </div>
+
+</template>

@@ -1,10 +1,28 @@
 <template name="bebeForm">
-   {{#autoForm collection="Persons" doc=doc id=id type=type }}
-  <h2>{{title}}</h2>
+  {{#autoForm collection="Persons" doc=doc id=id type=type }}
+
+  <div class="page-header">
+    <h2>{{title}}</h2>
+
+    <div class="btn-group title-btn" role="group">
+      <button type="submit" value="Submit" class="btn btn-primary ">{{btnTitle}}</button>
+      {{#if isEqual type "readonly"}}
+      <a class="btn btn-default" href="{{pathFor 'viewPerson'}}#comentarios" role="button"><i class="fa fa-comments"></i> {{_"Comment"}}</a>
+      {{/if}}
+      <a class="btn btn-default" href="{{pathFor 'personsList'}}" role="button">{{_"Cancel"}}</a>
+    </div>
+  </div>
+
+  {{#if isEqual type "readonly"}}
+  {{> queBusca doc=doc}}
+  {{else}}
   <div class="form-inline">
     {{> afQuickField name="buscasBebe" defaultValue=false}}
   </div>
+  {{/if}}
   <span class="help-block"></span>
+
+  {{> afQuickField name="_id" class="field-hidden"}}
 
   <ul class="nav nav-tabs nav-justified bebe-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
@@ -130,12 +148,5 @@
         {{/if}}
       </div>
     </div>
-    <p class="navbar-text">
-      <button type="submit" value="Submit"  class="btn btn-primary">{{btnTitle}}</button>
-      {{#if isEqual type "update"}}
-      <a class="btn btn-default" href="{{pathFor 'underConstruction'}}" role="button">{{_"Comment"}}</a>
-      {{/if}}
-      <a class="btn btn-default" href="{{pathFor 'personsList'}}" role="button">{{_"Cancel"}}</a>
-    </p>
-  {{/autoForm}}
+ {{/autoForm}}
 </template>

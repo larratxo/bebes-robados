@@ -14,3 +14,10 @@ https://github.com/tomitrescak/meteor-uploads
 https://jsfiddle.net/kaiser/wzcst/light/
 https://developers.google.com/maps/documentation/javascript/shapes#circles
 ** Licencia de contenidos, etc
+** Slider color
+** Añadir nuevo en búsquedas
+** Not found page
+** when bebe not found ... message
+
+** Slider parece que no está a tope, tope (que filtra los nulos, vamos)
+** markers visibily no funciona bien en FF a veces

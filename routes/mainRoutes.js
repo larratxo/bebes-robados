@@ -36,8 +36,16 @@ Router.map(function() {
   this.route('legal', { path: '/legal' });
   this.route('donaciones', { path: '/donaciones' });
   this.route('bebePage', {
+    path: '/edita-bebe/:_id',
+    data: function() {
+      return Persons.findOne(this.params._id);
+    }
+  });
+  this.route('viewPerson', {
     path: '/bebe/:_id',
-    data: function() { return Persons.findOne(this.params._id); }
+    data: function() {
+      return Persons.findOne(this.params._id);
+    }
   });
 });
 

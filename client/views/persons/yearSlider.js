@@ -14,7 +14,7 @@ onSliderRender = function (changeCallback) {
   // http://refreshless.com/nouislider/examples/
   this.$("#yearSlider").noUiSlider({
     start: [Session.get("minBornYear"), Session.get("maxBornYear")],
-    connect: false,
+    connect: true,
     range: {
       min: initYear,
       max: thisYear
