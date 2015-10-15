@@ -116,8 +116,16 @@ TabularTables.Persons = new Tabular.Table({
     {data: "lugarNacimientoMunicipioNombre", title: "Municipio" },
     // {data: "lugarNacimientoLongitud", title: "Geo1"},
     {data: "lugarNacimientoLongitud", title: "Geo", render: renderGeo,
-     className: "column-center" }
-    // {data: "lugarNacimientoPais", title: "País"}
-    // {data: "cementerioEnterrado", title: "Cementerio"}
+     className: "column-center" },
+    {data: "nombreCompletoMedico", title: "none", visible: false},
+    {data: "nombreCompletoMatrona", title: "none", visible: false},
+    {data: "nombreCompletoEnfermera", title: "none", visible: false},
+    {data: "nombreOtroPersonalMedico", title: "none", visible: false},
+    {data: "nombreFuncionariosRegCivil", title: "none", visible: false},
+    {data: "nombreFuncionariosCementario", title: "none", visible: false},
+    {data: "nombreTrabajadoresFuneraria", title: "none", visible: false},
+    {data: "nombreOtrosFuncionariosOTrabajadores", title: "none", visible: false},
+    {data: "cementerioEnterrado", title: "Cementerio", visible: false},
+    {data: "lugarNacimientoPais", title: "País", visible: false}
   ]
 });
