@@ -80,6 +80,9 @@ var renderGeo = function (val) {
   return isValidLatLng(val)?
          "<i title='Geolocalizado' class='fa fa-map-marker'></i>": "";
 };
+renderNuevo = function(val) {
+  return isNew(val)? "<span class='label label-warning'>Nuevo</span>":"";
+};
 
 TabularTables.Persons = new Tabular.Table({
   name: "Persons",
@@ -90,6 +93,11 @@ TabularTables.Persons = new Tabular.Table({
   },
   fnDrawCallback: function() {
     // console.log("Not searching");
+  },
+  createdRow: function ( row, data, dataIndex ) {
+    if (isNew(data.updatedAt)) {
+      $(row).addClass('row-high');
+    }
   },
   // displayLength: 20,
   // https://datatables.net/examples/basic_init/table_sorting.htmlv
@@ -117,6 +125,7 @@ TabularTables.Persons = new Tabular.Table({
     // {data: "lugarNacimientoLongitud", title: "Geo1"},
     {data: "lugarNacimientoLongitud", title: "Geo", render: renderGeo,
      className: "column-center" },
+    // {data: "updatedAt", title: "", render: renderNuevo, width: "1px", className: "column-updated-at" },
     {data: "nombreCompletoMedico", title: "none", visible: false},
     {data: "nombreCompletoMatrona", title: "none", visible: false},
     {data: "nombreCompletoEnfermera", title: "none", visible: false},

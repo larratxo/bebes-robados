@@ -38,6 +38,7 @@ Template.personsList.onRendered( function() {
   });
 
   setEmptyTable("Ningún dato disponible");
+  Session.setDefault("main-home-search", "");
 
   Deps.autorun(function () {
     var search = Session.get("main-home-search");

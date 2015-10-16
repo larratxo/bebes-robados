@@ -5,7 +5,7 @@
     <h2>{{title}}</h2>
 
     <div class="btn-group title-btn" role="group">
-      <button type="submit" value="Submit" class="btn btn-primary ">{{btnTitle}}</button>
+      <button id="person-form-submit" type="submit" value="Submit" class="btn btn-primary ">{{btnTitle}}</button>
       {{#if isEqual type "readonly"}}
       <a class="btn btn-default" href="{{pathFor 'viewPerson'}}#comentarios" role="button"><i class="fa fa-comments"></i> {{_"Comment"}}</a>
       {{/if}}

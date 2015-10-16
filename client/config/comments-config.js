@@ -10,6 +10,7 @@ Comments.ui.setContent({
   save: 'Guardar',
   reply: 'Responder',
   edit: 'Editar',
+  remove: 'Borrar',
   'placeholder-textarea': 'Aquí puede comentar y añadir alguna información sobre este bebe',
   'add-button-reply': 'Añadir una respuesta',
   'add-button': 'Añadir comentario',

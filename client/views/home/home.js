@@ -111,10 +111,10 @@ Template.home.onCreated(function() {
       var long = person.lugarNacimientoLongitud;
       if (isValidLatLng(lat) && isValidLatLng(long)) {
         //console.log("Adding new marker to map");
-        var isNew = person.updatedAt > lastDay();
+        var nuevo = isNew(person.updatedAt);
         // https://developers.google.com/maps/documentation/javascript/markers
         var image = {
-          url: isNew ? '/images/gmaps-pointer-new.png': person.buscasBebe? '/images/gmaps-pointer.png': '/images/gmaps-pointer-familia.png',
+          url: nuevo ? '/images/gmaps-pointer-new.png': person.buscasBebe? '/images/gmaps-pointer.png': '/images/gmaps-pointer-familia.png',
           // This marker is 20 pixels wide by 32 pixels high.
           size: new google.maps.Size(29, 50),
           // The origin for this image is (0, 0).
@@ -140,8 +140,8 @@ Template.home.onCreated(function() {
                                      "Busco a mi familia biológica ") + renderSexoAlt(person.sexo) +
                                       (person.fechaNacimiento instanceof Date?
                                        (person.buscasBebe? " nacido aquí el ": " nací aquí el "): " nacido aquí ") +
-                                  renderAprox(person.fechaNacimientoEsAprox) + renderDate(person.fechaNacimiento) +
-                 (isNew? " <span class='label label-warning'>Nuevo</span>" : "") + "</a>");
+                                  renderAprox(person.fechaNacimientoEsAprox) + renderDate(person.fechaNacimiento) + " " +
+                                  renderNuevo(person.updatedAt) + "</a>");
             infowindow.open(map.instance, marker);
           }
         })(marker, person));
