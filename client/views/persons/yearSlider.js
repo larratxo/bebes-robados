@@ -1,7 +1,7 @@
 /*global initYear, thisYear, onSliderRender:true */
 Deps.autorun(function () {
-  console.log("min: " + Session.get("minBornYear") +
-              ", max: " + Session.get("maxBornYear"));
+  //console.log("min: " + Session.get("minBornYear") +
+  //             ", max: " + Session.get("maxBornYear"));
 });
 
 onSliderRender = function (changeCallback) {

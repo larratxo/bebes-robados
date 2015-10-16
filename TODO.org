@@ -9,18 +9,13 @@ https://github.com/meteor-london/banner/
 https://github.com/meteor-london/banner/blob/master/banner.js
 ** Uploads
 https://github.com/tomitrescak/meteor-uploads
-
 ** Markers in a circle
 https://jsfiddle.net/kaiser/wzcst/light/
 https://developers.google.com/maps/documentation/javascript/shapes#circles
 ** Licencia de contenidos, etc
-
 ** Añadir new/nuevo en búsquedas
 ** Not found page
 ** when bebe not found ... message
-
-** Slider parece que no está a tope, tope (que filtra los nulos, vamos)
-** markers visibily no funciona bien en FF a veces
 ** http://meteorpedia.com/read/REST_API
 ** https://github.com/alanning/meteor-roles
 ** 2 backgrounds fijos

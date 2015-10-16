@@ -104,6 +104,7 @@ Template.home.onCreated(function() {
     // Add a marker to the map once it's ready
     var min = new Date(Session.get("minBornYear"),0,1);
     var max = new Date(Session.get("maxBornYear"),11,31);
+    var showAll = calcShowAll();
 
     var infowindow = new google.maps.InfoWindow();
     var createMarker = function (map, person) {
@@ -129,7 +130,7 @@ Template.home.onCreated(function() {
           icon: image,
           position:  {lat: parseFloat(lat), lng: parseFloat(long)}
         });
-        marker.setVisible(markerVisibility(person, min, max));
+        marker.setVisible(showAll? true: markerVisibility(person, min, max));
         markers[person._id] = marker;
 
         // https://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
