@@ -1,3 +1,4 @@
+/*global Accounts */
 Router.route('/', function () {
   this.render('home');
   SEO.set({ title: 'Inicio -' + Meteor.App.NAME });
@@ -25,6 +26,10 @@ var addSettings = function() {
   this.next();
 };
 
+if (Meteor.isClient) {
+  $("#login-dropdown-list").click(addSettings);
+}
+
 Router.onBeforeAction(addSettings);
 
 Router.map(function() {
@@ -33,6 +38,12 @@ Router.map(function() {
   this.route('underConstruction', { path: '/en-construccion' });
   this.route('quienesSomos', { path: '/quienesSomos' });
   this.route('userUpdate', { path: '/yo' });
+  this.route('viewUser', {
+    path: '/persona/:_id',
+    data: function() {
+      return Meteor.users.findOne({_id: this.params._id });
+    }
+  });
   this.route('legal', { path: '/legal' });
   this.route('donaciones', { path: '/donaciones' });
   this.route('bebePage', {
@@ -49,5 +60,29 @@ Router.map(function() {
   });
 });
 
+var mustAcceptConds = function() {
+  if (Meteor.user() && !Meteor.user().profile.conServicioAceptadas) {
+    // Compare if just created
+    if (moment(Meteor.user().profile.updatedAt).diff(Meteor.user().profile.createdAt, "seconds") !== 0) {
+      $.bootstrapGrowl("Debe aceptar las condiciones de servicio", {type: 'danger', align: 'center'} );
+    }
+    Router.go('userUpdate');
+    this.stop();
+  } else {
+    this.next();
+  }
+};
+
+if (Meteor.isClient) {
+  Accounts.onLogin(function () {
+    if (Meteor.user().profile.createdAt === Meteor.user().profile.updatedAt) {
+      Router.go('userUpdate');
+    }
+  });
+};
+
+Router.onBeforeAction(mustAcceptConds, {except: ['userUpdate']});
+Router.onBeforeAction(requireLogin, {only: ['userUpdate'] } );
+// Router.onBeforeAction(requireLogin, {only: ['nuevoBebe', 'bebePage', 'userUpdate'] } );
+
 // https://iron-meteor.github.io/iron-router/#hooks
-// Router.before(requireLogin, {only: ['nuevoBebe', 'bebePage'] } );

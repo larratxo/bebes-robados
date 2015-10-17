@@ -1,20 +1,35 @@
-/*global Accounts */
+/* global personLabelHack:true */
+
 // http://docs.meteor.com/#accounts_oncreateuser
 
-Accounts.onLogin(function () {
-  // Only on sign-in (not if remember your login)
+personLabelHack = function() {
+  $(".autoform-array-item-body > .form-group > label.control-label").text("");
+  $(".autoform-array-item-body > .form-group > div .panel-default")
+     .removeClass("panel");
+  $(".autoform-add-item").addClass("btn-xs");
+  $(".autoform-remove-item").addClass("btn-xs");
+  $(".autoform-array-item-body > .form-group label.control-label").remove();
+};
 
-  // if (undef(Meteor.user().profile.dni)) {
-  //  Router.go('userUpdate');
-  // }
+Template.viewUser.onRendered( function() {
+  Session.set("DocumentTitle", "Mis datos");
+  personLabelHack();
+  $(".autoform-add-item").click(personLabelHack());
+});
+Template.userUpdate.onRendered( function() {
+  Session.set("DocumentTitle", "Mis datos");
+  personLabelHack();
+  $(".autoform-add-item").click(personLabelHack());
 });
 
 AutoForm.hooks({
-  usersForm: {
+  editUserForm: {
     after: {
       update: function(error) {
         if (typeof error === "undefined") {
-          $.bootstrapGrowl("Guardado", {type: 'success', align: 'center'} );
+          if (Meteor.user().profile.conServicioAceptadas === true) {
+            $.bootstrapGrowl("Guardado", {type: 'success', align: 'center'} );
+          }
           Router.go('home');
         } else {
           $.bootstrapGrowl(error, {type: 'danger', align: 'center'} );

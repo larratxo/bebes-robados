@@ -2,21 +2,40 @@
 var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
 Schema.UserProfile = new SimpleSchema({
-  nombreCompleto: { type: String, optional: true, label: "Nombre completo:",
+  name: { type: String, optional: true, label: "Nombre completo:",
                     autoform: {afFieldInput: {placeholder: "Nombre y apellidos"} } },
   dni: { type: String, optional: true, label: "DNI (número y letra):",
-         regEx: /^\d{8}[a-zA-Z]$/,  autoform:{ mask: '99999999-a' } },
+         regEx: /^\d{8}[A-Z]$/,  autoform:{ mask: '99999999-A' } },
   // parentesco: { type: String, optional: true, label: "Parentesco con el presunto niño/a robado:" },
-  telefono: { type: String, optional: true, label: "Teléfono de contacto:", regEx: phoneRegex,
+  telefono: { type: String, optional: true, label: "Teléfono de contacto:", // regEx: phoneRegex,
     autoform: {afFieldInput: {placeholder: "Teléfono móvil preferiblemente"} }
   },
-  fax: { type: String, optional: true, label: "Fax:", regEx: phoneRegex}
+  fax: { type: String, optional: true, label: "Fax:"}, // regEx: phoneRegex},
+  redesSociales: {
+    type: [Object],
+    label: "Perfiles en redes sociales (twitter, flickr, facebook ,etc). Pueden ayudar en la búsqueda de familiares",
+    optional: true
+  },
+  "redesSociales.$.url": {
+    type: String,
+    autoform: {afFieldInput: {label: false, placeholder: "p.ej: http://twitter.com/tu_usuario"} },
+    regEx: SimpleSchema.RegEx.Url
+  },
+  conServicioAceptadas: {
+    optional: false,
+    type: Boolean,
+    defaultValue: false,
+    label: "Acepto las condiciones de servicio de este sitio"
+  },
+  createdAt: defaultCreatedAt,
+  updatedAt: defaultUpdateAt
 });
 
 Schema.User = new SimpleSchema({
   username: {
     type: String,
     label: "Usuario/a",
+    regEx: /^[a-z0-9A-Z_]{3,15}$/,
     // For accounts-password, either emails or username is required, but not both. It is OK to make this
     // optional here because the accounts-password package does its own validation.
     // Third-party login packages may not require either. Adjust this schema as necessary for your usage.
@@ -25,6 +44,7 @@ Schema.User = new SimpleSchema({
   },
   emails: {
     type: Array,
+    min: 1,
     label: "Lista de emails de contacto",
     // For accounts-password, either emails or username is required, but not both. It is OK to make this
     // optional here because the accounts-password package does its own validation.
@@ -37,14 +57,14 @@ Schema.User = new SimpleSchema({
   },
   "emails.$.address": {
     type: String,
-    label: "Email",
+    label: "",
+    autoform: {afFieldInput: { label: false, placeholder: "p.ej: fulano@gmail.com"} },
     regEx: SimpleSchema.RegEx.Email
   },
   "emails.$.verified": {
-    type: Boolean
+    type: Boolean,
+    optional: true, // if not present === notVerified
   },
-  createdAt: defaultCreatedAt,
-  updatedAt: defaultUpdateAt,
   profile: {
     type: Schema.UserProfile,
     label: "Otros datos",
@@ -81,3 +101,15 @@ Schema.User = new SimpleSchema({
 });
 
 Meteor.users.attachSchema(Schema.User);
+
+Meteor.users.allow({
+  update: function (userId, user, fields, modifier) {
+    if (user._id !== userId)
+      return false;
+    return true;
+  }
+});
+
+Tracker.autorun(function () {
+    Meteor.subscribe("allUserData");
+});

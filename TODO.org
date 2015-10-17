@@ -21,11 +21,5 @@ https://developers.google.com/maps/documentation/javascript/shapes#circles
 ** 2 backgrounds fijos
 ** Notificaciones email
 ** SEO y spider
-** http://docs.meteor.com/#appcache meteor add appcache
-I20151016-16:22:53.175(2)? ** You are using the appcache package but the total size of the
-I20151016-16:22:53.177(2)? ** cached resources is 24.0MB.
-I20151016-16:22:53.177(2)? ** app in some browsers! See http://docs.meteor.com/#appcache
-I20151016-16:22:53.177(2)? ** for more information and fixes.
-I20151016-16:22:53.177(2)?
-I20151016-16:22:53.177(2)? **
-I20151016-16:22:53.177(2)? ** This is over the recommended maximum of 5 MB and may break your
+** https://atmospherejs.com/d3js/d3
+** Prevent navigation https://groups.google.com/forum/#!topic/meteor-talk/TB_px_fnlZs

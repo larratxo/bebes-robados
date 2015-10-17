@@ -70,7 +70,7 @@ decorateNacAprox = function (val, type, doc) {
   return abrev[doc.fechaNacimientoEsAprox] + date;
 };
 
-var abrevBebeOFamilia = { true: "B", false: "F"};
+var abrevBebeOFamilia = { true: "bebe", false: "familia"};
 
 var renderBuscasBebe = function (val) {
   return abrevBebeOFamilia[val];
@@ -82,6 +82,15 @@ var renderGeo = function (val) {
 };
 renderNuevo = function(val) {
   return isNew(val)? "<span class='label label-warning'>Nuevo</span>":"";
+};
+
+renderFamiliar = function(val, type, doc) {
+  // var hasFam = typeof doc.familiar === "string";
+  var hasFam = typeof val === "string";
+
+  // return "<a href='/persona/" + doc.familiar + "/'>" + (doc.buscasBebe? (hasFam? val: "") : "Hijo/a")  + "</a>";
+  return (doc.buscasBebe? (hasFam? val: "") : "Hijo/a");
+
 };
 
 TabularTables.Persons = new Tabular.Table({
@@ -108,11 +117,16 @@ TabularTables.Persons = new Tabular.Table({
     {data: "createdAt", title: "Creado", render: renderDate, visible: false},
     {data: "updatedAt", title: "Actualizado", render:
      renderDate, visible: false},
+    {data: "parentesco", title: "¿Quién?",
+     render: renderFamiliar, className: "column-center"},
+    {data: "familiar", title: "", visible: false},
+    {data: "buscasBebe", title: "Busca",
+     render: renderBuscasBebe, className: "column-center"},
+
     {data: "nombreCompleto", title: "Nombre del niño/a"},
     {data: "sexo", title: "Sexo", render: renderSexo,
      className: "column-center"},
-    {data: "buscasBebe", title: "Busca Bebe o Familia",
-     render: renderBuscasBebe, className: "column-center"},
+
     {data: "fechaNacimientoEsAprox", title: "",
      render: renderAprox, visible: false },
     {data: "fechaNacimiento", title: "Fecha nacimiento",

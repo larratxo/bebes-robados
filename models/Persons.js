@@ -98,6 +98,10 @@ defaultAutoMap = function(label) {
 Schema.Persons =  new SimpleSchema({
   buscasBebe: { type: Boolean, optional: false, label: "¿Qué buscas?",
                 autoform: { afFieldInput: { type: "boolean-radios", trueLabel: "a un bebe", falseLabel: "a mi familia"}}},
+  parentesco: { type: String, label: "Parentesco con el presunto niño/a robado:", optional: true, allowedValues: [
+    "Madre", "Padre", "Cónyuge", "Abuela", "Abuelo", "Hermana", "Hermano", "Otro"
+  ] },
+  familiar: { type: String, optional: true, autoValue: function(){ return Meteor.userId() } },
   nombreCompleto: { type: String, label: "Nombre completo del niño/a:" },
   fechaNacimiento: defaultDate("Fecha de nacimiento:"),
   fechaNacimientoEsAprox: { type: Boolean, optional: true, label: "¿es esta fecha aproximada?",
@@ -198,15 +202,18 @@ Persons.attachSchema(Schema.Persons);
 // Collection2 already does schema checking
 // Add custom permission rules if needed
 if (Meteor.isServer) {
+  // Mejorar con: http://docs.meteor.com/#/full/allow
+
   Persons.allow({
     insert : function () {
       return true;
     },
-    update : function () {
+    update: function (userId, doc, fieldNames, modifier) {
       return true;
+  //    return doc.familiar === userId);
     },
     remove : function () {
-      return true;
+      return false;
     }
   });
 }

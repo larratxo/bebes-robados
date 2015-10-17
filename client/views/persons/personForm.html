@@ -37,6 +37,9 @@
     <div class="tab-content bebe-tab-content">
       <div role="tabpanel" class="tab-pane active" id="datosbasicos">
         <legend>Datos del presunto robo</legend>
+        {{#if afFieldValueIs name="buscasBebe" value=true}}
+        {{> afQuickField name="parentesco" id="parentesco" options="allowed" firstOption="» Selecciona uno" }}
+        {{/if}}
 
         {{> afQuickField name='nombreCompleto' placeholder="Nombre y apellidos" id="nombreCompleto" }}
         {{> afQuickField name="sexo" options="allowed" firstOption="» Selecciona uno" id="sexo" }}

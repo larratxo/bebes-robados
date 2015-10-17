@@ -8,6 +8,7 @@ Template.nuevoBebe.onRendered(function() {
   Session.set("DocumentTitle","Añade un bebe");
 });
 
+
 AutoForm.hooks({
   nuevoBebeForm: {
     after: {

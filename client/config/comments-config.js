@@ -11,7 +11,7 @@ Comments.ui.setContent({
   reply: 'Responder',
   edit: 'Editar',
   remove: 'Borrar',
-  'placeholder-textarea': 'Aquí puede comentar y añadir alguna información sobre este bebe',
+  'placeholder-textarea': 'Aquí puede comentar y añadir alguna información sobre esta persona',
   'add-button-reply': 'Añadir una respuesta',
   'add-button': 'Añadir comentario',
   'load-more': 'Más comentarios'

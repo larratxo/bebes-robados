@@ -2,5 +2,10 @@
   <div class="page-header">
     <h2>{{title}}</h2>
   </div>
-  {{> quickForm collection="Meteor.users" id=id schema=Schema.User template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" doc=doc type=type buttonContent=btnTitle omitFields="emails.$.verified"}}
+
+  {{> avatar size="large" user=currentUser shape="circle" }}
+
+  {{> quickForm collection="Meteor.users" id=id template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"  doc=doc type=type buttonContent=btnTitle omitFields=omitFields
+  fields="username, profile.name,emails, profile.dni, profile.telefono, profile.redesSociales, profile.conServicioAceptadas"}}
+
 </template>

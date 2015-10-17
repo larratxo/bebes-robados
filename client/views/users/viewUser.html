@@ -1,0 +1,10 @@
+<template name="viewUser">
+  {{> usersForm title="Datos de esta persona" doc=this type="disabled" id="viewUserForm" btnTitle="Cerrar" omitFields="emails.$.verified, profile.conServicioAceptadas, profile.dni, profile.fax, profile.telefono"}}
+
+  <div id="comentarios"></div>
+
+  <div class="comment-section">
+    {{> commentsBox id=this._id}}
+  </div>
+
+</template>
