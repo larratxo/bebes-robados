@@ -1,14 +1,30 @@
 Template.personsList.helpers({
   selector: function () {
+    var enProv = Session.get("buscaEnProvincia");
+    // console.log("En prov: " + enProv);
     if (!calcShowAll()) {
-      return { "fechaNacimiento":
-               {$gte: new Date(Session.get("minBornYear"),0,1),
-                $lte: new Date(Session.get("maxBornYear"),11,31)
-               }};
+      if (enProv === "-1") {
+        return { "fechaNacimiento":
+                 {$gte: new Date(Session.get("minBornYear"),0,1),
+                  $lte: new Date(Session.get("maxBornYear"),11,31)
+                 }};
+
+      } else {
+        return { "fechaNacimiento":
+                 {$gte: new Date(Session.get("minBornYear"),0,1),
+                  $lte: new Date(Session.get("maxBornYear"),11,31)
+                 },
+                 "lugarNacimientoProvincia": enProv
+        };
+      }
     }
     else {
-      // Also show null
-      return {};
+      // Show all
+      if (enProv === "-1") {
+        return {};
+      } else {
+        return { "lugarNacimientoProvincia": enProv };
+      }
     }
   }
 });
@@ -24,6 +40,8 @@ Template.personsList.events({
 
 Template.personsList.onCreated( function() {
   setEmptyTable("");
+  /* $("#personsTable_filter > label > input").removeClass("imput-sm");
+  $("#personsTable_filter > label > input").addClass("input-lg"); */
 });
 
 Template.personsList.onRendered( function() {
@@ -47,5 +65,22 @@ Template.personsList.onRendered( function() {
   });
 
   $("#personsTable_filter > label > input").focus();
+
+  // Render provincias
+  Session.setDefault("buscaEnProvincia", "-1");
+
+  var onProvSelect = function(prov) {
+    Session.set("buscaEnProvincia", prov);
+    dataTable.draw();
+  };
+
+  var onMuniSelect = function() {
+  };
+
+  var prevProv = Session.get("buscaEnProvincia");
+  var prevMuni = -1;
+
+  renderProvincias(prevProv, prevMuni, onProvSelect, onMuniSelect, "-- todas las provincias --");
+  // Fin render provincias
 
 });

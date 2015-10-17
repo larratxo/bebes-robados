@@ -69,7 +69,7 @@ geocode = function() {
         // console.log(results[0].geometry.location.lat());
         lat = results[0].geometry.location.lat().toString();
         long = results[0].geometry.location.lng().toString();
-        console.log('Geocode was successful');
+        // console.log('Geocode was successful');
         var newMarker = new google.maps.Marker({
           position: { lat: results[0].geometry.location.lat(),
                       lng: results[0].geometry.location.lng() },
@@ -119,38 +119,11 @@ Template.bebeForm.onRendered(function() {
     }
   });
 
-  var provinceCssSelector = '.ps-prov';
-  var municipeCssSelector = '.ps-mun';
-  var provinceDefaultText = 'Provincia';
-  var municipeDefaultText = 'Municipio';
+  // Render provincias
   var provinceName = "#lugarNacimientoProvinciaNombre";
   var municipeName = "#lugarNacimientoMunicipioNombre";
 
-  function changeMuni(selectedProvince) {
-    $(municipeCssSelector).empty();
-    $(municipeCssSelector).append($('<option>').text(municipeDefaultText).attr('value', -1));
-    $.each(municipes, function(number, municipe) {
-      if (municipe.cod_prov === selectedProvince) {
-        $(municipeCssSelector).append($('<option>').text(municipe.name).attr('value', number.toString()));
-      }
-    });
-  }
-
-  // Set default text
-  $(provinceCssSelector).append($('<option>').text(provinceDefaultText).attr('value', -1));
-  $(municipeCssSelector).append($('<option>').text(municipeDefaultText).attr('value', -1));
-
-  // Populate province select
-  $.each(provinces, function(number, province) {
-    $(provinceCssSelector).append($('<option>').text(province.name).attr('value', province.code));
-  });
-
-  // When selected province changes, populate municipe select
-  $(provinceCssSelector).change(function() {
-    console.log("Provincia cambiada");
-    var prov = this.value;
-    changeMuni(prov);
-    // Clear muni
+  var onProvSelect = function(prov) {
     $(municipeName).val("");
     if (!isNaN(prov) && prov >= 0) {
       $(provinceName).val(provincia(prov));
@@ -158,35 +131,27 @@ Template.bebeForm.onRendered(function() {
       $(provinceName).val("");
     }
     geocode();
-  });
+  };
 
-  $(municipeCssSelector).change(function() {
-    console.log("Municipio cambiado");
-    var muni = this.value;
+  var onMuniSelect = function(muni) {
     if (!isNaN(muni) && muni >= 0) {
       $(municipeName).val(municipio(muni));
     } else {
       $(municipeName).val("");
     }
     geocode();
-  });
+  }
 
-  var prov;
-  var muni;
+  var prevProv;
+  var prevMuni;
 
   if (typeof this.data !== "undefined" &&
     typeof this.data.doc !== "undefined" && this.data.doc !== null ) {
-    prov = this.data.doc.lugarNacimientoProvincia;
-    muni = this.data.doc.lugarNacimientoMunicipio;
+    prevProv = this.data.doc.lugarNacimientoProvincia;
+    prevMuni = this.data.doc.lugarNacimientoMunicipio;
   }
 
-  // Restore values on update
-  if (!isNaN(prov) && prov >= 0) {
-    $(provinceCssSelector).val(prov);
-  }
-  if (!isNaN(muni) && muni >= 0) {
-    changeMuni(prov);
-    $(municipeCssSelector).val(muni);
-  }
+  renderProvincias(prevProv, prevMuni, onProvSelect, onMuniSelect);
+  // Fin render provincias
 
 });

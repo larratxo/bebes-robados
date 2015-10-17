@@ -49,8 +49,11 @@
     </div>
   </form>
 
-  {{> yearSlider header="" subheader="Bebes robados entre los años"}}
-
+  <div class="row">
+    <div class="col-xs-6">
+      {{> yearSlider header="" subheader="Bebes robados entre los años"}}
+    </div>
+  </div>
   <div class="map-container">
     {{> googleMap name="mainMap" options=mainMapOptions}}
   </div>
