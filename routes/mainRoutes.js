@@ -16,6 +16,7 @@ var requireLogin = function() {
 Router.map(function() {
   this.route('loading', { path: '/loading' }); // just for testing
   this.route('personsList', { path: '/bebes' });
+  this.route('adSample', { path: '/ad-sample' }); // just for testing
   this.route('nuevoBebe', { path: '/nuevoBebe' });
   this.route('underConstruction', { path: '/en-construccion' });
   this.route('quienesSomos', { path: '/quienesSomos' });

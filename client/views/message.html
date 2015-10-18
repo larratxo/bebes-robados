@@ -1,34 +1,34 @@
 <template name="message">
-	<div class="main-message jumbotron row">
-		<div class="col-xs-2">
-			{{#if image}}
-			<img src={{image}} />
-			{{/if}}
-			{{#if spinner}}
-			<div class="message-spinner">
-				{{> spinner}}
-			</div>
-			{{/if}}
-		</div>
-		<div class="col-xs-10">
-			<p>
-				<h1>{{title}}</h1>
-			</p>
-			<p>
-				<h3>{{subtitle}}</h3> 
-			</p>
+  <div class="main-message jumbotron row">
+    <div class="col-xs-2">
+      {{#if image}}
+      <img src={{image}} />
+      {{/if}}
+      {{#if spinner}}
+      <div class="message-spinner">
+	{{> spinner}}
+      </div>
+      {{/if}}
+    </div>
+    <div class="col-xs-10">
+      <p>
+	<h1>{{title}}</h1>
+      </p>
+      <p>
+	<h3>{{subtitle}}</h3> 
+      </p>
 
-			{{#if alert}}
-			<p>
-				<div class="alert alert-danger">{{alert}}</div>
-			</p>
-			{{/if}}
+      {{#if alert}}
+      <p>
+	<div class="alert alert-danger">{{alert}}</div>
+      </p>
+      {{/if}}
 
-			{{#if btnTitle}}
-			<p>
-				<a class="btn btn-default btn-lg" href={{href}} role="button">{{btnTitle}}</a>
-			</p>
-			{{/if}}
-		</div>
-	</div>
+      {{#if btnTitle}}
+      <p>
+	<a class="btn btn-default btn-lg" href={{href}} role="button">{{btnTitle}}</a>
+      </p>
+      {{/if}}
+    </div>
+  </div>
 </template>
