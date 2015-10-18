@@ -27,6 +27,20 @@ Schema.UserProfile = new SimpleSchema({
     defaultValue: false,
     label: "Acepto las condiciones de servicio de este sitio"
   },
+    imagenes: {
+	type: [String],
+	label: 'Fotos de familiares', optional: true
+    },
+    "imagenes.$": {
+	autoform: {
+	    afFieldInput: {
+		type: 'fileUpload',
+		accept: 'image/*',
+		label: 'Elige una foto',
+		"remove-label": 'Borrar',
+		previewTemplate: 'photoPreview',
+		collection: 'Images'
+	    }}},
   createdAt: defaultCreatedAt,
   updatedAt: defaultUpdateAt
 });

@@ -37,7 +37,11 @@ Router.map(function() {
   this.route('nuevoBebe', { path: '/nuevoBebe' });
   this.route('underConstruction', { path: '/en-construccion' });
   this.route('quienesSomos', { path: '/quienesSomos' });
-  this.route('userUpdate', { path: '/yo' });
+    this.route('userUpdate', { path: '/yo',
+			       waitOn: function() {
+				   return Meteor.subscribe('images');
+			       }
+			     });
   this.route('viewUser', {
     path: '/persona/:_id',
     data: function() {
