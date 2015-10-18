@@ -85,4 +85,6 @@ Router.onBeforeAction(mustAcceptConds, {except: ['userUpdate']});
 Router.onBeforeAction(requireLogin, {only: ['userUpdate'] } );
 // Router.onBeforeAction(requireLogin, {only: ['nuevoBebe', 'bebePage', 'userUpdate'] } );
 
+Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
+
 // https://iron-meteor.github.io/iron-router/#hooks

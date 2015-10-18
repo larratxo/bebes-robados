@@ -13,9 +13,6 @@ https://github.com/tomitrescak/meteor-uploads
 https://jsfiddle.net/kaiser/wzcst/light/
 https://developers.google.com/maps/documentation/javascript/shapes#circles
 ** Licencia de contenidos, etc
-** Añadir new/nuevo en búsquedas
-** Not found page
-** when bebe not found ... message
 ** http://meteorpedia.com/read/REST_API
 ** https://github.com/alanning/meteor-roles
 ** 2 backgrounds fijos
