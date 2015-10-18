@@ -5,9 +5,11 @@ Images = new FS.Collection("images", {
 Images.allow({
     insert: function (userId, doc) {
  /*     if (user._id !== userId)
-	return false; */
-	console.log(doc);
+	return false; 
+	console.log(doc); */
       return true;
+    },
+    update: function () {
     },
     download: function () {
 	return true;

@@ -38,7 +38,7 @@ Schema.UserProfile = new SimpleSchema({
 		accept: 'image/*',
 		label: 'Elige una foto',
 		"remove-label": 'Borrar',
-		previewTemplate: 'photoPreview',
+		// previewTemplate: 'photoPreview',
 		collection: 'Images'
 	    }}},
   createdAt: defaultCreatedAt,
