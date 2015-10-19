@@ -1,3 +1,4 @@
+
 * Desarrollo
 ** Conectar usuarios-bebes
 ** Bebe encontrado o no encontrado?
@@ -13,11 +14,11 @@ https://github.com/tomitrescak/meteor-uploads
 ** Markers in a circle
 https://jsfiddle.net/kaiser/wzcst/light/
 https://developers.google.com/maps/documentation/javascript/shapes#circles
-** Licencia de contenidos, etc
 ** http://meteorpedia.com/read/REST_API
 ** https://github.com/alanning/meteor-roles
 ** 2 backgrounds fijos
 ** Notificaciones email
-** SEO y spider
+** SEO
 ** https://atmospherejs.com/d3js/d3
 ** Prevent navigation https://groups.google.com/forum/#!topic/meteor-talk/TB_px_fnlZs
+** https://about.twitter.com/resources/buttons#tweet

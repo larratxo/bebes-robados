@@ -59,6 +59,7 @@ yogiben:autoform-file
 cfs:filesystem
 cfs:standard-packages
 sacha:spin
-cfs:gridfs@=0.0.27
 spiderable
 gadicohen:sitemaps
+cfs:gridfs
+pfafman:photo-up

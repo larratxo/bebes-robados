@@ -26,7 +26,7 @@ Schema.UserProfile = new SimpleSchema({
     type: Boolean,
     defaultValue: false,
     label: "Acepto las condiciones de servicio de este sitio"
-  },
+  }, /*
     imagenes: {
 	type: [String],
 	label: 'Fotos mías y de familiares', optional: true
@@ -40,7 +40,7 @@ Schema.UserProfile = new SimpleSchema({
 		"remove-label": 'Borrar',
 		// previewTemplate: 'photoPreview',
 		collection: 'Images'
-	    }}},
+	    }}}, */
   createdAt: defaultCreatedAt,
   updatedAt: defaultUpdateAt
 });

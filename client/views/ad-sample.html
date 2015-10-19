@@ -1,11 +1,11 @@
 <template name="adSample">
 
   <div class="page-header">
-    <h2>Ejemplos de publicidad</h2>
+    <h2>Ejemplos de banners de "publicidad"</h2>
     <h3>Esta parte está aún en desarrollo</h3>
   </div>
 
-  <p>Estos son solo unos ejemplos de como podrían quedar unos banners de publicidad de un tamaño estandar listos para ser incluidos en otras webs (rotaría con otras imagenes similares). Participarían los familiares que quisieran e introducirían el texto y la imagen que decidieran (luego se aprobaría por los administradores para evitar, por ej., abusos).</p>
+  <p>Estos son solo unos ejemplos de como podrían quedar unos banners de "publicidad" de un tamaño estandar listos para ser incluidos en otras webs (rotaría con otras imagenes similares). Participarían los familiares que quisieran e introducirían el texto y la imagen que decidieran (luego se aprobaría por los administradores para evitar, por ej., abusos).</p>
 
   <div class="container-fluid">
 {{> ad backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
@@ -13,5 +13,21 @@
 {{> ad backImage="/images/pusample2.jpg" adHeader="Busco a mi hermano, quizás puedas ser tú" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
 {{> ad backImage="/images/pusample4.jpg" adHeader="Busco a mi familia, quizás sea la tuya" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
   </div>
+
+  <h3>Zona de pruebas (generación de banners)</h3>
+  <p>Aquí probamos la generación de banners mientras desarrollamos esta parte. Sube una foto, escálala y a ver que tal queda.</p>
+
+  {{#autoForm collection="Persons" id="ad-sample-form" type=insert }}
+  {{> afQuickField name="buscasBebe" defaultValue=false}}
+  {{#if afFieldValueIs name="buscasBebe" value=true}}
+  {{> afQuickField name="parentesco" id="parentesco" options="allowed" firstOption="» Selecciona uno" }}
+  {{/if}}
+  {{/autoForm}}
+
+
+  {{> ad backImage=synPhoto adHeader="Busco a mi hermano, quizás puedas ser tú" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+
+
+  {{> photoUp photoUpOptions}}
 
 </template>
