@@ -29,7 +29,7 @@ Schema.UserProfile = new SimpleSchema({
   },
     imagenes: {
 	type: [String],
-	label: 'Fotos de familiares', optional: true
+	label: 'Fotos mías y de familiares', optional: true
     },
     "imagenes.$": {
 	autoform: {
