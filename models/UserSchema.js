@@ -20,12 +20,6 @@ Schema.UserProfile = new SimpleSchema({
     type: String,
     autoform: {afFieldInput: {label: false, placeholder: "p.ej: http://twitter.com/tu_usuario"} },
     regEx: SimpleSchema.RegEx.Url
-  },
-  conServicioAceptadas: {
-    optional: false,
-    type: Boolean,
-    defaultValue: false,
-    label: "Acepto las condiciones de servicio de este sitio"
   }, /*
     imagenes: {
 	type: [String],
