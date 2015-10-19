@@ -101,7 +101,7 @@ Schema.Persons =  new SimpleSchema({
   parentesco: { type: String, label: "Parentesco con el presunto niño/a robado:", optional: true, allowedValues: [
     "Madre", "Padre", "Cónyuge", "Abuela", "Abuelo", "Hermana", "Hermano", "Otro"
   ] },
-  familiar: { type: String, optional: true, autoValue: function(){ return this.userId; } },
+  familiar: { type: String, optional: true, autoValue: function() { if (this.isInsert) { return this.userId; }}},
   nombreCompleto: { type: String, label: "Nombre completo del niño/a:" },
   fechaNacimiento: defaultDate("Fecha de nacimiento:"),
   fechaNacimientoEsAprox: { type: Boolean, optional: true, label: "¿es esta fecha aproximada?",

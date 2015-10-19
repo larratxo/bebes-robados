@@ -1,6 +1,6 @@
 
 * Desarrollo
-** Conectar usuarios-bebes
+** Conectar usuarios-bebes (links en búsquedas, en formularios, etc)
 ** Bebe encontrado o no encontrado?
 ** Publicidad
 https://css-tricks.com/set-font-size-based-on-word-count/

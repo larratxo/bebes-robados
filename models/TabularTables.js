@@ -88,8 +88,8 @@ renderFamiliar = function(val, type, doc) {
   // var hasFam = typeof doc.familiar === "string";
   var hasFam = typeof val === "string";
 
-  // return "<a href='/persona/" + doc.familiar + "/'>" + (doc.buscasBebe? (hasFam? val: "") : "Hijo/a")  + "</a>";
-  return (doc.buscasBebe? (hasFam? val: "") : "Hijo/a");
+  return "<a href='/persona/" + doc.familiar + "/'>" + (doc.buscasBebe? (hasFam? val: "") : "Hijo/a")  + "</a>";
+  // return (doc.buscasBebe? (hasFam? val: "") : "Hijo/a");
 
 };
 

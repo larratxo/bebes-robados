@@ -6,10 +6,12 @@ function loadFixture(fixtures, collection) {
 }
 
 Meteor.startup(function () {
-  //loadFixture(Fixtures['dummyFixture'], DummyCollection);
+  var testUserId = Meteor.users.findOne( { username : "test" } )._id;
+
   if (Persons.find().count() === 0) {
-    console.log("Loading persons fixtures.");
+    console.log("Loading persons fixtures for user " + testUserId);
     loadFixture(Fixtures.persons, Persons);
+    Persons.update({}, {$set: {familiar: testUserId}}, { multi: true });
   } else {
     // console.log("Not loading persons fixtures.");
   }
