@@ -59,6 +59,7 @@ yogiben:autoform-file
 cfs:filesystem
 cfs:standard-packages
 sacha:spin
-spiderable
 gadicohen:sitemaps
 pfafman:photo-up
+coffeescript
+ongoworks:spiderable

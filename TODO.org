@@ -21,6 +21,11 @@ https://developers.google.com/maps/documentation/javascript/shapes#circles
 ** 2 backgrounds fijos
 ** Notificaciones email
 ** SEO
+** Spiderable
+http://localhost:3000/?_escaped_fragment_=
+Me funciona con:
+ongoworks:spiderable@1.0.7
+sudo npm -g install phantomjs
 ** https://atmospherejs.com/d3js/d3
 ** Prevent navigation https://groups.google.com/forum/#!topic/meteor-talk/TB_px_fnlZs
 ** https://about.twitter.com/resources/buttons#tweet
