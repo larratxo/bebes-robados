@@ -59,12 +59,19 @@ Template.personsList.onRendered( function() {
   Session.setDefault("main-home-search", "");
 
   Deps.autorun(function () {
+
     var search = Session.get("main-home-search");
-    $("#personsTable_filter > label > input").val(search);
-    dataTable.search(search);
+    if (typeof search === "string") {
+
+      $("#personsTable_filter > label > input").val(search);
+      // delete Session.keys["main-home-search"]
+      dataTable.search(search);
+    }
   });
 
   $("#personsTable_filter > label > input").focus();
+
+  $("#personsTable_filter > label > input").change(function() { /* delete Session.keys["main-home-search"] */ });
 
   // Render provincias
   Session.setDefault("buscaEnProvincia", "-1");

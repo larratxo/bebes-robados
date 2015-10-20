@@ -11,6 +11,12 @@ personLabelHack = function() {
   $(".autoform-array-item-body > .form-group label.control-label").remove();
 };
 
+Template.usersForm.helpers({
+  isEqual: function (type, otherType) {
+    return type === otherType;
+  }
+});
+
 Template.viewUser.onRendered( function() {
   Session.set("DocumentTitle", "Mis datos");
   personLabelHack();

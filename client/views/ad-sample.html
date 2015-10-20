@@ -1,33 +1,47 @@
 <template name="adSample">
 
   <div class="page-header">
-    <h2>Ejemplos de banners de "publicidad"</h2>
-    <h3>Esta parte está aún en desarrollo</h3>
+    <h2>Banners para campañas de difusión</h2>
+    <h4>En desarrollo</h4>
   </div>
 
-  <p>Estos son solo unos ejemplos de como podrían quedar unos banners de "publicidad" de un tamaño estandar listos para ser incluidos en otras webs (rotaría con otras imagenes similares). Participarían los familiares que quisieran e introducirían el texto y la imagen que decidieran (luego se aprobaría por los administradores para evitar, por ej., abusos).</p>
+  <div class="row">
+    <h3>Ejemplos de banners</h3>
+    <p>Estos son solo unos ejemplos de como podrían quedar unos banners de "publicidad" de un tamaño estandar listos para ser incluidos en otras webs (rotaría con otras imagenes similares). Participarían los familiares que quisieran e introducirían el texto y la imagen que decidieran (luego se aprobaría por los administradores para evitar, por ej., abusos).</p>
 
-  <div class="container-fluid">
-{{> ad backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
-{{> ad backImage="/images/pusample3.jpg" adHeader="Busco a mi hijo, quizás puedas ser tú" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
-{{> ad backImage="/images/pusample2.jpg" adHeader="Busco a mi hermano, quizás puedas ser tú" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
-{{> ad backImage="/images/pusample4.jpg" adHeader="Busco a mi familia, quizás sea la tuya" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+    <div class="container-fluid">
+      {{> ad sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+      {{> ad sample="true" backImage="/images/pusample3.jpg" adHeader="Busco a mi hijo, quizás puedas ser tú" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+      {{> ad sample="true" backImage="/images/pusample2.jpg" adHeader="Busco a mi hermano, quizás puedas ser tú" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+      {{> ad sample="true" backImage="/images/pusample4.jpg" adHeader="Busco a mi familia biológica, quizá sea la tuya" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+    </div>
   </div>
 
-  <h3>Zona de pruebas (generación de banners)</h3>
-  <p>Aquí probamos la generación de banners mientras desarrollamos esta parte. Sube una foto, escálala y a ver que tal queda.</p>
+  <br>
+  <br>
 
-  {{#autoForm collection="Persons" id="ad-sample-form" type=insert }}
-  {{> afQuickField name="buscasBebe" defaultValue=false}}
-  {{#if afFieldValueIs name="buscasBebe" value=true}}
-  {{> afQuickField name="parentesco" id="parentesco" options="allowed" firstOption="» Selecciona uno" }}
-  {{/if}}
-  {{/autoForm}}
+  <h3>Zona de pruebas de generación de banners para campañas de difusión</h3>
+  <p>Aquí probamos la generación de banners mientras desarrollamos esta parte. Pon un texto, sube una foto, escálala y a ver que tal queda.</p>
 
+  <div class="checkbox">
+    <label>
+      <input id="participar" type="checkbox" checked> Quiero participar en la campaña de difusión
+    </label>
+  </div>
+  <div id="difueditor" class="{{participa}} row">
 
-  {{> ad backImage=synPhoto adHeader="Busco a mi hermano, quizás puedas ser tú" adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+    <div class="form-group">
+      <label for="adtitle">¿Qué título pondrías?</label>
+      <input type="text" class="form-control" id="adtitle" placeholder="Por ej.: Busco a mi hermana, quizás puedas ser tú">
+    </div>
 
-
-  {{> photoUp photoUpOptions}}
+    <h4>Previsualización</h4>
+    <div col="row">
+        {{> ad backImage=dynPhoto adHeader=dynHeader adSubHeader="En España hay más de 300.000 casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" sample="false" subHeaderLink="/" }}
+    </div>
+    <div class="row" style="clear:both;">
+      {{> photoUp photoUpOptions}}
+    </div>
+  </div>
 
 </template>
