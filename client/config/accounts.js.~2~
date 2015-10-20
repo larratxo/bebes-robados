@@ -1,5 +1,0 @@
-Accounts.ui.config ({
-  forbidClientAccountCreation: false,
-  //passwordSignupFields: 'USERNAME_AND_EMAIL'
-  passwordSignupFields: 'USERNAME'
-});
