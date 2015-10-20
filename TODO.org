@@ -24,3 +24,5 @@ https://developers.google.com/maps/documentation/javascript/shapes#circles
 ** https://atmospherejs.com/d3js/d3
 ** Prevent navigation https://groups.google.com/forum/#!topic/meteor-talk/TB_px_fnlZs
 ** https://about.twitter.com/resources/buttons#tweet
+** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-defrag-warning-from-mongodb

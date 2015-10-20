@@ -87,10 +87,10 @@ renderNuevo = function(val) {
 renderFamiliar = function(val, type, doc) {
   // var hasFam = typeof doc.familiar === "string";
   var hasFam = typeof val === "string";
-
-  return "<a href='/persona/" + doc.familiar + "/'>" + (doc.buscasBebe? (hasFam? val: "") : "Hijo/a")  + "</a>";
+  var quien = doc.buscasBebe? (hasFam? val: "") : "Hijo/a";
+  return "<a href='/persona/" + doc.familiar + "/' title='Ir a la página del/la " +
+         quien + "'>" + quien  + "</a>";
   // return (doc.buscasBebe? (hasFam? val: "") : "Hijo/a");
-
 };
 
 TabularTables.Persons = new Tabular.Table({

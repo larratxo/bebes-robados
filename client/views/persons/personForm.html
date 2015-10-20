@@ -37,6 +37,11 @@
     <div class="tab-content bebe-tab-content">
       <div role="tabpanel" class="tab-pane active" id="datosbasicos">
         <legend>Datos del presunto robo</legend>
+        {{#if isEqual type "disabled"}}
+        <a href="{{pathFor 'viewUser' _id=doc.familiar}}">Persona que denuncia el presunto robo</a>.
+        <br>
+        <br>
+        {{/if}}
         {{#if afFieldValueIs name="buscasBebe" value=true}}
         {{> afQuickField name="parentesco" id="parentesco" options="allowed" firstOption="» Selecciona uno" }}
         {{/if}}
