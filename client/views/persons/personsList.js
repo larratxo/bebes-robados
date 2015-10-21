@@ -46,9 +46,8 @@ Template.personsList.onCreated( function() {
 
 Template.personsList.onRendered( function() {
   Session.set("DocumentTitle", "Busca bebe");
+  var searchInput = $("#personsTable_filter > label > input");
 
-  // Select all input
-  $("#personsTable_filter > label > input").focus(function() { $(this).select(); } ).mouseup(function (e) {e.preventDefault(); });
 
   var dataTable = $('#personsTable').closest('table').DataTable();
   onSliderRender(function() {
@@ -56,22 +55,22 @@ Template.personsList.onRendered( function() {
   });
 
   setEmptyTable("Ningún dato disponible");
-  Session.setDefault("main-home-search", "");
 
-  Deps.autorun(function () {
+  var search = Session.get("main-home-search");
+  if (typeof search === "string" && searchInput.val() !== search) {
+    searchInput.val(search);
+    //console.log("Search: " + search);
+    //console.log("Search input val: " + searchInput.val());
+    dataTable.search(search);
+  }
 
-    var search = Session.get("main-home-search");
-    if (typeof search === "string") {
+  // Select all input
+  searchInput.focus(function() { $(this).select(); } ).mouseup(function (e) {e.preventDefault(); });
 
-      $("#personsTable_filter > label > input").val(search);
-      // delete Session.keys["main-home-search"]
-      dataTable.search(search);
-    }
-  });
+  // Put the cursor there
+  searchInput.focus();
 
-  $("#personsTable_filter > label > input").focus();
-
-  $("#personsTable_filter > label > input").change(function() { /* delete Session.keys["main-home-search"] */ });
+  searchInput.change(function() { delete Session.keys["main-home-search"]; });
 
   // Render provincias
   Session.setDefault("buscaEnProvincia", "-1");
