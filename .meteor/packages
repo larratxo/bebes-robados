@@ -63,3 +63,5 @@ gadicohen:sitemaps
 pfafman:photo-up
 coffeescript
 ongoworks:spiderable
+djedi:sanitize-html
+djedi:sanitize-html-client

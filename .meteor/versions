@@ -45,6 +45,7 @@ cfs:worker@0.1.4
 check@1.0.6
 chuangbo:cookie@1.1.0
 coffeescript@1.0.10
+cosmos:browserify@0.5.1
 dandv:caret-position@2.1.1
 dburles:collection-helpers@1.0.3
 dburles:google-maps@1.1.5
@@ -55,6 +56,8 @@ ddp-rate-limiter@1.0.0
 ddp-server@1.2.1
 deps@1.0.9
 diff-sequence@1.0.1
+djedi:sanitize-html@1.11.1
+djedi:sanitize-html-client@1.11.1
 ecmascript@0.1.5
 ecmascript-collections@0.1.6
 ejson@1.0.7
