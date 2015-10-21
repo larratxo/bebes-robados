@@ -222,3 +222,62 @@ if (Meteor.isClient) {
   // https://github.com/aldeed/meteor-autoform#should-the-value-of-schema-and-collection-have-quotation-marks-around-it
   Template.registerHelper("Schema", Schema);
 }
+
+var onlyFields = { fields: {
+  _id: 1,
+  buscasBebe: 1,
+  parentesco: 1,
+  familiar: 1,
+  // nombreCompleto: 1,
+  fechaNacimiento: 1,
+  fechaNacimientoEsAprox: 1,
+  sexo: 1,
+  lugarNacimiento: 1,
+  lugarNacimientoDireccion: 1,
+  lugarNacimientoProvincia: 1,
+  lugarNacimientoProvinciaNombre: 1,
+  lugarNacimientoMunicipio: 1,
+  lugarNacimientoMunicipioNombre: 1,
+  lugarNacimientoPais: 1,
+  lugarNacimientoLatitud: 1,
+  lugarNacimientoLongitud: 1,
+  fechaFallecimiento: 1,
+  fechaFallecimientoEsAprox: 1,
+  // nombreCompletoMadre: 1,
+  // nombreCompletoPadreOConyuge: 1,
+  motivoMuerte: 1,
+  vistoCadaver: 1,
+  noVistoCadaverRazon: 1,
+  noVistoCadaverOtrasRazones: 1,
+  entierroPorHospital: 1,
+  entierroPorHospitalMotivos: 1,
+  entierroPorHospitalOtrasRazones: 1,
+  cementerioEnterrado: 1,
+  cementerioEnterradoLatitud: 1,
+  cementerioEnterradoLongitud: 1,
+  posibilidadPruebasADN: 1,
+  sepulturaTemporalPruebasADN: 1,
+  enOsarioComun: 1,
+  enOsarioComunDesdeFecha: 1,
+  motivosSospecha: 1,
+  nombreCompletoMedico: 1,
+  nombreCompletoMatrona: 1,
+  nombreCompletoEnfermera: 1,
+  nombreOtroPersonalMedico: 1,
+  nombreFuncionariosRegCivil: 1,
+  nombreFuncionariosCementario: 1,
+  nombreTrabajadoresFuneraria: 1,
+  nombreOtrosFuncionariosOTrabajadores: 1
+  /* gestionesRealizadasYDocumentos: 1,
+     denunciaEnComisaria: 1,
+     denunciaEnComisariaEstadoTramitacion: 1,
+     denunciaEnFiscalia: 1,
+     denunciaEnFiscaliaEstadoTramitacion: 1,
+     denunciaEnJuzgado: 1,
+     denunciaEnJuzgadoEstadoTramitacion: 1,
+     createdAt: 1,
+     updatedAt: 1 */
+}};
+
+addApiRoute("/bebe/:_id", Persons, onlyFields, "_id");
+addApiRoute("/bebes", Persons, onlyFields);

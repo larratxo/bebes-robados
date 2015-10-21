@@ -17,17 +17,21 @@ https://github.com/tomitrescak/meteor-uploads
 https://jsfiddle.net/kaiser/wzcst/light/
 https://developers.google.com/maps/documentation/javascript/shapes#circles
 ** http://meteorpedia.com/read/REST_API
+https://github.com/awatson1978/rest-api/blob/master/webapp/lib/rest/api.posts.js
 ** https://github.com/alanning/meteor-roles
 ** 2 backgrounds fijos
-** Notificaciones email
+** Notificaciones de comentarios por email
 ** SEO
-** Spiderable
+** DONE Spiderable
+CLOSED: [2015-10-21 mié 00:20]
 http://localhost:3000/?_escaped_fragment_=
 Me funciona con:
 ongoworks:spiderable@1.0.7
-sudo npm -g install phantomjs
+sudo npm -g install phantomjs (1.9.8 funciona)
 ** https://atmospherejs.com/d3js/d3
 ** Prevent navigation https://groups.google.com/forum/#!topic/meteor-talk/TB_px_fnlZs
 ** https://about.twitter.com/resources/buttons#tweet
 ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
-https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-defrag-warning-from-mongodb
+https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-defrag-warning-from-
+** Sanitize api params
+** Sanitize comments, ad-sample inputs

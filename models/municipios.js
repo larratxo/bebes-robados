@@ -11,3 +11,8 @@ municipio = function (cod_id) {
   var muns = Municipios.find({ cod_id: parseInt(cod_id)});
   return muns.count() > 0? muns.fetch()[0].name: "";
 }
+
+var onlyFields =  { fields: {_id:0, cod_id:1, cod_prov:1, cod_mun:1, name:1} };
+addApiRoute("/municipio/id/:cod_id", Municipios, onlyFields, "cod_id");
+addApiRoute("/municipio/prov/:cod_prov", Municipios, onlyFields, "cod_prov", true);
+addApiRoute("/municipios", Municipios, onlyFields);

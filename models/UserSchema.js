@@ -121,3 +121,14 @@ Meteor.users.allow({
 Tracker.autorun(function () {
     Meteor.subscribe("allUserData");
 });
+
+
+var onlyFields = { fields: {
+  username: 1,
+  name: 1,
+  "profile.redesSociales": 1
+}};
+
+addApiRoute("/person/:_id", Meteor.users, onlyFields, "_id");
+addApiRoute("/persons", Meteor.users, onlyFields);
+addApiRoute("/person/u/:username", Meteor.users, onlyFields, "username");

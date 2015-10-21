@@ -34,9 +34,9 @@ Template.adSample.events({
     Session.set('difuParticipar', e.target.checked);
   },
   'change #adtitle': function (e) {
-    Session.set('dynHeader', e.target.value);
+    Session.set('dynHeader', sanitizeHtml(e.target.value));
   },
   'keyup #adtitle': function (e) {
-    Session.set('dynHeader', e.target.value);
+    Session.set('dynHeader', sanitizeHtml(e.target.value));
   }
 });
