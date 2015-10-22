@@ -17,6 +17,7 @@ Router.map(function() {
   this.route('loading', { path: '/loading' }); // just for testing
   this.route('personsList', { path: '/bebes',
                               waitOn: function() {
+                                // Use instead: https://atmospherejs.com/meteorhacks/subs-manager
                                 return Meteor.subscribe('Persons');
 			      }
   });
@@ -26,7 +27,8 @@ Router.map(function() {
   this.route('quienesSomos', { path: '/quienesSomos' });
     this.route('userUpdate', { path: '/yo',
 			       waitOn: function() {
-				   return Meteor.subscribe('images');
+                                 // Use instead: https://atmospherejs.com/meteorhacks/subs-manager
+				 return Meteor.subscribe('images');
 			       }
 			     });
   this.route('viewUser', {
