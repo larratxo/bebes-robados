@@ -58,8 +58,8 @@ var profileUpdated = function () {
   return moment(Meteor.user().profile.updatedAt).diff(Meteor.user().profile.createdAt, "seconds") !== 0;
 }
 
-Router.onBeforeAction(requireLogin, {only: ['userUpdate'] } );
-// Router.onBeforeAction(requireLogin, {only: ['nuevoBebe', 'bebePage', 'userUpdate'] } );
+// Router.onBeforeAction(requireLogin, {only: ['userUpdate'] } );
+Router.onBeforeAction(requireLogin, {only: ['nuevoBebe', 'bebePage', 'userUpdate'] } );
 
 Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
 
