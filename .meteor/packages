@@ -12,14 +12,12 @@ iron:router
 raix:handlebar-helpers
 matteodem:easy-security
 fastclick
-zimme:iron-router-active
 manuelschoebel:ms-seo
 browser-policy
 natestrauser:animate-css
 dburles:collection-helpers
 meteorhacks:fast-render
 
-semantic:ui-css
 standard-minifiers
 meteor-base
 mobile-experience
@@ -55,7 +53,6 @@ liberation:shareit
 arkham:comments-ui
 email
 utilities:avatar
-yogiben:autoform-file
 cfs:filesystem
 cfs:standard-packages
 sacha:spin
@@ -65,3 +62,8 @@ coffeescript
 ongoworks:spiderable
 djedi:sanitize-html
 djedi:sanitize-html-client
+semantic:ui-css
+zimme:active-route
+yogiben:autoform-file
+cfs:graphicsmagick
+andruschka:bootstrap-image-gallery

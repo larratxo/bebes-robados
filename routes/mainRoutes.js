@@ -13,6 +13,11 @@ var requireLogin = function() {
   }
 }
 
+var profImages = function(user) {
+  // Use instead: https://atmospherejs.com/meteorhacks/subs-manager
+  return Meteor.subscribe('images', user);
+}
+
 Router.map(function() {
   this.route('loading', { path: '/loading' }); // just for testing
   this.route('personsList', { path: '/bebes',
@@ -25,14 +30,12 @@ Router.map(function() {
   this.route('nuevoBebe', { path: '/nuevoBebe' });
   this.route('underConstruction', { path: '/en-construccion' });
   this.route('quienesSomos', { path: '/quienesSomos' });
-    this.route('userUpdate', { path: '/yo',
-			       waitOn: function() {
-                                 // Use instead: https://atmospherejs.com/meteorhacks/subs-manager
-				 return Meteor.subscribe('images');
-			       }
-			     });
+  this.route('userUpdate', { path: '/yo', waitOn: function() { return profImages(Meteor.user()); } });
   this.route('viewUser', {
     path: '/persona/:_id',
+    waitOn: function() {
+      return profImages(Meteor.users.findOne({_id: this.params._id }));
+    },
     data: function() {
       return Meteor.users.findOne({_id: this.params._id });
     }

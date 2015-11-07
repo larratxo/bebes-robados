@@ -35,6 +35,7 @@ sudo npm -g install phantomjs (1.9.8 funciona)
 https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-defrag-warning-from-
 ** Sanitize api params
 ** Sanitize comments, ad-sample inputs
+** Error imagenes > tamaño máximo
 ** Packages
 *** https://atmospherejs.com/meteor/force-ssl
 *** https://github.com/Multiply/iron-router-progress <<

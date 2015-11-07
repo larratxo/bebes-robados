@@ -2,7 +2,7 @@
 var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
 Schema.UserProfile = new SimpleSchema({
-  name: { type: String, optional: true, label: "Nombre completo:",
+  name: { type: String, optional: true, label: "Nombre completo",
                     autoform: {afFieldInput: {placeholder: "Nombre y apellidos"} } },
   dni: { type: String, optional: true, label: "DNI (número y letra):",
          regEx: /^\d{8}[A-Z]$/,  autoform:{ mask: '99999999-A' } },
@@ -20,7 +20,7 @@ Schema.UserProfile = new SimpleSchema({
     type: String,
     autoform: {afFieldInput: {label: false, placeholder: "p.ej: http://twitter.com/tu_usuario"} },
     regEx: SimpleSchema.RegEx.Url
-  }, /*
+  },
     imagenes: {
 	type: [String],
 	label: 'Fotos mías y de familiares', optional: true
@@ -34,7 +34,7 @@ Schema.UserProfile = new SimpleSchema({
 		"remove-label": 'Borrar',
 		// previewTemplate: 'photoPreview',
 		collection: 'Images'
-	    }}}, */
+	    }}},
   createdAt: defaultCreatedAt,
   updatedAt: defaultUpdateAt
 });
@@ -121,7 +121,6 @@ Meteor.users.allow({
 Tracker.autorun(function () {
     Meteor.subscribe("allUserData");
 });
-
 
 var onlyFields = { fields: {
   username: 1,

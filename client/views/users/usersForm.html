@@ -4,14 +4,14 @@
   </div>
   <div class="row">
     <div class="col-xs-2">
-      {{> avatar size="large" user=currentUser shape="circle" }}
+      <!-- {{> avatar size="large" user=currentUser shape="circle" }} -->
     </div>
     <div class="col-xs-10">
-      {{intro}} {{#if isEqual type "update"}} <a href="{{pathFor 'viewUser' _id=doc._id}}">Aquí puedes consultar como ven otras personas tú perfil</a>. {{/if}}
+      {{intro}} {{#if isEqual type "update"}} <a href="{{pathFor 'viewUser' _id=doc._id}}">Aquí puedes consultar como ven otras personas tu perfil</a>. {{/if}}
     </div>
   </div>
   <br>
   <br>
-  {{> quickForm collection="Meteor.users" id=id template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"  doc=doc type=type buttonContent=btnTitle omitFields=omitFields fields="username, profile.name, emails, profile.dni, profile.telefono, profile.redesSociales"}}
+  {{> quickForm autosave=true collection="Meteor.users" id=id template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"  doc=doc type=type buttonContent=btnTitle omitFields=omitFields fields="username, profile.name, emails, profile.dni, profile.telefono, profile.redesSociales, profile.imagenes"}}
 
 </template>
