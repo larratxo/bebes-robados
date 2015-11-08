@@ -30,11 +30,12 @@ Router.map(function() {
   this.route('nuevoBebe', { path: '/nuevoBebe' });
   this.route('underConstruction', { path: '/en-construccion' });
   this.route('quienesSomos', { path: '/quienesSomos' });
-  this.route('userUpdate', { path: '/yo', waitOn: function() { return profImages(Meteor.user()); } });
+  //this.route('userUpdate', { path: '/yo', waitOn: function() { return profImages(Meteor.user()); } });
+  this.route('userUpdate', { path: '/yo', waitOn: function() { return Meteor.subscribe('allImages'); }});
   this.route('viewUser', {
     path: '/persona/:_id',
     waitOn: function() {
-      return profImages(Meteor.users.findOne({_id: this.params._id }));
+      return Meteor.subscribe('userAndImages', this.params._id);
     },
     data: function() {
       return Meteor.users.findOne({_id: this.params._id });
@@ -51,10 +52,7 @@ Router.map(function() {
   this.route('viewPerson', {
     path: '/bebe/:_id',
     waitOn: function() {
-
-      var person = Persons.findOne(this.params._id);
-
-      return profImages(Meteor.users.findOne(  {_id: person.familiar }));
+      return Meteor.subscribe('personAndImages', this.params._id);
     },
     data: function() {
       return Persons.findOne(this.params._id);

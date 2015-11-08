@@ -29,7 +29,8 @@ userImages = function(user) {
   if (_.isArray(imagenes) && imagenes.length > 0)
     return Images.find( { _id : { $in : imagenes } });
   else
-    return [];
+    // empty cursor
+    return Images.find({limit: 0 });
 };
 
 Images.allow({
