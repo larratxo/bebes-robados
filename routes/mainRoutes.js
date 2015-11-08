@@ -50,6 +50,12 @@ Router.map(function() {
   });
   this.route('viewPerson', {
     path: '/bebe/:_id',
+    waitOn: function() {
+
+      var person = Persons.findOne(this.params._id);
+
+      return profImages(Meteor.users.findOne(  {_id: person.familiar }));
+    },
     data: function() {
       return Persons.findOne(this.params._id);
     }

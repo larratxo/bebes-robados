@@ -11,12 +11,24 @@ personLabelHack = function() {
   $(".autoform-array-item-body > .form-group label.control-label").remove();
 };
 
+var getUser = function(param) {
+  if (typeof param.data === "string") {
+    user = Meteor.users.findOne({_id: param.data });
+  }
+  else {
+    user = param;
+  }
+  // console.log(user);
+  return user;
+};
+
 Template.userGallery.helpers({
   images: function () {
-    return userImages(this);
+    return userImages(getUser(this));
   },
   tieneFotos: function() {
-    return userImages(this).count() > 0;
+    var imagenes = getUser(this).profile.imagenes;
+    return _.isArray(imagenes) && imagenes.length > 0;
   }
 });
 

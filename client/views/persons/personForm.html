@@ -41,6 +41,7 @@
         <a href="{{pathFor 'viewUser' _id=doc.familiar}}">Persona que denuncia el presunto robo</a>.
         <br>
         <br>
+        {{> userGallery data=doc.familiar}}
         {{/if}}
         {{#if afFieldValueIs name="buscasBebe" value=true}}
         {{> afQuickField name="parentesco" id="parentesco" options="allowed" firstOption="» Selecciona uno" }}
