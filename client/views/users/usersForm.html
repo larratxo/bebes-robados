@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="col-xs-2">
-      <!-- {{> avatar size="large" user=currentUser shape="circle" }} -->
+      {{> avatar size="large" user=currentUser shape="circle" }}
     </div>
     <div class="col-xs-10">
       {{intro}} {{#if isEqual type "update"}} <a href="{{pathFor 'viewUser' _id=doc._id}}">Aquí puedes consultar como ven otras personas tu perfil</a>. {{/if}}
