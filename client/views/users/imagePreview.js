@@ -1,5 +1,5 @@
 Template.imagePreview.events( {
-  "keyup .photo-desc": function (event, template) {
+  "blur .photo-desc": function (event, template) {
     // console.log(event.target.value);
     var img = Images.findOne({_id: event.target.id});
     img.name(event.target.value, {store: 'images'});

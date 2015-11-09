@@ -34,10 +34,10 @@ sudo npm -g install phantomjs (1.9.8 funciona)
 ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
 https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-defrag-warning-from-
 ** Sanitize api params
-** Sanitize comments, ad-sample inputs
 ** Packages
 *** https://atmospherejs.com/meteor/force-ssl
 *** https://github.com/Multiply/iron-router-progress <<
 *** https://atmospherejs.com/percolate/migrations
 *** https://atmospherejs.com/raix/handlebar-helpers <<
 *** https://atmospherejs.com/reywood/publish-composite << person-bebe
+** Sanitize comments, ad-sample inputs

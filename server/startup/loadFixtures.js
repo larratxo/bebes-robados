@@ -1,3 +1,12 @@
+function loadUser(user) {
+  var userAlreadyExists = typeof Meteor.users.findOne({ username : user.username }) === 'object';
+
+  if (!userAlreadyExists) {
+    Accounts.createUser(user);
+    console.log("Creating user " + user.username);
+  }
+}
+
 function loadFixture(fixtures, collection) {
   for (var i = 0; i < fixtures.length; i+= 1) {
     //collection.remove({ });
@@ -6,6 +15,14 @@ function loadFixture(fixtures, collection) {
 }
 
 Meteor.startup(function () {
+  var users = YAML.eval(Assets.getText('users.yml'));
+
+  for (var key in users) {
+    if (users.hasOwnProperty(key)) {
+      loadUser(users[key]);
+    }
+  }
+
   var testUserId = Meteor.users.findOne( { username : "test" } )._id;
 
   if (Persons.find().count() === 0) {
@@ -13,7 +30,7 @@ Meteor.startup(function () {
     loadFixture(Fixtures.persons, Persons);
     Persons.update({}, {$set: {familiar: testUserId}}, { multi: true });
   } else {
-    // console.log("Not loading persons fixtures.");
+    console.log("Not loading persons fixtures.");
   }
   if (Provincias.find().count() === 0) {
     console.log("Loading provinces fixtures.");
@@ -29,4 +46,5 @@ Meteor.startup(function () {
       Municipios.insert({cod_id: parseInt(m[i].id), cod_prov : parseInt(m[i].cod_prov), cod_mun : parseInt(m[i].cod_mun), name: m[i].name });
     }
   }
+
 });

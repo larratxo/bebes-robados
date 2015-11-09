@@ -1,13 +1,24 @@
 var createThumb = function(fileObj, readStream, writeStream) {
   // Transform the image into a 10x10px thumbnail
+  // TODO check gm.isAvailable
   gm(readStream, fileObj.name()).resize('100', '100').stream().pipe(writeStream);
 };
 
+if (Meteor.isServer) {
+  // https://github.com/CollectionFS/Meteor-CollectionFS/blob/master/packages/standard-packages/ADVANCED.md
+  FS.TempStore.Storage = new FS.Store.FileSystem("_tempstore", {
+    internal :  true,
+    path : '/opt/bebes-uploads/tmp',
+  });
+};
+
+// Patched mupx: /usr/lib/node_modules/mupx/templates/linux/start.sh
+// https://stackoverflow.com/questions/31901697/meteor-up-docker-and-graphicsmagick
 Images = new FS.Collection("images", {
   stores: [
     // other paths can use .metor/local and delete on each build
-    new FS.Store.FileSystem("thumbs", { path: "~/bebe-uploads-thumbs",  transformWrite: createThumb }),
-    new FS.Store.FileSystem("images", { path: "~/bebe-uploads"})],
+    new FS.Store.FileSystem("thumbs", { path: "/opt/bebes-uploads/uploads-thumbs",  transformWrite: createThumb }),
+    new FS.Store.FileSystem("images", { path: "/opt/bebes-uploads/uploads"})],
   filter: {
     maxSize: 7340032, // 5242880,
     allow: {

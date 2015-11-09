@@ -42,7 +42,9 @@
   <div id="links" class="col-sm-9">
     {{#each images}}
     <div>
-      <a href="{{this.url store='images'}}" target="_blank" title="{{this.name store='images'}}" data-gallery><img src="{{this.url store='thumbs' }}" alt="{{this.name store='images'}}"  /></a>
+      <a href="{{this.url store='images'}}" target="_blank" title="{{this.name store='images'}}" data-gallery>
+        <img src="{{this.url store='thumbs' }}" class="img-fileUpload-thumbnail img-thumbnail img-rounded" alt="{{this.name store='images'}}">
+      </a>
     </div>
     {{/each}}
   </div>

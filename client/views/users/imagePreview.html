@@ -3,7 +3,7 @@
   <button type="button" class="js-af-select-file">Elige una foto</button>
 </template>
 <template name="imagePreview">
-  <a href="{{file.url}}" target="_blank"><img src="{{file.url}}" class="img-fileUpload-thumbnail img-thumbnail img-rounded"></a>
+  <a href="{{file.url store='images'}}" target="_blank"><img src="{{file.url store='thumbs'}}" class="img-fileUpload-thumbnail img-thumbnail img-rounded"></a>
   <p class="help-block"></p>
-  <input type="text" class="photo-desc form-control" id="{{file._id}}" value="{{file.original.name}}" placeholder="Describe la imagen">
+  <input type="text" class="photo-desc form-control" id="{{file._id}}" value="{{file.name store='images'}}" placeholder="Describe la imagen">
 </template>
