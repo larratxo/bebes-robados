@@ -5,5 +5,5 @@ Meteor.publish("allUsers", function () {
         return Meteor.users.find({});
     });
 Meteor.publish("allUserData", function () {
-  return Meteor.users.find({}, {fields: {'emails': 1, "profile.name": 1 }});
+  return Meteor.users.find({}, {fields: {'emails': 1, "profile.name": 1, "profile.imagenes" : 1, "profile.redesSociales": 1 }});
 });
