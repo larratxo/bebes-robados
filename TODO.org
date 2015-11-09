@@ -9,10 +9,6 @@ https://support.google.com/adsense/answer/6002621?hl=en
 http://www.stefanmaescher.com/top10-banner-sizes/ . Medium Rectangle: 300×250, Leaderboard: 728×90, Wide Skyscraper: 160×600
 https://github.com/meteor-london/banner/
 https://github.com/meteor-london/banner/blob/master/banner.js
-** Uploads
-https://atmospherejs.com/andruschka/image-gallery
-https://atmospherejs.com/andruschka/bootstrap-image-gallery
-https://github.com/tomitrescak/meteor-uploads
 ** Markers in a circle
 https://jsfiddle.net/kaiser/wzcst/light/
 https://developers.google.com/maps/documentation/javascript/shapes#circles
