@@ -42,7 +42,7 @@
   <div id="links" class="col-sm-9">
     {{#each images}}
     <div>
-      <a href="{{this.url store='images'}}" target="_blank" title="{{this.name store='images'}}" data-gallery><img src="{{this.url store='thumbs' }}" alt=""  /></a>
+      <a href="{{this.url store='images'}}" target="_blank" title="{{this.name store='images'}}" data-gallery><img src="{{this.url store='thumbs' }}" alt="{{this.name store='images'}}"  /></a>
     </div>
     {{/each}}
   </div>
