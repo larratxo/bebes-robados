@@ -1,6 +1,6 @@
 var options = {
   cookieTitle: "Uso de Cookies",
-  cookieMessage: "Usamos cookies para asegurar un mejor uso de nuestra web.",
+  cookieMessage: "Utilizamos cookies para asegurar un mejor uso de nuestra web. Si continúas navegando, consideramos que aceptas su uso.",
   // cookieMessageImply: "Al continuar usando nuestra web sin cambiar la configuración, estas aceptando que usemos estas cookies.",
   showLink: false,
   position: 'top',
