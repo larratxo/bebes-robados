@@ -1,6 +1,18 @@
 // https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript
 var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
+var onAfterUp = function() {
+  return function(err, fileObj) {
+    if (err) {
+      if (Meteor.isClient) {
+        if (err.message.indexOf("file does not pass collection filters") > -1) {
+          $.bootstrapGrowl("Error: La imagen es mayor del tamaño permitido (7MB)", {type: 'danger', align: 'center'} );
+        }
+      }
+    }
+  }
+};
+
 Schema.UserProfile = new SimpleSchema({
   name: { type: String, optional: true, label: "Nombre completo",
                     autoform: {afFieldInput: {placeholder: "Nombre y apellidos"} } },
@@ -21,20 +33,21 @@ Schema.UserProfile = new SimpleSchema({
     autoform: {afFieldInput: {label: false, placeholder: "p.ej: http://twitter.com/tu_usuario"} },
     regEx: SimpleSchema.RegEx.Url
   },
-    imagenes: {
-	type: [String],
-	label: 'Fotos mías y de familiares', optional: true
-    },
-    "imagenes.$": {
-	autoform: {
-	    afFieldInput: {
-		type: 'fileUpload',
-		accept: 'image/*',
-		label: 'Elige una foto',
-		"remove-label": 'Borrar',
-		// previewTemplate: 'photoPreview',
-		collection: 'Images'
-	    }}},
+  imagenes: {
+    type: [String],
+    label: 'Fotos mías y de familiares', optional: true
+  },
+  "imagenes.$": {
+    autoform: {
+      afFieldInput: {
+        onAfterInsert: onAfterUp,
+        type: 'fileUpload',
+	accept: 'image/*',
+	label: 'Elige una foto',
+	"remove-label": 'Borrar',
+	// previewTemplate: 'photoPreview',
+	collection: 'Images'
+      }}},
   createdAt: defaultCreatedAt,
   updatedAt: defaultUpdateAt
 });

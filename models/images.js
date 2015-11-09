@@ -9,13 +9,14 @@ Images = new FS.Collection("images", {
     new FS.Store.FileSystem("thumbs", { path: "~/bebe-uploads-thumbs",  transformWrite: createThumb }),
     new FS.Store.FileSystem("images", { path: "~/bebe-uploads"})],
   filter: {
-    maxSize: 5242880,
+    maxSize: 7340032, // 5242880,
     allow: {
       contentTypes: ['image/*'] //allow only images in this FS.Collection
     }
   },
   onInvalid: function (message) {
     if (Meteor.isClient) {
+      console.log(message);
       $.bootstrapGrowl(message, {type: 'danger', align: 'center'} );
     } else {
       console.log(message);

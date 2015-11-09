@@ -41,5 +41,3 @@ https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-d
 *** https://atmospherejs.com/percolate/migrations
 *** https://atmospherejs.com/raix/handlebar-helpers <<
 *** https://atmospherejs.com/reywood/publish-composite << person-bebe
-** Error imagenes > tamaño máximo
-** https://github.com/selaias/meteor-cookie-consent
