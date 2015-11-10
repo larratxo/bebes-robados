@@ -1,8 +1,8 @@
 <template name="basicLayout">
   {{> header}}
-  <section id="lorem-photos">
+  <section id="lorem-photos" style="display:none">
     {{#each photos}}
-    <img src="/images/lorem-photos/{{this}}.jpg">
+    <img id="lorem-photo-{{this}}" src="/images/lorem-photos/{{this}}.jpg">
     {{/each}}
   </section>
   {{> cookieConsent}}
