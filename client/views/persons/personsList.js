@@ -34,7 +34,11 @@ Template.personsList.events({
     var dataTable = $(event.target).closest('table').DataTable();
     var rowData = dataTable.row(event.currentTarget).data();
     // console.log(rowData);
-    Router.go('viewPerson', { _id: rowData._id instanceof Object ? rowData._id._str : rowData._id  });
+    if (typeof rowData.slug === "string") {
+      Router.go('viewPersonSlug', { slug: rowData.slug });
+    } else {
+      Router.go('viewPerson', { _id: rowData._id instanceof Object ? rowData._id._str : rowData._id  });
+    }
   }
 });
 
@@ -47,7 +51,6 @@ Template.personsList.onCreated( function() {
 Template.personsList.onRendered( function() {
   Session.set("DocumentTitle", "Busca bebe");
   var searchInput = $("#personsTable_filter > label > input");
-
 
   var dataTable = $('#personsTable').closest('table').DataTable();
   onSliderRender(function() {

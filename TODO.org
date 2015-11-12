@@ -24,8 +24,12 @@ http://localhost:3000/?_escaped_fragment_=
 Me funciona con:
 ongoworks:spiderable@1.0.7
 sudo npm -g install phantomjs (1.9.8 funciona)
-** https://atmospherejs.com/d3js/d3
+** Charts / Gráficos
+*** https://atmospherejs.com/d3js/d3
 http://bl.ocks.org/dbuezas/9306799
+http://bl.ocks.org/mbostock/1667367
+http://bl.ocks.org/mbostock/3885705
+*** http://www.chartjs.org/
 ** Prevent navigation https://groups.google.com/forum/#!topic/meteor-talk/TB_px_fnlZs
 ** https://about.twitter.com/resources/buttons#tweet
 ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
@@ -39,3 +43,8 @@ https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-d
 *** https://atmospherejs.com/reywood/publish-composite << person-bebe
 ** Sanitize comments, ad-sample inputs
 ** Pais != España
+** Reconocimiento facial
+http://www.geek.com/news/face-recognition-app-on-facebook-1004222/
+https://facedetection.com/face-finder-people-search/
+http://arstechnica.com/uncategorized/2007/05/facial-recognition-slipped-into-google-image-search/
+http://www.makeuseof.com/tag/3-fascinating-search-engines-search-faces/

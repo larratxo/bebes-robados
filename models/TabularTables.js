@@ -117,6 +117,7 @@ TabularTables.Persons = new Tabular.Table({
     {data: "createdAt", title: "Creado", render: renderDate, visible: false},
     {data: "updatedAt", title: "Actualizado", render:
      renderDate, visible: false},
+    {data: "slug", title: "slug", visible: false},
     {data: "parentesco", title: "¿Quién?",
      render: renderFamiliar, className: "column-center"},
     {data: "familiar", title: "", visible: false},

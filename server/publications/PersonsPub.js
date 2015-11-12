@@ -9,10 +9,11 @@ Meteor.publish('personAndImages', function (id) {
   if (person.count() > 0) {
     var familiar = person.fetch()[0].familiar;
     check(familiar, String);
-    var userFamiliar = Meteor.users.findOne({_id: familiar});
+    var userFamiliar = Meteor.users.find({_id: familiar});
     return [
       person,
-      userImages(userFamiliar)
+      userFamiliar,
+      userImages(userFamiliar.fetch()[0])
     ];
   } else {
     // empty cursor
@@ -20,10 +21,31 @@ Meteor.publish('personAndImages', function (id) {
   }
 });
 
+Meteor.publish('personAndImagesViaSlug', function (slug) {
+  check(slug, String);
+  var person = Persons.find({slug: slug});
+  if (person.count() > 0) {
+    var familiar = person.fetch()[0].familiar;
+    check(familiar, String);
+    var userFamiliar = Meteor.users.find({_id: familiar});
+    return [
+      person,
+      userFamiliar,
+      userImages(userFamiliar.fetch()[0])
+    ];
+  } else {
+    // empty cursor
+    return Persons.find({limit: 0});
+  }
+});
 
 Meteor.publish('userAndImages', function (id) {
   check(id, String);
-  var user = Meteor.users.find({_id: id});
+  var user;
+  user = Meteor.users.find({username: id});
+  if (user.count() === 0) {
+    user = Meteor.users.find({_id: id});
+  }
   if (user.count() > 0) {
     return [
       user,

@@ -281,3 +281,12 @@ var onlyFields = { fields: {
 
 addApiRoute("/bebe/:_id", Persons, onlyFields, "_id");
 addApiRoute("/bebes", Persons, onlyFields);
+
+Persons.friendlySlugs(
+  {
+    slugFrom: 'nombreCompleto',
+    slugField: 'slug',
+    distinct: true,
+    updateSlug: true
+  }
+);
