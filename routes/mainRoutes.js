@@ -67,11 +67,17 @@ Router.map(function() {
 
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',
+    waitOn: function() {
+      return Meteor.subscribe('Municipios');
+    },
     data: function() {
       return Persons.findOne(this.params._id);
     }
   });
   this.route('editPersonSlug', {
+    waitOn: function() {
+      return Meteor.subscribe('Municipios');
+    },
     path: '/edita-bebe/:slug',
     data: function() {
       return Persons.findOne({slug: this.params.slug});
