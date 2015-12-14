@@ -1,4 +1,7 @@
 /*global Accounts */
+
+// https://iron-meteor.github.io/iron-router/
+
 Router.route('/', function () {
   this.render('home');
   SEO.set({ title: 'Inicio -' + Meteor.App.NAME });
