@@ -38,21 +38,3 @@ Meteor.publish('personAndImagesViaSlug', function (slug) {
     return Persons.find({limit: 0});
   }
 });
-
-Meteor.publish('userAndImages', function (id) {
-  check(id, String);
-  var user;
-  user = Meteor.users.find({username: id});
-  if (user.count() === 0) {
-    user = Meteor.users.find({_id: id});
-  }
-  if (user.count() > 0) {
-    return [
-      user,
-      userImages(user.fetch()[0])
-    ];
-  } else {
-    // empty cursor
-    return Meteor.users.find({limit: 0});
-  }
-});
