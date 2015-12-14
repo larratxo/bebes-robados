@@ -44,12 +44,16 @@ Router.map(function() {
     },
     data: function() {
       var username = Meteor.users.findOne({username: this.params._id });
+      //console.log("persona id: "+ this.params._id);
+      //console.log("persona username: "+ username);
       if (undef(username)) {
         var user = Meteor.users.findOne({_id: this.params._id });
-        if (undef(user.username)) {
+        //console.log("persona user: " + user);
+        if (undef(user) || undef(user.username)) {
           return user;
         }
         else {
+          //console.log("persona redirecting to " + user.username);
           this.redirect('/persona/' + user.username);
         }
       }
