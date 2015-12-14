@@ -48,3 +48,5 @@ http://www.geek.com/news/face-recognition-app-on-facebook-1004222/
 https://facedetection.com/face-finder-people-search/
 http://arstechnica.com/uncategorized/2007/05/facial-recognition-slipped-into-google-image-search/
 http://www.makeuseof.com/tag/3-fascinating-search-engines-search-faces/
+** Recommendation, recomendaciones
+https://github.com/samcorcos/recEngine/blob/master/README.md
