@@ -136,7 +136,7 @@ Template.home.onCreated(function() {
         // https://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
         google.maps.event.addListener(marker, 'click', (function(marker, person) {
           return function() {
-            infowindow.setContent("<a href='/bebe/" + person._id + "/'>" +
+            infowindow.setContent("<a href='/bebe/" + person.slug + "/'>" +
                                     (person.buscasBebe? "Buscamos bebe ":
                                      "Busco a mi familia biológica ") + renderSexoAlt(person.sexo) +
                                       (person.fechaNacimiento instanceof Date?
