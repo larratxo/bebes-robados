@@ -113,6 +113,7 @@ TabularTables.Persons = new Tabular.Table({
   order: [[1, "desc"], [ 0, "desc" ]],
   // https://datatables.net/examples/basic_init/scroll_x.html
   scrollX: true,
+  stateSave: true,
   columns: [
     {data: "createdAt", title: "Creado", render: renderDate, visible: false},
     {data: "updatedAt", title: "Actualizado", render:
