@@ -223,6 +223,16 @@ if (Meteor.isClient) {
   Template.registerHelper("Schema", Schema);
 }
 
+
+if (Meteor.isServer) {
+  // https://github.com/matb33/meteor-collection-hooks
+  Persons.after.insert(function (userId, doc) {
+    // console.log("Enlazando usuario que registra con bebe para mostrar sugerencias");
+    // recEngine.link(userId, doc._id);
+    // TODO: in future use predition.io
+  });
+}
+
 var onlyFields = { fields: {
   _id: 1,
   buscasBebe: 1,

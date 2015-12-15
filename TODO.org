@@ -48,5 +48,9 @@ http://www.geek.com/news/face-recognition-app-on-facebook-1004222/
 https://facedetection.com/face-finder-people-search/
 http://arstechnica.com/uncategorized/2007/05/facial-recognition-slipped-into-google-image-search/
 http://www.makeuseof.com/tag/3-fascinating-search-engines-search-faces/
-** Recommendation, recomendaciones
+** Recommendation, recomendaciones, machine learning
 https://github.com/samcorcos/recEngine/blob/master/README.md
+https://prediction.io/ https://templates.prediction.io/
+https://hub.docker.com/r/harshjv/predictionio/
+https://forums.meteor.com/t/atmosphere-packages-for-machine-learning-meteor-app-integration/14535/3
+http://www.mickaellegal.com/blog/2014/1/30/how-to-build-a-recommender
