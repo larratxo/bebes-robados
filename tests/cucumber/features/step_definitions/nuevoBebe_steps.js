@@ -30,14 +30,17 @@ module.exports = function () {
       client.setValue('input[name="nombreCompleto"]', bebes[i][0]);
       client.click('#sexo option[value="' + bebes[i][1] + '"]');
 
-      client.click('input[name="fechaNacimiento"]');
+      // client.click('input[name="fechaNacimiento"]');
+
+      // Not working
+
       // client.keys("11");
-      //client.click('input[name="fechaNacimiento"]');
+      // client.click('input[name="fechaNacimiento"]');
       // client.keys("\uE012\uE012\uE012\uE012\uE012");
-      client.keys("\uE015");
+      // client.keys("\uE015");
       // client.keys(['\uE012', '\uE012','\uE012', '\uE012']);
       // client.keys("\ue017\ue017\ue017\ue017\ue017\ue017\ue017\ue017");
-      client.keys(bebes[i][8]);
+      // client.keys(bebes[i][8]);
 
       client.setValue('input[name="lugarNacimiento"]', bebes[i][5]);
       client.selectByVisibleText(
