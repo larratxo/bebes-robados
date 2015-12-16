@@ -7,7 +7,8 @@ Schema.Municipios = new SimpleSchema({
 
 Municipios = new Mongo.Collection('Municipios');
 
-municipio = function (cod_id) {
+// No usado ahora
+municipioFind = function (cod_id) {
   var muns = Municipios.find({ cod_id: parseInt(cod_id)});
   return muns.count() > 0? muns.fetch()[0].name: "";
 }

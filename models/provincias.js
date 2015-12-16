@@ -5,7 +5,8 @@ Schema.Provincias = new SimpleSchema({
 
 Provincias = new Mongo.Collection('Provincias');
 
-provincia = function (prov) {
+// No usado ahora
+provinciaFind = function (prov) {
   var prov =  Provincias.find({ code: parseInt(prov) });
   return prov.count() > 0? prov.fetch()[0].name: "";
 }

@@ -12,7 +12,19 @@ meteor
 
 ## Instalación
 
-Te recomendamos usar `meteor up` junto con `docker`.
+Te recomendamos usar `meteor up` junto con `docker` (mupx).
+
+## Tests
+
+Usamos [CucumberJS](https://github.com/cucumber/cucumber-js) a través de [chimp](https://chimp.readme.io).
+
+```bash
+# You should start meteor
+meteor
+# And later run the tests and watch for changes
+cd tests/cucumber
+chimp --watch --ddp=http://localhost:3000
+```
 
 ## Desarrolladores
 

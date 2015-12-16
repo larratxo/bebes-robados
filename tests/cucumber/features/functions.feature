@@ -18,7 +18,6 @@ Característica: Longitudes y latitudes Correctas y otras funciones básicas
     Dado el número "-20.44"
     Entonces debe ser una longitud o latitud válida
 
-
   Escenario: Verifico que una palabra no es una latitud correcta
     Dado la cadena "veinte"
     Entonces no debe ser una longitud o latitud válida

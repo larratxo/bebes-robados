@@ -5,9 +5,34 @@ module.exports = function () {
 
   this.Before(function () {
 
+    var isLogged = function(client) {
+      return client.execute(function () {
+        return typeof Meteor.userId() === "string";
+      }).value;
+    };
+
+    var isNotLogged = function(client) {
+      return !isLogged(client);
+    }
+
+    var openLoginDialog = function (client) {
+      var doesExist = client.waitForVisible("li#login-dropdown-list a");
+      expect(doesExist).toBe(true);
+      client.click("li#login-dropdown-list a");
+      client.waitForVisible('#login-username-or-email');
+    }
+
     var loginBegin = function (client) {
-        // http://webdriver.io/api/utility/waitForVisible.html
-        client.waitForVisible('#login-username-or-email');
+      // http://webdriver.io/api/utility/waitForVisible.html
+      if (isNotLogged(client)) {
+        // client.click("li#login-dropdown-list.dropdown a.dropdown-toggle");
+        openLoginDialog(client);
+      } else {
+        client.execute(function () {
+          Meteor.logout();
+        });
+        openLoginDialog(client);
+      }
     };
 
     var loginEnd = function (client, passwd) {
@@ -34,19 +59,29 @@ module.exports = function () {
       },
 
       checkCurrentUser: function (name) {
-        client.waitForText('li#login-dropdown-list.dropdown a.dropdown-toggle',
-                           name.toUpperCase());
+        client.waitForText('#login-dropdown-list', name.toUpperCase());
+        var currentuser = null;
+        while (currentuser === null) {
+          currentuser = client.execute(function () {
+            return Meteor.user();
+          }).value;
+        }
+        var currentname = client.execute(function () {
+          return Meteor.user().username;
+        }).value;
+        // console.log(currentname);
+        expect(currentname).toBe(name);
       },
 
-      logout: function () {
+      logout: function (done) {
         client.executeAsync(function (done) {
           Meteor.logout(done);
         });
       },
 
       createAccount: function (username, email, passwd) {
-        // http://webdriver.io/api/protocol/executeAsync.html
         client.executeAsync(function (username, email, passwd, done) {
+          Meteor.logout();
           Accounts.createUser({
               username: username,
               email: email,
@@ -54,15 +89,6 @@ module.exports = function () {
           }, done);
         }, username, email, passwd);
       },
-
-      createSomeAccount: function(done) {
-        var username = randomUsername();
-        var email = randomEmail();
-        var passwd = randomPassword();
-        this.AuthenticationHelper.createAccount(username, email, passwd);
-        this.AuthenticationHelper.checkCurrentUser(username);
-        done();
-      }
     };
   });
 };

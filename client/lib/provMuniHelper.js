@@ -1,3 +1,25 @@
+municipio = function (cod_id) {
+  var name;
+  $.each(municipes, function(number, municipe) {
+    if (municipe.id === parseInt(cod_id)) {
+      name = municipe.name;
+      return false;
+    }
+  });
+  return name;
+}
+
+provincia = function (prov) {
+  var name;
+  $.each(provinces, function(number, province) {
+    if (province.code === prov) {
+      name = province.name;
+      return false;
+    }
+  });
+  return name;
+}
+
 renderProvincias = function(prevProv, prevMuni, onProvSelect, onMuniSelect, defProvText, defMuniText) {
   var provinceCssSelector = '.ps-prov';
   var municipeCssSelector = '.ps-mun';

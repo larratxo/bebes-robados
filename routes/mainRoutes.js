@@ -30,7 +30,10 @@ Router.map(function() {
 			      }
   });
   this.route('adSample', { path: '/ad-sample' }); // just for testing
-  this.route('nuevoBebe', { path: '/nuevoBebe' });
+  this.route('nuevoBebe', {
+    path: '/nuevoBebe'
+  }
+  );
   this.route('underConstruction', { path: '/en-construccion' });
   this.route('quienesSomos', { path: '/quienesSomos' });
 
@@ -67,17 +70,11 @@ Router.map(function() {
 
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',
-    waitOn: function() {
-      return Meteor.subscribe('Municipios');
-    },
     data: function() {
       return Persons.findOne(this.params._id);
     }
   });
   this.route('editPersonSlug', {
-    waitOn: function() {
-      return Meteor.subscribe('Municipios');
-    },
     path: '/edita-bebe/:slug',
     data: function() {
       return Persons.findOne({slug: this.params.slug});

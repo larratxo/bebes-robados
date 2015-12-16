@@ -4,6 +4,15 @@ Deps.autorun(function () {
   //             ", max: " + Session.get("maxBornYear"));
 });
 
+Session.setDefault("minBornYear", initYear);
+Session.setDefault("maxBornYear", thisYear);
+calcShowAll = function() {
+  var showAll = Session.get("minBornYear") === initYear &&
+  Session.get("maxBornYear") === thisYear;
+  // console.log("Show all: " + showAll);
+  return showAll;
+};
+
 onSliderRender = function (changeCallback) {
   var initSpan = this.$("#initSliderYear");
   var endSpan = this.$("#endSliderYear");

@@ -124,6 +124,7 @@ Template.bebeForm.onRendered(function() {
   var municipeName = "#lugarNacimientoMunicipioNombre";
 
   var onProvSelect = function(prov) {
+    // console.log("Prov select " + prov + " " + typeof prov);
     $(municipeName).val("");
     if (!isNaN(prov) && prov >= 0) {
       $(provinceName).val(provincia(prov));
@@ -135,7 +136,9 @@ Template.bebeForm.onRendered(function() {
 
   var onMuniSelect = function(muni) {
     if (!isNaN(muni) && muni >= 0) {
-      $(municipeName).val(municipio(muni));
+      var muniName = municipio(muni);
+      // console.log("Muni select de " + muni + ": " +  muniName + " " + typeof muni);
+      $(municipeName).val(muniName);
     } else {
       $(municipeName).val("");
     }

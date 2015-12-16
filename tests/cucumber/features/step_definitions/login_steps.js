@@ -4,22 +4,43 @@ module.exports = function () {
   var username;
   var email;
   var passwd;
+
   var goHome =  function() {
     client.url(process.env.ROOT_URL);
+    client.waitForVisible('.Home');
     expect(client.isVisible('.Home')).toBe(true);
     // Close alert
     client.click('span.close');
+    if (client.isVisible('#acceptCookies')) {
+      client.click('#acceptCookies');
+    };
   };
 
-  this.Given(/^I have an account$/, function (callback) {
+  var createAccountAndLogin = function (callback, auth) {
     // https://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
     goHome();
+    auth.logout();
     username = randomUsername();
     email = randomEmail();
     passwd = randomPassword();
-    this.AuthenticationHelper.createAccount(username, email, passwd);
-    this.AuthenticationHelper.checkCurrentUser(username);
+    auth.createAccount(username, email, passwd);
+    auth.checkCurrentUser(username);
     callback();
+  };
+
+  this.Given(/^que me logeo con el usuario de pruebas$/, function (callback) {
+    goHome();
+    this.AuthenticationHelper.loginUsername("test", email, "testtest");
+    this.AuthenticationHelper.checkCurrentUser("test");
+    callback();
+  });
+
+  this.Given(/^que tengo una cuenta y estoy logeado con ella$/, function (callback) {
+    createAccountAndLogin(callback, this.AuthenticationHelper);
+  });
+
+  this.Given(/^I have an account and I logged in$/, function (callback) {
+    createAccountAndLogin(callback, this.AuthenticationHelper);
   });
 
   this.Given(/^I am signed out$/, function (callback) {
@@ -35,9 +56,9 @@ module.exports = function () {
   });
 
   this.When(/^I click on sign in link$/, function (callback) {
-    client.waitForExist('li#login-dropdown-list');
-    expect(client.isVisible('li#login-dropdown-list')).toBe(true);
-    client.click('li#login-dropdown-list');
+    var doesExist = client.waitForExist('li#login-dropdown-list a');
+    expect(doesExist).toBe(true);
+    client.click('li#login-dropdown-list a');
     callback();
   });
 
@@ -53,7 +74,7 @@ module.exports = function () {
 
   this.Then(/^I should be logged in$/, function (callback) {
     this.AuthenticationHelper.checkCurrentUser(username);
-    this.AuthenticationHelper.logout();
+    // this.AuthenticationHelper.logout();
     callback();
   });
 
@@ -68,9 +89,21 @@ module.exports = function () {
   });
 
   this.Then(/^I can edit my profile$/, function (callback) {
-    pending();
-    client.waitForVisible('input[name="profile.dni"]');
-    client.setValue('input[name="profile.dni"]', "000000000N");
+    // pending();
+    client.url(process.env.ROOT_URL + "/yo");
+    // goHome();
+    // this.AuthenticationHelper.loginEmail(username, email, passwd);
+    // client.waitForExist('li#login-dropdown-list');
+    // expect(client.isVisible('li#login-dropdown-list')).toBe(true);
+    // client.click('li#login-dropdown-list');
+    // client.waitForVisible('#login-buttons-open-change-settings');
+
+    // client.click('#login-buttons-open-change-settings');
+    client.waitForVisible('.UserUpdate');
+    client.waitForExist('input[name="profile.dni"');
+    client.setValue('input[name="profile.dni"]', "00000000N");
+    client.waitForVisible('.btn-form-submit');
+    client.click(".btn-form-submit");
     callback();
   });
 };
