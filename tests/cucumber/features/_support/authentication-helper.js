@@ -24,6 +24,7 @@ module.exports = function () {
 
     var loginBegin = function (client) {
       // http://webdriver.io/api/utility/waitForVisible.html
+      client.deleteCookie("meteor_login_token");
       if (isNotLogged(client)) {
         // client.click("li#login-dropdown-list.dropdown a.dropdown-toggle");
         openLoginDialog(client);
@@ -35,14 +36,17 @@ module.exports = function () {
       }
     };
 
-    var loginEnd = function (client, passwd) {
+    var loginEnd = function (client, passwd, shouldFail) {
       client.setValue('#login-password', passwd);
       client.click('#login-buttons-password');
       client.waitForVisible(
         'li#login-dropdown-list.dropdown a.dropdown-toggle');
       // No error
+      if (shouldFail === undefined) {
+        shouldFail = false;
+      }
       client.waitForVisible( // true means the opposite
-                             '#login-dropdown-list > div > div.alert.alert-danger', 500, true);
+                             '#login-dropdown-list > div > div.alert.alert-danger', undefined, !shouldFail);
     };
 
     this.AuthenticationHelper = {
@@ -52,10 +56,24 @@ module.exports = function () {
         loginEnd(client, passwd);
       },
 
-      loginUsername: function (username, email, passwd) {
+      loginUsername: function (username, email, passwd, shouldFail) {
         loginBegin(client);
         client.setValue('#login-username-or-email', username);
-        loginEnd(client, passwd);
+        loginEnd(client, passwd, shouldFail);
+      },
+
+      registerUsername: function (username, email, passwd, conditions) {
+        loginBegin(client);
+        client.waitForVisible('#signup-link');
+        client.click('#signup-link');
+        client.waitForVisible('#login-conServicioAceptadas');
+        client.setValue('input[id="login-username"]', username);
+        client.setValue('input[id="login-email"]', email);
+        client.setValue('input[id="login-password"]', passwd);
+        if (conditions) {
+          client.click('input[id="login-conServicioAceptadas"]');
+        }
+        client.click("#login-buttons-password");
       },
 
       checkCurrentUser: function (name) {
@@ -73,6 +91,14 @@ module.exports = function () {
         expect(currentname).toBe(name);
       },
 
+      isLogged: function () {
+        return isLogged(client);
+      },
+
+      isNotLogged: function () {
+        return isNotLogged(client);
+      },
+
       logout: function (done) {
         client.executeAsync(function (done) {
           Meteor.logout(done);
@@ -80,15 +106,16 @@ module.exports = function () {
       },
 
       createAccount: function (username, email, passwd) {
-        client.executeAsync(function (username, email, passwd, done) {
+        client.execute(function (username, email, passwd, done) {
           Meteor.logout();
           Accounts.createUser({
-              username: username,
-              email: email,
-              password: passwd
+            username: username,
+            email: email,
+            password: passwd
           }, done);
         }, username, email, passwd);
       },
+
     };
   });
 };

@@ -5,31 +5,25 @@ module.exports = function () {
   var email;
   var passwd;
 
-  var goHome =  function() {
-    client.url(process.env.ROOT_URL);
-    client.waitForVisible('.Home');
-    expect(client.isVisible('.Home')).toBe(true);
-    // Close alert
-    client.click('span.close');
-    if (client.isVisible('#acceptCookies')) {
-      client.click('#acceptCookies');
-    };
+  var generateUserData = function () {
+    username = randomUsername();
+    email = randomEmail();
+    passwd = randomPassword();
   };
 
   var createAccountAndLogin = function (callback, auth) {
     // https://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
-    goHome();
+    goHome(client);
     auth.logout();
-    username = randomUsername();
-    email = randomEmail();
-    passwd = randomPassword();
+    generateUserData();
     auth.createAccount(username, email, passwd);
     auth.checkCurrentUser(username);
     callback();
   };
 
   this.Given(/^que me logeo con el usuario de pruebas$/, function (callback) {
-    goHome();
+    goHome(client);
+    this.AuthenticationHelper.logout();
     this.AuthenticationHelper.loginUsername("test", email, "testtest");
     this.AuthenticationHelper.checkCurrentUser("test");
     callback();
@@ -44,13 +38,13 @@ module.exports = function () {
   });
 
   this.Given(/^I am signed out$/, function (callback) {
-    goHome();
+    goHome(client);
     this.AuthenticationHelper.logout();
     callback();
   });
 
   this.Given(/^I am on the home page$/, function (callback) {
-    goHome();
+    goHome(client);
     expect(client.getTitle()).toBe("Inicio");
     callback();
   });
@@ -79,19 +73,21 @@ module.exports = function () {
   });
 
   this.When(/^I enter incorrect authentication information$/, function (callback) {
-    this.AuthenticationHelper.loginUsername("foo", "foo", "foo");
+    this.AuthenticationHelper.loginUsername("foo", "foo", "foo", true);
     callback();
   });
 
   this.Then(/^I should see a user not found error$/, function (callback) {
     client.waitForVisible('#login-dropdown-list > div > div.alert.alert-danger');
+    // close dialog
+    client.click("li#login-dropdown-list a");
     callback();
   });
 
   this.Then(/^I can edit my profile$/, function (callback) {
     // pending();
     client.url(process.env.ROOT_URL + "/yo");
-    // goHome();
+    // goHome(client);
     // this.AuthenticationHelper.loginEmail(username, email, passwd);
     // client.waitForExist('li#login-dropdown-list');
     // expect(client.isVisible('li#login-dropdown-list')).toBe(true);
@@ -106,4 +102,29 @@ module.exports = function () {
     client.click(".btn-form-submit");
     callback();
   });
+
+  this.Given(/^I register with some name, password and email$/, function (callback) {
+    generateUserData();
+    this.AuthenticationHelper.registerUsername(username, email, passwd, true);
+    callback();
+  });
+
+  this.Then(/^I should be registered$/, function (callback) {
+    this.AuthenticationHelper.checkCurrentUser(username);
+    callback();
+  });
+
+  this.Given(/^I register with some name, password and email but without accept conditions$/, function (callback) {
+    generateUserData();
+    this.AuthenticationHelper.logout();
+    this.AuthenticationHelper.registerUsername(username, email, passwd, false);
+    callback();
+  });
+
+  this.Then(/^I shouldn't be registered$/, function (callback) {
+    this.AuthenticationHelper.logout();
+    expect(this.AuthenticationHelper.isNotLogged()).toBe(true);
+    callback();
+  });
+
 };

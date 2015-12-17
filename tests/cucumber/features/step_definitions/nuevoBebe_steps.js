@@ -2,7 +2,7 @@
 module.exports = function () {
   var bebes;
 
-  var alta = function(callback) {
+  var alta = function(callback, shouldFail) {
     // TODO login
     if (bebes.lenght <= 0) {
       callback(new Error('This is a data failure'));
@@ -28,7 +28,10 @@ module.exports = function () {
       }
 
       client.setValue('input[name="nombreCompleto"]', bebes[i][0]);
-      client.click('#sexo option[value="' + bebes[i][1] + '"]');
+
+      if (bebes[i][1] !== undefined) {
+        client.click('#sexo option[value="' + bebes[i][1] + '"]');
+      }
 
       // client.click('input[name="fechaNacimiento"]');
 
@@ -51,16 +54,17 @@ module.exports = function () {
       client.setValue('input[name="nombreCompletoMadre"]', bebes[i][6]);
       client.setValue('input[name="nombreCompletoPadreOConyuge"]', bebes[i][7]);
 
-      // client.scroll(0, 0);
-
       client.click('#person-form-submit');
-      client.waitForExist('#personsTable > tbody > tr');
-      client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(9)', provinciaNacimiento);
-      client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(10)', municipioNacimiento);
 
-      //client.waitForText('#personsTable > tbody > tr', provinciaNacimiento);
-      //console.log(municipioNacimiento);
-      //client.waitForText('#personsTable > tbody > tr', municipioNacimiento);
+      if (shouldFail) {
+        client.waitForVisible(".alert-danger");
+      } else {
+        client.waitForExist('#personsTable_filter > label > input');
+        expect(client.getTitle()).toBe("Busca bebe");
+        client.waitForVisible('#personsTable > tbody > tr:nth-child(1) > td:nth-child(9)');
+        client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(9)', provinciaNacimiento);
+        client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(10)', municipioNacimiento);
+      }
     }
   };
 
@@ -73,17 +77,15 @@ module.exports = function () {
 
   this.Given(
     /^se debe de poder dar de alta correctamente$/, function (callback) {
-      alta(callback);
-      // Search page
-      client.waitForExist('#personsTable_filter > label > input');
-      expect(client.getTitle()).toBe("Busca bebe");
+      alta(callback, false);
+      this.AuthenticationHelper.logout();
       callback();
     });
 
   this.Given(
     /^no se debe de poder dar de alta$/, function (callback) {
-      alta(callback);
-      client.waitForVisible(".alert-danger");
+      alta(callback, true);
+      this.AuthenticationHelper.logout();
       callback();
     });
 };

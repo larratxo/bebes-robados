@@ -12,18 +12,10 @@ https://github.com/meteor-london/banner/blob/master/banner.js
 ** Markers in a circle
 https://jsfiddle.net/kaiser/wzcst/light/
 https://developers.google.com/maps/documentation/javascript/shapes#circles
-** http://meteorpedia.com/read/REST_API
-https://github.com/awatson1978/rest-api/blob/master/webapp/lib/rest/api.posts.js
 ** https://github.com/alanning/meteor-roles
 ** 2 backgrounds fijos
 ** Notificaciones de comentarios por email
 ** SEO
-** DONE Spiderable
-CLOSED: [2015-10-21 mié 00:20]
-http://localhost:3000/?_escaped_fragment_=
-Me funciona con:
-ongoworks:spiderable@1.0.7
-sudo npm -g install phantomjs (1.9.8 funciona)
 ** Charts / Gráficos
 *** https://atmospherejs.com/d3js/d3
 http://bl.ocks.org/dbuezas/9306799
@@ -34,14 +26,13 @@ http://bl.ocks.org/mbostock/3885705
 ** https://about.twitter.com/resources/buttons#tweet
 ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
 https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-defrag-warning-from-
-** Sanitize api params
 ** Packages
 *** https://atmospherejs.com/meteor/force-ssl
 *** https://github.com/Multiply/iron-router-progress <<
 *** https://atmospherejs.com/percolate/migrations
 *** https://atmospherejs.com/raix/handlebar-helpers <<
 *** https://atmospherejs.com/reywood/publish-composite << person-bebe
-** Sanitize comments, ad-sample inputs
+** Sanitize comments, ad-sample inputs, api params
 ** Pais != España
 ** Reconocimiento facial
 http://www.geek.com/news/face-recognition-app-on-facebook-1004222/
@@ -54,3 +45,11 @@ https://prediction.io/ https://templates.prediction.io/
 https://hub.docker.com/r/harshjv/predictionio/
 https://forums.meteor.com/t/atmosphere-packages-for-machine-learning-meteor-app-integration/14535/3
 http://www.mickaellegal.com/blog/2014/1/30/how-to-build-a-recommender
+** DONE http://meteorpedia.com/read/REST_API
+https://github.com/awatson1978/rest-api/blob/master/webapp/lib/rest/api.posts.js
+** DONE Spiderable
+CLOSED: [2015-10-21 mié 00:20]
+http://localhost:3000/?_escaped_fragment_=
+Me funciona con:
+ongoworks:spiderable@1.0.7
+sudo npm -g install phantomjs (1.9.8 funciona)

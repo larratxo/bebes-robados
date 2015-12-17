@@ -5,23 +5,34 @@ Feature: Allow users to login and logout
   So that I can prove my identity and see personalized data
 
   Background:
-    Given I have an account and I logged in
-    Given I am signed out
     Given I am on the home page
 
   Scenario: A user can login with username
-    When I click on sign in link
-    And I enter my name and password
+    Given I have an account and I logged in
+    Given I am signed out
+    When I enter my name and password
     Then I should be logged in
     And I can edit my profile
 
   Scenario: A user can login with email
-    When I click on sign in link
-    And I enter my email and password
+    Given I have an account and I logged in
+    Given I am signed out
+    When I enter my email and password
     Then I should be logged in
     And I can edit my profile
 
   Scenario: A user cannot login with bad information
-    When I click on sign in link
-    And I enter incorrect authentication information
+    Given I have an account and I logged in
+    Given I am signed out
+    When I enter incorrect authentication information
     Then I should see a user not found error
+
+  Scenario: A user can register and login
+    Given I register with some name, password and email
+    Then I should be registered
+    And I should be logged in
+    And I can edit my profile
+
+  Scenario: A user cannot register without accepting service conditions
+    Given I register with some name, password and email but without accept conditions
+    Then I shouldn't be registered

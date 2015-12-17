@@ -3,7 +3,10 @@ module.exports = function () {
   var table;
 
   this.Given(/^que tengo una cuenta y estoy logeado$/, function (callback) {
-    this.AuthenticationHelper.createSomeAccount(callback);
+    goHome(client);
+    this.AuthenticationHelper.loginUsername("test", null, "testtest");
+    this.AuthenticationHelper.checkCurrentUser("test");
+    callback();
   });
 
   this.Given(/^una lista de datos personales$/, function (table, callback) {
@@ -11,7 +14,7 @@ module.exports = function () {
     callback();
   });
 
-  this.Given(/^actualizo mi perfil correctamente$/, function () {
-    pending();
+  this.Given(/^actualizo mi perfil correctamente$/, function (callback) {
+    callback.pending();
   });
 };

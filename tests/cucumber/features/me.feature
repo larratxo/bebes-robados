@@ -1,7 +1,7 @@
 # language: es
 Característica: Actualización de datos personales
 
-  # @watch
+  // @watch
   Escenario: Verifico que puedo actualizar mis datos personales con datos correctos
     Dado que tengo una cuenta y estoy logeado
     Y una lista de datos personales

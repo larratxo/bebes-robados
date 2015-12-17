@@ -23,7 +23,8 @@ Usamos [CucumberJS](https://github.com/cucumber/cucumber-js) a través de [chimp
 meteor
 # And later run the tests and watch for changes
 cd tests/cucumber
-chimp --watch --ddp=http://localhost:3000
+chimp --watch --ddp=http://localhost:3000 # during development to pass only @watch tagged tests
+chimp --ddp=http://localhost:3000         # to do all the tests
 ```
 
 ## Desarrolladores
