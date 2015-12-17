@@ -96,7 +96,7 @@ module.exports = function () {
 
     // client.click('#login-buttons-open-change-settings');
     client.waitForVisible('.UserUpdate');
-    client.waitForExist('input[name="profile.dni"');
+    client.waitForExist('input[name="profile.dni"]');
     client.setValue('input[name="profile.dni"]', "00000000N");
     client.waitForVisible('.btn-form-submit');
     client.click(".btn-form-submit");
