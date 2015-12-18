@@ -139,13 +139,13 @@ Meteor.users.allow({
   }
 })
 
-Tracker.autorun(function () {
-  Meteor.subscribe('allUserData')
-})
+//Tracker.autorun(function () {
+  //Meteor.subscribe('allUserData')
+//});
 
 var onlyFields = { fields: {
   username: 1,
-  name: 1,
+  'profile.name': 1,
   'profile.redesSociales': 1
 }}
 

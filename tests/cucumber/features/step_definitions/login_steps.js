@@ -43,6 +43,18 @@ module.exports = function () {
     callback();
   });
 
+  this.Given(/^que no estoy logeado$/, function (callback) {
+    goHome(client);
+    this.AuthenticationHelper.logout();
+    callback();
+  });
+
+  this.Given(/^que estoy en la página inicial$/, function (callback) {
+    goHome(client);
+    expect(client.getTitle()).toBe("Inicio");
+    callback();
+  });
+
   this.Given(/^I am on the home page$/, function (callback) {
     goHome(client);
     expect(client.getTitle()).toBe("Inicio");
@@ -69,6 +81,22 @@ module.exports = function () {
   this.Then(/^I should be logged in$/, function (callback) {
     this.AuthenticationHelper.checkCurrentUser(username);
     // this.AuthenticationHelper.logout();
+    callback();
+  });
+
+  this.Given(/^que me registro con cierto nombre de usuario, contraseña y correo$/, function (callback) {
+    generateUserData();
+    this.AuthenticationHelper.registerUsername(username, email, passwd, true);
+    callback();
+  });
+
+  this.Given(/^debo estar registrado$/, function (callback) {
+    this.AuthenticationHelper.checkCurrentUser(username);
+    callback();
+  });
+
+  this.Given(/^debo estar autenticado$/, function (callback) {
+    this.AuthenticationHelper.checkCurrentUser(username);
     callback();
   });
 

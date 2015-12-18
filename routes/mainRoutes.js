@@ -2,6 +2,8 @@
 
 // https://iron-meteor.github.io/iron-router/
 
+var subsManager = new SubsManager();
+
 Router.route('/', function () {
   this.render('home');
   SEO.set({ title: 'Inicio -' + Meteor.App.NAME });
@@ -16,17 +18,11 @@ var requireLogin = function() {
   }
 }
 
-var profImages = function(user) {
-  // Use instead: https://atmospherejs.com/meteorhacks/subs-manager
-  return Meteor.subscribe('images', user);
-}
-
 Router.map(function() {
   this.route('loading', { path: '/loading' }); // just for testing
   this.route('personsList', { path: '/bebes',
                               waitOn: function() {
-                                // Use instead: https://atmospherejs.com/meteorhacks/subs-manager
-                                return Meteor.subscribe('Persons');
+                                return subsManager.subscribe('Persons');
 			      }
   });
   this.route('adSample', { path: '/ad-sample' }); // just for testing
@@ -37,13 +33,17 @@ Router.map(function() {
   this.route('underConstruction', { path: '/en-construccion' });
   this.route('quienesSomos', { path: '/quienesSomos' });
 
-  this.route('userUpdate', { path: '/yo', waitOn: function() { return Meteor.subscribe('allImages'); }});
+  this.route('userUpdate', { path: '/yo',
+                             waitOn: function() {
+                               return subsManager.subscribe('myImages');
+                             }
+  });
 
   // TODO : quitar los ifs!!!!!
   this.route('viewUser', {
     path: '/persona/:_id',
     waitOn: function() {
-      return Meteor.subscribe('userAndImages', this.params._id);
+      return subsManager.subscribe('userAndImages', this.params._id);
     },
     data: function() {
       var username = Meteor.users.findOne({username: this.params._id });
@@ -83,7 +83,7 @@ Router.map(function() {
   this.route('viewPerson', {
     path: '/bebe-id/:_id',
     waitOn: function() {
-      return Meteor.subscribe('personAndImages', this.params._id);
+      return subsManager.subscribe('personAndImages', this.params._id);
     },
     data: function() {
       return Persons.findOne(this.params._id);
@@ -92,7 +92,7 @@ Router.map(function() {
   this.route('viewPersonSlug', {
     path: '/bebe/:slug',
     waitOn: function() {
-      return Meteor.subscribe('personAndImagesViaSlug', this.params.slug);
+      return subsManager.subscribe('personAndImagesViaSlug', this.params.slug);
     },
     data: function() {
       return Persons.findOne({slug: this.params.slug});

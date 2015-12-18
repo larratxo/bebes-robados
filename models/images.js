@@ -37,7 +37,10 @@ Images = new FS.Collection("images", {
 
 userImages = function(user) {
   // Busca imagenes con esos ids
-  var imagenes = user.profile.imagenes;
+  var imagenes;
+  if (user.profile) {
+    imagenes = user.profile.imagenes;
+  };
   if (_.isArray(imagenes) && imagenes.length > 0)
     return Images.find( { _id : { $in : imagenes } });
   else
