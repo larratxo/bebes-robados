@@ -62,9 +62,11 @@ module.exports = function () {
         client.waitForExist('#personsTable_filter > label > input');
         expect(client.getTitle()).toBe("Busca bebe");
         client.waitForVisible('#personsTable > tbody > tr:nth-child(1) > td:nth-child(9)');
-        // this fails in phantomjs not in chrome:
-        // client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(9)', provinciaNacimiento);
-        // client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(10)', municipioNacimiento);
+        if (!phantomJs) {
+          // this fails in phantomjs not in chrome:
+          client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(9)', provinciaNacimiento);
+          client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(10)', municipioNacimiento);
+        }
       }
     }
   };

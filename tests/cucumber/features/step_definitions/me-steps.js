@@ -21,13 +21,15 @@ module.exports = function () {
     client.setValue('input[name="profile.telefono"]', datos[0][2]);
 
     // Subo imagen
-    client.chooseFile("div.autoform-array-item-body > div > div > div > button > input", datos[0][3]);
-    client.waitForVisible("div.autoform-array-item-body > div > div > div > a > img");
+
+    if (!phantomJs) {
+      client.chooseFile("div.autoform-array-item-body > div > div > div > button > input", datos[0][3]);
+      client.waitForVisible("div.autoform-array-item-body > div > div > div > a > img");
+    }
 
     client.setValue('input[name="profile.redesSociales.0.url"]', datos[0][4]);
 
     client.click('.btn-form-submit');
-
 
     // Home
     client.click('div.navbar-header');
@@ -39,7 +41,9 @@ module.exports = function () {
     expect(client.getValue('input[name="profile.dni"]')).toBe(datos[0][1]);
     expect(client.getValue('input[name="profile.name"]')).toBe(datos[0][0]);
     expect(client.getValue('input[name="profile.telefono"]')).toBe(datos[0][2]);
-    client.waitForVisible("div.autoform-array-item-body > div > div > div > a > img");
+    if (!phantomJs) {
+      client.waitForVisible("div.autoform-array-item-body > div > div > div > a > img");
+    }
     expect(client.getValue('input[name="profile.redesSociales.0.url"]')).toBe(datos[0][4]);
 
     // this.AuthenticationHelper.logout();

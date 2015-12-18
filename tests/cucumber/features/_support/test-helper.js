@@ -24,3 +24,7 @@ goHome =  function(client) {
     client.click('#acceptCookies');
   };
 };
+
+// PHANTOMJS=1 chimp --watch --ddp=http://localhost:3000  --browser=phantomjs # to avoid some phantomjs specific tests that
+// do not fails in chrome/firefox
+phantomJs = process.env.PHANTOMJS;

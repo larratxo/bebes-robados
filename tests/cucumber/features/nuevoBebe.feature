@@ -7,6 +7,7 @@ Característica: Alta de bebes correcta
   Antecedentes:
     Dado que me logeo con el usuario de pruebas
 
+  @watch
   Escenario: Verifico que un bebe que se busca se puede dar de alta con la información básica
     Dado una lista de bebes que se buscan
     | Francisco Javier            | Hombre      | F | Murcia   | Cartagena | Hospital | Marta   | Germán  | 22/08/1960  |
