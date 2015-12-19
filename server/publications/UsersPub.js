@@ -15,9 +15,11 @@ Meteor.publish("allUserData", function () {
 
 var userAndImagesFromId = function (user) {
   if (user) {
-    var images = Images.find({$query: {'metadata.owner': user._id}, $orderby: {uploadedAt: -1}});
+    var images = Images.find({'metadata.owner': user._id}); // , {sort: [[uploadedAt, "desc" ]]});
+    // console.log("User images via metadata: " + images.count());
     return [ images, user ];
   } else {
+    console.log("User not found");
     return [];
   }
 }

@@ -1,7 +1,7 @@
 var createThumb = function(fileObj, readStream, writeStream) {
-  // Transform the image into a 10x10px thumbnail
+  // Transform the image into a 200x200px thumbnail
   // TODO check gm.isAvailable
-  gm(readStream, fileObj.name()).resize('100', '100').stream().pipe(writeStream);
+  gm(readStream, fileObj.name()).resize('200', '200').stream().pipe(writeStream);
 };
 
 if (Meteor.isServer) {
@@ -36,13 +36,19 @@ Images = new FS.Collection("images", {
 });
 
 userImages = function(user) {
-  // Busca imagenes con esos ids
+  // No usamos
+  // var images = Images.find({'metadata.owner': user._id});
+  // ya que solo vamos a poder editar luego los del user.profile
+
   var imagenes;
   if (user.profile) {
     imagenes = user.profile.imagenes;
-  };
-  if (_.isArray(imagenes) && imagenes.length > 0)
-    return Images.find( { _id : { $in : imagenes } });
+  }
+  if (_.isArray(imagenes) && imagenes.length > 0) {
+    var userImages = Images.find( { _id : { $in : imagenes } });
+    // console.log("User images: " + userImages.count());
+    return userImages;
+  }
   else
     // empty cursor
     return Images.find({limit: 0 });
