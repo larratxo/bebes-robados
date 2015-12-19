@@ -139,9 +139,10 @@ Meteor.users.allow({
   }
 })
 
+/*
 Tracker.autorun(function () {
   Meteor.subscribe('allUserData')
-});
+}); */
 
 var onlyFields = { fields: {
   username: 1,

@@ -10,7 +10,7 @@ Router.route('/', function () {
 }, {name: 'home'});
 
 var requireLogin = function() {
-  if (! Meteor.user()) {
+  if (!Meteor.user()) {
     this.render('accessDenied');
     this.stop();
   } else {
@@ -35,7 +35,7 @@ Router.map(function() {
 
   this.route('userUpdate', { path: '/yo',
                              waitOn: function() {
-                               return subsManager.subscribe('myImages');
+                               return subsManager.subscribe('meAndMyImages');
                              }
   });
 
@@ -111,3 +111,9 @@ Router.onBeforeAction(requireLogin, {only: ['nuevoBebe', 'bebePage', 'userUpdate
 Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
 
 // https://iron-meteor.github.io/iron-router/#hooks
+
+Router.onAfterAction(function() {
+  if (this.ready()) {
+    Meteor.isReadyForSpiderable = true
+  }
+});

@@ -86,6 +86,7 @@ iron:location@1.0.11
 iron:middleware-stack@1.0.11
 iron:router@1.0.12
 iron:url@1.0.11
+jazeee:spiderable-longer-timeout@1.2.13
 jeremy:geocomplete@1.6.5_9
 jparker:crypto-core@0.1.0
 jparker:crypto-md5@0.1.1
@@ -131,8 +132,8 @@ npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 okgrow:router-autoscroll@0.1.1
-ongoworks:spiderable@1.0.7
 ordered-dict@1.0.4
+ostrio:meteor-root@1.0.2
 pcel:loading@1.0.3
 pfafman:photo-up@0.4.2
 promise@0.5.1

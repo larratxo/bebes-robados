@@ -59,7 +59,6 @@ sacha:spin
 gadicohen:sitemaps
 pfafman:photo-up
 coffeescript
-ongoworks:spiderable
 djedi:sanitize-html
 djedi:sanitize-html-client
 semantic:ui-css
@@ -76,3 +75,4 @@ meteorhacks:kadira-profiler
 reactive-var
 gwendall:simple-schema-i18n
 meteorhacks:subs-manager
+jazeee:spiderable-longer-timeout

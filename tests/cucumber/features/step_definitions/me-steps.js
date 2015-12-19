@@ -49,4 +49,16 @@ module.exports = function () {
     // this.AuthenticationHelper.logout();
     callback();
   });
+
+  this.Given(/^si dejo de estar logeado$/, function (callback) {
+    this.AuthenticationHelper.logout();
+    callback();
+  });
+
+  this.Given(/^mi página es visible$/, function (callback) {
+    client.url(process.env.ROOT_URL + '/persona/' + randomUsername);
+    client.waitForText("body", "Datos de ");
+    callback();
+  });
+
 };

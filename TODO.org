@@ -50,6 +50,9 @@ https://github.com/awatson1978/rest-api/blob/master/webapp/lib/rest/api.posts.js
 ** DONE Spiderable
 CLOSED: [2015-10-21 mié 00:20]
 http://localhost:3000/?_escaped_fragment_=
+http://localhost:3000/bebes?_escaped_fragment_=
+http://localhost:3000/persona/test?_escaped_fragment_=
+http://localhost:3000/donaciones?_escaped_fragment_=
 Me funciona con:
 ongoworks:spiderable@1.0.7
 >>>> sudo npm -g install phantomjs (1.9.8 funciona)
