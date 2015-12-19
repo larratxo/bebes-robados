@@ -12,7 +12,6 @@ module.exports = function () {
 
   this.Given(/^que estoy en la página de búsquedas$/, function (callback) {
     lugar = 'bebes';
-    client.waitForVisible('.PersonsList');
     callback();
   });
 
@@ -53,6 +52,11 @@ module.exports = function () {
       client.waitForVisible('#personsTable > tbody > tr:nth-child(1) > td:nth-child(8)');
       expect(client.getTitle()).toBe("Busca bebe");
       client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(8)', search);
+      client.click('#personsTable > tbody > tr:nth-child(1)');
+      client.waitForText("body", "Datos del presunto robo");
+      client.waitForVisible("#datosbasicos > a");
+      client.click("#datosbasicos > a");
+      client.waitForText("body", "Datos de esta persona");
     }
     callback();
   });

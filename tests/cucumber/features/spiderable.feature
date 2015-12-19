@@ -1,7 +1,6 @@
 # language: es
 Característica: Esta aplicación debe ser spidreable y generar un sitemap correcto
 
-  @watch
   Escenario: Verifico que se genera el sitemap correctamente
     Dado la página de sitemap.xml
     Entonces compruebo que existe una lista de páginas en el sitemap

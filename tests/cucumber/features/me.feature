@@ -5,7 +5,6 @@ Característica: Actualización de datos personales
     Dado que estoy en la página inicial
     Y que no estoy logeado
 
-  @watch
   Escenario: Verifico que puedo actualizar mis datos personales con datos correctos
     Dado que me registro con cierto nombre de usuario, contraseña y correo
     Entonces debo estar registrado
