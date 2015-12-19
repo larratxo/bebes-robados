@@ -7,7 +7,12 @@ var subsManager = new SubsManager();
 Router.route('/', function () {
   this.render('home');
   SEO.set({ title: 'Inicio -' + Meteor.App.NAME });
-}, {name: 'home'});
+}, {
+  name: 'home',
+  waitOn: function() {
+    return subsManager.subscribe('Persons');
+  }
+});
 
 var requireLogin = function() {
   if (!Meteor.user()) {
