@@ -64,9 +64,7 @@ AutoForm.hooks({
     after: {
       update: function(error) {
         if (typeof error === "undefined") {
-          if (Meteor.user().profile.conServicioAceptadas === true) {
-            $.bootstrapGrowl("Guardado", {type: 'success', align: 'center'} );
-          }
+          $.bootstrapGrowl("Guardado", {type: 'success', align: 'center'} );
           // Router.go('home');
         } else {
           $.bootstrapGrowl(error, {type: 'danger', align: 'center'} );
