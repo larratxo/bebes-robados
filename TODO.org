@@ -52,4 +52,6 @@ CLOSED: [2015-10-21 mié 00:20]
 http://localhost:3000/?_escaped_fragment_=
 Me funciona con:
 ongoworks:spiderable@1.0.7
-sudo npm -g install phantomjs (1.9.8 funciona)
+>>>> sudo npm -g install phantomjs (1.9.8 funciona)
+
+https://github.com/iron-meteor/iron-router/issues/1192
