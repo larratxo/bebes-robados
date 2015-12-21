@@ -112,19 +112,20 @@ Schema.User = new SimpleSchema({
   // Roles.addUsersToRoles(userId, ['admin'], Roles.GLOBAL_GROUP);
   // You can't mix and match adding with and without a group since
   // you will fail validation in some cases.
-  roles: {
-    type: Object,
-    optional: true,
-    autoform: { type: 'hidden' },
-    blackbox: true
-  }
+  // roles: {
+  //  type: Object,
+  //  optional: true,
+  //  autoform: { type: 'hidden' },
+  //  blackbox: true
+  // }
   // Option 2: [String] type
   // If you are sure you will never need to use role groups, then
   // you can specify [String] as the type
-  // roles: {
-  //    type: [String],
-  // optional: true
-  // }
+  roles: {
+      type: [String],
+      autoform: { type: 'hidden' },
+      optional: true
+  }
 })
 
 Meteor.users.attachSchema(Schema.User)

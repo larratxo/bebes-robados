@@ -1,3 +1,7 @@
 Template.header.onRendered(function () {
-    // $("#login-dropdown-list").click(addSettings);
 });
+
+Template.header.helpers({
+    // check if user is an admin
+    isAdminUser: isAdminUser()
+})

@@ -103,6 +103,20 @@ Router.map(function() {
       return Persons.findOne({slug: this.params.slug});
     }
   });
+    
+  this.route('admin', {
+      path:'/admin',
+      template: 'accountsAdmin',
+      onBeforeAction: function() {
+          if (Meteor.loggingIn()) {
+              this.render(this.loadingTemplate);
+          } else if(!Roles.userIsInRole(Meteor.user(), ['admin'])) {
+              console.log('Not an admin, redirecting');
+              this.redirect('/');
+          }
+	  this.next();
+      }
+    });
 });
 
 // Not used now
