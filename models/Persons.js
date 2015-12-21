@@ -199,6 +199,9 @@ Schema.Persons =  new SimpleSchema({
 
 Persons.attachSchema(Schema.Persons);
 
+// Add revision control to Persons so we can restore previous versions
+Persons.attachCollectionRevisions();
+
 // Collection2 already does schema checking
 // Add custom permission rules if needed
 if (Meteor.isServer) {
