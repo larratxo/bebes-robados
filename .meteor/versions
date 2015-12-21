@@ -47,6 +47,7 @@ cfs:upload-http@0.0.20
 cfs:worker@0.1.4
 check@1.1.0
 chuangbo:cookie@1.1.0
+cmoore:bootstrap3-navbar-active-links@0.0.6
 coffeescript@1.0.11
 cosmos:browserify@0.8.3
 dandv:caret-position@2.1.1
