@@ -14,7 +14,7 @@ module.exports = function () {
   var createAccountAndLogin = function (callback, auth) {
     // https://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
     goHome(client);
-    auth.logout();
+    auth.logout(client);
     generateUserData();
     auth.createAccount(username, email, passwd);
     auth.checkCurrentUser(username);
@@ -51,12 +51,14 @@ module.exports = function () {
 
   this.Given(/^que estoy en la página inicial$/, function (callback) {
     goHome(client);
-    // expect(client.getTitle()).toBe("Base de Datos de Bebes Robados");
+    expect(client.getTitle()).toBe("Inicio - Base de Datos de Bebes Robados");
+    callback();
   });
 
   this.Given(/^I am on the home page$/, function (callback) {
     goHome(client);
-    // expect(client.getTitle()).toBe("Base de Datos de Bebes Robados");
+    expect(client.getTitle()).toBe("Inicio - Base de Datos de Bebes Robados");
+    callback();
   });
 
   this.When(/^I click on sign in link$/, function (callback) {
@@ -149,7 +151,7 @@ module.exports = function () {
 
   this.Then(/^I shouldn't be registered$/, function (callback) {
     this.AuthenticationHelper.logout();
-    expect(this.AuthenticationHelper.isNotLogged()).toBe(true);
+    expect(this.AuthenticationHelper.isNotLogged(client)).toBe(true);
     callback();
   });
 

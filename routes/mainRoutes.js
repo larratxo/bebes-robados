@@ -4,12 +4,12 @@
 
 var subsManager = new SubsManager();
 
-Router.route('/', function () {
-  this.render('home');
-  SEO.set({ title: 'Inicio -' + Meteor.App.NAME });
-}, {
+Router.route('/', {
   name: 'home',
-  waitOn: function() {
+  action: function () {
+    this.render('home');
+    SEO.set({ title: 'Inicio - ' + Meteor.App.NAME });
+  }, subscriptions:  function() {
     return subsManager.subscribe('Persons');
   }
 });
@@ -103,7 +103,7 @@ Router.map(function() {
       return Persons.findOne({slug: this.params.slug});
     }
   });
-    
+
   this.route('admin', {
       path:'/admin',
       template: 'accountsAdmin',

@@ -71,8 +71,6 @@ var fitMarkers = function() {
 };
 
 Template.home.onRendered(function() {
-  Session.set("DocumentTitle", "Inicio");
-
   onSliderRender(function() {
     // TODO https://stackoverflow.com/questions/19304574/center-set-zoom-of-map-to-cover-all-markers-visible-markers
 

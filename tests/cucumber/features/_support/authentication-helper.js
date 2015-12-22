@@ -91,11 +91,11 @@ module.exports = function () {
         expect(currentname).toBe(name);
       },
 
-      isLogged: function () {
+      isLogged: function (client) {
         return isLogged(client);
       },
 
-      isNotLogged: function () {
+      isNotLogged: function (client) {
         return isNotLogged(client);
       },
 

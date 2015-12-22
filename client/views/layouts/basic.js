@@ -40,6 +40,7 @@ Template.basicLayout.events({
 });
 
 // https://stackoverflow.com/questions/14036248/meteor-setting-the-document-title
+Session.setDefault("DocumentTitle", Meteor.App.NAME);
 Deps.autorun(function(){
   document.title = Session.get("DocumentTitle");
 });
