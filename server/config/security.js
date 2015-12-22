@@ -2,7 +2,7 @@ BrowserPolicy.content.allowOriginForAll("*.googleapis.com");
 BrowserPolicy.content.allowOriginForAll("*.gstatic.com");
 BrowserPolicy.content.allowOriginForAll("*.bootstrapcdn.com");
 BrowserPolicy.content.allowOriginForAll("*.gravatar.com");
-
+BrowserPolicy.content.allowOriginForAll("*.cloudflare.com");
 BrowserPolicy.content.allowOriginForAll("*.comunes.org");
 
 BrowserPolicy.content.allowFontDataUrl();

@@ -10,7 +10,6 @@ accounts-password
 aldeed:collection2
 iron:router
 raix:handlebar-helpers
-matteodem:easy-security
 fastclick
 manuelschoebel:ms-seo
 browser-policy
@@ -80,3 +79,4 @@ todda00:collection-revisions
 mrt:accounts-admin-ui-bootstrap-3
 alanning:roles
 cmoore:bootstrap3-navbar-active-links
+ryw:blog

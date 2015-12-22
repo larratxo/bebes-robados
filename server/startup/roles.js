@@ -12,6 +12,6 @@ Meteor.startup(function () {
 
     var adminId = Meteor.users.findOne({username: "admin"});
     if (adminId)
-        Roles.addUsersToRoles(adminId, ['admin']);
+        Roles.addUsersToRoles(adminId, ['admin', 'adminRole']);
 
 });
