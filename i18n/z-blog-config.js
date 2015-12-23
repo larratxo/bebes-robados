@@ -3,7 +3,7 @@ Meteor.startup(function () {
 	adminRole: 'adminRole',
 	authorRole: 'authorRole',
 	language: {
-	    blogEmpty: TAPi18n.__("This blog is looking pretty empty..."),
+	    blogEmpty: TAPi18n.__("This blog is looking pretty empty"),
 	    backToBlogIndex: TAPi18n.__("Back to the Blog"),
 	    tags: TAPi18n.__("Tags"),
 	    slug: TAPi18n.__("Slug") ,
@@ -40,7 +40,7 @@ Meteor.startup(function () {
 	    saved: TAPi18n.__("Saved"),
 	    editFeaturedImageSaved: TAPi18n.__("Featured image saved"),
 	    editErrorSlugExists: TAPi18n.__("Blog with this slug already exists"),
-	    editErrorBodyRequired: TAPi18n.__("Blog body is required") 
+	    editErrorBodyRequired: TAPi18n.__("Blog body is required")
 	}
     });
 });
