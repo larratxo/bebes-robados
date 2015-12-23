@@ -106,7 +106,8 @@ Router.map(function() {
 
   this.route('admin', {
       path:'/admin',
-      template: 'accountsAdmin',
+    //template: 'accountsAdmin',
+    template: 'bebeAdmin',
       onBeforeAction: function() {
           if (Meteor.loggingIn()) {
               this.render(this.loadingTemplate);
