@@ -6,10 +6,11 @@ var createThumb = function(fileObj, readStream, writeStream) {
 
 if (Meteor.isServer) {
   // https://github.com/CollectionFS/Meteor-CollectionFS/blob/master/packages/standard-packages/ADVANCED.md
-  FS.TempStore.Storage = new FS.Store.FileSystem("_tempstore", {
-    internal :  true,
-    path : '/opt/bebes-uploads/tmp',
-  });
+  // Already defined in meteor-blog
+  // FS.TempStore.Storage = new FS.Store.FileSystem("_tempstore", {
+  //   internal :  true,
+  //   path : '/opt/bebes-uploads/tmp',
+  // }); 
 };
 
 // Patched mupx: /usr/lib/node_modules/mupx/templates/linux/start.sh
@@ -25,7 +26,7 @@ Images = new FS.Collection("images", {
       contentTypes: ['image/*'] //allow only images in this FS.Collection
     }
   },
-  onInvalid: function (message) {
+    onInvalid: function (message) {
     if (Meteor.isClient) {
       console.log(message);
       $.bootstrapGrowl(message, {type: 'danger', align: 'center'} );
