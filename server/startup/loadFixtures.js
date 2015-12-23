@@ -1,3 +1,4 @@
+/*global Meteor,Accounts,console,YAML,Fixtures */
 function loadUser(user) {
   var userAlreadyExists = typeof Meteor.users.findOne({ username : user.username }) === 'object';
 
@@ -30,7 +31,7 @@ Meteor.startup(function () {
     loadFixture(Fixtures.persons, Persons);
     Persons.update({}, {$set: {familiar: testUserId}}, { multi: true });
   } else {
-    console.log("Not loading persons fixtures.");
+    // console.log("Not loading persons fixtures.");
   }
   if (Provincias.find().count() === 0) {
     console.log("Loading provinces fixtures.");
