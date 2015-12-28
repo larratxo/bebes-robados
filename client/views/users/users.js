@@ -53,6 +53,12 @@ Template.viewUser.onRendered( function() {
   };
 });
 
+Template.userUpdate.helpers({
+  omitFields: function() {
+    return Meteor.user() && Meteor.user().services && Meteor.user().services.google? "emails, profile.name": "emails.$.verified";
+  }
+});
+
 Template.userUpdate.onRendered( function() {
   Session.set("DocumentTitle", "Mis datos");
   personLabelHack();

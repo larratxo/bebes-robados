@@ -1,3 +1,58 @@
+// https://stackoverflow.com/questions/26799150/meteor-accounts-via-external-services-dont-set-user-username
+var generate_username = function(username) {
+  var count;
+  username = username.toLowerCase().trim().replace(" ", "").replace(".", "");
+  count = Meteor.users.find({"username": username}).count();
+  if (count === 0) {
+    return username;
+  }
+  else {
+    return username + (count + 1).toString();
+  }
+}
+
+var setEmail = function(user, email) {
+  user.emails = [{address: email , verified: true }];
+}
+
+// https://stackoverflow.com/questions/30463958/how-to-extract-username-from-3rd-party-social-logins-via-useraccounts-package
+Accounts.onCreateUser(function(options, user){
+  if (user.services) {
+    if (user.services.google) {
+      var email = user.services.google.email;
+      var parts = email.split('@');
+      user.username = generate_username(parts[0]);
+      if (options && options.profile) {
+        options.profile.name = user.services.google.name;
+      }
+      setEmail(user, email);
+    }
+    else if (user.services.twitter) {
+      var email = services.twitter.email;
+      user.username = generate_username(user.services.twitter.id);
+      if (options && options.profile) {
+        options.profile.name = user.services.twitter.screenName;
+      }
+      setEmail(user, email);
+    }
+    else if (user.services.facebook) {
+      // not tested
+      user.username = user.services.facebook.username;
+    }
+    else if (user.services.github) {
+      user.username = user.services.github.username;
+    }
+  }
+  // console.log(user);
+  // console.log(options.profile);
+
+  // We still want the default hook's 'profile' behavior.
+  if (options && options.profile){
+    user.profile = options.profile;
+  }
+  return user;
+});
+
 Accounts.emailTemplates.siteName = "Registro de Bebes Robados";
 Accounts.emailTemplates.from = "noreply@comunes.org";
 
