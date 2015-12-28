@@ -28,7 +28,7 @@ Accounts.onCreateUser(function(options, user){
       setEmail(user, email);
     }
     else if (user.services.twitter) {
-      var email = services.twitter.email;
+      var email = user.services.twitter.email;
       user.username = generate_username(user.services.twitter.id);
       if (options && options.profile) {
         options.profile.name = user.services.twitter.screenName;
