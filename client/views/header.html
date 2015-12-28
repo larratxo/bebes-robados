@@ -12,8 +12,8 @@
         <a class="navbar-brand" href="{{pathFor 'home'}}">
           <img style="max-width:50%; display: inline; margin-top: -10px;" src="/images/logo60.png">
           <div class="navbar-brand-titles">
-          <div class="navbar-brand-main">NOMBRE DE LA INICIATIVA</div>
-          <div class="navbar-brand-sub">{{ _"main_title"}}</div>
+            <div class="navbar-brand-main">NOMBRE DE LA INICIATIVA</div>
+            <div class="navbar-brand-sub">{{ _"main_title"}}</div>
           </div>
         </a>
       </div>
@@ -26,10 +26,10 @@
 	  {{> loginButtons}}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{_"More"}}<span class="caret"></span></a>
-	  <ul class="dropdown-menu">
-	      {{#if isAdminUser}}
-                <li><a href="{{ pathFor 'admin'}}"><i class="fa fa-users"></i>{{_"Administration"}}</a></li>
-		<li role="separator" class="divider"></li>
+	    <ul class="dropdown-menu">
+              {{#if isInRole 'admin'}}
+              <li><a href="{{ pathFor 'admin'}}"><i class="fa fa-users"></i>{{_"Administration"}}</a></li>
+	      <li role="separator" class="divider"></li>
 	      {{/if}}
               <li><a href="{{ pathFor 'quienesSomos'}}"><i class="icon-bebes"></i>{{_"About"}}</a></li>
               <li><a href="{{ pathFor 'adSample'}}"><i class="fa fa-bullhorn"></i>{{_"OurBanners"}}</a></li>

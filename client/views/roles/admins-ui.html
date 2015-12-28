@@ -1,7 +1,7 @@
 <template name="adminTemplate">
-    {{#if isAdminUser}}
-        {{> accountsAdmin}}
-    {{else}}
-        Debes ser administrador para acceder aquí
-    {{/if}}
+  {{#if isInRole 'admin'}}
+  {{> accountsAdmin}}
+  {{else}}
+  Debes ser administrador para acceder aquí
+  {{/if}}
 </template>
