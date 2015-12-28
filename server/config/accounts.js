@@ -12,7 +12,8 @@ var generate_username = function(username) {
 }
 
 var setEmail = function(user, email) {
-  user.emails = [{address: email , verified: true }];
+  if (email)
+    user.emails = [{address: email , verified: true }];
 }
 
 // https://stackoverflow.com/questions/30463958/how-to-extract-username-from-3rd-party-social-logins-via-useraccounts-package
