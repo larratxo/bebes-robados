@@ -446,3 +446,108 @@ div.meteor-blog-post-main > h1,
 div.meteor-blog-post-meta.text-center {
     text-align: inherit;
 }
+
+/* media queries
+   Copied from:
+   https://stackoverflow.com/questions/18424798/twitter-bootstrap-3-how-to-use-media-queries
+   (as we cannot access to bootstrap less variables now) */
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+    .header-wrapper {
+        height: 340px;
+        padding: 0 30px;
+    }
+
+    .header-wrapper .ui.main.header {
+        font-size: 22px;
+        padding-top: 80px;
+    }
+
+    .header-wrapper > div > h3  {
+        font-size: 16px;
+    }
+
+    .headline, .Home .year-slider-subheader {
+        font-size: 16px;
+    }
+
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+
+    body {
+        font-size: 13px;
+    }
+
+    .navbar-brand-sub
+    {
+        font-size: 10px;
+    }
+
+    .navbar-brand
+    {
+        font-size: 16px;
+    }
+
+    .navbar-brand img
+    {
+        width: 50px;
+    }
+
+    .header-wrapper {
+        height: 320px;
+        padding: 0 30px;
+    }
+
+    .header-wrapper .ui.main.header {
+        font-size: 20px;
+        padding-top: 70px;
+    }
+
+    .header-wrapper > div > h3  {
+        font-size: 14px;
+    }
+
+    .headline, .Home .year-slider-subheader {
+        font-size: 12px;
+    }
+
+    #main > div.container {
+        padding: 0px 20px;
+    }
+
+
+    body > .container {
+        padding: 40px 15px 20px 15px;
+    }
+
+    #personsTable_filter > label > input {
+        width: inherit;
+    }
+
+}
+
+@media(max-width:767px) {
+}
+
+@media(min-width:768px){}
+@media(min-width:992px){}
+@media(min-width:1200px){}
