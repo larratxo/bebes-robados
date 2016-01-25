@@ -1,7 +1,17 @@
 
+Lista de Tareas
+
 * Desarrollo
-** Conectar usuarios-bebes (links en búsquedas, en formularios, etc)
+** Mejorar mensaje de inicio
+** En comentarios poner aviso legal (no nos hacemos responsables)
+** Nombre del bebe opcional
+** Funcionarios, etc (algo así como "que están en tus documentos")
+** Añadir campo sobre donde fue adoptado
+** Conectar usuarios-bebes (links en búsquedas, en formularios, etc) y permisos
 ** Bebe encontrado o no encontrado?
+** 1936
+** Traducción, sobre todo al catalán e ingles parece que inicialmente
+** Twitter/google aceptar condiciones!
 ** Publicidad
 https://css-tricks.com/set-font-size-based-on-word-count/
 https://en.wikipedia.org/wiki/Web_banner
@@ -9,13 +19,14 @@ https://support.google.com/adsense/answer/6002621?hl=en
 http://www.stefanmaescher.com/top10-banner-sizes/ . Medium Rectangle: 300×250, Leaderboard: 728×90, Wide Skyscraper: 160×600
 https://github.com/meteor-london/banner/
 https://github.com/meteor-london/banner/blob/master/banner.js
+** https://github.com/alanning/meteor-roles
+** Notificaciones de comentarios por email
 ** Markers in a circle
 https://jsfiddle.net/kaiser/wzcst/light/
 https://developers.google.com/maps/documentation/javascript/shapes#circles
-** https://github.com/alanning/meteor-roles
 ** 2 backgrounds fijos
-** Notificaciones de comentarios por email
 ** SEO
+** Pais != España
 ** Charts / Gráficos
 *** https://atmospherejs.com/d3js/d3
 http://bl.ocks.org/dbuezas/9306799
@@ -24,6 +35,18 @@ http://bl.ocks.org/mbostock/3885705
 *** http://www.chartjs.org/
 ** Prevent navigation https://groups.google.com/forum/#!topic/meteor-talk/TB_px_fnlZs
 ** https://about.twitter.com/resources/buttons#tweet
+** Sanitize comments, ad-sample inputs, api params
+** Recommendation, recomendaciones, machine learning
+https://github.com/samcorcos/recEngine/blob/master/README.md
+https://prediction.io/ https://templates.prediction.io/
+https://hub.docker.com/r/harshjv/predictionio/
+https://forums.meteor.com/t/atmosphere-packages-for-machine-learning-meteor-app-integration/14535/3
+http://www.mickaellegal.com/blog/2014/1/30/how-to-build-a-recommender
+** Reconocimiento facial
+http://www.geek.com/news/face-recognition-app-on-facebook-1004222/
+https://facedetection.com/face-finder-people-search/
+http://arstechnica.com/uncategorized/2007/05/facial-recognition-slipped-into-google-image-search/
+http://www.makeuseof.com/tag/3-fascinating-search-engines-search-faces/
 ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
 https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-defrag-warning-from-
 ** Packages
@@ -32,19 +55,6 @@ https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-d
 *** https://atmospherejs.com/percolate/migrations
 *** https://atmospherejs.com/raix/handlebar-helpers <<
 *** https://atmospherejs.com/reywood/publish-composite << person-bebe
-** Sanitize comments, ad-sample inputs, api params
-** Pais != España
-** Reconocimiento facial
-http://www.geek.com/news/face-recognition-app-on-facebook-1004222/
-https://facedetection.com/face-finder-people-search/
-http://arstechnica.com/uncategorized/2007/05/facial-recognition-slipped-into-google-image-search/
-http://www.makeuseof.com/tag/3-fascinating-search-engines-search-faces/
-** Recommendation, recomendaciones, machine learning
-https://github.com/samcorcos/recEngine/blob/master/README.md
-https://prediction.io/ https://templates.prediction.io/
-https://hub.docker.com/r/harshjv/predictionio/
-https://forums.meteor.com/t/atmosphere-packages-for-machine-learning-meteor-app-integration/14535/3
-http://www.mickaellegal.com/blog/2014/1/30/how-to-build-a-recommender
 ** DONE http://meteorpedia.com/read/REST_API
 https://github.com/awatson1978/rest-api/blob/master/webapp/lib/rest/api.posts.js
 ** DONE Spiderable
