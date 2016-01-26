@@ -124,10 +124,12 @@ Template.home.onCreated(function() {
           // The anchor for this image is the base of the flagpole at (0, 32).
           anchor: new google.maps.Point(14, 50)
         };
+        var moreInfo = "Pulsa para más info";
         var marker = new google.maps.Marker({
           map: map.instance,
           // https://developers.google.com/maps/documentation/javascript/examples/map-latlng-literal
           icon: image,
+          title: moreInfo,
           position:  {lat: parseFloat(lat), lng: parseFloat(long)}
         });
         marker.setVisible(showAll? true: markerVisibility(person, min, max));
@@ -136,13 +138,15 @@ Template.home.onCreated(function() {
         // https://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
         google.maps.event.addListener(marker, 'click', (function(marker, person) {
           return function() {
-            infowindow.setContent("<a href='/bebe/" + person.slug + "/'>" +
-                                    (person.buscasBebe? "Buscamos bebe ":
-                                     "Busco a mi familia biológica ") + renderSexoAlt(person.sexo) +
-                                      (person.fechaNacimiento instanceof Date?
-                                       (person.buscasBebe? " nacido aquí el ": " nací aquí el "): " nacido aquí ") +
+            infowindow.setContent("<span style='font-size: 14px'>" + (person.buscasBebe? "Buscamos bebe":
+                                   "Busco a mi familia biológica") + ",<br>" +
+                                  "<a title='" + moreInfo +
+                                  "' href='/bebe/" + person.slug + "/'>" +
+                                  renderSexoAlt(person.sexo) +
+                                       (person.fechaNacimiento instanceof Date?
+                                        (person.buscasBebe? " nacido aquí el ": " nací aquí el "): " nacido aquí ") +
                                   renderAprox(person.fechaNacimientoEsAprox) + renderDate(person.fechaNacimiento) + " " +
-                                  renderNuevo(person.updatedAt) + "</a>");
+                                  renderNuevo(person.updatedAt) + "</a></span>");
             infowindow.open(map.instance, marker);
           }
         })(marker, person));
