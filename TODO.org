@@ -3,6 +3,7 @@ Lista de Tareas
 
 * Desarrollo
 ** Añadir campo sobre donde fue adoptado
+** Buscar o crear un correo de contacto
 ** Conectar usuarios-bebes (links en búsquedas, en formularios, etc) y permisos
 ** Bebe encontrado o no encontrado?
 ** Traducción, sobre todo al catalán e ingles parece que inicialmente
