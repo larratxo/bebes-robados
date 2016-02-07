@@ -27,6 +27,23 @@ chimp --watch --ddp=http://localhost:3000 # during development to pass only @wat
 chimp --ddp=http://localhost:3000         # to do all the tests
 ```
 
+## Settings
+
+Sample of settings to use Open Web Analytics:
+
+```
+    "public": {
+        "owa": {
+            "owaUrl": "https://leguin.comunes.org/owa/",
+            "owaSiteId": "someOWAId"
+        }
+    }
+}
+
+
+```
+
+
 ## Desarrolladores
 
 - [@vjrj](https://github.com/vjrj)
