@@ -1,8 +1,8 @@
 Template.owa.helpers({
   owaUrl: function() {
-    return Session.get('owaUrl');
+    return Meteor.settings.public.owa && Meteor.settings.public.owa.owaUrl;
   },
   owaSiteId: function() {
-    return Session.get('owaSiteId');
+    return Meteor.settings.public.owa && Meteor.settings.public.owa.owaSiteId;
   }
 });

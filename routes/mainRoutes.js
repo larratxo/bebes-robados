@@ -4,16 +4,6 @@
 
 var subsManager = new SubsManager();
 
-// We need this values as soon as possible to init stats
-if (Meteor.isClient) {
-  Meteor.call('getOwaUrl', function(err, result) {
-    Session.set('owaUrl', result);
-  });
-  Meteor.call('getOwaSiteId', function(err, result) {
-    Session.set('owaSiteId', result);
-  });
-}
-
 Router.route('/', {
   name: 'home',
   action: function () {

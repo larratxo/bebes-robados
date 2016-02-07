@@ -10,10 +10,4 @@ Meteor.methods({
     // export GMAPS_KEY=SomeGMapsKey
     return process.env.GMAPS_KEY;
   },
-  getOwaUrl: function() {
-    return process.env.BEBES_OWA_URL;
-  },
-  getOwaSiteId: function() {
-    return process.env.BEBES_OWA_SITE_ID;
-  }
 });
