@@ -1,5 +1,9 @@
 // Main styles
 
+body {
+    font-size: 16px;
+}
+
 .bebe-tabs
 {
     margin-bottom: 0px;
@@ -21,7 +25,6 @@ ul.bebe-tabs li a
     overflow: hidden;
     white-space: nowrap;
 }
-
 
 .lugarNacimientoMap-container,
 #cementerioEnterradoMap
@@ -211,6 +214,7 @@ dropdown-menu a
     padding: 0 10px;
 }
 
+.dropdown-menu > li > a:hover,
 .dropdown-menu > li.active > a:hover,
 .dropdown-menu > li.active > a {
     background-color: #e7e7e7;
@@ -276,7 +280,8 @@ p.comment-content
 }
 
 /* remove comment btn danger style */
-#main > div.comment-section > div > div > div > div.media-body.comment > div > div > div.btn.btn-danger.remove-action {
+
+div.media-body.comment > div > div > div.btn.btn-danger.remove-action {
     background-color: white;
     border: 1px solid rgb(204,204,204);
     color: rgb(51,51,51);
@@ -444,6 +449,11 @@ div.meteor-blog-post-excerpt > small {
 div.meteor-blog-post-main > h1,
 div.meteor-blog-post-meta.text-center {
     text-align: inherit;
+}
+
+.no-respon {
+    font-size: 12px;
+    margin: 0 20px;
 }
 
 /* media queries

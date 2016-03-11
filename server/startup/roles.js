@@ -5,13 +5,22 @@ Meteor.startup(function () {
     Roles.createRole("admin");
   }
 
-  if(!Meteor.roles.findOne({name: "editor"})) {
-    Roles.createRole("editor");
-  }
+  /* No usado todavía
+  if(!Meteor.roles.findOne({name: "denunciante"})) {
+    Roles.createRole("denunciante");
+  } */
 
   var adminId = Meteor.users.findOne({username: "admin"});
   if (adminId) {
-    Roles.addUsersToRoles(adminId, ['admin', 'admin']);
+    /* adminRole y authorRole se usa solo para el blog, admin es el rol general de administración */
+    Roles.addUsersToRoles(adminId, ['admin', 'adminRole']);
   }
+
+  /*
+  Blog.config({
+    adminRole: 'some-user',
+    authorRole: 'somer-user'
+  });
+  */
 
 });

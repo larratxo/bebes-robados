@@ -9,5 +9,5 @@ Meteor.methods({
     // https://console.developers.google.com/
     // export GMAPS_KEY=SomeGMapsKey
     return process.env.GMAPS_KEY;
-  }
+  },
 });

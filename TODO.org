@@ -3,14 +3,10 @@ Lista de Tareas
 
 * Desarrollo
 ** Add license AGPLv3
-** Mejorar mensaje de inicio
-** En comentarios poner aviso legal (no nos hacemos responsables)
-** Nombre del bebe opcional
-** Funcionarios, etc (algo así como "que están en tus documentos")
 ** Añadir campo sobre donde fue adoptado
+** Buscar o crear un correo de contacto
 ** Conectar usuarios-bebes (links en búsquedas, en formularios, etc) y permisos
 ** Bebe encontrado o no encontrado?
-** 1936
 ** Traducción, sobre todo al catalán e ingles parece que inicialmente
 ** Twitter/google aceptar condiciones!
 ** Publicidad

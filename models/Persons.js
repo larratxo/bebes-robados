@@ -102,7 +102,7 @@ Schema.Persons =  new SimpleSchema({
     "Madre", "Padre", "Cónyuge", "Abuela", "Abuelo", "Hermana", "Hermano", "Otro"
   ] },
   familiar: { type: String, optional: true, autoValue: function() { if (this.isInsert) { return this.userId; }}},
-  nombreCompleto: { type: String, label: "Nombre completo del niño/a:" },
+  nombreCompleto: { type: String, label: "Nombre completo del niño/a:", optional: true },
   fechaNacimiento: defaultDate("Fecha de nacimiento:"),
   fechaNacimientoEsAprox: { type: Boolean, optional: true, label: "¿es esta fecha aproximada?",
                             autoform: { afFieldInput: { type: "boolean-radios", trueLabel: "Sí", falseLabel: "No"}}},

@@ -72,6 +72,7 @@ Router.map(function() {
   });
   this.route('legal', { path: '/legal' });
   this.route('donaciones', { path: '/donaciones' });
+  this.route('contacto', { path: '/contacto' });
 
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',
