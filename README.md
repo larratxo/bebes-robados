@@ -2,6 +2,8 @@
 
 Software para facilitar el regitro, búsqueda, difusión y denuncia de casos de bebes robados.
 
+[![Build Status](http://ci.comunes.org/buildStatus/icon?job=bebes)](http://ci.comunes.org/job/bebes/)
+
 ## Uso
 
 Este software está desarrollado con [meteor](https://www.meteor.com/), así que simplemente, bájate el código y ejecuta:

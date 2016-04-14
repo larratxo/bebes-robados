@@ -1,42 +1,51 @@
-/*global initYear, thisYear, onSliderRender:true */
+/*global initYear, lastYear, Session, Template, Deps, onSliderRender:true, calcShowAll:true, $ */
 Deps.autorun(function () {
-  //console.log("min: " + Session.get("minBornYear") +
-  //             ", max: " + Session.get("maxBornYear"));
+  // console.log('min: ' + Session.get('minBornYear') +
+  //             ', max: ' + Session.get('maxBornYear'));
 });
 
-Session.setDefault("minBornYear", initYear);
-Session.setDefault("maxBornYear", thisYear);
-calcShowAll = function() {
-  var showAll = Session.get("minBornYear") === initYear &&
-  Session.get("maxBornYear") === thisYear;
-  // console.log("Show all: " + showAll);
+Session.setDefault('minBornYear', initYear);
+Session.setDefault('maxBornYear', lastYear);
+
+calcShowAll = function () {
+  var showAll = Session.get('minBornYear') === initYear &&
+  Session.get('maxBornYear') === lastYear;
+  // console.log('Show all: ' + showAll);
   return showAll;
 };
 
 onSliderRender = function (changeCallback) {
-  var initSpan = this.$("#initSliderYear");
-  var endSpan = this.$("#endSliderYear");
+  if (Session.get('minBornYear') < initYear) {
+    Session.set('minBornYear', initYear);
+  }
 
-  initSpan.text(Session.get("minBornYear"));
-  endSpan.text(Session.get("maxBornYear"));
+  if (Session.get('maxBornYear') > lastYear) {
+    Session.set('maxBornYear', lastYear);
+  }
 
-  var refresh = function(ev, val) {
+  var initSpan = this.$('#initSliderYear');
+  var endSpan = this.$('#endSliderYear');
+
+  initSpan.text(Session.get('minBornYear'));
+  endSpan.text(Session.get('maxBornYear'));
+
+  var refresh = function (ev, val) {
     var min = Math.round(val[0]);
     var max = Math.round(val[1]);
     Session.set('minBornYear', min);
     Session.set('maxBornYear', max);
-    $("#initSliderYear").text(min);
-    $("#endSliderYear").text(max);
+    $('#initSliderYear').text(min);
+    $('#endSliderYear').text(max);
     changeCallback();
   };
 
   // http://refreshless.com/nouislider/examples/
-  this.$("#yearSlider").noUiSlider({
-    start: [Session.get("minBornYear"), Session.get("maxBornYear")],
+  this.$('#yearSlider').noUiSlider({
+    start: [Session.get('minBornYear'), Session.get('maxBornYear')],
     connect: true,
     range: {
       min: initYear,
-      max: thisYear
+      max: lastYear
     }
   }).on('slide', function (ev, val) {
     refresh(ev, val);
@@ -45,5 +54,5 @@ onSliderRender = function (changeCallback) {
   });
 };
 
-Template.yearSlider.onRendered( function() {
+Template.yearSlider.onRendered(function () {
 });

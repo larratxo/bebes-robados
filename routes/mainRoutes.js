@@ -1,4 +1,4 @@
-/*global Accounts */
+/* global SubsManager, undef, Roles, moment */
 
 // https://iron-meteor.github.io/iron-router/
 
@@ -8,7 +8,7 @@ Router.route('/', {
   name: 'home',
   action: function () {
     this.render('home');
-    SEO.set({ title: 'Inicio - ' + Meteor.App.NAME });
+      SEO.set({ title: 'Inicio - ' + Meteor.App.NAME });
   }, subscriptions:  function() {
     return subsManager.subscribe('Persons');
   }
@@ -21,7 +21,7 @@ var requireLogin = function() {
   } else {
     this.next();
   }
-}
+};
 
 Router.map(function() {
   this.route('loading', { path: '/loading' }); // just for testing
@@ -112,7 +112,8 @@ Router.map(function() {
       onBeforeAction: function() {
           if (Meteor.loggingIn()) {
               this.render(this.loadingTemplate);
-          } else if(!Roles.userIsInRole(Meteor.user(), ['admin'])) {
+          } else
+              if(!Roles.userIsInRole(Meteor.user(), ['admin'])) {
               console.log('Not an admin, redirecting');
               this.redirect('/');
           }
@@ -123,11 +124,13 @@ Router.map(function() {
 
 // Not used now
 var profileUpdated = function () {
-  return moment(Meteor.user().profile.updatedAt).diff(Meteor.user().profile.createdAt, "seconds") !== 0;
+    return moment(Meteor.user().profile.updatedAt).
+        diff(Meteor.user().profile.createdAt, "seconds") !== 0;
 }
 
 // Router.onBeforeAction(requireLogin, {only: ['userUpdate'] } );
-Router.onBeforeAction(requireLogin, {only: ['nuevoBebe', 'bebePage', 'userUpdate'] } );
+Router.onBeforeAction(requireLogin,
+                      {only: ['nuevoBebe', 'bebePage', 'userUpdate'] } );
 
 Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
 
@@ -135,6 +138,6 @@ Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
 
 Router.onAfterAction(function() {
   if (this.ready()) {
-    Meteor.isReadyForSpiderable = true
+    Meteor.isReadyForSpiderable = true;
   }
 });

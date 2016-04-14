@@ -1,5 +1,5 @@
-/* global Tracker,Schema, SimpleSchema, Meteor, $, defaultCreatedAt, defaultUpdateAt,
-   addApiRoute */
+/* global Schema, SimpleSchema, Meteor, $, defaultCreatedAt,
+   defaultUpdateAt, addApiRoute */
 // https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript
 
 /*
@@ -7,35 +7,42 @@ var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 */
 
 var onAfterUp = function () {
-  return function (err, fileObj) {
+  return function (err) {
     if (err) {
       if (Meteor.isClient) {
         if (err.message.indexOf('file does not pass collection filters') > -1) {
-          $.bootstrapGrowl('Error: La imagen es mayor del tamaño permitido (7MB)', {type: 'danger', align: 'center'})
+          $.bootstrapGrowl(
+              'Error: La imagen es mayor del tamaño permitido (7MB)',
+              {type: 'danger', align: 'center'});
         }
       }
     }
-  }
-}
+  };
+};
 
 Schema.UserProfile = new SimpleSchema({
   name: { type: String, optional: true, label: 'Nombre completo',
-                      autoform: {afFieldInput: {placeholder: 'Nombre y apellidos'}}},
+          autoform: {afFieldInput:
+                     {placeholder: 'Nombre y apellidos'}}},
   dni: { type: String, optional: true, label: 'DNI (número y letra):',
-          regEx: /^\d{8}[A-Z]$/, autoform: { mask: '99999999-A' }},
-  // parentesco: { type: String, optional: true, label: 'Parentesco con el presunto niño/a robado:' },
-  telefono: { type: String, optional: true, label: 'Teléfono de contacto:', // regEx: phoneRegex,
-    autoform: {afFieldInput: {placeholder: 'Teléfono móvil preferiblemente'}}
+         regEx: /^\d{8}[A-Z]$/, autoform: { mask: '99999999-A' }},
+    // parentesco: { type: String, optional: true, label:
+    // 'Parentesco con el presunto niño/a robado:' },
+  telefono: { type: String, optional: true, label: 'Teléfono de contacto:',
+              autoform: {afFieldInput:
+                         {placeholder: 'Teléfono móvil preferiblemente'}}
   },
   fax: {type: String, optional: true, label: 'Fax:'}, // regEx: phoneRegex},
   redesSociales: {
     type: [Object],
-    label: 'Perfiles en redes sociales (twitter, flickr, facebook ,etc). Pueden ayudar en la búsqueda de familiares',
+    label: 'Perfiles en redes sociales (twitter, flickr, facebook ,etc). ' +
+          'Pueden ayudar en la búsqueda de familiares',
     optional: true
   },
   'redesSociales.$.url': {
     type: String,
-    autoform: { afFieldInput: {label: false, placeholder: 'p.ej: http://twitter.com/tu_usuario'} },
+    autoform: { afFieldInput: {label: false, placeholder:
+                                 'p.ej: http://twitter.com/tu_usuario'} },
     regEx: SimpleSchema.RegEx.Url
   },
   imagenes: {
@@ -56,16 +63,20 @@ Schema.UserProfile = new SimpleSchema({
       }}},
   createdAt: defaultCreatedAt,
   updatedAt: defaultUpdateAt
-})
+});
 
 Schema.User = new SimpleSchema({
   username: {
     type: String,
     label: 'Usuario/a',
     regEx: /^[a-z0-9A-Z_]{3,15}$/,
-    // For accounts-password, either emails or username is required, but not both. It is OK to make this
-    // optional here because the accounts-password package does its own validation.
-    // Third-party login packages may not require either. Adjust this schema as necessary for your usage.
+      // For accounts-password, either emails or username is required,
+      // but not both.
+      // It is OK to make this optional here because the accounts-password
+      // package
+      // does its own validation.
+      // Third-party login packages may not require either.
+      // Adjust this schema as necessary for your usage.
     autoform: { readonly: true, disabled: true },
     optional: true
   },
@@ -73,9 +84,13 @@ Schema.User = new SimpleSchema({
     type: Array,
     min: 1,
     label: 'Lista de emails de contacto',
-    // For accounts-password, either emails or username is required, but not both. It is OK to make this
-    // optional here because the accounts-password package does its own validation.
-    // Third-party login packages may not require either. Adjust this schema as necessary for your usage.
+      // For accounts-password, either emails or username is required,
+      // but not both.
+      // It is OK to make this optional here because the accounts-password
+      // package
+      // does its own validation.
+      // Third-party login packages may not require either.
+      // Adjust this schema as necessary for your usage.
     optional: true
   },
   'emails.$': {
@@ -85,7 +100,8 @@ Schema.User = new SimpleSchema({
   'emails.$.address': {
     type: String,
     label: '',
-    autoform: { afFieldInput: {label: false, placeholder: 'p.ej: fulano@gmail.com'} },
+    autoform: { afFieldInput:
+                  {label: false, placeholder: 'p.ej: fulano@gmail.com'} },
     regEx: SimpleSchema.RegEx.Email
   },
   'emails.$.verified': {
@@ -97,7 +113,8 @@ Schema.User = new SimpleSchema({
     label: 'Otros datos',
     optional: true
   },
-  // Make sure this services field is in your schema if you're using any of the accounts packages
+    // Make sure this services field is in your schema
+    // if you're using any of the accounts packages
   services: {
     type: Object,
     optional: true,
@@ -122,23 +139,23 @@ Schema.User = new SimpleSchema({
   // If you are sure you will never need to use role groups, then
   // you can specify [String] as the type
   roles: {
-      type: [String],
-      autoform: { type: 'hidden' },
-      optional: true
+    type: [String],
+    autoform: { type: 'hidden' },
+    optional: true
   }
-})
+});
 
-Meteor.users.attachSchema(Schema.User)
+Meteor.users.attachSchema(Schema.User);
 
 Meteor.users.allow({
-  update: function (userId, user, fields, modifier) {
+  update: function (userId, user) {
     if (user._id !== userId) {
-      return false
+      return false;
     } else {
-      return true
+      return true;
     }
   }
-})
+});
 
 /*
 Tracker.autorun(function () {
@@ -149,8 +166,8 @@ var onlyFields = { fields: {
   username: 1,
   'profile.name': 1,
   'profile.redesSociales': 1
-}}
+}};
 
-addApiRoute('/person/:_id', Meteor.users, onlyFields, '_id')
-addApiRoute('/persons', Meteor.users, onlyFields)
-addApiRoute('/person/u/:username', Meteor.users, onlyFields, 'username')
+addApiRoute('/person/:_id', Meteor.users, onlyFields, '_id');
+addApiRoute('/persons', Meteor.users, onlyFields);
+addApiRoute('/person/u/:username', Meteor.users, onlyFields, 'username');

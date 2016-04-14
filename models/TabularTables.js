@@ -1,6 +1,6 @@
 /* global TabularTables:true,moment,tabLanguageEs:true,renderDate:true,
    isValidLatLng,renderSexo:true,renderSexoAlt:true,renderGeo:true,renderAprox:true,
-   decorateNacAprox:true,setEmptyTable:true*/
+   decorateNacAprox:true,setEmptyTable:true,renderNuevo,renderFamiliar*/
 // https://github.com/aldeed/meteor-tabular
 // Comparison: http://reactive-table.meteor.com/
 
@@ -141,7 +141,8 @@ TabularTables.Persons = new Tabular.Table({
     // {data: "lugarNacimientoLongitud", title: "Geo1"},
     {data: "lugarNacimientoLongitud", title: "Geo", render: renderGeo,
      className: "column-center" },
-    // {data: "updatedAt", title: "", render: renderNuevo, width: "1px", className: "column-updated-at" },
+    // {data: "updatedAt", title: "", render: renderNuevo, width: "1px",
+    // className: column-updated-at" },
     {data: "nombreCompletoMedico", title: "none", visible: false},
     {data: "nombreCompletoMatrona", title: "none", visible: false},
     {data: "nombreCompletoEnfermera", title: "none", visible: false},
@@ -149,7 +150,8 @@ TabularTables.Persons = new Tabular.Table({
     {data: "nombreFuncionariosRegCivil", title: "none", visible: false},
     {data: "nombreFuncionariosCementario", title: "none", visible: false},
     {data: "nombreTrabajadoresFuneraria", title: "none", visible: false},
-    {data: "nombreOtrosFuncionariosOTrabajadores", title: "none", visible: false},
+    {data: "nombreOtrosFuncionariosOTrabajadores", title: "none",
+     visible: false},
     {data: "cementerioEnterrado", title: "Cementerio", visible: false},
     {data: "lugarNacimientoPais", title: "País", visible: false}
   ]

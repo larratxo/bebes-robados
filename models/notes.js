@@ -1,3 +1,4 @@
+/* global notes:true, Meteor, Mongo, SimpleSchema */
 notes = new Mongo.Collection('notes');
 
 notes.attachSchema(
@@ -27,13 +28,13 @@ notes.attachSchema(
 // Add custom permission rules if needed
 if (Meteor.isServer) {
   notes.allow({
-    insert : function () {
+    insert: function () {
       return true;
     },
-    update : function () {
+    update: function () {
       return true;
     },
-    remove : function () {
+    remove: function () {
       return true;
     }
   });
