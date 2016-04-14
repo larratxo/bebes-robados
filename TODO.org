@@ -2,6 +2,7 @@
 Lista de Tareas
 
 * Desarrollo
+** Add license AGPLv3
 ** Añadir campo sobre donde fue adoptado
 ** Buscar o crear un correo de contacto
 ** Conectar usuarios-bebes (links en búsquedas, en formularios, etc) y permisos
@@ -51,6 +52,7 @@ https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-d
 *** https://atmospherejs.com/percolate/migrations
 *** https://atmospherejs.com/raix/handlebar-helpers <<
 *** https://atmospherejs.com/reywood/publish-composite << person-bebe
+** A hablar: crear tb cuenta twitter
 ** DONE http://meteorpedia.com/read/REST_API
 https://github.com/awatson1978/rest-api/blob/master/webapp/lib/rest/api.posts.js
 ** DONE Spiderable
