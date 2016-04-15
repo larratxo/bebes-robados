@@ -9,7 +9,7 @@ Software para facilitar el regitro, búsqueda, difusión y denuncia de casos de 
 Este software está desarrollado con [meteor](https://www.meteor.com/), así que simplemente, bájate el código y ejecuta:
 
 ```bash
-meteor
+meteor --settings settings.json
 ```
 
 ## Instalación
