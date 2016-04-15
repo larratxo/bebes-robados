@@ -35,7 +35,7 @@ Schema.UserProfile = new SimpleSchema({
   fax: {type: String, optional: true, label: 'Fax:'}, // regEx: phoneRegex},
   redesSociales: {
     type: [Object],
-    label: 'Perfiles en redes sociales (twitter, flickr, facebook ,etc). ' +
+    label: 'Perfiles en redes sociales (twitter, flickr, facebook, etc). ' +
           'Pueden ayudar en la búsqueda de familiares',
     optional: true
   },

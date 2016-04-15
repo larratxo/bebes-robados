@@ -69,7 +69,7 @@ Images.allow({
   remove: function (userId, doc) {
     return true;
   },
-  download: function (){
+  download: function () {
     return true;
   }
 });

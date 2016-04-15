@@ -1,0 +1,47 @@
+<template name="difusion">
+
+  <div class="page-header">
+    <h2>Campañas de difusión públicas</h2>
+    <h4><em>En desarrollo</em></h4>
+  </div>
+
+  <div class="row">
+    <p>Uno de nuestros principales objetivos es poder localizar a nuestros familiares perdidos.</p>
+    <p>Para facilitar la difusión de todos estos casos, hemos diseñado unos <em>banners</em> que pueden ser incluidos en otros medios digitales de comunicación, en blogs, etc. que quieran participar en su difusión y así facilitar el reencuentro.</p>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <h3>Ejemplos de <em>banners</em></h3>
+    <p>Estos son solo unos ejemplos con textos e imágenes ficticias:</p>
+
+    <div class="container-fluid">
+      {{> ad sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+      {{> ad sample="true" backImage="/images/pusample3.jpg" adHeader="Busco a mi hijo, quizás puedas ser tú" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+      {{> ad sample="true" backImage="/images/pusample2.jpg" adHeader="Busco a mi hermano, quizás puedas ser tú" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+      {{> ad sample="true" backImage="/images/pusample4.jpg" adHeader="Busco a mi familia biológica, quizá sea la tuya" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <h3>¿Cómo usar nuestros <em>banners</em>?</h3>
+    <p>Para ello incluye el siguiente código html en tu página web (o si esto te suena a chino, pásale esta página a quien gestione vuestra página web para que lo pueda incluir):</p>
+    <pre>
+     LO SIENTO, ESTO ESTÁ AÚN EN DESARROLLO
+    </pre>
+    <p>Con cada acceso a la página donde lo incluyáis se mostrará aleatoriamente y rotativamenta uno de los diferentes <em>banners</em> de los diferentes casos que han querido participar en estas campañas mediáticas.</p>
+  </div>
+
+  <br>
+
+  <div class="row">
+  <h3>Zona de pruebas de generación de banners para campañas de difusión</h3>
+  <p>Aquí probamos la generación de banners mientras desarrollamos esta parte. Pon un texto, sube una foto, escálala y a ver que tal queda.</p>
+
+  {{> adEditor }}
+  </div>
+
+</template>

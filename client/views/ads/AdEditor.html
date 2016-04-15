@@ -1,0 +1,23 @@
+<template name="adEditor">
+<div class="checkbox">
+    <label>
+      <input id="participar" type="checkbox" checked/>Sí, quiero participar en esta campaña de difusión
+    </label>
+</div>
+  <div id="difueditor" class="{{participa}} row">
+
+    <div class="form-group">
+      <label for="adtitle">¿Qué título pondrías para describir vuestro caso?</label>
+      <input type="text" class="form-control" id="adtitle" placeholder="Por ejemplo: Busco a mi hermana, quizás puedas ser tú o la conozcas"/>
+    </div>
+
+    <div col="row">
+      <h4>Previsualización</h4>
+      {{> ad backImage=dynPhoto adHeader=dynHeader adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" sample="false" subHeaderLink="/" }}
+    </div>
+
+    <div class="row" style="clear:both;">
+      {{> photoUp photoUpOptions}}
+    </div>
+  </div>
+</template>

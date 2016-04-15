@@ -1,8 +1,6 @@
 /* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,defaultCreatedAt,defaultUpdateAt,addApiRoute */
 Persons = new Mongo.Collection('Persons');
 
-Schema = {};
-
 var defaultDate = function (label) {
   return {
     type: Date,

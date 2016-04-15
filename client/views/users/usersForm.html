@@ -14,4 +14,19 @@
   <br>
   {{> quickForm autosave=true collection="Meteor.users" id=id template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"  doc=doc type=type buttonContent=btnTitle omitFields=omitFields fields="username, profile.name, emails, profile.dni, profile.telefono, profile.redesSociales, profile.imagenes" buttonClasses="btn-primary btn btn-form-submit" }}
 
+  {{#if isEqual type "update"}}
+  <hr>
+
+  <h3>Campañas de difusión públicas</h3>
+  <h4><em>En desarrollo</em></h4>
+
+  ¿Estarías interesado tú o tu familia en participar en nuestras campañas de difusión? Se trata de proporcionar una foto y un breve texto para conformar una especie 'publicidad' que pueda ser incluida en medios de comunicación digitales, junto con otros participantes que también cuenten su caso brevemente. Tienen este aspecto:
+   <div class="container-fluid">
+ {{> ad sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+ </div>
+
+ {{> adEditor }}
+
+ {{/if}}
+
 </template>
