@@ -53,6 +53,7 @@ https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-d
 *** https://atmospherejs.com/raix/handlebar-helpers <<
 *** https://atmospherejs.com/reywood/publish-composite << person-bebe
 ** A hablar: crear tb cuenta twitter
+** Hacer backups públicos de mongo y uploads para Asoc.
 ** DONE http://meteorpedia.com/read/REST_API
 https://github.com/awatson1978/rest-api/blob/master/webapp/lib/rest/api.posts.js
 ** DONE Spiderable
