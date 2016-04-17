@@ -10,6 +10,9 @@ Lista de Tareas
 ** Traducción, sobre todo al catalán e ingles parece que inicialmente
 ** Twitter/google aceptar condiciones!
 ** Publicidad
+*** split the app!
+http://guide.meteor.com/structure.html#splitting-your-app
+*** links
 https://css-tricks.com/set-font-size-based-on-word-count/
 https://en.wikipedia.org/wiki/Web_banner
 https://support.google.com/adsense/answer/6002621?hl=en

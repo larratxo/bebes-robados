@@ -7,6 +7,7 @@
     <li role="presentation" class="active"><a href="#cuentas" aria-controls="cuentas" role="tab" data-toggle="tab">Usuarios/as</a></li>
     <li role="presentation"><a href="#blog" aria-controls="blog" role="tab" data-toggle="tab">Blog</a></li>
     <li role="presentation"><a href="#difusion" aria-controls="difusion" role="tab" data-toggle="tab">Difusión</a></li>
+    <li role="presentation"><a href="#backups" aria-controls="backups" role="tab" data-toggle="tab">Backups</a></li>
   </ul>
 
   <div class="tab-content">
@@ -24,6 +25,18 @@
     </div>
     <div role="tabpanel" class="tab-pane fade" id="difusion">
       {{> difuAdmin }}
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="backups">
+      <br>
+      <br>
+      Ahora mismo esta aplicación está formada por:
+      <ul>
+        <li><a href="https://github.com/comunes/bebes-robados" target="_blank">El software</a>: que puede ser instalado en cualquier otro sitio</li>
+        <li>Los datos: que se pueden descargar (y restaurar) desde aquí en casos de necesidad</li>
+        <li>Las imágenes: por ahora no disponemos de una forma pública de hacer backups (y por el volumen, es probable que no sea trivial de hacer)</li>
+      </ul>
+      <br>
+      {{> appDumpUI}}
     </div>
   </div>
 
