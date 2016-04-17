@@ -118,6 +118,9 @@ Router.map(function () {
         this.redirect('/');
       }
       this.next();
+    },
+    waitOn: function () {
+      return [subsManager.subscribe('AdCampaigns'), subsManager.subscribe('Persons')];
     }
   });
   this.route('DifuAdmin', {

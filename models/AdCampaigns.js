@@ -1,4 +1,4 @@
-/* global AdCampaigns:true, Mongo, Schema, SimpleSchema, currentAdCampaign */
+/* global AdCampaigns:true, Mongo, Schema:true, SimpleSchema, currentAdCampaign */
 
 AdCampaigns = new Mongo.Collection('AdCampaigns');
 
@@ -11,16 +11,26 @@ Schema.AdCampaign = new SimpleSchema({
           autoValue: function () {
             if (this.isInsert) {
               return this.userId;
-            } else {
-              return '';
             }
           }, autoform: {type: 'hidden'}, index: 1
         },
-  photo: { type: String, optional: false, autoform: {type: 'hidden'} },
-  photoHD: { type: String, optional: false, autoform: {type: 'hidden'} },
-  text: { type: String, optional: false },
+  photo: { type: String, optional: true, autoform: {type: 'hidden'} },
+  photoHD: { type: String, optional: true, autoform: {type: 'hidden'} },
+  text: { type: String, optional: true },
   participate: { type: Boolean, optional: false, index: 1, autoform: {type: 'hidden'} },
   validated: { type: Boolean, optional: false, index: 1, autoform: {type: 'hidden'} }
 });
 
 AdCampaigns.attachSchema(Schema.AdCampaign);
+
+AdCampaigns.allow({
+  insert: function (userId, doc) {
+    return true;
+  },
+  update: function (userId, doc, fields, modifier) {
+    return true;
+  },
+  remove: function (userId, doc) {
+    return true;
+  }
+});

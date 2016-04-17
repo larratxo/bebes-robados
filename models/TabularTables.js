@@ -1,7 +1,7 @@
 /* global TabularTables:true,moment,tabLanguageEs:true,renderDate:true,
    isValidLatLng,renderSexo:true,renderSexoAlt:true,renderGeo:true,renderAprox:true,
  decorateNacAprox:true,setEmptyTable:true,renderNuevo:true,renderFamiliar:true, Tabular, isNew, $, Persons, AdCampaigns
- renderCheckbox:true*/
+ renderCheckbox:true Meteor Template*/
 // https://github.com/aldeed/meteor-tabular
 // Comparison: http://reactive-table.meteor.com/
 
@@ -82,12 +82,6 @@ var renderGeo = function (val) {
          ? '<i title="Geolocalizado" class="fa fa-map-marker"></i>' : '';
 };
 
-var renderCheckbox = function (val) {
-  return val
-    ? '<i class="fa fa-check"></i>'
-    : '<i class="fa fa-times"></i>';
-};
-
 renderNuevo = function (val) {
   return isNew(val) ? '<span class="label label-warning">Nuevo</span>' : '';
 };
@@ -165,15 +159,39 @@ TabularTables.Persons = new Tabular.Table({
   ]
 });
 
+var renderCheckbox = function (val) {
+  return val
+    ? '<i class="check-green fa fa-check"></i>'
+    : '<i class="check-red fa fa-times"></i>';
+};
+
+var renderPhoto = function (val) {
+  /* return '<div class="bebepub-main" style="width: 50%; height: 50%; background-image: url(' + val + ')">'; */
+  return '<img width="75" height="75" src="' + val + '"/>';
+};
+
+var renderFamiliarDifu = function (val, type, doc) {
+  return '<a href="/persona/' + doc.user + '" title="Ir a la página de este familiar">Usuario/a</a>';
+};
+
 TabularTables.AdCampagins = new Tabular.Table({
   name: 'AdCampaigns',
   collection: AdCampaigns,
   language: tabLanguageEs,
+  // https://datatables.net/examples/basic_init/table_sorting.htmlv
+  order: [[4, 'asc']],
   columns: [
-    {data: 'user', title: 'Usuario/a'},
+    {data: 'user', title: 'Usuario/a', render: renderFamiliarDifu},
     {data: 'participate', title: '¿Quiere participar?', render: renderCheckbox,
-    className: 'column-center' },
-    {data: 'text', title: 'Texto de banner'},
-    {data: 'validated', title: '¿Validado?', render: renderCheckbox,
-     className: 'column-center' }
+     className: 'column-center', visible: false },
+    {data: 'photo', title: 'Foto ', render: renderPhoto},
+    {data: 'text', title: 'Texto'},
+    {data: 'validated', title: '¿Validado?', render: renderCheckbox, className: 'column-center'},
+    {tmpl: Meteor.isClient && Template.difuValidate,
+     tmplContext: function (rowData) {
+       return {
+         item: rowData
+       };
+     }
+    }
   ]});

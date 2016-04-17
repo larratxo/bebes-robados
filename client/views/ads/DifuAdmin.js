@@ -1,7 +1,7 @@
 /* global Template */
 
-/* Template.DifuAdmin.helpers({
+Template.difuAdmin.helpers({
+  selector: function () {
+    return { participate: true };
+  }
 });
-
-Template.DifuAdmin.events({
-}); */

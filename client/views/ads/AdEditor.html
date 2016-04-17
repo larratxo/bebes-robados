@@ -1,14 +1,24 @@
 <template name="adEditor">
-<div class="checkbox">
+
+  <div id="difuintro" class="{{noParticipaClass}} row">
+    <div class="container-fluid">
+      ¿Estarías interesado tú o tu familia en participar en nuestras campañas de difusión? Se trata de proporcionar una foto y un breve texto para conformar una especie 'publicidad' que pueda ser incluida en medios de comunicación digitales, junto con otros participantes que también cuenten su caso brevemente. Tienen este aspecto:
+    </div>
+     <div class="container-fluid">
+       {{> ad sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+     </div>
+  </div>
+
+  <div class="checkbox">
     <label>
-      <input id="participar" type="checkbox" checked/>Sí, quiero participar en esta campaña de difusión
+      <input id="participar" type="checkbox" {{participa}}/>Sí, quiero participar en esta campaña de difusión
     </label>
-</div>
-  <div id="difueditor" class="{{participa}} row">
+  </div>
+  <div id="difueditor" class="{{participaClass}} row">
 
     <div class="form-group">
       <label for="adtitle">¿Qué título pondrías para describir vuestro caso?</label>
-      <input type="text" class="form-control" id="adtitle" placeholder="Por ejemplo: Busco a mi hermana, quizás puedas ser tú o la conozcas"/>
+      <input type="text" class="form-control" value="{{dynHeader}}"  id="adtitle" placeholder="Por ejemplo: Busco a mi hermana, quizás puedas ser tú o la conozcas"/>
     </div>
 
     <div col="row">

@@ -35,13 +35,13 @@
     <p>Con cada acceso a la página donde lo incluyáis se mostrará aleatoriamente y rotativamenta uno de los diferentes <em>banners</em> de los diferentes casos que han querido participar en estas campañas mediáticas.</p>
   </div>
 
+  {{#if currentUser }}
   <br>
-
   <div class="row">
-  <h3>Zona de pruebas de generación de banners para campañas de difusión</h3>
-  <p>Aquí probamos la generación de banners mientras desarrollamos esta parte. Pon un texto, sube una foto, escálala y a ver que tal queda.</p>
+  <h3>¿Participarías en estas campañas?</h3>
 
   {{> adEditor }}
   </div>
+  {{/if}}
 
 </template>
