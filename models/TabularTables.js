@@ -167,11 +167,11 @@ var renderCheckbox = function (val) {
 
 var renderPhoto = function (val) {
   /* return '<div class="bebepub-main" style="width: 50%; height: 50%; background-image: url(' + val + ')">'; */
-  return '<img width="75" height="75" src="' + val + '"/>';
+  return '<img width="100" src="' + val + '"/>';
 };
 
 var renderFamiliarDifu = function (val, type, doc) {
-  return '<a href="/persona/' + doc.user + '" title="Ir a la página de este familiar">Usuario/a</a>';
+  return '<a href="/persona/' + doc.user + '" title="Ir a la página de este familiar"><i class="fa fa-user"></i></a>';
 };
 
 TabularTables.AdCampagins = new Tabular.Table({
@@ -181,13 +181,29 @@ TabularTables.AdCampagins = new Tabular.Table({
   // https://datatables.net/examples/basic_init/table_sorting.htmlv
   order: [[4, 'asc']],
   columns: [
-    {data: 'user', title: 'Usuario/a', render: renderFamiliarDifu},
+    {title: 'Banner', tmpl: Meteor.isClient && Template.difuTabular,
+     tmplContext: function (rowData) {
+       return {
+         item: rowData
+       };
+     }
+    },
+    {data: 'user', title: 'Familiar', render: renderFamiliarDifu, className: 'column-center'},
     {data: 'participate', title: '¿Quiere participar?', render: renderCheckbox,
      className: 'column-center', visible: false },
-    {data: 'photo', title: 'Foto ', render: renderPhoto},
-    {data: 'text', title: 'Texto'},
+    {data: 'photo', title: 'Foto ', render: renderPhoto, visible: false},
+    {data: 'text', title: 'Texto', visible: false},
     {data: 'validated', title: '¿Validado?', render: renderCheckbox, className: 'column-center'},
-    {tmpl: Meteor.isClient && Template.difuValidate,
+    {title: '¿Validar?',
+     tmpl: Meteor.isClient && Template.difuValidate, className: 'column-center',
+     tmplContext: function (rowData) {
+       return {
+         item: rowData
+       };
+     }
+    },
+    {title: '¿Borrar?',
+     tmpl: Meteor.isClient && Template.difuErase, className: 'column-center',
      tmplContext: function (rowData) {
        return {
          item: rowData
