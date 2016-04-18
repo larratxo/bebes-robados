@@ -8,7 +8,6 @@ Lista de Tareas
 ** Conectar usuarios-bebes (links en búsquedas, en formularios, etc) y permisos
 ** Bebe encontrado o no encontrado?
 ** Traducción, sobre todo al catalán e ingles parece que inicialmente
-** Twitter/google aceptar condiciones!
 ** Publicidad
 *** split the app!
 http://guide.meteor.com/structure.html#splitting-your-app
@@ -20,7 +19,6 @@ http://www.stefanmaescher.com/top10-banner-sizes/ . Medium Rectangle: 300×250, 
 https://github.com/meteor-london/banner/
 https://github.com/meteor-london/banner/blob/master/banner.js
 ** https://github.com/alanning/meteor-roles
-** Notificaciones de comentarios por email
 ** Markers in a circle
 https://jsfiddle.net/kaiser/wzcst/light/
 https://developers.google.com/maps/documentation/javascript/shapes#circles
@@ -56,7 +54,6 @@ https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-d
 *** https://atmospherejs.com/raix/handlebar-helpers <<
 *** https://atmospherejs.com/reywood/publish-composite << person-bebe
 ** A hablar: crear tb cuenta twitter
-** Hacer backups públicos de mongo y uploads para Asoc.
 ** DONE http://meteorpedia.com/read/REST_API
 https://github.com/awatson1978/rest-api/blob/master/webapp/lib/rest/api.posts.js
 ** DONE Spiderable
