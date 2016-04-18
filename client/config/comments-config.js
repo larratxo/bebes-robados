@@ -8,12 +8,14 @@ Comments.ui.config({
   markdown: false
 });
 
+/* FIXME: No yet available
 Comments.config({
   mediaAnalyzers: [
     Comments.analyzers.image,
     Comments.analyzers.youtube
   ]
 });
+*/
 
 Comments.ui.setContent({
   title: 'Comentarios',
