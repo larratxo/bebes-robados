@@ -17,6 +17,7 @@ natestrauser:animate-css
 dburles:collection-helpers
 meteorhacks:fast-render
 
+standard-minifiers
 meteor-base
 mobile-experience
 mongo
@@ -46,7 +47,7 @@ matb33:collection-hooks
 okgrow:router-autoscroll
 fortawesome:fontawesome
 mpowaga:autoform-autocomplete
-rzymek:moment-locales
+rzymek:moment-locale-es
 liberation:shareit
 arkham:comments-ui
 email
@@ -85,5 +86,3 @@ accounts-twitter
 accounts-base
 francocatena:status
 hitchcott:app-dump
-standard-minifier-css
-standard-minifier-js
