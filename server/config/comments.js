@@ -25,10 +25,13 @@ var sendNotif = function (userId, comment) {
 };
 
 // https://github.com/matb33/meteor-collection-hooks
-Comments.getCollection().after.update(function (userId, comment) {
+// https://github.com/ARKHAM-Enterprises/meteor-comments-ui/issues/26
+var cm = Comments._collection;
+// FIXME In the future: Comments.getCollection()
+cm.after.update(function (userId, comment) {
   sendNotif(userId, comment);
 });
 
-Comments.getCollection().after.insert(function (userId, comment) {
+cm.after.insert(function (userId, comment) {
   sendNotif(userId, comment);
 });
