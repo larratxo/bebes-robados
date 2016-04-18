@@ -1,8 +1,18 @@
+/* global Comments */
+
 Comments.ui.config({
   limit: 20, // default 10
   loadMoreCount: 20, // default 20
   template: 'bootstrap', // default 'semantic-ui'
-  defaultAvatar: '/images/default-avatar.png' // default 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'
+  defaultAvatar: '/images/default-avatar.png', // default 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'
+  markdown: false
+});
+
+Comments.config({
+  mediaAnalyzers: [
+    Comments.analyzers.image,
+    Comments.analyzers.youtube
+  ]
 });
 
 Comments.ui.setContent({
