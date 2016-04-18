@@ -1,12 +1,12 @@
 <template name="adEditor">
 
-  <div id="difuintro" class="{{noParticipaClass}} row">
+  <div id="difuintro" class="{{noParticipaClass}}">
+
+    ¿Estarías interesado tú o tu familia en participar en nuestras campañas de difusión? Se trata de proporcionar una foto y un breve texto para conformar una especie 'publicidad' que pueda ser incluida en medios de comunicación digitales, junto con otros participantes que también cuenten su caso brevemente. Tienen este aspecto:
+
     <div class="container-fluid">
-      ¿Estarías interesado tú o tu familia en participar en nuestras campañas de difusión? Se trata de proporcionar una foto y un breve texto para conformar una especie 'publicidad' que pueda ser incluida en medios de comunicación digitales, junto con otros participantes que también cuenten su caso brevemente. Tienen este aspecto:
+      {{> ad sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
     </div>
-     <div class="container-fluid">
-       {{> ad sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
-     </div>
   </div>
 
   <div class="checkbox">
@@ -14,19 +14,16 @@
       <input id="participar" type="checkbox" {{participa}}/>Sí, quiero participar en esta campaña de difusión
     </label>
   </div>
-  <div id="difueditor" class="{{participaClass}} row">
 
+  <div id="difueditor" class="{{participaClass}}">
     <div class="form-group">
       <label for="adtitle">¿Qué título pondrías para describir vuestro caso?</label>
       <input type="text" class="form-control" value="{{dynHeader}}"  id="adtitle" placeholder="Por ejemplo: Busco a mi hermana, quizás puedas ser tú o la conozcas"/>
     </div>
 
-    <div col="row">
-      <h4>Previsualización</h4>
+    <h4>Previsualización</h4>
       {{> ad backImage=dynPhoto adHeader=dynHeader adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" sample="false" subHeaderLink="/" }}
-    </div>
-
-    <div class="row" style="clear:both;">
+    <div style="clear:both;">
       {{> photoUp photoUpOptions}}
     </div>
   </div>

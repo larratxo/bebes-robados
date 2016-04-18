@@ -30,7 +30,11 @@ Router.map(function () {
                                 return subsManager.subscribe('Persons');
 			      }
                             });
-  this.route('difusion', { path: '/difusion' });
+  this.route('difusion', { path: '/difusion',
+                           waitOn: function () {
+                             return subsManager.subscribe('AdCampaigns');
+                           }
+                         });
   this.route('nuevoBebe', {
     path: '/nuevoBebe'
   }
@@ -113,7 +117,7 @@ Router.map(function () {
       if (Meteor.loggingIn()) {
         this.render(this.loadingTemplate);
       } else
-      if(!Roles.userIsInRole(Meteor.user(), ['admin'])) {
+      if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
         console.log('Not an admin, redirecting');
         this.redirect('/');
       }
@@ -129,7 +133,6 @@ Router.map(function () {
       return subsManager.subscribe('AdCampaigns');
     }
   });
-
 });
 
 // Not used now
