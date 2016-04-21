@@ -4,7 +4,7 @@ var getAfectado = function () {
   return Persons.find({familiar: Meteor.userId()});
 };
 
-Template.registerHelper('afectado', () => {
+Template.registerHelper('afectado', function () {
   return Meteor.user() && getAfectado().count() >= 1;
 });
 
