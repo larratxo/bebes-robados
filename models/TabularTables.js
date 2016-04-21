@@ -174,6 +174,10 @@ var renderFamiliarDifu = function (val, type, doc) {
   return '<a href="/persona/' + doc.user + '" title="Ir a la página de este familiar"><i class="fa fa-user"></i></a>';
 };
 
+var renderBebeDifu = function (val, type, doc) {
+  return '<a href="/bebe/' + doc.bebe + '" title="Ir a la página de este bebe"><i class="fa fa-user"></i></a>';
+};
+
 TabularTables.AdCampagins = new Tabular.Table({
   name: 'AdCampaigns',
   collection: AdCampaigns,
@@ -189,6 +193,7 @@ TabularTables.AdCampagins = new Tabular.Table({
      }
     },
     {data: 'user', title: 'Familiar', render: renderFamiliarDifu, className: 'column-center'},
+    {data: 'bebe', title: 'Bebe', render: renderBebeDifu, className: 'column-center'},
     {data: 'participate', title: '¿Quiere participar?', render: renderCheckbox,
      className: 'column-center', visible: false },
     {data: 'photo', title: 'Foto ', render: renderPhoto, visible: false},

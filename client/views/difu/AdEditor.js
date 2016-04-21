@@ -1,4 +1,12 @@
-/* global Template, ReactiveVar, sanitizeHtml, $, Meteor, AdCampaigns */
+/* global Template, ReactiveVar, sanitizeHtml, $, Meteor, AdCampaigns, Persons */
+
+var getAfectado = function () {
+  return Persons.find({familiar: Meteor.userId()});
+};
+
+Template.registerHelper('afectado', () => {
+  return Meteor.user() && getAfectado().count() >= 1;
+});
 
 Template.adEditor.helpers({
   participa: function () { return Template.instance().myAd.get().participate ? 'checked' : ''; },
@@ -36,8 +44,12 @@ Template.adEditor.helpers({
 
 Template.adEditor.onCreated(function () {
   var ad = AdCampaigns.findOne({user: Meteor.userId()});
-  if (typeof (ad) === 'undefined') {
-    AdCampaigns.insert({user: Meteor.userId(), participate: false, validated: false, text: ''});
+  var casos = getAfectado();
+  var count = casos.count();
+  var afectado = count >= 1;
+  if (typeof (ad) === 'undefined' && afectado) {
+    var personSlug = casos.fetch()[0].slug;
+    AdCampaigns.insert({ user: Meteor.userId(), participate: false, validated: false, text: '', bebe: personSlug });
     ad = AdCampaigns.findOne({user: Meteor.userId()});
   }
   this.myAd = new ReactiveVar(ad);

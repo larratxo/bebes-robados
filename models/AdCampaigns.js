@@ -14,6 +14,7 @@ Schema.AdCampaign = new SimpleSchema({
             }
           }, index: 1
         },
+  bebe: { type: String, optional: false },
   photo: { type: String, optional: true },
   photoHD: { type: String, optional: true },
   text: { type: String, optional: true },

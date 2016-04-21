@@ -1,4 +1,4 @@
-/* global Meteor, currentAdCampaign, Images, AdCampaigns, check */
+/* global Meteor, currentAdCampaign, Images, AdCampaigns, check, Persons */
  // https://stackoverflow.com/questions/13151879/publish-certain-information-for-meteor-users-and-more-information-for-meteor-use
 // https://stackoverflow.com/questions/14802627/cannot-access-other-users-email-addresses-in-meteor-app
 
@@ -35,6 +35,7 @@ Meteor.publish('meAndMyImages', function () {
   // check(this.userId, String); // sometimes this is 'object'
   var user = Meteor.users.find({_id: this.userId}, allUserFields);
   var ad = AdCampaigns.find({ group: currentAdCampaign,
-                               user: this.userId });
-  return userAndImagesFromId(user).concat([ad]);
+                              user: this.userId });
+  var person = Persons.find({familiar: this.userId});
+  return userAndImagesFromId(user).concat([ad, person]);
 });

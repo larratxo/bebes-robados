@@ -1,11 +1,11 @@
 <template name="adEditor">
-
+  {{#if afectado }}
   <div id="difuintro" class="{{noParticipaClass}}">
 
     ¿Estarías interesado tú o tu familia en participar en nuestras campañas de difusión? Se trata de proporcionar una foto y un breve texto para conformar una especie 'publicidad' que pueda ser incluida en medios de comunicación digitales, junto con otros participantes que también cuenten su caso brevemente. Tienen este aspecto:
 
     <div class="container-fluid">
-      {{> ad sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+      {{> difu sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
     </div>
   </div>
 
@@ -22,9 +22,10 @@
     </div>
 
     <h4>Previsualización</h4>
-      {{> ad backImage=dynPhoto adHeader=dynHeader adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" sample="false" subHeaderLink="/" }}
+    {{> difu backImage=dynPhoto adHeader=dynHeader adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" sample="false" subHeaderLink="/" }}
     <div style="clear:both;">
       {{> photoUp photoUpOptions}}
     </div>
   </div>
+  {{/if}}
 </template>

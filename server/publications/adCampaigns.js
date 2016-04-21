@@ -1,4 +1,4 @@
-/* global Meteor, AdCampaigns */
+/* global Meteor, AdCampaigns Persons */
 Meteor.publish('AdCampaigns', function () {
-  return AdCampaigns.find();
+  return [AdCampaigns.find(), Persons.find({familiar: this.userId}) ];
 });

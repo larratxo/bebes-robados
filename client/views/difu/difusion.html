@@ -1,0 +1,42 @@
+<template name="difusion">
+
+  <div class="page-header">
+    <h2>Campañas de difusión públicas</h2>
+    <h4><em>En desarrollo</em></h4>
+  </div>
+
+  <p>Uno de nuestros principales objetivos es poder localizar a nuestros familiares perdidos.</p>
+  <p>Para facilitar la difusión de todos estos casos, hemos diseñado unos <em>banners</em> que pueden ser incluidos en otros medios digitales de comunicación que quieran participar en ello y así facilitar el reencuentro.</p>
+
+  <h3>Ejemplos de <em>banners</em></h3>
+  <p>Estos son solo unos ejemplos con textos e imágenes ficticias:</p>
+
+  <div class="container-fluid">
+      {{> difu sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+      {{> difu sample="true" backImage="/images/pusample3.jpg" adHeader="Busco a mi hijo, quizás puedas ser tú" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+      {{> difu sample="true" backImage="/images/pusample2.jpg" adHeader="Busco a mi hermano, quizás puedas ser tú" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+      {{> difu sample="true" backImage="/images/pusample4.jpg" adHeader="Busco a mi familia biológica, quizá sea la tuya" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+  </div>
+
+  <h3>¿Cómo usar nuestros <em>banners</em>?</h3>
+  <p>Para ello incluye el siguiente código html en tu página web (o si esto te suena a chino, pásale esta página a quien gestione vuestra página web para que lo pueda incluir):</p>
+  <pre>
+  {{#markdown}}
+  ```<iframe src="http://camp1.bebes-test.comunes.org" frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>```
+  {{/markdown}}
+  </pre>
+  <p>Con cada acceso a la página donde lo incluyáis se mostrará aleatoriamente y rotativamenta uno de los diferentes <em>banners</em> de los diferentes casos que han querido participar en estas campañas mediáticas.</p>
+
+  {{#if currentUser }}
+  {{#if afectado }}
+
+  <hr>
+
+  <h3>¿Participarías en estas campañas?</h3>
+
+  {{> adEditor }}
+
+  {{/if}}
+  {{/if}}
+
+</template>

@@ -1,4 +1,4 @@
-/* global personLabelHack:true */
+/* global personLabelHack:true Session */
 
 // http://docs.meteor.com/#accounts_oncreateuser
 
