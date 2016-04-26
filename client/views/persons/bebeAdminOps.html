@@ -1,0 +1,8 @@
+<template name='bebeAdminOps'>
+  {{#if isInRole 'admin'}}
+  {{#if isGeo}}
+  <i title='Geolocalizado' class='geo fa fa-map-marker'></i>&nbsp;
+  {{/if}}
+  <span data-toggle='modal' title='Borrar' class='erase glyphicon glyphicon-trash clickable'></span>
+  {{/if}}
+</template>
