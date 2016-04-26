@@ -1,6 +1,6 @@
-/* global TabularTables:true,moment,tabLanguageEs:true,renderDate:true,
-   isValidLatLng,renderSexo:true,renderSexoAlt:true,renderGeo:true,renderAprox:true,
- decorateNacAprox:true,setEmptyTable:true,renderNuevo:true,renderFamiliar:true, Tabular, isNew, $, Persons, AdCampaigns
+/* global TabularTables:true,moment, tabLanguageEs:true,renderDate:true,
+ isValidLatLng,renderSexo:true, renderSexoAlt:true, renderGeo:true,renderAprox:true,
+ decorateNacAprox:true,setEmptyTable:true, renderNuevo:true,renderFamiliar:true, Tabular, isNew, $, Persons, AdCampaigns
  renderCheckbox:true Meteor Template*/
 // https://github.com/aldeed/meteor-tabular
 // Comparison: http://reactive-table.meteor.com/
@@ -77,10 +77,10 @@ var renderBuscasBebe = function (val) {
   return abrevBebeOFamilia[val];
 };
 
-var renderGeo = function (val) {
-  return isValidLatLng(val)
-         ? '<i title="Geolocalizado" class="fa fa-map-marker"></i>' : '';
-};
+// var renderGeo = function (val) {
+//   return isValidLatLng(val)
+//          ? '<i title="Geolocalizado" class="fa fa-map-marker"></i>' : '';
+// };
 
 renderNuevo = function (val) {
   return isNew(val) ? '<span class="label label-warning">Nuevo</span>' : '';
@@ -141,10 +141,18 @@ TabularTables.Persons = new Tabular.Table({
     {data: 'lugarNacimientoProvinciaNombre', title: 'Provincia'},
     {data: 'lugarNacimientoMunicipioNombre', title: 'Municipio'},
     // {data: 'lugarNacimientoLongitud', title: 'Geo1'},
-    {data: 'lugarNacimientoLongitud', title: 'Geo', render: renderGeo,
-     className: 'column-center' },
+   // {data: 'lugarNacimientoLongitud', title: 'Geo', render: renderGeo,
+    // className: 'column-center' },
     // {data: 'updatedAt', title: '', render: renderNuevo, width: '1px',
     // className: column-updated-at' },
+    {title: '...',
+     tmpl: Meteor.isClient && Template.bebeAdminOps, className: 'column-center',
+     tmplContext: function (rowData) {
+       return {
+         item: rowData
+       };
+     }
+    },
     {data: 'nombreCompletoMedico', title: 'none', visible: false},
     {data: 'nombreCompletoMatrona', title: 'none', visible: false},
     {data: 'nombreCompletoEnfermera', title: 'none', visible: false},
@@ -155,6 +163,8 @@ TabularTables.Persons = new Tabular.Table({
     {data: 'nombreOtrosFuncionariosOTrabajadores', title: 'none',
      visible: false},
     {data: 'cementerioEnterrado', title: 'Cementerio', visible: false},
+    {data: 'lugarNacimientoLongitud', title: 'Geo', visible: false},
+    {data: 'lugarNacimientoLatitud', title: 'Geo', visible: false},
     {data: 'lugarNacimientoPais', title: 'País', visible: false}
   ]
 });
