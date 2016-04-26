@@ -1,4 +1,4 @@
-/* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,defaultCreatedAt,defaultUpdateAt,addApiRoute */
+/* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,defaultCreatedAt,defaultUpdateAt,addApiRoute _ */
 Persons = new Mongo.Collection('Persons');
 
 var defaultDate = function (label) {
@@ -26,6 +26,12 @@ var defaultAutocomplete = function (field, textarea) {
   if (Meteor.isClient) {
     var template;
     switch (field) {
+      case 'lugarNacimiento':
+        template = Template.autoLugarNacimiento;
+        break;
+      case 'cementerioEnterrado':
+        template = Template.autoCementerioEnterrado;
+        break;
       case 'nombreCompletoMedico':
         template = Template.autoMedico;
         break;
@@ -45,7 +51,7 @@ var defaultAutocomplete = function (field, textarea) {
         template = Template.autoFuncionariosCementario;
         break;
       case 'nombreTrabajadoresFuneraria':
-        template = Template.nombreTrabajadoresFuneraria;
+        template = Template.autoTrabajadoresFuneraria;
         break;
       case 'nombreOtrosFuncionariosOTrabajadores':
         template = Template.autoOtrosFuncionariosOTrabajadores;
@@ -87,7 +93,7 @@ Schema.Persons = new SimpleSchema({
                             autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: 'Sí', falseLabel: 'No'}}},
   sexo: { type: String, label: 'Sexo:', allowedValues: ['Desconocido', 'Hombre', 'Mujer', 'Otro'] },
   // geocomplete!!! https://atmospherejs.com/jeremy/geocomplete
-  lugarNacimiento: defaultMap('Lugar de nacimiento:'),
+  lugarNacimiento: _.extend(defaultMap('Lugar de nacimiento:'), {autoform: defaultAutocomplete('lugarNacimiento', false)}),
   lugarNacimientoDireccion: {type: String, optional: true, label: 'Dirección:'},
   lugarNacimientoProvincia: {type: String, optional: true, label: 'Provincia:'},
   lugarNacimientoProvinciaNombre: {type: String, optional: true, label: 'Provincia:', autoform: {type: 'hidden'}},
@@ -135,7 +141,7 @@ Schema.Persons = new SimpleSchema({
     }
   },
   entierroPorHospitalOtrasRazones: {type: String, optional: true, label: '¿Qué otras razones?'},
-  cementerioEnterrado: defaultMap('¿En qué cementerio fue enterrado?'),
+  cementerioEnterrado: _.extend(defaultMap('¿En qué cementerio fue enterrado?'), {autoform: defaultAutocomplete('cementerioEnterrado', false)}),
   cementerioEnterradoLatitud: {type: String, optional: true, label: 'Latitud:'},
   cementerioEnterradoLongitud: {type: String, optional: true, label: 'Longitud:'},
   posibilidadPruebasADN: {type: Boolean, label: '¿Esta en una sepultura perpetua con posibilidades de exhumación para realizar pruebas de ADN?', optional: true,

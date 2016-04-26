@@ -2,7 +2,6 @@
 
   <div class="page-header">
     <h2>Campañas de difusión públicas</h2>
-    <h4><em>En desarrollo</em></h4>
   </div>
 
   <p>Uno de nuestros principales objetivos es poder localizar a nuestros familiares perdidos.</p>
@@ -12,27 +11,31 @@
   <p>Estos son solo unos ejemplos con textos e imágenes ficticias:</p>
 
   <div class="container-fluid">
-      {{> difu sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
-      {{> difu sample="true" backImage="/images/pusample3.jpg" adHeader="Busco a mi hijo, quizás puedas ser tú" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
-      {{> difu sample="true" backImage="/images/pusample2.jpg" adHeader="Busco a mi hermano, quizás puedas ser tú" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
-      {{> difu sample="true" backImage="/images/pusample4.jpg" adHeader="Busco a mi familia biológica, quizá sea la tuya" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+    {{> difu sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+    {{> difu sample="true" backImage="/images/pusample3.jpg" adHeader="Busco a mi hijo, quizás puedas ser tú" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
+    {{> difu sample="true" backImage="/images/pusample4.jpg" adHeader="Busco a mi familia biológica, quizá sea la tuya" adSubHeader="En España hay miles casos de bebes robados, ayúdanos a reencontrarnos" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
   </div>
-
-  <h3>¿Cómo usar nuestros <em>banners</em>?</h3>
-  <p>Para ello incluye el siguiente código html en tu página web (o si esto te suena a chino, pásale esta página a quien gestione vuestra página web para que lo pueda incluir):</p>
-  <pre>
+  <br>
+  <a class="" role="" data-toggle="collapse" href="#usar" aria-expanded="true" aria-controls="usar">
+    <h3>¿Cómo usar nuestros <em>banners</em> en tú web?</h3>
+  </a>
+  <div class="collapse" id="usar">
+    <div class="well">
+      <p>Puedes participar en nuestras campañas si tienes una web o también animando a quien tenga a incluir nuestros banners</p>
+      <p>Para usarlos hay que incluir este código html en tu página web (o si esto te suena a chino, pásale esta página a quien gestione vuestra página web para que lo pueda incluir):</p>
+      <pre>
   {{#markdown}}
   ```<iframe src="http://camp1.bebes-test.comunes.org" frameborder="0" style="float: right; overflow:hidden;" height="250px" width="300px"></iframe>```
   {{/markdown}}
-  </pre>
-  <p>Con cada acceso a la página donde lo incluyáis se mostrará aleatoriamente y rotativamenta uno de los diferentes <em>banners</em> de los diferentes casos que han querido participar en estas campañas mediáticas.</p>
+      </pre>
+      <p>Con cada acceso a la página donde lo incluyáis se mostrará aleatoriamente y rotativamenta uno de los diferentes <em>banners</em> de los diferentes casos que han querido participar en estas campañas mediáticas.</p>
+    </div>
+  </div>
 
   {{#if currentUser }}
   {{#if afectado }}
 
-  <hr>
-
-  <h3>¿Participarías en estas campañas?</h3>
+  <h3>¿Participarías en estas campañas como afectado/a?</h3>
 
   {{> adEditor }}
 
