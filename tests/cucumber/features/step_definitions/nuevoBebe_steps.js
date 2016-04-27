@@ -59,14 +59,15 @@ module.exports = function () {
       if (shouldFail) {
         client.waitForVisible(".alert-danger");
       } else {
-        client.waitForExist('#personsTable_filter > label > input');
+        client.waitForText('body', 'Campañas de difusión públicas');
+        /* client.waitForExist('#personsTable_filter > label > input');
         expect(client.getTitle()).toBe("Busca bebe");
         client.waitForVisible('#personsTable > tbody > tr:nth-child(1) > td:nth-child(9)');
         if (!phantomJs) {
           // this fails in phantomjs not in chrome:
           client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(9)', provinciaNacimiento);
           client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(10)', municipioNacimiento);
-        }
+        } */
       }
     }
   };
