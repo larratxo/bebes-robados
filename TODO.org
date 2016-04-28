@@ -2,6 +2,10 @@
 Lista de Tareas
 
 * Desarrollo
+** Autocompletar solo con el inicio, autocompletar con todo
+** Editor vs AuthorRole
+** Aviso al usuario cuando mete los datos, los visibles y los que no...
+** Meter docuemntos/attachments
 ** Añadir roles a edit bebes y a borrar difu
 ** Añadir /path-camp1/ a los banners para poder cambiar de campañas
 ** Add license AGPLv3
