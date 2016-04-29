@@ -7,6 +7,7 @@ alanning:roles@1.2.14
 aldeed:autoform@5.8.1
 aldeed:autoform-bs-datepicker@1.1.1
 aldeed:collection2@2.7.1
+aldeed:delete-button@2.0.0
 aldeed:simple-schema@1.5.3
 aldeed:tabular@1.4.2
 aldeed:template-extension@3.4.3

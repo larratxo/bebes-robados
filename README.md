@@ -35,6 +35,7 @@ Sample of settings to use Open Web Analytics:
 
 ```
     "public": {
+        "isProduction": true, 
         "owa": {
             "owaUrl": "https://leguin.comunes.org/owa/",
             "owaSiteId": "someOWAId"
