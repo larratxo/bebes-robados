@@ -16,6 +16,7 @@ function loadFixture(fixtures, collection) {
 }
 
 Meteor.startup(function () {
+    if (!Meteor.settings.public.isProduction) {
   var users = YAML.eval(Assets.getText('users.yml'));
 
   for (var key in users) {
@@ -33,6 +34,7 @@ Meteor.startup(function () {
   } else {
     // console.log("Not loading persons fixtures.");
   }
+    }
   if (Provincias.find().count() === 0) {
     console.log("Loading provinces fixtures.");
     var p = Fixtures.provincias;
