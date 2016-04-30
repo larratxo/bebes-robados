@@ -51,11 +51,14 @@
 
   <div class="row">
     <div class="col-md-6">
+      <p>Deslizar para acotar la búsqueda:</p>
       {{> yearSlider header="" subheader="Bebes robados entre los años"}}
     </div>
   </div>
   <div class="map-container">
-    {{> googleMap name="mainMap" options=mainMapOptions}}
+    {{> googleMap name="mainMap" options
+    =mainMapOptions}}
   </div>
+  <div>Puedes pulsar en los marcadores del mapa para obtener más información de cada caso.</div>
   </div>
 </template>
