@@ -1,3 +1,5 @@
+// http://stackoverflow.com/questions/12272234/how-to-debug-template-in-meteor-handlebars
+// Use with: {{debug}}
 Template.registerHelper('debug', function (optionalValue) {
   if (typeof console !== "undefined" || typeof console.log !== "undefined") {
     console.log("Current Context");
