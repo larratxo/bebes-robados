@@ -25,14 +25,16 @@ Template.adEditor.helpers({
       showClear: false,
       autoSelectOnJcrop: true,
       crop: true,
-      jCrop: { setSelect: [0, 0, 300, 250], minSize: [300, 250], maxSize: [900, 750], aspectRatio: 6 / 5 },
+      jCrop: { setSelect: [0, 0, 300, 250], minSize: [300, 250], maxSize: [900, 750], aspectRatio: 6 / 5},
       callback: function (error, photo) {
         if (error == null) {
           // console.log(photo.src);
           // in photo, the original photo (I think)
           var myAd = templ.myAd.get();
           myAd.photo = photo.src;
+	  // console.log(photo);
           myAd.photoHD = photo.img;
+	  //myAd.coords = templ.myCoords.get();
           // console.log("foto" + photo.img); Es un HTMLCanvasElement
           AdCampaigns.update(myAd._id, {$set: {photo: photo.src, validated: false}});
           templ.myAd.set(myAd);
@@ -53,7 +55,23 @@ Template.adEditor.onCreated(function () {
     ad = AdCampaigns.findOne({user: Meteor.userId()});
   }
   this.myAd = new ReactiveVar(ad);
+
+ /*  $('#image-preview').Jcrop({
+    onSelect: getCoords,
+    onChange: getCoords
+  }); */
 });
+
+/*
+myCoords = new ReactiveVar(null);
+
+function getCoords(c) {
+  // variables can be accessed here as
+  // c.x, c.y, c.x2, c.y2, c.w, c.h
+  console.log("Coords --------- ");
+  console.log(c);
+  myCoord.set(c);
+}; */
 
 Template.adEditor.onRendered(function () {
   $('div.photo-up div i').addClass('fa fa-camera');

@@ -17,7 +17,9 @@ Schema.AdCampaign = new SimpleSchema({
   bebe: { type: String, optional: false },
   photo: { type: String, optional: true },
   photoHD: { type: String, optional: true },
-  text: { type: String, optional: true },
+  // jcrop coord + photoHD para usar en otras escalas
+  coords: { type: Object, optional: true },
+  text: { type: String, optional: true },  
   participate: { type: Boolean, optional: false, index: 1 },
   validated: { type: Boolean, optional: false, index: 1 }
 });
