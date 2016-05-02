@@ -1,6 +1,7 @@
 /* global Template, Session, Router */
 Template.viewPerson.onRendered(function () {
-  Session.set('DocumentTitle', 'Información sobre este bebe');
+  Session.set('DocumentTitle', 'Datos sobre bebe ' + this.data.nombreCompleto);
+  // Session.set('DocumentTitle', 'Información sobre este bebe');
 });
 
 Template.viewPerson.events({

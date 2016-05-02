@@ -49,7 +49,7 @@ Template.personsList.onCreated( function() {
 });
 
 Template.personsList.onRendered( function() {
-  Session.set("DocumentTitle", "Busca bebe");
+ 
   var searchInput = $("#personsTable_filter > label > input");
 
   var dataTable = $('#personsTable').closest('table').DataTable();

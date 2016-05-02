@@ -6,9 +6,9 @@ var subsManager = new SubsManager();
 
 Router.route('/', {
   name: 'home',
+  title: 'Inicio',
   action: function () {
     this.render('home');
-    SEO.set({ title: 'Inicio - ' + Meteor.App.NAME });
   }, subscriptions: function () {
     return subsManager.subscribe('Persons');
   }
@@ -25,32 +25,40 @@ var requireLogin = function () {
 
 Router.map(function () {
   this.route('loading', { path: '/loading' }); // just for testing
-  this.route('personsList', { path: '/bebes',
-                              waitOn: function () {
-                                return subsManager.subscribe('Persons');
-			      }
-                            });
-  this.route('difusion', { path: '/difusion',
-                           waitOn: function () {
-                             return subsManager.subscribe('AdCampaigns');
-                           }
-                         });
+  this.route('personsList', {
+    path: '/bebes',
+    title: 'Busca bebe o familia',
+    waitOn: function () {
+      return subsManager.subscribe('Persons');
+    }
+  });
+  this.route('difusion', {
+    path: '/difusion',
+    title: 'Campañas de Difusión',
+    waitOn: function () {
+      return subsManager.subscribe('AdCampaigns');
+    }
+  });
   this.route('nuevoBebe', {
-    path: '/nuevoBebe'
+    path: '/nuevoBebe',
+    title: 'Añade un bebe',
   }
             );
-  this.route('underConstruction', { path: '/en-construccion' });
-  this.route('quienesSomos', { path: '/quienesSomos' });
+  this.route('underConstruction', { path: '/en-construccion', title: 'En construcción' });
+  this.route('quienesSomos', { path: '/quienesSomos', title: 'Quienes somos' });
 
-  this.route('userUpdate', { path: '/yo',
-                             waitOn: function () {
-                               return subsManager.subscribe('meAndMyImages');
-                             }
-                           });
-
+  this.route('userUpdate', {
+    path: '/yo',
+    title: 'Mis datos',
+    waitOn: function () {
+      return subsManager.subscribe('meAndMyImages');
+    }
+  });
+  
   // TODO : quitar los ifs!!!!!
   this.route('viewUser', {
     path: '/persona/:_id',
+    title: 'Datos de familiar',
     waitOn: function () {
       return subsManager.subscribe('userAndImages', this.params._id);
     },
@@ -74,18 +82,20 @@ Router.map(function () {
       }
     }
   });
-  this.route('legal', { path: '/legal' });
-  this.route('donaciones', { path: '/donaciones' });
-  this.route('contacto', { path: '/contacto' });
+  this.route('legal', { path: '/legal', title: 'Información Legal' });
+  this.route('donaciones', { path: '/donaciones', title: 'Donaciones' });
+  this.route('contacto', { path: '/contacto', title: 'Contacto' });
 
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',
+    title: 'Edita bebe',
     data: function () {
       return Persons.findOne(this.params._id);
     }
   });
   this.route('editPersonSlug', {
     path: '/edita-bebe/:slug',
+    title: 'Edita bebe',
     data: function () {
       return Persons.findOne({slug: this.params.slug});
     }
@@ -95,12 +105,14 @@ Router.map(function () {
     waitOn: function () {
       return subsManager.subscribe('personAndImages', this.params._id);
     },
+    // title: 'Datos sobre bebe',
     data: function () {
       return Persons.findOne(this.params._id);
     }
   });
   this.route('viewPersonSlug', {
     path: '/bebe/:slug',
+    // title: 'Datos sobre bebe',
     waitOn: function () {
       return subsManager.subscribe('personAndImagesViaSlug', this.params.slug);
     },
@@ -111,6 +123,7 @@ Router.map(function () {
 
   this.route('admin', {
     path:'/admin',
+    title: 'Administración',
     //template: 'accountsAdmin',
     template: 'bebeAdmin',
     onBeforeAction: function () {
@@ -152,5 +165,15 @@ Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
 Router.onAfterAction(function () {
   if (this.ready()) {
     Meteor.isReadyForSpiderable = true;
+  }
+});
+
+
+// http://stackoverflow.com/questions/19882687/set-html-title-when-using-iron-router
+Router.after(function(){
+  if (this.route.options.title) {
+    var newTitle = this.route.options.title + ' - ' + Meteor.App.NAME;
+    document.title = newTitle;
+    SEO.set({ title: newTitle });
   }
 });

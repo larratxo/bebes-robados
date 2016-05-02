@@ -46,7 +46,9 @@ Template.basicLayout.events({
 });
 
 // https://stackoverflow.com/questions/14036248/meteor-setting-the-document-title
-Session.setDefault("DocumentTitle", Meteor.App.NAME);
-Deps.autorun(function(){
-  document.title = Session.get("DocumentTitle");
+Session.setDefault("DocumentTitle", "");
+Deps.autorun(function () {
+  var newTitle = Session.get('DocumentTitle') + ' - ' + Meteor.App.NAME;
+  document.title = newTitle;
+  SEO.set({ title: newTitle });
 });

@@ -39,7 +39,8 @@ Template.usersForm.helpers({
 });
 
 Template.viewUser.onRendered( function() {
-  Session.set("DocumentTitle", "Mis datos");
+  var who = typeof this.data.profile.name == 'undefined' ? this.data.username : this.data.profile.name;
+  Session.set('DocumentTitle', 'Datos sobre ' + who);
   personLabelHack();
   $(".autoform-add-item").click(personLabelHack());
 
@@ -60,7 +61,6 @@ Template.userUpdate.helpers({
 });
 
 Template.userUpdate.onRendered( function() {
-  Session.set("DocumentTitle", "Mis datos");
   personLabelHack();
   $(".autoform-add-item").click(personLabelHack());
 });

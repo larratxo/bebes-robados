@@ -1,5 +1,5 @@
-Template.bebePage.onRendered(function() {
-  Session.set("DocumentTitle", "Edita un bebe");
+Template.bebePage.onRendered(function () {
+   
 });
 
 AutoForm.hooks({
