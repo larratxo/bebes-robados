@@ -70,6 +70,7 @@ var defaultAutocomplete = function (field, textarea) {
               collection: Persons,
               field: field,
               template: template,
+              matchAll: true,
               noMatchTemplate: Template.noautocomplete
             }]
           };

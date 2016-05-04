@@ -2,7 +2,9 @@
 Lista de Tareas
 
 * Desarrollo
-** Autocompletar solo con el inicio, autocompletar con todo
+** PDF con campañas
+https://github.com/pascoual/meteor-pdfkit
+https://github.com/khronedev/img-qrcode/
 ** Editor vs AuthorRole
 ** Aviso al usuario cuando mete los datos, los visibles y los que no...
 ** Meter docuemntos/attachments
