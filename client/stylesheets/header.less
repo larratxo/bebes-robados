@@ -3,52 +3,54 @@
 
 body > .container.Home
 {
-width: 100%;
-padding: 0px !important;
+    width: 100%;
+    padding: 0px !important;
 }
 
 .header-wrapper {
-background-image: url('/images/main-homeback.png');
-height: 390px;
-transition: height 0.8s;
-background-size: 1479px 437px !important;
-background-repeat: inherit; /* no-repeat no va bien con pantallas grandes */
-color: DarkSlateGray;
-padding: 0px 50px;
-margin-bottom: 50px;
+    background-image: url('/images/main-homeback.png');
+    height: 390px;
+    transition: height 0.8s;
+    background-size: 1479px 437px !important;
+    background-repeat: inherit; /* no-repeat no va bien con pantallas grandes */
+    /* color: DarkSlateGray; */
+    color: white;
+    padding: 0px 50px;
+    margin-bottom: 50px;
 
-.ui.main.header {
-font-size: 2.7em;
-padding-top: 110px;
-color: DarkSlateGray;
-text-transform: uppercase;
+    .ui.main.header {
+        font-size: 2.7em;
+        padding-top: 110px;
+        color: white;
+        /* color: DarkSlateGray; */
+        text-transform: uppercase;
 
-> .sub.header {
+        > .sub.header {
 
-}
-}
-.ui.main.header b {
-  font-size: 120%;
-}
+        }
+    }
+    .ui.main.header b {
+        font-size: 120%;
+    }
 
-.resize.button {
-margin-top: 40px;
-font-size: 1.5em;
+    .resize.button {
+        margin-top: 40px;
+        font-size: 1.5em;
 
-.icon {
-color: @secondaryFontColor;
-}
+        .icon {
+            color: @secondaryFontColor;
+        }
 
-&:hover {
-background-color: inherit !important;
-}
-}
+        &:hover {
+            background-color: inherit !important;
+        }
+    }
 
-a:hover {
-color: @secondaryLinkHoverColor;
-}
+    a:hover {
+        color: @secondaryLinkHoverColor;
+    }
 
-&.active {
-height: 900px;
-}
+    &.active {
+        height: 900px;
+    }
 }
