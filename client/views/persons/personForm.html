@@ -145,6 +145,12 @@
         {{> afQuickField name="denunciaEnComisariaEstadoTramitacion" rows=4}}
         {{/if}}
         <div class="form-inline">
+          {{> afQuickField name="denunciaEnGuardiaCivil"}}
+        </div>
+        {{#if afFieldValueIs name="denunciaEnGuardiaCivil" value=true}}
+        {{> afQuickField name="denunciaEnGuardiaCivilEstadoTramitacion" rows=4}}
+        {{/if}}
+        <div class="form-inline">
           {{> afQuickField name="denunciaEnFiscalia"}}
         </div>
         {{#if afFieldValueIs name="denunciaEnFiscalia" value=true}}
