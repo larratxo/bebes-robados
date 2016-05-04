@@ -1,4 +1,4 @@
-/* global SubsManager, undef, Roles, moment, Meteor, Persons, Router, SubsManager, SEO */
+/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, SEO */
 
 // https://iron-meteor.github.io/iron-router/
 
@@ -6,7 +6,7 @@ var subsManager = new SubsManager();
 
 Router.route('/', {
   name: 'home',
-  title: 'Inicio',
+  // title: '',
   action: function () {
     this.render('home');
   }, subscriptions: function () {
@@ -41,7 +41,7 @@ Router.map(function () {
   });
   this.route('nuevoBebe', {
     path: '/nuevoBebe',
-    title: 'Añade un bebe',
+    title: 'Añade un bebe'
   }
             );
   this.route('underConstruction', { path: '/en-construccion', title: 'En construcción' });
@@ -54,7 +54,7 @@ Router.map(function () {
       return subsManager.subscribe('meAndMyImages');
     }
   });
-  
+
   // TODO : quitar los ifs!!!!!
   this.route('viewUser', {
     path: '/persona/:_id',
@@ -63,21 +63,15 @@ Router.map(function () {
       return subsManager.subscribe('userAndImages', this.params._id);
     },
     data: function () {
-      var username = Meteor.users.findOne({username: this.params._id });
-      //console.log('persona id: '+ this.params._id);
-      //console.log('persona username: '+ username);
+      var username = Meteor.users.findOne({ username: this.params._id });
       if (undef(username)) {
-        var user = Meteor.users.findOne({_id: this.params._id });
-        //console.log('persona user: ' + user);
+        var user = Meteor.users.findOne({ _id: this.params._id });
         if (undef(user) || undef(user.username)) {
           return user;
-        }
-        else {
-          //console.log('persona redirecting to ' + user.username);
+        } else {
           this.redirect('/persona/' + user.username);
         }
-      }
-      else {
+      } else {
         return username;
       }
     }
@@ -122,9 +116,9 @@ Router.map(function () {
   });
 
   this.route('admin', {
-    path:'/admin',
+    path: '/admin',
     title: 'Administración',
-    //template: 'accountsAdmin',
+    // template: 'accountsAdmin',
     template: 'bebeAdmin',
     onBeforeAction: function () {
       if (Meteor.loggingIn()) {
@@ -149,14 +143,15 @@ Router.map(function () {
 });
 
 // Not used now
+/*
 var profileUpdated = function () {
   return moment(Meteor.user().profile.updatedAt).
     diff(Meteor.user().profile.createdAt, 'seconds') !== 0;
-}
+} */
 
 // Router.onBeforeAction(requireLogin, {only: ['userUpdate'] } );
 Router.onBeforeAction(requireLogin,
-                      {only: ['nuevoBebe', 'bebePage', 'userUpdate'] } );
+                      { only: ['nuevoBebe', 'bebePage', 'userUpdate'] });
 
 Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
 
@@ -168,12 +163,14 @@ Router.onAfterAction(function () {
   }
 });
 
-
 // http://stackoverflow.com/questions/19882687/set-html-title-when-using-iron-router
-Router.after(function(){
+Router.after(function () {
+  var newTitle;
   if (this.route.options.title) {
-    var newTitle = this.route.options.title + ' - ' + Meteor.App.NAME;
-    document.title = newTitle;
-    SEO.set({ title: newTitle });
+    newTitle = this.route.options.title + ' - ' + Meteor.App.NAME;
+  } else {
+    newTitle = Meteor.App.NAME;
   }
+  document.title = newTitle;
+  SEO.set({ title: newTitle });
 });

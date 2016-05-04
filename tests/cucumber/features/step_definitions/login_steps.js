@@ -51,13 +51,13 @@ module.exports = function () {
 
   this.Given(/^que estoy en la página inicial$/, function (callback) {
     goHome(client);
-    expect(client.getTitle()).toBe("Inicio - " + Meteor.App.NAME);
+    expect(client.getTitle()).toBe(Meteor.App.NAME);
     callback();
   });
 
   this.Given(/^I am on the home page$/, function (callback) {
     goHome(client);
-    expect(client.getTitle()).toBe("Inicio - " + Meteor.App.NAME);
+    expect(client.getTitle()).toBe(Meteor.App.NAME);
     callback();
   });
 
