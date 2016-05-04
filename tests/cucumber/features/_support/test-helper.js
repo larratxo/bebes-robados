@@ -1,4 +1,4 @@
-/*global randomUsername:true,randomPassword:true,randomEmail:true */
+/* global randomUsername:true, expect, randomPassword:true, randomEmail:true, goHome:true, phantomJs:true, appName:true */
 
 randomUsername = function () {
   return Math.random().toString(36).substring(7);
@@ -9,10 +9,10 @@ randomPassword = function () {
 };
 
 randomEmail = function () {
-  return randomUsername() + "@example.com";
+  return randomUsername() + '@example.com';
 };
 
-goHome =  function(client) {
+goHome = function (client) {
   client.url(process.env.ROOT_URL);
   client.waitForVisible('.Home');
   expect(client.isVisible('.Home')).toBe(true);
@@ -22,9 +22,11 @@ goHome =  function(client) {
   }
   if (client.isVisible('#acceptCookies')) {
     client.click('#acceptCookies');
-  };
+  }
 };
 
 // PHANTOMJS=1 chimp --watch --ddp=http://localhost:3000  --browser=phantomjs # to avoid some phantomjs specific tests that
 // do not fails in chrome/firefox
 phantomJs = process.env.PHANTOMJS;
+
+appName = 'Red Ciudadana de Registro de Bebes Robados';

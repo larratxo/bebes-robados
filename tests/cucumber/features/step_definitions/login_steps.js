@@ -51,13 +51,13 @@ module.exports = function () {
 
   this.Given(/^que estoy en la página inicial$/, function (callback) {
     goHome(client);
-    expect(client.getTitle()).toBe('Red Ciudadana de Registro de Bebes Robados');
+    expect(client.getTitle()).toBe(appName);
     callback();
   });
 
   this.Given(/^I am on the home page$/, function (callback) {
     goHome(client);
-    expect(client.getTitle()).toBe('Red Ciudadana de Registro de Bebes Robados');
+    expect(client.getTitle()).toBe(appName);
     callback();
   });
 

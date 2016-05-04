@@ -29,7 +29,7 @@ module.exports = function () {
     for (var i = 0; i < searchs.length; i++) {
       busca(client, i, lugar);
       client.waitForVisible('#personsTable');
-      expect(client.getTitle()).toBe("Busca bebe");
+      expect(client.getTitle()).toBe("Busca bebe o familia - " + appName);
       client.waitForText('#personsTable' , 'No se encontraron resultados');
     }
     callback();
@@ -50,7 +50,7 @@ module.exports = function () {
     for (var i = 0; i < searchs.length; i++){
       busca(client, i);
       client.waitForVisible('#personsTable > tbody > tr:nth-child(1) > td:nth-child(8)');
-      expect(client.getTitle()).toBe("Busca bebe");
+      expect(client.getTitle()).toBe("Busca bebe o familia - " + appName);
       client.waitForText('#personsTable > tbody > tr:nth-child(1) > td:nth-child(8)', search);
       client.waitForVisible('#personsTable > tbody > tr:nth-child(1)');
       client.click('#personsTable > tbody > tr:nth-child(1)');

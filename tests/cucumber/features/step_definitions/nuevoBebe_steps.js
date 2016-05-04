@@ -19,7 +19,7 @@ module.exports = function () {
       var municipioNacimiento = bebes[i][4];
 
       client.waitForExist('#nombreCompleto', 10000);
-      expect(client.getTitle()).toBe("Añade un bebe");
+      expect(client.getTitle()).toBe("Añade un bebe - " + appName);
 
       if (bebes[i][2] === "F") {
         client.click("input[name=buscasBebe][value=false]");
