@@ -5,6 +5,6 @@ if (Meteor.App) {
 }
 
 Meteor.App = {
-  NAME: "Red Ciudadana de Registro de Bebes Robados",
+  NAME: "Red Ciudadana de Búsqueda de Bebes Robados",
   DESCRIPTION: 'Red Ciudadana de Registro, búsqueda y denuncia de casos de Bebes Robados.'
 };

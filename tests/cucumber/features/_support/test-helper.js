@@ -29,4 +29,4 @@ goHome = function (client) {
 // do not fails in chrome/firefox
 phantomJs = process.env.PHANTOMJS;
 
-appName = 'Red Ciudadana de Registro de Bebes Robados';
+appName = 'Red Ciudadana de Búsqueda de Bebes Robados';
