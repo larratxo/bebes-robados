@@ -4,21 +4,7 @@
 
 /*
 var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-*/
-
-var onAfterUp = function () {
-  return function (err) {
-    if (err) {
-      if (Meteor.isClient) {
-        if (err.message.indexOf('file does not pass collection filters') > -1) {
-          $.bootstrapGrowl(
-              'Error: La imagen es mayor del tamaño permitido (7MB)',
-              {type: 'danger', align: 'center'});
-        }
-      }
-    }
-  };
-};
+ */
 
 Schema.UserProfile = new SimpleSchema({
   name: { type: String, optional: true, label: 'Nombre completo',

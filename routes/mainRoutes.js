@@ -83,6 +83,9 @@ Router.map(function () {
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',
     title: 'Edita bebe',
+    waitOn: function () {
+      return subsManager.subscribe('personAndImages', this.params._id);
+    },
     data: function () {
       return Persons.findOne(this.params._id);
     }

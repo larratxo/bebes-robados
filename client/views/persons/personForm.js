@@ -1,6 +1,9 @@
-/* global GoogleMaps,google,geocode:true,provincia,provinces,municipio,
-   municipes,noUndef, resetMarker:true */
+/* global GoogleMaps,google,geocode:true,provincia,municipio,Template
+   noUndef, resetMarker:true */
 Template.bebeForm.helpers({
+  isNotEqual: function (type, otherType) {
+    return type !== otherType;
+  },
   isEqual: function (type, otherType) {
     return type === otherType;
   },

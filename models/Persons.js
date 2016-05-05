@@ -1,4 +1,19 @@
-/* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,defaultCreatedAt,defaultUpdateAt,addApiRoute _ */
+/* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,defaultCreatedAt,defaultUpdateAt,addApiRoute _ onAfterUp:true */
+
+onAfterUp = function () {
+  return function (err) {
+    if (err) {
+      if (Meteor.isClient) {
+        if (err.message.indexOf('file does not pass collection filters') > -1) {
+          $.bootstrapGrowl(
+            'Error: El fichero es mayor del tamaño permitido',
+            {type: 'danger', align: 'center'});
+        }
+      }
+    }
+  };
+};
+
 Persons = new Mongo.Collection('Persons');
 
 var defaultDate = function (label) {
@@ -182,6 +197,22 @@ Schema.Persons = new SimpleSchema({
   denunciaEnJuzgado: {type: Boolean, optional: true, label: '¿Ha puesto denuncia en el Juzgado?',
                       autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: 'Sí', falseLabel: 'No'}}},
   denunciaEnJuzgadoEstadoTramitacion: {type: String, optional: true},
+  attachs: {
+    type: [String],
+    label: 'Documentos relacionados que quieran aportar', optional: true
+  },
+  'attachs.$': {
+    autoform: {
+      afFieldInput: {
+        onAfterInsert: onAfterUp,
+        type: 'fileUpload',
+        // accept: 'image/*',
+        label: 'Elige un documento',
+        'remove-label': 'Borrar',
+        // selectFileBtnTemplate: 'selectImageBtn',
+        // previewTemplate: 'imagePreview',
+        collection: 'Attachs'
+      }}},
   createdAt: defaultCreatedAt,
   updatedAt: defaultUpdateAt
 });

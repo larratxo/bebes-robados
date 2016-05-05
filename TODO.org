@@ -2,6 +2,7 @@
 Lista de Tareas
 
 * Desarrollo
+** Error updating Error: slug no esta permitido por el esquema (cuando no hay nombre)
 ** PDF con campañas
 https://github.com/pascoual/meteor-pdfkit
 https://github.com/khronedev/img-qrcode/

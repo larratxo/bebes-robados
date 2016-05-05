@@ -23,7 +23,6 @@
   <span class="help-block"></span>
 
   {{> afQuickField name="_id" class="field-hidden"}}
-  {{> afQuickField name="slug" class="field-hidden"}}
 
   <ul class="nav nav-tabs nav-justified bebe-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
@@ -161,6 +160,12 @@
         </div>
         {{#if afFieldValueIs name="denunciaEnJuzgado" value=true}}
         {{> afQuickField name="denunciaEnJuzgadoEstadoTramitacion" rows=4}}
+        {{/if}}
+        {{#if isEqual type "disabled"}}
+        {{else}}
+        <div class="form-inline">
+          {{> afQuickField name="attachs"}}
+        </div>
         {{/if}}
       </div>
     </div>
