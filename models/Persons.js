@@ -232,10 +232,10 @@ if (Meteor.isServer) {
       return true;
     },
     update: function (userId, doc, fieldNames, modifier) {
-      if (!Roles.userIsInRole(userId, ['admin']) || doc.familiar !== userId) {
-        return false;
+      if (Roles.userIsInRole(userId, ['admin']) || doc.familiar === userId) {
+        return true;
       }
-      return true;
+      return false;
     },
     remove: function (userId, doc) {
       return Roles.userIsInRole(userId, ['admin']) || doc.familiar === userId;

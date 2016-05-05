@@ -1,4 +1,4 @@
-/* global Meteor, gm, FS, Images:true, userImages:true, _, $ */
+/* global Meteor, gm, FS, Images:true, userImages:true, _, $ Roles */
 var createThumb = function (fileObj, readStream, writeStream) {
   // Transform the image into a 200x200px thumbnail
   // TODO check gm.isAvailable
@@ -67,10 +67,10 @@ Images.allow({
     return true;
   },
   remove: function (userId, doc) {
-    if (!Roles.userIsInRole(userId, ['admin']) || doc.owner !== userId) {
-      return false;
+    if (Roles.userIsInRole(userId, ['admin']) || doc.owner === userId) {
+      return true;
     }
-    return true;
+    return false;
   },
   download: function () {
     return true;

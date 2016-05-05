@@ -47,10 +47,10 @@ Attachs.allow({
     return true;
   },
   remove: function (userId, doc) {
-    if (!Roles.userIsInRole(userId, ['admin']) || doc.owner !== userId) {
-      return false;
+    if (Roles.userIsInRole(userId, ['admin']) || doc.owner === userId) {
+      return true;
     }
-    return true;
+    return false;
   },
   download: function () {
     return true;

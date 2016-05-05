@@ -1,8 +1,14 @@
-/* global GoogleMaps,google,geocode:true,provincia,municipio,Template
-   noUndef, resetMarker:true */
+/* global GoogleMaps,google,geocode:true,provincia,municipio,Template, alert, success, Roles
+ noUndef, resetMarker:true, Meteor, Router, $ ReactiveVar */
+
+var toDelete = new ReactiveVar();
+
 Template.bebeForm.helpers({
-  isNotEqual: function (type, otherType) {
-    return type !== otherType;
+  isFamiliarOrAdmin: function () {
+    return Roles.userIsInRole(Meteor.userId(), ['admin']) || Meteor.userId() === this.doc.familiar;
+  },
+  isFamiliar: function () {
+    return Meteor.userId() === this.familiar;
   },
   isEqual: function (type, otherType) {
     return type === otherType;
@@ -13,7 +19,25 @@ Template.bebeForm.helpers({
   defaultTrue: function () {
     return true;
   },
-  mapOptions: function() {
+  onError: function () {
+    return function (error) {
+      alert('Error al borrar');
+      console.log(error);
+    };
+  },
+  onSuccess: function () {
+    return function (result) {
+      success('Borrado');
+    };
+  },
+  beforeRemove: function () {
+    return function (collection, id) {
+      toDelete.set(this);
+      $('#delete-babe').confirmation('show');
+    };
+  },
+
+  mapOptions: function () {
     // Make sure the maps API has loaded
     if (GoogleMaps.loaded()) {
       // Map initialization options
@@ -113,12 +137,23 @@ Template.nuevoBebe.events( {
   }
 });
 
-Template.bebeForm.onRendered(function() {
+Template.bebeForm.onRendered(function () {
   this.autorun(function () {
     if (GoogleMaps.loaded()) {
       $("#cementerioEnterrado").geocomplete({
         map: "#cementerioEnterradoMap"
       });
+    }
+  });
+
+  $('#delete-bebe').confirmation({
+    title: '¿Estás seguro?',
+    btnOkLabel: 'Borrar',
+    btnCancelLabel: 'No',
+    placement: 'top',
+    onConfirm: function () {
+      Router.go('personsList');
+      toDelete.get().remove();
     }
   });
 

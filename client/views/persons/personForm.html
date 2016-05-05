@@ -5,9 +5,23 @@
     <h2>{{title}}</h2>
 
     <div class="btn-group title-btn" role="group">
+      {{#if isEqual type "disabled"}}
+
+      {{#if isFamiliarOrAdmin}}
       <button id="person-form-submit" type="submit" value="Submit" class="btn btn-primary ">{{btnTitle}}</button>
+      {{/if}}
+
+      {{else}}
+      <button id="person-form-submit" type="submit" value="Submit" class="btn btn-primary ">{{btnTitle}}</button>
+      {{/if}}
+
       {{#if isEqual type "disabled"}}
       <a class="btn btn-default" href="{{pathFor 'viewPerson'}}#comentarios" role="button"><i class="fa fa-comments"></i> {{_"Comments"}}</a>
+
+      {{#if isFamiliarOrAdmin}}
+      {{#quickRemoveButton id="delete-bebe" onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger" collection="Persons" _id=doc._id}}Borrar{{/quickRemoveButton}}
+      {{/if}}
+
       {{/if}}
       <a class="btn btn-default" href="{{pathFor 'personsList'}}" role="button">{{_"Cancel"}}</a>
     </div>

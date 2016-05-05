@@ -156,11 +156,11 @@ Template.home.onCreated(function() {
 
     Persons.find().observe({
       // http://meteorcapture.com/how-to-create-a-reactive-google-map/
-      added: function(document) {
+      added: function (document) {
         //console.log("Added new marker");
         createMarker(map, document);
       },
-      changed: function(newDocument, oldDocument) {
+      changed: function (newDocument, oldDocument) {
         // console.log("Changed marker");
         var oldMarker = markers[newDocument._id];
         if (typeof oldMarker !== 'undefined') {
@@ -170,8 +170,8 @@ Template.home.onCreated(function() {
           createMarker(map, newDocument);
         }
       },
-      removed: function(oldDocument) {
-        var oldMarker = markers[newDocument._id];
+      removed: function (oldDocument) {
+        var oldMarker = markers[oldDocument._id];
         if (typeof oldMarker !== 'undefined') {
           oldMarker.setMap(null);
           google.maps.event.clearInstanceListeners(markers[oldDocument._id]);

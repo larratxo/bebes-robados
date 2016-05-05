@@ -32,15 +32,15 @@ AdCampaigns.allow({
     return true;
   },
   update: function (userId, doc, fields, modifier) {
-    if (!Roles.userIsInRole(userId, ['admin']) || doc.user !== userId) {
-      return false;
+    if (Roles.userIsInRole(userId, ['admin']) || doc.user === userId) {
+      return true;
     }
-    return true;
+    return false;
   },
   remove: function (userId, doc) {
-    if (!Roles.userIsInRole(userId, ['admin']) || doc.user !== userId) {
-      return false;
+    if (Roles.userIsInRole(userId, ['admin']) || doc.user === userId) {
+      return true;
     }
-    return true;
+    return false;
   }
 });
