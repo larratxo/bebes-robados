@@ -1,4 +1,4 @@
-/* global Schema, SimpleSchema, Mongo, Provincias:true, provinciaFind:true, addApiRoute */
+/* global Schema, SimpleSchema, Mongo, Provincias:true, provinciaFind:true, addApiRoute, Roles  */
 Schema.Provincias = new SimpleSchema({
   code: { type: Number, optional: false, index: 1 },
   name: { type: String, optional: false }
@@ -15,3 +15,15 @@ provinciaFind = function (prov_id) {
 var onlyFields = { fields: {_id: 0, code: 1, name: 1} };
 addApiRoute('/provincia/:code', Provincias, onlyFields, 'code');
 addApiRoute('/provincias', Provincias, onlyFields);
+
+Provincias.allow({
+  insert: function (userId, doc) {
+    return false;
+  },
+  update: function (userId, doc, fields, modifier) {
+    return false;
+  },
+  remove: function (userId, doc) {
+    return false;
+  }
+});

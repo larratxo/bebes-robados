@@ -1,4 +1,4 @@
-/* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,defaultCreatedAt,defaultUpdateAt,addApiRoute _ onAfterUp:true */
+/* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,defaultCreatedAt,defaultUpdateAt,addApiRoute _ onAfterUp:true Roles */
 
 onAfterUp = function () {
   return function (err) {
@@ -232,11 +232,13 @@ if (Meteor.isServer) {
       return true;
     },
     update: function (userId, doc, fieldNames, modifier) {
+      if (!Roles.userIsInRole(userId, ['admin']) || doc.familiar !== userId) {
+        return false;
+      }
       return true;
-  //    return doc.familiar === userId);
     },
-    remove: function () {
-      return false;
+    remove: function (userId, doc) {
+      return Roles.userIsInRole(userId, ['admin']) || doc.familiar === userId;
     }
   });
 }

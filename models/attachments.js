@@ -1,4 +1,4 @@
-/* global Meteor, gm, FS, Attachs:true, personAttachs:true, _, $ */
+/* global Meteor, gm, FS, Attachs:true, personAttachs:true, _, $ Roles */
 
 // Patched mupx: /usr/lib/node_modules/mupx/templates/linux/start.sh
 // https://stackoverflow.com/questions/31901697/meteor-up-docker-and-graphicsmagick
@@ -26,15 +26,16 @@ Attachs = new FS.Collection('attachs', {
   }
 });
 
-personAttachs = function (person) {
+personAttachs = function (person, userId) {
   var attachs = person.attachs;
-
-  if (_.isArray(attachs) && attachs.length > 0) {
-    return Attachs.find({ _id: { $in: attachs } });
-  } else {
-    // empty cursor
-    return Attachs.find({ limit: 0 });
+  var isAdmin = Roles.userIsInRole(userId, ['admin']);
+  if (isAdmin || person.familiar === userId) {
+    if (_.isArray(attachs) && attachs.length > 0) {
+      return Attachs.find({ _id: { $in: attachs } });
+    }
   }
+  // empty cursor
+  return Attachs.find({ limit: 0 });
 };
 
 Attachs.allow({
@@ -46,6 +47,9 @@ Attachs.allow({
     return true;
   },
   remove: function (userId, doc) {
+    if (!Roles.userIsInRole(userId, ['admin']) || doc.owner !== userId) {
+      return false;
+    }
     return true;
   },
   download: function () {

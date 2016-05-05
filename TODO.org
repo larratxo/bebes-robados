@@ -2,16 +2,13 @@
 Lista de Tareas
 
 * Desarrollo
-** Error updating Error: slug no esta permitido por el esquema (cuando no hay nombre)
 ** PDF con campañas
 https://github.com/pascoual/meteor-pdfkit
 https://github.com/khronedev/img-qrcode/
 ** Editor vs AuthorRole
-** Aviso al usuario cuando mete los datos, los visibles y los que no...
-** Meter docuemntos/attachments
+** Restringir acceso a attachs
 ** Añadir roles a edit bebes y a borrar difu
 ** Añadir /path-camp1/ a los banners para poder cambiar de campañas
-** Add license AGPLv3
 ** Añadir campo sobre donde fue adoptado
 ** Buscar o crear un correo de contacto
 ** Conectar usuarios-bebes (links en búsquedas, en formularios, etc) y permisos

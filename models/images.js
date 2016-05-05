@@ -67,6 +67,9 @@ Images.allow({
     return true;
   },
   remove: function (userId, doc) {
+    if (!Roles.userIsInRole(userId, ['admin']) || doc.owner !== userId) {
+      return false;
+    }
     return true;
   },
   download: function () {

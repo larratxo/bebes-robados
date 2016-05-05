@@ -1,4 +1,4 @@
-/* global Schema, SimpleSchema, Meteor, $, defaultCreatedAt,
+/* global Schema, SimpleSchema, Meteor, $, defaultCreatedAt, Roles
    defaultUpdateAt, addApiRoute */
 // https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript
 
@@ -140,6 +140,9 @@ Meteor.users.allow({
     } else {
       return true;
     }
+  },
+  remove: function (userId, user) {
+    return Roles.userIsInRole(userId, ['admin']);
   }
 });
 

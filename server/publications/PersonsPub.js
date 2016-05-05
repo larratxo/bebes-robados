@@ -14,7 +14,7 @@ Meteor.publish('personAndImages', function (id) {
       person,
       userFamiliar,
       userImages(userFamiliar.fetch()[0]),
-      personAttachs(person.fetch()[0])
+      personAttachs(person.fetch()[0], this.userId)
     ];
   } else {
     // empty cursor
@@ -33,24 +33,10 @@ Meteor.publish('personAndImagesViaSlug', function (slug) {
       person,
       userFamiliar,
       userImages(userFamiliar.fetch()[0]),
-      personAttachs(person.fetch()[0])
+      personAttachs(person.fetch()[0], this.userId)
     ];
   } else {
     // empty cursor
     return Persons.find({limit: 0});
   }
 });
-
-/*
-var personAttachs = function (person) {
-  if (person) {
-    // FIXME
-    // var attachs = Attachs.find({});
-    var attachs = Attachs.find({'metadata.owner': person._id});
-    return attachs;
-  } else {
-    console.log('Person not found');
-    return [];
-  }
-};
-*/

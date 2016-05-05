@@ -1,4 +1,4 @@
-/* global AdCampaigns:true, Mongo, Schema:true, SimpleSchema, currentAdCampaign */
+/* global AdCampaigns:true, Mongo, Schema:true, SimpleSchema, currentAdCampaign, Roles */
 
 AdCampaigns = new Mongo.Collection('AdCampaigns');
 
@@ -19,9 +19,28 @@ Schema.AdCampaign = new SimpleSchema({
   photoHD: { type: String, optional: true },
   // jcrop coord + photoHD para usar en otras escalas
   coords: { type: Object, optional: true },
-  text: { type: String, optional: true },  
+  text: { type: String, optional: true },
   participate: { type: Boolean, optional: false, index: 1 },
   validated: { type: Boolean, optional: false, index: 1 }
 });
 
 AdCampaigns.attachSchema(Schema.AdCampaign);
+
+AdCampaigns.allow({
+  // TODO: more perms here
+  insert: function (userId, doc) {
+    return true;
+  },
+  update: function (userId, doc, fields, modifier) {
+    if (!Roles.userIsInRole(userId, ['admin']) || doc.user !== userId) {
+      return false;
+    }
+    return true;
+  },
+  remove: function (userId, doc) {
+    if (!Roles.userIsInRole(userId, ['admin']) || doc.user !== userId) {
+      return false;
+    }
+    return true;
+  }
+});
