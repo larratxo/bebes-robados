@@ -168,12 +168,14 @@ Router.onAfterAction(function () {
 
 // http://stackoverflow.com/questions/19882687/set-html-title-when-using-iron-router
 Router.after(function () {
-  var newTitle;
-  if (this.route.options.title) {
-    newTitle = this.route.options.title + ' - ' + Meteor.App.NAME;
-  } else {
-    newTitle = Meteor.App.NAME;
+  if (typeof document !== 'undefined') {
+    var newTitle;
+    if (this.route.options.title) {
+      newTitle = this.route.options.title + ' - ' + Meteor.App.NAME;
+    } else {
+      newTitle = Meteor.App.NAME;
+    }
+    document.title = newTitle;
+    SEO.set({ title: newTitle });
   }
-  document.title = newTitle;
-  SEO.set({ title: newTitle });
 });
