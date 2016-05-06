@@ -114,6 +114,12 @@ Router.map(function () {
     waitOn: subWebPage, data: dataWebPage
   });
 
+  this.route('otras', {
+    path: '/otras-iniciativas',
+    title: 'Otras Iniciativas',
+    waitOn: subWebPage, data: dataWebPage
+  });
+
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',
     title: 'Edita bebe',
