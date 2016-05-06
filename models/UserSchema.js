@@ -1,5 +1,5 @@
 /* global Schema, SimpleSchema, Meteor, $, defaultCreatedAt, Roles
-   defaultUpdateAt, addApiRoute */
+   defaultUpdateAt, addApiRoute onAfterUp */
 // https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript
 
 /*
@@ -27,8 +27,9 @@ Schema.UserProfile = new SimpleSchema({
   },
   'redesSociales.$.url': {
     type: String,
-    autoform: { afFieldInput: {label: false, placeholder:
-                                 'p.ej: http://twitter.com/tu_usuario'} },
+    autoform: { afFieldInput: {label: false,
+                               type: 'url',
+                               placeholder: 'p.ej: http://twitter.com/tu_usuario'} },
     regEx: SimpleSchema.RegEx.Url
   },
   imagenes: {

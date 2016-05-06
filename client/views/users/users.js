@@ -79,6 +79,11 @@ Template.viewUser.onRendered( function () {
   personLabelHack();
   $(".autoform-add-item").click(personLabelHack());
 
+  $('input[disabled][type=\'url\']')
+    .attr('onClick', 'var win = window.open(this.value, \'_blank\'); win.focus();')
+    .attr('disabled', false)
+    .attr('readonly', true);
+
   /* bootbox.setDefaults({
     locale: 'es'
   }); */
