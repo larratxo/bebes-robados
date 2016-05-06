@@ -1,9 +1,12 @@
 <template name="viewUser">
+
   {{> usersForm title="Datos de esta persona" intro="Aquí puedes obtener más información de esta persona, dejarle algún comentario si pudieras aportar algo de información que facilite la búsqueda de su familiar/es." doc=this type="disabled" id="viewUserForm" btnTitle="Cerrar" omitFields="emails, emails.$, emails.$.address, emails.$.verified, profile.conServicioAceptadas, profile.dni, profile.fax, profile.telefono, profile.imagenes"}}
 
   {{> userGallery }}
 
   <div id="comentarios"></div>
+
+  <div style="float:right"><button id="report-abuser" class="btn btn-danger" type="button" title="Reportar un abuso por parte de este usuario/a"><i class="fa fa-flag" aria-hidden="true"></i> Reportar</button></div>
 
   <div class="comment-section">
     {{> commentsBox id=this._id}}

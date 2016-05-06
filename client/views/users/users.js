@@ -1,14 +1,26 @@
-/* global personLabelHack:true Session */
+/* global personLabelHack:true Session $ Router bootbox */
 
 // http://docs.meteor.com/#accounts_oncreateuser
 
-personLabelHack = function() {
+personLabelHack = function () {
   $(".autoform-array-item-body > .form-group > label.control-label").text("");
   $(".autoform-array-item-body > .form-group > div .panel-default")
      .removeClass("panel");
   $(".autoform-add-item").addClass("btn-xs");
   $(".autoform-remove-item").addClass("btn-xs");
   $(".autoform-array-item-body > .form-group label.control-label").remove();
+};
+
+commentsHack = function () {
+  var commentsHead = $('h4.media-heading');
+  for (var i = 0; i < commentsHead.length; i++) {
+    var headSplit = commentsHead[i].innerHTML.split(' <small>');
+    var name = headSplit[0];
+    var time = headSplit[1].split('<')[0];
+    var url = Router.path('viewUser', {_id: name});
+    commentsHead.eq(i).html('<h4 class=\'media-heading\'><a href=\'' + url + '\'>' + name + '</a>' +
+                         ' <small>' + time + '</small>');
+  }
 };
 
 var getUser = function(param) {
@@ -26,7 +38,7 @@ Template.userGallery.helpers({
   images: function () {
     return userImages(getUser(this));
   },
-  tieneFotos: function() {
+  tieneFotos: function () {
     var imagenes = getUser(this).profile.imagenes;
     return _.isArray(imagenes) && imagenes.length > 0;
   }
@@ -38,11 +50,38 @@ Template.usersForm.helpers({
   }
 });
 
-Template.viewUser.onRendered( function() {
+Template.viewUser.events({
+  'click #report-abuser': function (e, t) {
+    /* e.preventDefault();
+
+    bootbox.prompt({
+      title: '¿Qué problema quiere reportar sobre este usuario/a?',
+      message: '',
+      backdrop: false,
+      animate: false,
+      onEscape: false,
+      callback: function (result) {
+        if (result === null) {
+          console.log('Nada');
+        } else {
+          console.log(result);
+        }
+        return false;
+      },
+      className: 'report-abuse-dialog'
+    }); */
+  }
+});
+
+Template.viewUser.onRendered( function () {
   var who = typeof this.data.profile.name == 'undefined' ? this.data.username : this.data.profile.name;
   Session.set('DocumentTitle', 'Datos sobre ' + who);
   personLabelHack();
   $(".autoform-add-item").click(personLabelHack());
+
+  /* bootbox.setDefaults({
+    locale: 'es'
+  }); */
 
   $('#links').onclick = function (event) {
     event = event || window.event;
@@ -52,6 +91,8 @@ Template.viewUser.onRendered( function() {
         links = this.getElementsByTagName('a');
     blueimp.Gallery(links, options);
   };
+
+  setTimeout(commentsHack, 2000);
 });
 
 Template.userUpdate.helpers({

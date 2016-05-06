@@ -58,7 +58,7 @@ Router.map(function () {
   // TODO : quitar los ifs!!!!!
   this.route('viewUser', {
     path: '/persona/:_id',
-    title: 'Datos de familiar',
+    // title: 'Datos de familiar',
     waitOn: function () {
       return subsManager.subscribe('userAndImages', this.params._id);
     },
