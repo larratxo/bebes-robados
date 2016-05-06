@@ -6,11 +6,10 @@ Lista de Tareas
 https://github.com/pascoual/meteor-pdfkit
 https://github.com/khronedev/img-qrcode/
 ** Editor vs AuthorRole
-** Restringir acceso a attachs
-** Añadir roles a edit bebes y a borrar difu
 ** Añadir /path-camp1/ a los banners para poder cambiar de campañas
 ** Añadir campo sobre donde fue adoptado
 ** Buscar o crear un correo de contacto
+** A hablar: crear tb cuenta twitter
 ** Conectar usuarios-bebes (links en búsquedas, en formularios, etc) y permisos
 ** Bebe encontrado o no encontrado?
 ** Traducción, sobre todo al catalán e ingles parece que inicialmente
@@ -24,12 +23,9 @@ https://support.google.com/adsense/answer/6002621?hl=en
 http://www.stefanmaescher.com/top10-banner-sizes/ . Medium Rectangle: 300×250, Leaderboard: 728×90, Wide Skyscraper: 160×600
 https://github.com/meteor-london/banner/
 https://github.com/meteor-london/banner/blob/master/banner.js
-** https://github.com/alanning/meteor-roles
 ** Markers in a circle
 https://jsfiddle.net/kaiser/wzcst/light/
 https://developers.google.com/maps/documentation/javascript/shapes#circles
-** 2 backgrounds fijos
-** SEO
 ** Pais != España
 ** Charts / Gráficos
 *** https://atmospherejs.com/d3js/d3
@@ -59,7 +55,7 @@ https://stackoverflow.com/questions/28911634/how-to-avoid-transparent-hugepage-d
 *** https://atmospherejs.com/percolate/migrations
 *** https://atmospherejs.com/raix/handlebar-helpers <<
 *** https://atmospherejs.com/reywood/publish-composite << person-bebe
-** A hablar: crear tb cuenta twitter
+** DONE https://github.com/alanning/meteor-roles
 ** DONE http://meteorpedia.com/read/REST_API
 https://github.com/awatson1978/rest-api/blob/master/webapp/lib/rest/api.posts.js
 ** DONE Spiderable
@@ -73,3 +69,4 @@ ongoworks:spiderable@1.0.7
 >>>> sudo npm -g install phantomjs (1.9.8 funciona)
 
 https://github.com/iron-meteor/iron-router/issues/1192
+** DONE SEO

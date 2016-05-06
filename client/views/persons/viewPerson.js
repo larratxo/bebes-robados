@@ -7,13 +7,14 @@ Template.viewPerson.onRendered(function () {
 });
 
 Template.viewPerson.events({
-  'click #person-form-submit': function (event) {
+  'click #person-form-submit': function (event, template) {
     event.preventDefault();
+    console.log(template.data);
     // console.log(event);
     if (typeof event.target.form.slug === 'string') {
-      Router.go('editPersonSlug', { slug: event.target.form.slug.value });
+      Router.go('editPersonSlug', { slug: template.data.slug });
     } else {
-      Router.go('bebePage', { _id: event.target.form._id.value });
+      Router.go('bebePage', { _id: template.data._id });
     }
   }
 });
