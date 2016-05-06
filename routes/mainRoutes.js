@@ -1,8 +1,16 @@
-/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, SEO */
+/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, SEO, webPages */
 
 // https://iron-meteor.github.io/iron-router/
 
 var subsManager = new SubsManager();
+
+var subWebPage = function () {
+  return subsManager.subscribe('webPages', this.route.options.title);
+};
+
+var dataWebPage = function () {
+  return webPages.findOne({'title': this.route.options.title});
+};
 
 Router.route('/', {
   name: 'home',
@@ -45,7 +53,6 @@ Router.map(function () {
   }
             );
   this.route('underConstruction', { path: '/en-construccion', title: 'En construcción' });
-  this.route('quienesSomos', { path: '/quienesSomos', title: 'Quienes somos' });
 
   this.route('userUpdate', {
     path: '/yo',
@@ -76,9 +83,36 @@ Router.map(function () {
       }
     }
   });
-  this.route('legal', { path: '/legal', title: 'Información Legal' });
-  this.route('donaciones', { path: '/donaciones', title: 'Donaciones' });
-  this.route('contacto', { path: '/contacto', title: 'Contacto' });
+
+  this.route('quienes', {
+    path: '/quienesSomos',
+    title: 'Quienes somos',
+    waitOn: subWebPage, data: dataWebPage
+  });
+
+  this.route('legal', {
+    path: '/legal',
+    title: 'Información Legal',
+    waitOn: subWebPage, data: dataWebPage
+  });
+
+  this.route('donaciones', {
+    path: '/donaciones',
+    title: 'Donaciones',
+    waitOn: subWebPage, data: dataWebPage
+  });
+
+  this.route('proteccion', {
+    path: '/proteccion-datos',
+    title: 'Protección de Datos',
+    waitOn: subWebPage, data: dataWebPage
+  });
+
+  this.route('contacto', {
+    path: '/contacto',
+    title: 'Contacto',
+    waitOn: subWebPage, data: dataWebPage
+  });
 
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',

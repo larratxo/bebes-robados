@@ -1,4 +1,4 @@
-/*global Meteor,Accounts,console,YAML,Fixtures */
+/*global Meteor,Accounts,console,YAML,Fixtures, webPages */
 function loadUser(user) {
   var userAlreadyExists = typeof Meteor.users.findOne({ username : user.username }) === 'object';
 
@@ -47,6 +47,16 @@ Meteor.startup(function () {
     var m = Fixtures.municipios;
     for (var i = 0; i < m.length; i+= 1) {
       Municipios.insert({cod_id: parseInt(m[i].id), cod_prov : parseInt(m[i].cod_prov), cod_mun : parseInt(m[i].cod_mun), name: m[i].name });
+    }
+  }
+
+  /* Estos títulos deben coincidir con la rutas de mainRoutes.js */
+  var pages = ['Contacto', 'Quienes somos', 'Información Legal', 'Protección de Datos', 'Donaciones']
+
+  for (var page = 0; page < pages.length; page++) {
+    var title = pages[page];
+    if (webPages.find({title: title}).count() === 0) {
+      webPages.insert({title: title, text: 'Pulsa con el ratón para editar esta página'});
     }
   }
 

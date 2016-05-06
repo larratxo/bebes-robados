@@ -1,0 +1,12 @@
+<template name="editablePage">
+  <div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+
+  {{#if isInRole 'admin'}}
+  {{> editableText  substitute='<i class="fa fa-pencil"></i>' textarea=true trustHTML=true title='Pulsa para editar este texto' collection='webPages' field='text' wysiwyg=true toolbarPosition=top showToolbar=true}}
+  {{else}}
+  {{{text}}}
+  {{/if}}
+
+</template>
