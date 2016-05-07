@@ -2,8 +2,6 @@
 
 AdCampaigns = new Mongo.Collection('AdCampaigns');
 
-Schema = {};
-
 Schema.AdCampaign = new SimpleSchema({
   // current campaign 1
   group: { type: Number, optional: false, autoValue: function () { return currentAdCampaign; }, index: 1 },

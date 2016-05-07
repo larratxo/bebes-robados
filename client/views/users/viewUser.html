@@ -6,7 +6,11 @@
 
   <div id="comentarios"></div>
 
-  <div style="float:right"><button id="report-abuser" class="btn btn-danger" type="button" title="Reportar un abuso por parte de este usuario/a"><i class="fa fa-flag" aria-hidden="true"></i> Reportar</button></div>
+  <div style="float:right">
+    <a href="#" id="report-abuser" class="btn btn-danger" title="Reportar un abuso por parte de este usuario">
+      <i class="fa fa-flag" aria-hidden="true"></i> Reportar
+    </a>
+  </div>
 
   <div class="comment-section">
     {{> commentsBox id=this._id}}

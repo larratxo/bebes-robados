@@ -7,7 +7,7 @@ Template.bebeAdminOps.helpers({
 
 Template.bebeAdminOps.events({
   'click .erase': function (e, template) {
-    alert('En desarrollo');
+    alertMessage('En desarrollo');
     e.stopImmediatePropagation();
   }
 });

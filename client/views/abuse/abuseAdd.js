@@ -1,19 +1,17 @@
-/* global $ Template Session AutoForm Router */
-
-Template.nuevoBebe.onRendered(function () {
-  // Commented, this clear default values
-  // AutoForm.resetForm('nuevoBebeForm');
+/* global Template Autoform success alertMessage Router */
+Template.abuseAdd.helpers({
+  username: function () { return this.data.username; }
 });
 
 AutoForm.hooks({
-  nuevoBebeForm: {
+  addAbuseForm: {
     after: {
       // Replace `formType` with the form `type` attribute to which this hook applies
       insert: function (error, result) {
         if (typeof error === 'undefined') {
-          success('Guardado');
-          Router.go('difusion');
-          AutoForm.resetForm('nuevoBebeForm');
+          success('Informe de abuso guardado');
+          Router.go('home');
+          AutoForm.resetForm('addAbuseForm');
           $('#usar').collapse('hide');
         } else {
           alertMessage(error);

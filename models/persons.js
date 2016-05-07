@@ -45,7 +45,7 @@ var defaultAutocomplete = function (field, textarea) {
         template = Template.autoLugarNacimiento;
         break;
       case 'cementerioEnterrado':
-        template = Template.autoCementerioEnterrado;
+      template = Template.autoCementerioEnterrado;
         break;
       case 'nombreCompletoMedico':
         template = Template.autoMedico;

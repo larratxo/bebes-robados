@@ -12,7 +12,7 @@ AutoForm.hooks({
           Router.go('personsList');
           AutoForm.resetForm("editaBebeForm");
         } else {
-          alert(error);
+          alertMessage(error);
           console.log("Error updating " + error);
         }
       }

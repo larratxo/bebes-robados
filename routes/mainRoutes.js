@@ -32,7 +32,9 @@ var requireLogin = function () {
 };
 
 Router.map(function () {
-  this.route('loading', { path: '/loading' }); // just for testing
+  this.route('loading', {
+    path: '/loading'
+  }); // just for testing
   this.route('personsList', {
     path: '/bebes',
     title: 'Busca bebe o familia',
@@ -50,10 +52,21 @@ Router.map(function () {
   this.route('nuevoBebe', {
     path: '/nuevoBebe',
     title: 'Añade un bebe'
-  }
-            );
-  this.route('underConstruction', { path: '/en-construccion', title: 'En construcción' });
-
+  });
+  this.route('abuseAdd', {
+    path: '/reportar/:username',
+    title: 'Informar de abuso',
+    waitOn: function () {
+      return subsManager.subscribe('userAndImages', this.params.username);
+    },
+    data: function () {
+      return Meteor.users.findOne({ username: this.params.username });
+    }
+  });
+  this.route('underConstruction', {
+    path: '/en-construccion',
+    title: 'En construcción'
+  });
   this.route('userUpdate', {
     path: '/yo',
     title: 'Mis datos',
@@ -139,6 +152,9 @@ Router.map(function () {
   this.route('editPersonSlug', {
     path: '/edita-bebe/:slug',
     title: 'Edita bebe',
+    waitOn: function () {
+      return subsManager.subscribe('personAndImagesViaSlug', this.params.slug);
+    },
     data: function () {
       return Persons.findOne({slug: this.params.slug});
     }
@@ -180,7 +196,11 @@ Router.map(function () {
       this.next();
     },
     waitOn: function () {
-      return [subsManager.subscribe('AdCampaigns'), subsManager.subscribe('Persons')];
+      return [
+        subsManager.subscribe('AdCampaigns'),
+        subsManager.subscribe('abuseReports'),
+        subsManager.subscribe('Persons')
+      ];
     }
   });
   this.route('DifuAdmin', {

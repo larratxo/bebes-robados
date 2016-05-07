@@ -1,0 +1,14 @@
+<template name="abuseForm">
+  <div class="page-header">
+    <h1>{{title}} por parte del usuario '{{username}}'</h1>
+  </div>
+
+  {{#autoForm collection="abuseReports" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" id=id type=type }}
+
+  <div style="display: none;">{{> afQuickField name="reported" value=this.username class="field-hidden"}}</div>
+  {{> afQuickField name="text"}}
+
+  <button type="submit" class="btn btn-danger"><i class="fa fa-flag" aria-hidden="true"></i> {{btnTitle}}</button>
+  {{/autoForm}}
+
+</template>

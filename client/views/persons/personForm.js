@@ -1,4 +1,4 @@
-/* global GoogleMaps,google,geocode:true,provincia,municipio,Template, alert, success, Roles
+/* global GoogleMaps,google,geocode:true,provincia,municipio,Template, alertMessage, success, Roles
  noUndef, resetMarker:true, Meteor, Router, $ ReactiveVar */
 
 var toDelete = new ReactiveVar();
@@ -21,7 +21,7 @@ Template.bebeForm.helpers({
   },
   onError: function () {
     return function (error) {
-      alert('Error al borrar');
+      alertMessage('Error al borrar');
       console.log(error);
     };
   },

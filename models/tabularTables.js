@@ -1,7 +1,7 @@
 /* global TabularTables:true,moment, tabLanguageEs:true,renderDate:true,
  isValidLatLng,renderSexo:true, renderSexoAlt:true, renderGeo:true,renderAprox:true,
  decorateNacAprox:true,setEmptyTable:true, renderNuevo:true,renderFamiliar:true, Tabular, isNew, $, Persons, AdCampaigns
- renderCheckbox:true Meteor Template*/
+ renderCheckbox:true Meteor Template abuseReports */
 // https://github.com/aldeed/meteor-tabular
 // Comparison: http://reactive-table.meteor.com/
 
@@ -42,6 +42,15 @@ renderDate = function (val) {
   // http://momentjs.com/docs/#/displaying/
   if (val instanceof Date) {
     return moment(val).format('DD-MMM-YYYY');
+  } else {
+    return '';
+  }
+};
+
+var renderDateTime = function (val) {
+  // http://momentjs.com/docs/#/displaying/
+  if (val instanceof Date) {
+    return moment(val).format('DD-MMM-YYYY H:m');
   } else {
     return '';
   }
@@ -90,7 +99,7 @@ renderFamiliar = function (val, type, doc) {
   // var hasFam = typeof doc.familiar === 'string';
   var hasFam = typeof val === 'string';
   var quien = doc.buscasBebe ? (hasFam ? val : '') : 'Hijo/a';
-  return '<a href="/persona/' + doc.familiar + '/" title="Ir a la página del/la ' +
+  return '<a href="/persona/' + doc.familiar + '" title="Ir a la página del/la ' +
          quien + '">' + quien + '</a>';
   // return (doc.buscasBebe? (hasFam? val: '') : 'Hijo/a');
 };
@@ -188,6 +197,18 @@ var renderBebeDifu = function (val, type, doc) {
   return '<a href="/bebe/' + doc.bebe + '" title="Ir a la página de este bebe"><i class="fa fa-user"></i></a>';
 };
 
+var renderPersona = function (slug, name) {
+  return '<a href="/persona/' + slug + '" title="Ir a la página de esta persona"><i class="fa fa-user"></i> ' + name + '</a>';
+}
+
+var renderReported = function (val, type, doc) {
+  return renderPersona(doc.reported, doc.reported);
+};
+
+var renderReporter = function (val, type, doc) {
+  return renderPersona(doc.reporter, '');
+};
+
 TabularTables.AdCampagins = new Tabular.Table({
   name: 'AdCampaigns',
   collection: AdCampaigns,
@@ -226,3 +247,18 @@ TabularTables.AdCampagins = new Tabular.Table({
      }
     }
   ]});
+
+TabularTables.abuseReports = new Tabular.Table({
+  name: 'abuseReports',
+  collection: abuseReports,
+  language: tabLanguageEs,
+  // https://datatables.net/examples/basic_init/table_sorting.htmlv
+  order: [[1, 'desc']],
+  columns: [
+    {data: 'createdAt', title: 'Fecha', render: renderDateTime, className: 'abuse-date' },
+    {data: 'updatedAt', title: 'Actualizado', render: renderDateTime, visible: false},
+    {data: 'reported', title: 'Denunciado', render: renderReported, className: 'column-center'},
+    {data: 'reporter', title: 'Denuncia', render: renderReporter, className: 'column-center'},
+    {data: 'text', title: 'Texto', className: 'abuse-report'}
+  ]
+});

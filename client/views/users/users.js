@@ -1,4 +1,4 @@
-/* global personLabelHack:true Session $ Router alert success */
+/* global personLabelHack:true Session $ Router alert success Meteor */
 
 // http://docs.meteor.com/#accounts_oncreateuser
 
@@ -52,24 +52,8 @@ Template.usersForm.helpers({
 
 Template.viewUser.events({
   'click #report-abuser': function (e, t) {
-    /* e.preventDefault();
-
-    bootbox.prompt({
-      title: '¿Qué problema quiere reportar sobre este usuario/a?',
-      message: '',
-      backdrop: false,
-      animate: false,
-      onEscape: false,
-      callback: function (result) {
-        if (result === null) {
-          console.log('Nada');
-        } else {
-          console.log(result);
-        }
-        return false;
-      },
-      className: 'report-abuse-dialog'
-    }); */
+    e.preventDefault();
+    Router.go('abuseAdd', { username: t.data.username });
   }
 });
 
@@ -83,10 +67,6 @@ Template.viewUser.onRendered( function () {
     .attr('onClick', 'var win = window.open(this.value, \'_blank\'); win.focus();')
     .attr('disabled', false)
     .attr('readonly', true);
-
-  /* bootbox.setDefaults({
-    locale: 'es'
-  }); */
 
   $('#links').onclick = function (event) {
     event = event || window.event;
@@ -119,7 +99,7 @@ AutoForm.hooks({
           success('Guardado');
           // Router.go('home');
         } else {
-          alert(error);
+          alertMessage(error);
           console.log("Error updating " + error);
         }
       }
