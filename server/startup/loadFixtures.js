@@ -51,7 +51,7 @@ Meteor.startup(function () {
   }
 
   /* Estos títulos deben coincidir con la rutas de mainRoutes.js */
-  var pages = ['Contacto', 'Quienes somos', 'Información Legal', 'Protección de Datos', 'Donaciones', 'Otras Iniciativas'];
+  var pages = ['Contacto', 'Quienes somos', 'Información Legal', 'Protección de Datos', 'Donaciones', 'Otras Iniciativas', 'Denuncia vuestro caso'];
 
   for (var page = 0; page < pages.length; page++) {
     var title = pages[page];

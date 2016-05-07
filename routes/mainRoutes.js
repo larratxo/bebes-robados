@@ -120,6 +120,12 @@ Router.map(function () {
     waitOn: subWebPage, data: dataWebPage
   });
 
+  this.route('denuncia', {
+    path: '/denuncia',
+    title: 'Denuncia vuestro caso',
+    waitOn: subWebPage, data: dataWebPage
+  });
+
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',
     title: 'Edita bebe',
