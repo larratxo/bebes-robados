@@ -27,7 +27,11 @@ var userAndImagesFromId = function (user) {
 
 Meteor.publish('userAndImages', function (username) {
   check(username, String);
-  var user = Meteor.users.find({username: username}, publicUserFields);
+  var user;
+  user = Meteor.users.find({username: username}, publicUserFields);
+  if (user.count() === 0) {
+    user = Meteor.users.find({_id: username}, publicUserFields);
+  }
   return userAndImagesFromId(user);
 });
 
