@@ -7,7 +7,7 @@ Feature: Allow users to login and logout
   Background:
     Given I am on the home page
 
-  @watch
+
   Scenario: A user can login with username
     Given I have an account and I logged in
     Given I am signed out
@@ -22,6 +22,7 @@ Feature: Allow users to login and logout
     Then I should be logged in
     And I can edit my profile
 
+    @watch
   Scenario: A user cannot login with bad information
     Given I have an account and I logged in
     Given I am signed out
