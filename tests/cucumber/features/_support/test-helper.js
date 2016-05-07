@@ -17,8 +17,8 @@ goHome = function (client) {
   client.waitForVisible('.Home');
   expect(client.isVisible('.Home')).toBe(true);
   // Close alert
-  if (client.isVisible('span.close')) {
-    client.click('span.close');
+  if (client.isVisible('.bert-content')) {
+    client.click('.bert-content');
   }
   if (client.isVisible('#acceptCookies')) {
     client.click('#acceptCookies');
