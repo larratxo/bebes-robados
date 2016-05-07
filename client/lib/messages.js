@@ -1,9 +1,9 @@
-/* global success:true alert:true $ */
+/* global success:true alert:true Bert */
 
 success = function (message) {
-  $.bootstrapGrowl(message, {type: 'success', align: 'center'});
+  Bert.alert(message, 'success', 'growl-top-right');
 };
 
 alert = function (message) {
-  $.bootstrapGrowl(message, {type: 'danger', align: 'center'});
+  Bert.alert(message, 'danger', 'growl-top-right');
 };

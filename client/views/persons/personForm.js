@@ -57,7 +57,6 @@ Template.bebeForm.onCreated(function() {
     geocode();
   });
   GoogleMaps.ready('cementerioEnterradoMap', function(map) {
-    // $.bootstrapGrowl("Funca 2");
   });
 });
 

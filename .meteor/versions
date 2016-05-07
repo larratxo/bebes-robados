@@ -82,6 +82,7 @@ email@1.0.8
 fastclick@1.0.7
 flawless:meteor-toastr@1.0.1
 fortawesome:fontawesome@4.5.0
+fourseven:scss@3.3.3_3
 francocatena:status@1.5.0
 gadicohen:robots-txt@0.0.10
 gadicohen:sitemaps@0.0.23
@@ -276,6 +277,7 @@ stylus@2.511.1
 tap:i18n@1.7.0
 templating@1.1.5
 templating-tools@1.0.0
+themeteorchef:bert@2.1.0
 todda00:collection-revisions@0.2.1
 todda00:friendly-slugs@0.4.0
 tracker@1.0.9

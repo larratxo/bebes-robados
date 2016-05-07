@@ -1,4 +1,4 @@
-/* global personLabelHack:true Session $ Router bootbox */
+/* global personLabelHack:true Session $ Router alert success */
 
 // http://docs.meteor.com/#accounts_oncreateuser
 
@@ -116,10 +116,10 @@ AutoForm.hooks({
     after: {
       update: function(error) {
         if (typeof error === "undefined") {
-          $.bootstrapGrowl("Guardado", {type: 'success', align: 'center'} );
+          success('Guardado');
           // Router.go('home');
         } else {
-          $.bootstrapGrowl(error, {type: 'danger', align: 'center'} );
+          alert(error);
           console.log("Error updating " + error);
         }
       }
