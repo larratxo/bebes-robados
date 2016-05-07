@@ -11,10 +11,10 @@ Meteor.startup(function () {
 
   if (!Meteor.settings.public.isProduction) {
     Bert.defaults = {
-      hideDelay: 12000
+      hideDelay: 52000
     };
     Bert.alert({
-      type: 'success',
+      type: 'danger',
       style: 'growl-top-right',
       title: 'Estamos en pruebas',
       message: 'Puedes meter datos de bebes para testear pero ten en cuenta que durante la fase de pruebas los borraremos de tanto en tanto',

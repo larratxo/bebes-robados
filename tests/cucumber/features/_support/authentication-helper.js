@@ -46,7 +46,7 @@ module.exports = function () {
         shouldFail = false;
       }
       client.waitForVisible( // true means the opposite
-                             '#login-dropdown-list > div > div.alert.alert-danger', undefined, !shouldFail);
+                             '.danger', undefined, !shouldFail);
     };
 
     this.AuthenticationHelper = {

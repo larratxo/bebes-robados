@@ -106,7 +106,7 @@ module.exports = function () {
   });
 
   this.Then(/^I should see a user not found error$/, function (callback) {
-    client.waitForVisible('#login-dropdown-list > div > div.alert.alert-danger');
+    client.waitForVisible('.danger');
     // close dialog
     client.click("li#login-dropdown-list a");
     callback();

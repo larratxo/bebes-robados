@@ -57,7 +57,7 @@ module.exports = function () {
       client.click('#person-form-submit');
 
       if (shouldFail) {
-        client.waitForVisible(".alert-danger");
+        client.waitForVisible('.danger');
       } else {
         client.waitForText('body', 'Campañas de difusión públicas');
         /* client.waitForExist('#personsTable_filter > label > input');
