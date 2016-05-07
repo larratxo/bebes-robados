@@ -23,7 +23,7 @@ commentsHack = function () {
   }
 };
 
-var getUser = function(param) {
+var getUser = function (param) {
   if (typeof param.data === "string") {
     user = Meteor.users.findOne({_id: param.data });
   }
