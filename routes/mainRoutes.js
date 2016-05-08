@@ -218,9 +218,18 @@ var profileUpdated = function () {
     diff(Meteor.user().profile.createdAt, 'seconds') !== 0;
 } */
 
-// Router.onBeforeAction(requireLogin, {only: ['userUpdate'] } );
-Router.onBeforeAction(requireLogin,
-                      { only: ['nuevoBebe', 'bebePage', 'userUpdate'] });
+// Páginas que necesitan login
+Router.onBeforeAction(
+  requireLogin, {
+    only: [
+      'nuevoBebe',
+      'abuseAdd',
+      'admin',
+      'bebePage', // edita bebe
+      'editPersonSlug',
+      'userUpdate']
+  }
+);
 
 Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
 
