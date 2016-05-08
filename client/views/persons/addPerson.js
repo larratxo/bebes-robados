@@ -1,4 +1,4 @@
-/* global $ Template Session AutoForm Router */
+/* global $ Template success alertMessage AutoForm Router */
 
 Template.nuevoBebe.onRendered(function () {
   // Commented, this clear default values
