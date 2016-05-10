@@ -57,8 +57,6 @@ sacha:spin
 gadicohen:sitemaps
 pfafman:photo-up
 coffeescript
-djedi:sanitize-html
-djedi:sanitize-html-client
 semantic:ui-css
 zimme:active-route
 yogiben:autoform-file
@@ -91,3 +89,5 @@ hinas:meteor-bootstrap-confirmation
 babrahams:editable-text-wysiwyg-bootstrap-3
 babrahams:transactions
 themeteorchef:bert
+vazco:universe-html-purifier
+cosmos:browserify

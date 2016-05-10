@@ -10,6 +10,7 @@ Meteor.methods({
     console.log('Notificacion generada por usuario: ' + this.userId);
 
     // console.log(comment);
+    // https://alanning.github.io/meteor-roles/classes/Roles.html#method_getUsersInRole
     var admins = Roles.getUsersInRole(role);
     var verifiedEmails = [];
     for (var i = 0; i < admins.length; i++) {

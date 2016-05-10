@@ -1,4 +1,4 @@
-/* global Template, ReactiveVar, sanitizeHtml, $, Meteor, AdCampaigns, Persons */
+/* global Template, ReactiveVar, $, Meteor, AdCampaigns, Persons, _ UniHTML */
 
 var getAfectado = function () {
   return Persons.find({familiar: Meteor.userId()});
@@ -58,6 +58,15 @@ Template.DifuEditor.onRendered(function () {
   $('div.photo-up div i').text('');
 });
 
+function refreshTitle (template, newText, save) {
+  var myAd = template.myAd.get();
+  myAd.text = newText;
+  template.myAd.set(myAd);
+  if (save) {
+    AdCampaigns.update(myAd._id, {$set: {text: newText, validated: false}});
+  }
+}
+
 Template.DifuEditor.events({
   'change #participar': function (e, template) {
     var myAd = template.myAd.get();
@@ -65,17 +74,10 @@ Template.DifuEditor.events({
     template.myAd.set(myAd);
     AdCampaigns.update(myAd._id, {$set: {participate: e.target.checked, validated: false}});
   },
-  'change #adtitle': function (e, template) {
-    var newText = sanitizeHtml(e.target.value);
-    var myAd = template.myAd.get();
-    myAd.text = newText;
-    template.myAd.set(myAd);
-    AdCampaigns.update(myAd._id, {$set: {text: newText, validated: false}});
-  },
-  'keyup #adtitle': function (e, template) {
-    var newText = sanitizeHtml(e.target.value);
-    var myAd = template.myAd.get();
-    myAd.text = newText;
-    template.myAd.set(myAd);
-  }
+  'change #adtitle': _.throttle(function (e, template) {
+    refreshTitle(template, UniHTML.purify(e.target.value), true);
+  }, 300),
+  'keyup #adtitle': _.throttle(function (e, template) {
+    refreshTitle(template, UniHTML.purify(e.target.value), false);
+  }, 300)
 });
