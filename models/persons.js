@@ -1,4 +1,5 @@
-/* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,defaultCreatedAt,defaultUpdateAt,addApiRoute _ onAfterUp:true Roles */
+/* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,defaultCreatedAt,
+ defaultUpdateAt,addApiRoute _ onAfterUp:true Roles CollectionRevisions */
 
 onAfterUp = function () {
   return function (err) {
@@ -214,7 +215,17 @@ Schema.Persons = new SimpleSchema({
         collection: 'Attachs'
       }}},
   createdAt: defaultCreatedAt,
-  updatedAt: defaultUpdateAt
+  updatedAt: defaultUpdateAt,
+  lastModified: { type: Date, optional: true }, /* Used by revisions */
+  // https://github.com/todda00/meteor-friendly-slugs/issues/1
+  friendlySlugs: {
+    type: Object,
+    blackbox: true
+  },
+  slug: {
+    type: String,
+    optional: true
+  }
 });
 
 Persons.attachSchema(Schema.Persons);

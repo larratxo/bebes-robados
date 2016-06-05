@@ -129,6 +129,14 @@ Schema.User = new SimpleSchema({
     type: [String],
     autoform: { type: 'hidden' },
     optional: true
+  },
+  friendlySlugs: {
+    type: Object,
+    blackbox: true
+  },
+  slug: {
+    type: String,
+    optional: true
   }
 });
 
