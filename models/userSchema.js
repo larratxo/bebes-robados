@@ -130,6 +130,7 @@ Schema.User = new SimpleSchema({
     autoform: { type: 'hidden' },
     optional: true
   },
+  // https://github.com/todda00/meteor-friendly-slugs/issues/1
   friendlySlugs: {
     type: Object,
     blackbox: true
