@@ -165,6 +165,7 @@ okgrow:router-autoscroll@0.1.6
 ordered-dict@1.0.4
 ostrio:meteor-root@1.0.2
 pcel:loading@1.0.3
+percolate:migrations@0.9.8
 pfafman:photo-up@0.4.2
 promise@0.5.1
 raix:eventemitter@0.1.3
