@@ -98,7 +98,7 @@ var defaultAutocomplete = function (field, textarea) {
 
 Schema.Persons = new SimpleSchema({
   buscasBebe: { type: Boolean, optional: false, label: '¿Qué buscas?',
-                autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: 'a un bebe', falseLabel: 'a mi familia'}}},
+                autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: 'a un bebe robado', falseLabel: 'a mi familia biológica'}}},
   parentesco: { type: String, label: 'Parentesco con el presunto niño/a robado:', optional: true, allowedValues: [
     'Madre', 'Padre', 'Cónyuge', 'Abuela', 'Abuelo', 'Hermana', 'Hermano', 'Otro'
   ] },
@@ -123,7 +123,7 @@ Schema.Persons = new SimpleSchema({
                                autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: 'Sí', falseLabel: 'No'}}},
   nombreCompletoMadre: { type: String, optional: true, label: 'Nombre completo de la madre:' },
   nombreCompletoPadreOConyuge: { type: String, optional: true, label: 'Nombre completo del padre o cónyuge:' },
-  motivoMuerte: { type: String, optional: true, label: 'Motivo de la muerte:' },
+  motivoMuerte: { type: String, optional: true, label: 'Motivo de la muerte que figura en los documentos que obran en su poder o según la información que les facilitaron en su momento:' },
   vistoCadaver: {type: Boolean, optional: true, label: '¿Vio algún miembro de la familia el cadaver?',
                  autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: 'Sí', falseLabel: 'No'}}},
   noVistoCadaverRazon: {
