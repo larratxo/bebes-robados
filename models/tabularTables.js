@@ -136,7 +136,6 @@ TabularTables.Persons = new Tabular.Table({
          item: rowData
        };
      }
-     // visible: Roles.userIsInRole(this.userId, ['admin'])
     },
     {data: 'parentesco', title: '¿Quién?', render: renderFamiliar, className: 'column-center'},
     {data: 'buscasBebe', title: 'Busca',

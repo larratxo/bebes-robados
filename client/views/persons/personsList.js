@@ -70,7 +70,10 @@ Template.personsList.onRendered(function () {
   dataTable.column(1).visible(false);
   dataTable.column(2).visible(false);
   Tracker.autorun(function () {
-    dataTable.column(3).visible(Roles.userIsInRole(Meteor.userId(), ['admin']));
+    try {
+      dataTable.column(3).visible(Roles.userIsInRole(Meteor.userId(), ['admin']));
+    } catch (err) {
+    }
   });
 
   onSliderRender(function () {
