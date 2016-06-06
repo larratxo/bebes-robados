@@ -1,0 +1,17 @@
+<template name="casosReportados">
+  {{#if tieneBebes}}
+  <hr>
+  <h2>Casos denunciados</h2>
+
+  {{#each bebe in bebes}}
+  <p><a href="/bebe/{{bebe.slug}}">
+    {{#if bebe.buscasBebe}}
+    Buscamos bebe, nacido
+    {{else}}
+    Busco a mi familia biológica, nací el
+    {{/if}}
+    {{renderDate bebe.fechaNacimiento}}
+  </a></p>
+  {{/each}}
+  {{/if}}
+</template>

@@ -32,7 +32,8 @@ Meteor.publish('userAndImages', function (username) {
   if (user.count() === 0) {
     user = Meteor.users.find({_id: username}, publicUserFields);
   }
-  return userAndImagesFromId(user);
+  var persons = Persons.find({familiar: user.fetch()[0]._id});
+  return userAndImagesFromId(user).concat([persons]);
 });
 
 Meteor.publish('meAndMyImages', function () {
@@ -40,6 +41,6 @@ Meteor.publish('meAndMyImages', function () {
   var user = Meteor.users.find({_id: this.userId}, allUserFields);
   var ad = AdCampaigns.find({ group: currentAdCampaign,
                               user: this.userId });
-  var person = Persons.find({familiar: this.userId});
-  return userAndImagesFromId(user).concat([ad, person]);
+  var persons = Persons.find({familiar: this.userId});
+  return userAndImagesFromId(user).concat([ad, persons]);
 });

@@ -1,4 +1,4 @@
-/* global AdCampaigns:true, Mongo, Schema:true, SimpleSchema, currentAdCampaign, Roles */
+/* global AdCampaigns:true, Mongo, Schema:true, SimpleSchema, currentAdCampaign, Roles _ */
 
 AdCampaigns = new Mongo.Collection('AdCampaigns');
 
@@ -30,7 +30,11 @@ AdCampaigns.allow({
     return true;
   },
   update: function (userId, doc, fields, modifier) {
-    if (Roles.userIsInRole(userId, ['admin']) || doc.user === userId) {
+    if (Roles.userIsInRole(userId, ['admin'])) {
+      return true;
+    }
+    // Only allow validate campagins to admins but allow other editions
+    if (doc.user === userId && !(_.intersection(fields, ['validated']).length > 0)) {
       return true;
     }
     return false;

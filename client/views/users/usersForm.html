@@ -13,13 +13,15 @@
   </div>
   <br>
   <br>
-  {{> quickForm autosave=true collection="Meteor.users" id=id template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"  doc=doc type=type buttonContent=btnTitle omitFields=omitFields fields="username, profile.name, emails, profile.dni, profile.telefono, profile.redesSociales, profile.imagenes" buttonClasses="btn-primary btn btn-form-submit" }}
+  {{> quickForm autosave=true collection="Meteor.users" id=id template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" doc=doc type=type buttonContent=btnTitle omitFields=omitFields fields="username, profile.name, emails, profile.dni, profile.telefono, profile.redesSociales, profile.imagenes" buttonClasses="btn-primary btn btn-form-submit" }}
+
+  {{> casosReportados user=doc}}
 
   {{#if isEqual type "update"}}
   {{#if afectado}}
   <hr>
 
-  <h3>Campañas de difusión públicas</h3>
+  <h2>Campañas de difusión públicas</h2>
 
   {{> DifuEditor }}
   {{/if}}
