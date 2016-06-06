@@ -1,7 +1,7 @@
 /* global TabularTables:true,moment, tabLanguageEs:true,renderDate:true,
  isValidLatLng,renderSexo:true, renderSexoAlt:true, renderGeo:true,renderAprox:true,
  decorateNacAprox:true,setEmptyTable:true, renderNuevo:true,renderFamiliar:true, Tabular, isNew, $, Persons, AdCampaigns
- renderCheckbox:true Meteor Template abuseReports */
+ renderCheckbox:true Meteor Template abuseReports Roles */
 // https://github.com/aldeed/meteor-tabular
 // Comparison: http://reactive-table.meteor.com/
 
@@ -98,10 +98,9 @@ renderNuevo = function (val) {
 renderFamiliar = function (val, type, doc) {
   // var hasFam = typeof doc.familiar === 'string';
   var hasFam = typeof val === 'string';
-  var quien = doc.buscasBebe ? (hasFam ? val : '') : 'Hijo/a';
+  var quien = doc.buscasBebe ? (hasFam ? val : '&nbsp;') : 'Hijo/a';
   return '<a href="/persona/' + doc.familiar + '" title="Ir a la página del/la ' +
          quien + '">' + quien + '</a>';
-  // return (doc.buscasBebe? (hasFam? val: '') : 'Hijo/a');
 };
 
 TabularTables.Persons = new Tabular.Table({
@@ -120,22 +119,28 @@ TabularTables.Persons = new Tabular.Table({
     }
   },
   // displayLength: 20,
-  // https://datatables.net/examples/basic_init/table_sorting.htmlv
-  order: [[1, 'desc'], [ 0, 'desc' ]],
+  // https://datatables.net/examples/basic_init/table_sorting.html
+  // order: [[1, 'desc'], [ 0, 'desc' ]],
+  order: [[ 0, 'desc' ]],
   // https://datatables.net/examples/basic_init/scroll_x.html
   scrollX: true,
   stateSave: true,
   columns: [
-    {data: 'createdAt', title: 'Creado', render: renderDate, visible: false},
-    {data: 'updatedAt', title: 'Actualizado', render:
-     renderDate, visible: false},
-    {data: 'slug', title: 'slug', visible: false},
-    {data: 'parentesco', title: '¿Quién?',
-     render: renderFamiliar, className: 'column-center'},
-    {data: 'familiar', title: '', visible: false},
+    {data: 'createdAt', title: 'Creado'},
+    {data: 'updatedAt', title: 'Actualizado'},
+    {data: 'validated', title: 'Publicado'},
+    {title: 'Publicado',
+     tmpl: Meteor.isClient && Template.bebeAdminOps, className: 'column-center',
+     tmplContext: function (rowData) {
+       return {
+         item: rowData
+       };
+     }
+     // visible: Roles.userIsInRole(this.userId, ['admin'])
+    },
+    {data: 'parentesco', title: '¿Quién?', render: renderFamiliar, className: 'column-center'},
     {data: 'buscasBebe', title: 'Busca',
      render: renderBuscasBebe, className: 'column-center'},
-
     {data: 'nombreCompleto', title: 'Nombre del niño/a'},
     {data: 'sexo', title: 'Sexo', render: renderSexo,
      className: 'column-center'},
@@ -154,14 +159,6 @@ TabularTables.Persons = new Tabular.Table({
     // className: 'column-center' },
     // {data: 'updatedAt', title: '', render: renderNuevo, width: '1px',
     // className: column-updated-at' },
-    {title: '...',
-     tmpl: Meteor.isClient && Template.bebeAdminOps, className: 'column-center',
-     tmplContext: function (rowData) {
-       return {
-         item: rowData
-       };
-     }
-    },
     {data: 'nombreCompletoMedico', title: 'none', visible: false},
     {data: 'nombreCompletoMatrona', title: 'none', visible: false},
     {data: 'nombreCompletoEnfermera', title: 'none', visible: false},
@@ -174,7 +171,9 @@ TabularTables.Persons = new Tabular.Table({
     {data: 'cementerioEnterrado', title: 'Cementerio', visible: false},
     {data: 'lugarNacimientoLongitud', title: 'Geo', visible: false},
     {data: 'lugarNacimientoLatitud', title: 'Geo', visible: false},
-    {data: 'lugarNacimientoPais', title: 'País', visible: false}
+    {data: 'lugarNacimientoPais', title: 'País', visible: false},
+    {data: 'familiar', title: 'Familiar', visible: false},
+    {data: 'slug', title: 'slug', visible: false}
   ]
 });
 
@@ -199,7 +198,7 @@ var renderBebeDifu = function (val, type, doc) {
 
 var renderPersona = function (slug, name) {
   return '<a href="/persona/' + slug + '" title="Ir a la página de esta persona"><i class="fa fa-user"></i> ' + name + '</a>';
-}
+};
 
 var renderReported = function (val, type, doc) {
   return renderPersona(doc.reported, doc.reported);
@@ -255,7 +254,7 @@ TabularTables.abuseReports = new Tabular.Table({
   // https://datatables.net/examples/basic_init/table_sorting.htmlv
   order: [[1, 'desc']],
   columns: [
-    {data: 'createdAt', title: 'Fecha', render: renderDateTime, className: 'abuse-date' },
+    {data: 'createdAt', title: 'Fecha', render: renderDateTime, className: 'abuse-date'},
     {data: 'updatedAt', title: 'Actualizado', render: renderDateTime, visible: false},
     {data: 'reported', title: 'Denunciado', render: renderReported, className: 'column-center'},
     {data: 'reporter', title: 'Denuncia', render: renderReporter, className: 'column-center'},

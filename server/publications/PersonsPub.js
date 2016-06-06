@@ -1,5 +1,11 @@
+/* global Persons Meteor userImages personAttachs check Roles */
 Meteor.publish('Persons', function () {
-  return Persons.find();
+  var isAdmin = Roles.userIsInRole(this.userId, ['admin']);
+  if (isAdmin) {
+    return Persons.find();
+  } else {
+    return Persons.find({validated: true});
+  }
 });
 
 // https://github.com/CollectionFS/Meteor-CollectionFS#storing-fsfile-references-in-your-objects

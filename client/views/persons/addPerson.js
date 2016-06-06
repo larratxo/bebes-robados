@@ -1,4 +1,4 @@
-/* global $ Template success alertMessage AutoForm Router */
+/* global $ Template successWithTitle alertMessage AutoForm Router */
 
 Template.nuevoBebe.onRendered(function () {
   // Commented, this clear default values
@@ -11,7 +11,7 @@ AutoForm.hooks({
       // Replace `formType` with the form `type` attribute to which this hook applies
       insert: function (error, result) {
         if (typeof error === 'undefined') {
-          success('Guardado');
+          successWithTitle('Guardado', 'Pendiente de moderación');
           Router.go('difusion');
           AutoForm.resetForm('nuevoBebeForm');
           $('#usar').collapse('hide');

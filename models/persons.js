@@ -226,7 +226,13 @@ Schema.Persons = new SimpleSchema({
   slug: {
     type: String,
     optional: true
-  }
+  },
+  revisions: {
+    type: [Object],
+    blackbox: true,
+    optional: true
+  },
+  validated: { type: Boolean, optional: false, index: 1, defaultValue: false }
 });
 
 Persons.attachSchema(Schema.Persons);

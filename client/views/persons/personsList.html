@@ -16,6 +16,11 @@
       <label for="provSelect" class="label-no-bold">Buscar en:</label>
       <select id="provSelect" class="form-control ps-prov"></select>
       <select id="provSelect" style="display: none;" class="form-control ps-mun"></select>
+      {{#if isInRole 'admin'}}
+      <br>
+      <br>
+      <input id="soloPdtes" type="checkbox" {{soloPdtes}}/> Mostrar solo casos pendientes de publicación
+      {{/if}}
     </div>
   </div>
 
