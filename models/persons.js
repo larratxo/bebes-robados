@@ -220,6 +220,7 @@ Schema.Persons = new SimpleSchema({
   // https://github.com/todda00/meteor-friendly-slugs/issues/1
   friendlySlugs: {
     type: Object,
+    optional: true,
     blackbox: true
   },
   slug: {
