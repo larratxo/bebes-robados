@@ -32,11 +32,11 @@ Meteor.publish('userAndImages', function (username) {
   if (user.count() === 0) {
     user = Meteor.users.find({_id: username}, publicUserFields);
   }
-  var persons = [];
   if (user.count() > 0) {
-    persons = Persons.find({familiar: user.fetch()[0]._id});
+    var persons = Persons.find({familiar: user.fetch()[0]._id});
+    return userAndImagesFromId(user).concat([persons]);
   }
-  return userAndImagesFromId(user).concat([persons]);
+  return userAndImagesFromId(user);
 });
 
 Meteor.publish('meAndMyImages', function () {
