@@ -1,9 +1,10 @@
 /* global GoogleMaps,google,geocode:true,provincia,municipio,Template, alertMessage, success, Roles
- noUndef, resetMarker:true, Meteor, Router, $ ReactiveVar */
+ noUndef, resetMarker:true, Meteor, Router, $ ReactiveVar AutoForm Persons */
 
 var toDelete = new ReactiveVar();
 
 Template.bebeForm.helpers({
+  publicar: function () { return this.doc.validated ? 'No publicar' : 'Publicar'; },
   isFamiliarOrAdmin: function () {
     return Roles.userIsInRole(Meteor.userId(), ['admin']) || Meteor.userId() === this.doc.familiar;
   },
@@ -117,7 +118,6 @@ geocode = function() {
     $("#lugarNacimientoLongitud").val("");
   }
 };
-
 Template.bebePage.events( {
   "blur #lugarNacimiento": function (event, template) {
     geocode(event, template);

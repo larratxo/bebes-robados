@@ -26,9 +26,9 @@ Template.bebeAdminOps.events({
   'click .validate': function (e, template) {
     e.currentTarget.disabled = true;
     var value = !this.item.validated;
-    success(value ? 'Publicado' : 'No publicado');
     Persons.update(this.item._id, {$set: {validated: value}}, function () {
-      e.target.disabled = false;
+      success(value ? 'Publicado' : 'No publicado');
+      e.currentTarget.disabled = false;
     });
     e.stopImmediatePropagation();
   }

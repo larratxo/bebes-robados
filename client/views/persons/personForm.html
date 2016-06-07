@@ -16,6 +16,11 @@
       {{/if}}
 
       {{#if isEqual type "disabled"}}
+
+      {{#if isInRole 'admin'}}
+      <button id="person-form-publicar" title="Hacer público este caso" class="btn btn-default">{{publicar}}</button>
+      {{/if}}
+
       <a class="btn btn-default" href="{{pathFor 'viewPerson'}}#comentarios" role="button"><i class="fa fa-comments"></i> {{_"Comments"}}</a>
 
       {{#if isFamiliarOrAdmin}}

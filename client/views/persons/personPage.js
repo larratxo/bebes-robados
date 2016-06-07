@@ -6,8 +6,9 @@ Template.bebePage.onRendered(function () {
 AutoForm.hooks({
   editaBebeForm: {
     before: {
-      formType: function (doc) {
-        Persons.update(doc._id, {$set: {validated: false}});
+      update: function (doc) {
+        doc.$set.validated = false;
+        return doc;
       }
     },
     after: {
