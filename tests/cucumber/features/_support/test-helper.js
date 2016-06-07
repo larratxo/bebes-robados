@@ -1,4 +1,5 @@
-/* global randomUsername:true, expect, randomPassword:true, randomEmail:true, goHome:true, phantomJs:true, appName:true */
+/* global randomUsername:true, expect, randomPassword:true, randomEmail:true, goHome:true, phantomJs:true, appName:true
+ Accounts process */
 
 randomUsername = function () {
   return Math.random().toString(36).substring(7);
@@ -30,3 +31,5 @@ goHome = function (client) {
 phantomJs = process.env.PHANTOMJS;
 
 appName = 'Red Ciudadana de Búsqueda de Bebes Robados';
+
+Accounts.config({sendVerificationEmail: false});
