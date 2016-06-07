@@ -17,7 +17,8 @@ Característica: Búsqueda de bebes desde el inicio y desde la página de búsqu
     | asdfad      |
     Entonces obtengo una lista vacía de bebes
 
-  @watch
+  @ignore
+  # No visible pq no están validados/moderados
   Escenario: Verifico que puedo buscar desde la página de búsqueda
     Dado que estoy en la página de búsquedas
     Y que tecleo ciertas búsquedas
