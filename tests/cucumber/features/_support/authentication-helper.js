@@ -1,32 +1,31 @@
-/*global client, Meteor, module */
+/* global client, Meteor, module Accounts expect require */
 
 module.exports = function () {
-  require("../_support/test-helper.js");
+  require('../_support/test-helper.js');
 
   this.Before(function () {
-
-    var isLogged = function(client) {
+    var isLogged = function (client) {
       return client.execute(function () {
-        return typeof Meteor.userId() === "string";
+        return typeof Meteor.userId() === 'string';
       }).value;
     };
 
-    var isNotLogged = function(client) {
+    var isNotLogged = function (client) {
       return !isLogged(client);
-    }
+    };
 
     var openLoginDialog = function (client) {
-      var doesExist = client.waitForVisible("li#login-dropdown-list a");
+      var doesExist = client.waitForVisible('li#login-dropdown-list a');
       expect(doesExist).toBe(true);
-      client.click("li#login-dropdown-list a");
+      client.click('li#login-dropdown-list a');
       client.waitForVisible('#login-username-or-email');
-    }
+    };
 
     var loginBegin = function (client) {
       // http://webdriver.io/api/utility/waitForVisible.html
-      client.deleteCookie("meteor_login_token");
+      client.deleteCookie('meteor_login_token');
       if (isNotLogged(client)) {
-        // client.click("li#login-dropdown-list.dropdown a.dropdown-toggle");
+        // client.click('li#login-dropdown-list.dropdown a.dropdown-toggle');
         openLoginDialog(client);
       } else {
         client.execute(function () {
@@ -73,9 +72,8 @@ module.exports = function () {
         if (conditions) {
           client.click('input[id="login-conServicioAceptadas"]');
         }
-        client.click("#login-buttons-password");
+        client.click('#login-buttons-password');
       },
-
       checkCurrentUser: function (name) {
         client.waitForText('#login-dropdown-list', name.toUpperCase());
         var currentuser = null;
@@ -90,22 +88,19 @@ module.exports = function () {
         // console.log(currentname);
         expect(currentname).toBe(name);
       },
-
       isLogged: function (client) {
         return isLogged(client);
       },
-
       isNotLogged: function (client) {
         return isNotLogged(client);
       },
-
       logout: function (done) {
         client.executeAsync(function (done) {
           Meteor.logout(done);
         });
       },
-
       createAccount: function (username, email, passwd) {
+        Accounts.config({sendVerificationEmail: false});
         client.execute(function (username, email, passwd, done) {
           Meteor.logout();
           Accounts.createUser({
@@ -114,8 +109,7 @@ module.exports = function () {
             password: passwd
           }, done);
         }, username, email, passwd);
-      },
-
+      }
     };
   });
 };
