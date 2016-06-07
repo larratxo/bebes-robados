@@ -5,9 +5,11 @@ Meteor.methods({
     check(role, String);
     check(subject, String);
     check(body, String);
-    check(this.userId, String);
-
-    console.log('Notificacion generada por usuario: ' + this.userId);
+    // This is also called from the cron (so no user is defined)
+    if (typeof this.userId === 'string') {
+      check(this.userId, String);
+      console.log('Notificacion generada por usuario: ' + this.userId);
+    }
 
     // console.log(comment);
     // https://alanning.github.io/meteor-roles/classes/Roles.html#method_getUsersInRole
