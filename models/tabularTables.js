@@ -129,7 +129,7 @@ TabularTables.Persons = new Tabular.Table({
     {data: 'createdAt', title: 'Creado'},
     {data: 'updatedAt', title: 'Actualizado'},
     {data: 'validated', title: 'Publicado'},
-    {title: 'Publicado',
+    {title: '...',
      tmpl: Meteor.isClient && Template.bebeAdminOps, className: 'column-center',
      tmplContext: function (rowData) {
        return {
