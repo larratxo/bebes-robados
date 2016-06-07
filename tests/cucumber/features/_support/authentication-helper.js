@@ -100,9 +100,9 @@ module.exports = function () {
         });
       },
       createAccount: function (username, email, passwd) {
-        Accounts.config({sendVerificationEmail: false});
         client.execute(function (username, email, passwd, done) {
           Meteor.logout();
+          Accounts.config({sendVerificationEmail: false});
           Accounts.createUser({
             username: username,
             email: email,
