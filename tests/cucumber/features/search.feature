@@ -2,6 +2,8 @@
 
 Característica: Búsqueda de bebes desde el inicio y desde la página de búsqueda
 
+  @ignore
+  # No visible pq no están validados/moderados
   Escenario: Verifico que puedo buscar desde el inicio
     Dado que estoy en el inicio
     Y que tecleo ciertas búsquedas
