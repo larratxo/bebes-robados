@@ -2,6 +2,20 @@
 Lista de Tareas
 
 * Desarrollo
+** Última Reu
+*** Uploads de documentos, mensaje cuando no deja por tipo
+*** Entrada de fechas van mal en Windows, revisar entrada
+*** Solo dejar visible Nacimiento y Fallecimiento a non-logged y otros
+*** Botón Guardar en campañas
+*** Recuperación de contraseñas parece que no funciona
+*** Letra más grande en ¿Qué buscas?
+*** Adjuntar fotos y ficheros no va en Windows
+*** Mapa no va bien en Fallecimiento
+*** You need en comentarios ... al español
+*** Mapa no se actualiza en amarillo
+*** Leyenda de los iconos en el mapa
+*** Un home como dios manda
+*** La participación en campañas no funciona
 ** PDF con campañas
 https://github.com/pascoual/meteor-pdfkit
 https://github.com/khronedev/img-qrcode/
