@@ -3,7 +3,7 @@ Lista de Tareas
 
 * Desarrollo
 ** Última Reu
-*** Backups funcionan?
+*** wizard en add
 *** Blog vacio? Migración de docker?
 *** Uploads de documentos, mensaje cuando no deja por tipo
 *** Entrada de fechas van mal en Windows, revisar entrada
@@ -17,7 +17,7 @@ Lista de Tareas
 *** Mapa no se actualiza en amarillo
 *** Leyenda de los iconos en el mapa
 *** Un home como dios manda
-*** La participación en campañas no funciona
+*** Upload de campañas: revisar
 ** PDF con campañas
 https://github.com/pascoual/meteor-pdfkit
 https://github.com/khronedev/img-qrcode/

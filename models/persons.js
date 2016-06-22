@@ -24,7 +24,7 @@ var defaultDate = function (label) {
     label: label,
     autoform: {
       afFieldInput: {
-        type: 'date'
+        type: 'bootstrap-datepicker'
       }
     }
   };
