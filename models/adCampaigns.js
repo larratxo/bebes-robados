@@ -34,7 +34,7 @@ AdCampaigns.allow({
       return true;
     }
     // Only allow validate campagins to admins but allow other editions
-    if (doc.user === userId && !(_.intersection(fields, ['validated']).length > 0)) {
+    if (doc.user === userId) {
       return true;
     }
     return false;
