@@ -3,6 +3,8 @@ Lista de Tareas
 
 * Desarrollo
 ** Última Reu
+*** Backups funcionan?
+*** Blog vacio? Migración de docker?
 *** Uploads de documentos, mensaje cuando no deja por tipo
 *** Entrada de fechas van mal en Windows, revisar entrada
 *** Solo dejar visible Nacimiento y Fallecimiento a non-logged y otros
