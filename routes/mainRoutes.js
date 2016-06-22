@@ -221,6 +221,7 @@ var profileUpdated = function () {
 // Páginas que necesitan login
 Router.onBeforeAction(
   requireLogin, {
+    except: ['appDumpHTTP'],
     only: [
       'nuevoBebe',
       'abuseAdd',
