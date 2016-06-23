@@ -626,6 +626,7 @@ button.btn.btn-xs.validate {
     background-color: transparent;
 }
 
+#nuevoBebeForm > div.form-inline > div,
 #viewBebeForm > div.form-inline > div,
 #editaBebeForm > div.form-inline > div {
     font-size: 18px;
@@ -636,4 +637,14 @@ button.btn.btn-xs.validate {
     color: #ffffff;
     background-color: #337ab7;
     border-color: #2e6da4;
+}
+
+// https://stackoverflow.com/questions/24203617/bootstrap-alert-in-a-fixed-floating-div-at-the-top-of-page
+.alert-fixed {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index :9999;
+    border-radius: 0px
 }
