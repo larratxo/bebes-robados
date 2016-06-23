@@ -43,12 +43,15 @@
 
   <ul class="nav nav-tabs nav-justified bebe-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
+    {{#if isAddingAdminIsFamiliar }}
     {{#if afFieldValueIs name="buscasBebe" value=true}}
       <li role="presentation"><a href="#fallecimiento" aria-controls="fallecimiento" role="tab" data-toggle="tab">Fallecimiento</a></li>
       <li role="presentation"><a href="#infomedica" aria-controls="infomedica" role="tab" data-toggle="tab">Personal médico</a></li>
       <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
       {{/if}}
+
       <li role="presentation"><a href="#otros" aria-controls="otros" role="tab" data-toggle="tab">Otras informaciones</a></li>
+      {{/if}}
     </ul>
 
     <div class="tab-content bebe-tab-content">
@@ -138,6 +141,7 @@
         {{> afQuickField name="motivosSospecha" rows=15}}
       </div>
 
+      {{#if isAddingAdminIsFamiliar }}
       <div role="tabpanel" class="tab-pane" id="infomedica">
         <legend>Personal médico que figura en la documentación, trabajó en los establecimientos y/o pudiera tener información:</legend>
         {{> afQuickField name="nombreCompletoMedico" }}
@@ -185,6 +189,7 @@
         </div>
         {{/if}}
       </div>
+      {{/if}}
     </div>
  {{/autoForm}}
 </template>
