@@ -25,13 +25,14 @@ if (owa_baseUrl) {
   var OWATracker;
   if (_IronRouter) {
     _IronRouter.onRun(function() {
-      var router = this;
+      // var router = this;
       Tracker.afterFlush(function () {
         if (typeof OWATracker === "undefined") {
+          console.log('Creating a new OWATracker');
           OWATracker = new OWA.tracker();
         }
         var path = Iron.Location.get().path;
-        // console.log(path);
+        console.log('Tracking stats for ' + path);
         OWATracker.trackPageView(path);
       });
       this.next();
