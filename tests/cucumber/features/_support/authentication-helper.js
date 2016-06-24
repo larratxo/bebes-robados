@@ -85,7 +85,7 @@ module.exports = function () {
         var currentname = client.execute(function () {
           return Meteor.user().username;
         }).value;
-        // console.log(currentname);
+        console.log(currentname);
         expect(currentname).toBe(name);
       },
       isLogged: function (client) {

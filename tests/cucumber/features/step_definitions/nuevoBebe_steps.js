@@ -11,9 +11,11 @@ module.exports = function () {
     //this.BebesHelper.sessionSet("maxBornYear", 1940);
 
     for (var i = 0; i < bebes.length; i++){
-      // client.waitForExists('#navbar > ul > li:nth-child(2) > a');
-      // client.click('#navbar > ul > li:nth-child(2) > a');
       client.url(process.env.ROOT_URL + '/nuevoBebe');
+      /* client.waitForVisible('#navbar > ul > li:nth-child(1) > a');
+      client.click('#navbar > ul > li:nth-child(1) > a');
+      client.waitForVisible('#navbar > ul > li:nth-child(2) > a');
+      client.click('#navbar > ul > li:nth-child(2) > a'); */
 
       var provinciaNacimiento = bebes[i][3];
       var municipioNacimiento = bebes[i][4];

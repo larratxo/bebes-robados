@@ -8,6 +8,11 @@ module.exports = function () {
   });
 
   var clickInSettingsMenuItem = function (client) {
+    if (client.isVisible('.bert-content')) {
+      // close alert
+      client.click('.bert-content');
+    }
+    client.waitForVisible("li#login-dropdown-list a");
     client.click("li#login-dropdown-list a");
     client.waitForVisible('#login-buttons-open-change-settings');
     client.click('#login-buttons-open-change-settings');
