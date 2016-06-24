@@ -5,3 +5,5 @@ private/cli/mup/mup.json
 mup.json
 .build
 settings.json
+settings-prod.json
+mup-prod.json
