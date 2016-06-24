@@ -51,7 +51,11 @@ Router.map(function () {
   });
   this.route('nuevoBebe', {
     path: '/nuevoBebe',
-    title: 'Añade un bebe'
+    title: 'Añade un bebe',
+    waitOn: function () {
+      // Workaround to wait Meter.user login
+      return subsManager.subscribe('meAndMyImages');
+    }
   });
   this.route('abuseAdd', {
     path: '/reportar/:username',
