@@ -34,16 +34,6 @@ var getUser = function (param) {
   return user;
 };
 
-Template.userGallery.helpers({
-  images: function () {
-    return userImages(getUser(this));
-  },
-  tieneFotos: function () {
-    var imagenes = getUser(this).profile.imagenes;
-    return _.isArray(imagenes) && imagenes.length > 0;
-  }
-});
-
 Template.usersForm.helpers({
   isEqual: function (type, otherType) {
     return type === otherType;

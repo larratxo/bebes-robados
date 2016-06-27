@@ -1,84 +1,74 @@
 // Main styles
-
 body {
     font-size: 16px;
 }
 
-.bebe-tabs
-{
+.bebe-tabs {
     margin-bottom: 0px;
 }
 
-.bebe-tab-content
-{
+.bebe-tab-content {
     padding: 20px;
     background-color: #F2F2F2;
 }
 
-ul.bebe-tabs .active a
-{
+ul.bebe-tabs .active a {
     background-color: #e0e0e0 !important;
 }
 
-ul.bebe-tabs li a
-{
+ul.bebe-tabs li a {
     overflow: hidden;
     white-space: nowrap;
 }
 
 .lugarNacimientoMap-container,
-#cementerioEnterradoMap
-{
+#cementerioEnterradoMap {
     width: 100%;
     height: 150px;
     margin-bottom: 20px;
 }
 
-#lugarNacimientoDetalle
-{
+#lugarNacimientoDetalle {
     display: none;
 }
 
-.map-container
-{
+.map-container {
     width: 100%;
     max-width: 100%;
     height: 500px;
 }
-.Home .jumbotron
-{
-    background-image: url('images/main-homeback.png');
-    color: #FFF;
-    background-size: 1479px 437px;
-    background-repeat: no-repeat;
+
+div.map-container> div {
+    pointer-events: none;
 }
 
 .Home .home-header,
-.Home  .jumbotron h2
-{
+.Home .jumbotron h2 {
     text-transform: uppercase;
 }
 
+
 /* Icon titles */
+
 .Home span.headline {
     min-height: 2.5em;
     display: block;
 }
 
 .Home .home-header h2 b,
-.Home .jumbotron h2 b
-{
+.Home .jumbotron h2 b {
     font-size: 120%;
 }
+
 .Home .home-header h2,
 .Home .jumbotron h2,
-.navbar, .headline,
-.Home .year-slider-subheader
-{
+.navbar,
+.headline,
+.Home .year-slider-subheader {
     font-family: 'Roboto', 'Open Sans', sans-serif;
 }
 
-.header-wrapper > div > h3  {
+.header-wrapper> div> div> h3 {
     font-size: 18px;
     line-height: 1.5em
 }
@@ -86,72 +76,63 @@ ul.bebe-tabs li a
 .PersonsList .jumbotron h1,
 .UserUpdate .jumbotron h1,
 .Loading .jumbotron h1 {
-	font-size: 54px;
-	line-height: 1.3em;
+    font-size: 54px;
+    line-height: 1.3em;
 }
+
 
 /* home icons margin */
+
 div.row.ui.four.column.main-content.features.grid {
- margin: 0 0 10px 0;
+    margin: 0 0 10px 0;
 }
 
-i.icon
-{
+i.icon {
     font-size: 60px !important;
     padding: 10px !important;
     color: #005500;
-    /* color:DarkSlateGray; */
+/* color:DarkSlateGray; */
 }
 
 .headline,
-.Home .year-slider-subheader
-{
+.Home .year-slider-subheader {
     text-transform: uppercase;
     font-size: 18px;
     font-weight: normal;
 }
 
 kia.navbar-brand,
-.navbar-default .navbar-nav > li > a
-{
+.navbar-default .navbar-nav> li> a {
     text-transform: uppercase;
 }
 
-.navbar-brand-sub
-{
+.navbar-brand-sub {
     font-size: 14px;
     display: table-row;
     text-transform: uppercase;
 }
 
-.navbar-brand-titles
-{
+.navbar-brand-titles {
     display: inline;
     float: right;
     margin: -7px 0 0 5px;
 }
 
-.navbar-brand-main
-{
+.navbar-brand-main {
     display: table-row;
 }
 
-.navbar-brand img
-{
-}
+.navbar-brand img {}
 
-.navbar-brand
-{
+.navbar-brand {
     font-size: 22px;
 }
 
-.year
-{
+.year {
     color: #338ab7;
 }
 
-#yearSlider
-{
+#yearSlider {
     margin: 15px 30px 30px;
 }
 
@@ -161,98 +142,93 @@ kia.navbar-brand,
     left: 10px;
 }
 
-.Home #yearSlider
-{
+.Home #yearSlider {
     margin: 30px
 }
 
 
 /* http://refreshless.com/nouislider/examples/ */
 
-#yearSlide .connect
-{
+#yearSlide .connect {
 /* background: #80C9F5;
    box-shadow: inset 0 0 3px rgba(51,51,51,0.45); */
 }
 
-#yearSlider  {
+#yearSlider {
     cursor: pointer;
 }
 
-[data-required] label:after
-{
+[data-required] label:after {
     content: ' *';
     color: brown;
 }
 
-.jumbotron h2
-{
+.jumbotron h2 {
     font-size: 40px;
     margin-bottom: -20px;
 }
 
-.is-new
-{
+.is-new {
     color: #ff7f2a;
 }
 
+
 /* tabulartable personList */
 
-.column-center
-{
+.column-center {
     text-align: center;
 }
 
-.row-high
-{
+.row-high {
     background-color: #FFEEAA !important;
 }
 
-#personsTable > tbody > tr:hover {
+#personsTable> tbody> tr:hover {
     color: grey;
     cursor: pointer;
 }
 
+
 /* icons */
-dropdown-menu a
-{
+
+dropdown-menu a {
     white-space: normal;
 }
 
-.dropdown-menu > li > a {
+.dropdown-menu> li> a {
     position: relative;
 }
 
-.dropdown-menu > li > a {
+.dropdown-menu> li> a {
     padding-left: 30px;
 }
 
-.dropdown-menu > li > a > i.icon-bebes {
+.dropdown-menu> li> a> i.icon-bebes {
     padding: 0 15px;
 }
 
-.dropdown-menu > li > a > i {
+.dropdown-menu> li> a> i {
     padding: 0 10px;
 }
 
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li.active > a:hover,
-.dropdown-menu > li.active > a {
+.dropdown-menu> li> a:hover,
+.dropdown-menu> li.active> a:hover,
+.dropdown-menu> li.active> a {
     background-color: #e7e7e7;
     color: black;
 }
 
-.dropdown-menu > li > a > i
-{
+.dropdown-menu> li> a> i {
     position: absolute;
     top: 5px;
     left: 1px;
 }
 
+
 /* custom icon https://stackoverflow.com/questions/19435997/use-image-icons-in-twitter-bootstrap-3 */
+
 [class^="icon-"],
-[class*=" icon-"]
-{
+[class*=" icon-"] {
     display: inline-block;
     width: 14px;
     height: 14px;
@@ -264,94 +240,86 @@ dropdown-menu a
     margin-top: 1px;
 }
 
-.icon-bebes
-{
+.icon-bebes {
     background-image: url("/images/icon14.png");
     background-position: center center;
 }
 
-.Home #yearSlider
-{
+.Home #yearSlider {
     margin-left: 30px;
 }
 
-.year-slider-subheader
-{
+.year-slider-subheader {
     margin-left: 15px;
 }
 
-#comentarios
-{
+#comentarios {
     height: 60px;
 }
 
-.comment-section
-{
+.comment-section {
     margin-top: 60px;
 }
 
-.comments-box
-{
+.comments-box {
     max-width: inherit;
 }
 
-p.comment-content
-{
+p.comment-content {
     white-space: pre-line;
 }
 
+
 /* remove comment btn danger style */
 
-div.media-body.comment > div > div > div.btn.btn-danger.remove-action {
+div.media-body.comment> div> div> div.btn.btn-danger.remove-action {
     background-color: white;
-    border: 1px solid rgb(204,204,204);
-    color: rgb(51,51,51);
+    border: 1px solid rgb(204, 204, 204);
+    color: rgb(51, 51, 51);
 }
+
 
 /* viewPerson in readonly */
 
 input[disabled],
 input[readonly] {
-    border:0px;
+    border: 0px;
     box-shadow: none;
 }
 
 select[disabled],
 select[readonly] {
-    border:0px;
-    box-shadow: none;
-}
-textarea[disabled],
-textarea[readonly] {
-    border:0px;
+    border: 0px;
     box-shadow: none;
 }
 
-.title-btn
-{
+textarea[disabled],
+textarea[readonly] {
+    border: 0px;
+    box-shadow: none;
+}
+
+.title-btn {
     float: right;
 }
 
-.field-hidden
-{
+.field-hidden {
     display: none;
 }
 
-.label-no-bold
-{
+.label-no-bold {
     font-weight: normal;
 }
 
-#personsTable_filter > label > input
-{
-    width:220px
+#personsTable_filter> label> input {
+    width: 220px
 }
 
 .main-message {
     margin-top: 110px;
 }
 
-.main-message > a.btn {
+.main-message> a.btn {
     margin-top: 20px;
 }
 
@@ -363,88 +331,95 @@ textarea[readonly] {
     display: none;
 }
 
-.difu-visible {
-}
+.difu-visible {}
+
 
 /* persons gallery */
+
 #links img {
     float: left;
     margin: 5px;
 }
 
+
 /* cookies */
+
 #js-cookie-policy-default {
-	background-color: #808080;
+    background-color: #808080;
 }
+
 
 /* Loading */
 
 .loading-message {
     color: #808080;
     font-size: 35px;
-    /* font-weight: 300;
-    font-family: sans-serif; */
+/* font-weight: 300;
+   font-family: sans-serif; */
 }
 
 .pg-loading-screen {
-	opacity: 0.7;
+    opacity: 0.7;
 }
 
 .pg-loading-screen .pg-loading-html {
-	margin: 0;
+    margin: 0;
 }
 
 .pg-loading-html .spinner {
-	margin-top: 0;
+    margin-top: 0;
 }
 
 .spinner {
-  width: 80px;
-  height: 80px;
-  margin: 100px auto;
-  background-color: #333;
-
-  border-radius: 100%;
-  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-  animation: sk-scaleout 1.0s infinite ease-in-out;
+    width: 80px;
+    height: 80px;
+    margin: 100px auto;
+    background-color: #333;
+    border-radius: 100%;
+    -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+    animation: sk-scaleout 1.0s infinite ease-in-out;
 }
 
 @-webkit-keyframes sk-scaleout {
-  0% { -webkit-transform: scale(0) }
-  100% {
-    -webkit-transform: scale(1.0);
-    opacity: 0;
-  }
+    0% {
+        -webkit-transform: scale(0)
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
 }
 
 @keyframes sk-scaleout {
-  0% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  } 100% {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
-    opacity: 0;
-  }
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+    }
 }
 
-#nuevoBebeForm > div.page-header > div,
-#viewBebeForm > div.page-header > div,
-#editaBebeForm > div.page-header > div {
+#nuevoBebeForm> div.page-header> div,
+#viewBebeForm> div.page-header> div,
+#editaBebeForm> div.page-header> div {
     position: fixed;
     right: 0px;
     bottom: 20px;
     z-index: 1001;
     background-color: #b3b3b3;
     padding: 10px 10px 10px 40px;
-/* border: 1px solid #F6F6F6; */
-/* border-radius: 5px; */
+    /* border: 1px solid #F6F6F6; */
+    /* border-radius: 5px; */
     width: 100%;
 }
 
 .Img-fileUpload-thumbnail {
     max-width: 200px;
 }
+
 
 /* Meteor status */
 
@@ -456,19 +431,20 @@ textarea[readonly] {
     z-index: 1;
 }
 
-div.meteor-status > div.alert-warning {
+div.meteor-status> div.alert-warning {
     background-color: #f2dede;
     color: #a94442;
     border-color: #ebccd1;
 }
 
+
 /* blog */
 
-div.meteor-blog-post-excerpt > small {
+div.meteor-blog-post-excerpt> small {
     font-size: inherit;
 }
 
-div.meteor-blog-post-main > h1,
+div.meteor-blog-post-main> h1,
 div.meteor-blog-post-meta.text-center {
     text-align: inherit;
 }
@@ -478,118 +454,106 @@ div.meteor-blog-post-meta.text-center {
     margin: 0 20px;
 }
 
+
 /* media queries
    Copied from:
    https://stackoverflow.com/questions/18424798/twitter-bootstrap-3-how-to-use-media-queries
    (as we cannot access to bootstrap less variables now) */
 
-/* Large desktops and laptops */
-@media (min-width: 1200px) {
 
-}
+/* Large desktops and laptops */
+
+@media (min-width: 1200px) {}
+
 
 /* Landscape tablets and medium desktops */
-@media (min-width: 992px) and (max-width: 1199px) {
 
-}
+@media (min-width: 992px) and (max-width: 1199px) {}
+
 
 /* Portrait tablets and small desktops */
-@media (min-width: 768px) and (max-width: 991px) {
 
-}
+@media (min-width: 768px) and (max-width: 991px) {}
+
 
 /* Landscape phones and portrait tablets */
-@media (max-width: 767px) {
 
+@media (max-width: 767px) {
     .header-wrapper {
         height: 340px;
         padding: 0 30px;
     }
-
     .header-wrapper .ui.main.header {
         font-size: 22px;
         padding-top: 80px;
     }
-
-    .header-wrapper > div > h3  {
+    .header-wrapper> div> div> h3 {
         font-size: 16px;
     }
-
-    .headline, .Home .year-slider-subheader {
+    .headline,
+    .Home .year-slider-subheader {
         font-size: 16px;
     }
-
 }
 
-/* Portrait phones and smaller */
-@media (max-width: 480px) {
 
+/* Portrait phones and smaller */
+
+@media (max-width: 480px) {
     body {
         font-size: 13px;
     }
-
-    .navbar-brand-sub
-    {
+    .navbar-brand-sub {
         font-size: 9px;
     }
-
-    .navbar-brand
-    {
+    .navbar-brand {
         font-size: 16px;
         padding: 15px 3px;
     }
-
-    .navbar-brand img
-    {
+    .navbar-brand img {
         width: 30px;
     }
-
     .header-wrapper {
         height: 320px;
         padding: 0 30px;
     }
-
     .header-wrapper .ui.main.header {
         font-size: 20px;
         padding-top: 70px;
     }
-
-    .header-wrapper > div > h3  {
+    .header-wrapper> div> div> h3 {
         font-size: 14px;
     }
-
-    .headline, .Home .year-slider-subheader {
+    .headline,
+    .Home .year-slider-subheader {
         font-size: 12px;
     }
-
-    #main > div.container {
+    #main> div.container {
         padding: 0px 20px;
     }
-
-
-    body > .container {
+    body> .container {
         padding: 40px 15px 20px 15px;
     }
-
-    #personsTable_filter > label > input {
+    #personsTable_filter> label> input {
         width: inherit;
     }
-
 }
 
-@media(max-width:767px) {
-}
+@media(max-width:767px) {}
 
-@media(min-width:768px){}
-@media(min-width:992px){}
-@media(min-width:1200px){}
+@media(min-width:768px) {}
+
+@media(min-width:992px) {}
+
+@media(min-width:1200px) {}
 
 .assistant-comment {
+    margin-top: 5px;
     color: #808080;
 }
 
 .editable-text {
-    cursor:text;
+    cursor: text;
 }
 
 .editable-text:hover {
@@ -624,11 +588,11 @@ button.btn.btn-xs.validate:hover {
     background-color: white;
 }
 
-button.btn.btn-xs.validate > i.fa-times {
+button.btn.btn-xs.validate> i.fa-times {
     color: IndianRed;
 }
 
-button.btn.btn-xs.validate > i.fa-check {
+button.btn.btn-xs.validate> i.fa-check {
     color: SeaGreen;
 }
 
@@ -636,9 +600,9 @@ button.btn.btn-xs.validate {
     background-color: transparent;
 }
 
-#nuevoBebeForm > div.form-inline > div,
-#viewBebeForm > div.form-inline > div,
-#editaBebeForm > div.form-inline > div {
+#nuevoBebeForm> div.form-inline> div,
+#viewBebeForm> div.form-inline> div,
+#editaBebeForm> div.form-inline> div {
     font-size: 18px;
 }
 
@@ -654,9 +618,47 @@ button.btn.btn-xs.validate {
 .alert.alert-warning,
 .alert-fixed {
     position: fixed;
-    bottom: 70px;
+    bottom: 140px;
     left: 0px;
     width: 100%;
-    z-index :9999;
+    z-index: 9999;
     border-radius: 0px
+}
+
+.alert-fixed {
+    bottom: 70px !important;
+}
+
+#uploadFile> div> span> button,
+#uploadFile> div> input {
+    height: 50px;
+}
+
+#uploadFile> div> input {
+    padding-top: 10px;
+}
+
+#uploadFile> div> input,
+#uploadFile> div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.obj-section h3 {
+    margin-bottom: 30px;
+}
+
+.obj-section {
+    padding: 40px 0;
+    background-color: #326632;
+    color: white;
+}
+
+.obj-section i {
+    color: white;
+}
+
+.map-section {
+     // padding: 40px 0;
 }

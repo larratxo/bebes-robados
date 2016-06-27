@@ -1,0 +1,31 @@
+template(name="uploadForm")
+  form.navbar-form.center#uploadFile
+    if error
+      .alert.alert-danger {{error}}
+
+    unless uploadInstance
+      .input-group.select-form
+        input.form-control.btn.btn-default(title="Selecciona fichero" type="file" name="userfile" required multiple)
+        span.input-group-btn
+          button.btn.btn-primary(type="submit" title="Subir fichero")
+            i.fa.fa-lg.fa-cloud-upload
+            | Subir
+    else
+      table.upload-form-container: tbody
+        +each uploadInstance
+          if compare state.get 'isnt' 'aborted'
+            tr
+              td
+                .btn-group
+                  if onPause.get
+                    button#continue.btn.btn-default.btn-sm(type="button" title="Restaurar subida")
+                      i.fa.fa-fw.fa-play
+                  else
+                    button#pause.btn.btn-default.btn-sm(type="button" title="Pausar subida")
+                      i.fa.fa-fw.fa-pause
+                  button#abort.btn.btn-default.btn-sm(type="button" title="Abortar subida")
+                      i.fa.fa-fw.fa-stop
+              td: .progress.center: .progress-bar.progress-bar-striped.active(aria-valuemin="0" aria-valuemax="100" style="width: {{progress.get}}%")
+            tr: td.center(colspan="2"): small.text-center.help-block(style="margin-bottom:0px")
+              b #{file.name}:
+              | Tiempo restante: {{estimateDuration}} | Speed: {{estimateBitrate}}

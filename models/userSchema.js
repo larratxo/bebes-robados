@@ -32,22 +32,22 @@ Schema.UserProfile = new SimpleSchema({
                                placeholder: 'p.ej: http://twitter.com/tu_usuario'} },
     regEx: SimpleSchema.RegEx.Url
   },
-  imagenes: {
-    type: [String],
-    label: 'Fotos mías y de familiares', optional: true
-  },
-  'imagenes.$': {
-    autoform: {
-      afFieldInput: {
-        onAfterInsert: onAfterUp,
-        type: 'fileUpload',
-        accept: 'image/*',
-        label: 'Elige una foto',
-        'remove-label': 'Borrar',
-        // selectFileBtnTemplate: 'selectImageBtn',
-        previewTemplate: 'imagePreview',
-        collection: 'Images'
-      }}},
+  // imagenes: {
+  //   type: [String],
+  //   label: 'Fotos mías y de familiares', optional: true
+  // },
+  // 'imagenes.$': {
+  //   autoform: {
+  //     afFieldInput: {
+  //       onAfterInsert: onAfterUp,
+  //       type: 'fileUpload',
+  //       accept: 'image/*',
+  //       label: 'Elige una foto',
+  //       'remove-label': 'Borrar',
+  //       // selectFileBtnTemplate: 'selectImageBtn',
+  //       previewTemplate: 'imagePreview',
+  //       collection: 'Images'
+  //     }}},
   createdAt: defaultCreatedAt,
   updatedAt: defaultUpdateAt
 });

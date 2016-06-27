@@ -1,5 +1,5 @@
 /* global GoogleMaps,google,geocode:true,provincia,municipio,Template, alertMessage, success, Roles
- noUndef, resetMarker:true, Meteor, Router, $ ReactiveVar AutoForm renderProvincias */
+ noUndef, resetMarker:true, Meteor, Router, $ ReactiveVar AutoForm renderProvincias _ */
 
 var toDelete = new ReactiveVar();
 
@@ -39,6 +39,20 @@ Template.bebeForm.helpers({
       toDelete.set(this);
       $('#delete-babe').confirmation('show');
     };
+  },
+  fotos: function () {
+    return (this).photos;
+  },
+  attachs: function () {
+    return (this).attachs;
+  },
+  tieneFotos: function () {
+    var files = (this).photos;
+    return _.isArray(files) && files.length > 0;
+  },
+  tieneAttachs: function () {
+    var files = (this).attachs;
+    return _.isArray(files) && files.length > 0;
   },
   mapOptions: function () {
     // Make sure the maps API has loaded

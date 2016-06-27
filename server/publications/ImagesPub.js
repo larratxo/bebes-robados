@@ -1,1 +1,0 @@
-/* global Meteor,userImages,Images */

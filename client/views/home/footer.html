@@ -1,0 +1,60 @@
+<template name="homeFooter">
+  <!-- -*- engine:ctemplate -*- -->
+  <!-- http://bootsnipp.com/snippets/1KEEq -->
+
+  <!--footer start from here-->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 paddingtop-bottom">
+          <!-- <h6 class="heading7">ENLACES</h6> -->
+          <ul class="footer-ul">
+            <li><a href="{{ pathFor 'userUpdate'}}">Cambiar mis datos</a></li>
+            {{#if isInRole 'admin'}}
+              <li><a href="{{ pathFor 'admin'}}">{{_"Administration"}}</a></li>
+	    {{/if}}
+            <li><a href="{{ pathFor 'difusion'}}">{{_"MediaCampaigns"}}</a></li>
+            <li><a href="{{ pathFor 'contacto'}}">{{_"Contact"}}</a></li>
+            <li><a href="{{ pathFor 'denuncia'}}">{{_"Denuncia vuestro caso"}}</a></li>
+            <li><a href="{{ pathFor 'donaciones'}}">{{_"Donaciones"}}</a></li>
+            <li><a href="{{ pathFor 'otras'}}">{{_"Otras Iniciativas"}}</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-sm-4 paddingtop-bottom">
+          <ul class="footer-ul">
+            <li><a href="{{ pathFor 'quienes'}}">{{_"About"}}</a></li>
+            <li><a target="_blank" href="https://github.com/comunes/bebes-robados/">Nuestro software (libre)</a></li>
+            <li><a target="_blank" href="https://github.com/comunes/bebes-robados/tree/master/i18n">{{_"Ayudanos a traducir"}}</a></li>
+            <li><a target="_blank" href="https://github.com/comunes/bebes-robados/wiki/API">API para trabajos derivados</a></li>
+            <li><a href="{{ pathFor 'legal'}}">{{_"Legal"}}</a></li>
+            <li><a href="{{ pathFor 'proteccion'}}">{{_"Privacy"}}</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-sm-4 paddingtop-bottom">
+          <h6 class="heading7">Lo último en el Blog</h6>
+          {{> blogLatest num=5}}
+          <span><a href="/blog">Ver todo lo publicado&nbsp; ›</a></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--footer start from here-->
+
+  <div class="copyright">
+    <div class="container">
+      <div class="col-md-6">
+        <p>© Copyleft 2015-{{thisYear}} Nombre_de_la_iniciativa bajo Licencia <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons by-sa</a></p>
+      </div>
+      <div class="col-md-6">
+        <ul class="bottom_ul">
+          <!-- <li><a href="#">nuestrodominio.org</a></li>
+               <li><a href="#">About us</a></li>
+               <li><a href="#">Blog</a></li>
+               <li><a href="#">Faq's</a></li>
+               <li><a href="#">Contact us</a></li>
+               <li><a href="#">Site Map</a></li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

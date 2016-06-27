@@ -91,5 +91,9 @@ percolate:migrations
 standard-minifier-css
 standard-minifier-js
 percolate:synced-cron
-yogiben:autoform-file
 liberation:shareit
+ostrio:files
+mquandalle:jade
+ostrio:templatehelpers
+mrt:filesize
+lawshe:full-page

@@ -1,14 +1,14 @@
 /* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,defaultCreatedAt,
- defaultUpdateAt,addApiRoute _ onAfterUp:true Roles CollectionRevisions */
+ defaultUpdateAt,addApiRoute _ onAfterUp:true Roles CollectionRevisions alertMessage */
 
 onAfterUp = function () {
   return function (err) {
     if (err) {
       if (Meteor.isClient) {
         if (err.message.indexOf('file does not pass collection filters') > -1) {
-          $.bootstrapGrowl(
-            'Error: El fichero es mayor del tamaño permitido',
-            {type: 'danger', align: 'center'});
+          alertMessage('Error: El fichero es mayor del tamaño permitido');
+        } else {
+          alertMessage(err.message);
         }
       }
     }
@@ -46,7 +46,7 @@ var defaultAutocomplete = function (field, textarea) {
         template = Template.autoLugarNacimiento;
         break;
       case 'cementerioEnterrado':
-      template = Template.autoCementerioEnterrado;
+        template = Template.autoCementerioEnterrado;
         break;
       case 'nombreCompletoMedico':
         template = Template.autoMedico;
@@ -198,22 +198,40 @@ Schema.Persons = new SimpleSchema({
   denunciaEnJuzgado: {type: Boolean, optional: true, label: '¿Ha puesto denuncia en el Juzgado?',
                       autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: 'Sí', falseLabel: 'No'}}},
   denunciaEnJuzgadoEstadoTramitacion: {type: String, optional: true},
-  attachs: {
-    type: [String],
-    label: 'Documentos relacionados que quieran aportar', optional: true
-  },
-  'attachs.$': {
-    autoform: {
-      afFieldInput: {
-        onAfterInsert: onAfterUp,
-        type: 'fileUpload',
-        // accept: 'image/*',
-        label: 'Elige un documento',
-        'remove-label': 'Borrar',
-        // selectFileBtnTemplate: 'selectImageBtn',
-        // previewTemplate: 'imagePreview',
-        collection: 'Attachs'
-      }}},
+  // photos: {
+  //   type: [String],
+  //   label: 'Fotos tuyas o de familiares que puedan ayudar al reencuentro', optional: true
+  // },
+  // 'photos.$': {
+  //   autoform: {
+  //     afFieldInput: {
+  //       type: 'fileUpload',
+  //       accept: 'image/*',
+  //       collection: 'Photos'
+  //       // onAfterInsert: onAfterUp,
+  //       // label: 'Elige una foto',
+  //       // 'remove-label': 'Borrar',
+  //       // selectFileBtnTemplate: 'selectImageBtn',
+  //       // previewTemplate: 'imagePreview',
+  //     }}
+  // },
+  // attachs: {
+  //   type: [String],
+  //   label: 'Documentos relacionados que quieran aportar', optional: true
+  // },
+  // 'attachs.$': {
+  //   autoform: {
+  //     afFieldInput: {
+  //       type: 'fileUpload',
+  //       collection: 'Attachs'
+  //       // onAfterInsert: onAfterUp,
+  //       // accept: 'image/*',
+  //       // label: 'Elige un documento',
+  //       // 'remove-label': 'Borrar',
+  //       // selectFileBtnTemplate: 'selectImageBtn',
+  //       // previewTemplate: 'imagePreview',
+  //     }}
+  // },
   createdAt: defaultCreatedAt,
   updatedAt: defaultUpdateAt,
   lastModified: { type: Date, optional: true }, /* Used by revisions */

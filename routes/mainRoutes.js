@@ -54,14 +54,14 @@ Router.map(function () {
     title: 'Añade un bebe',
     waitOn: function () {
       // Workaround to wait Meter.user login
-      return subsManager.subscribe('meAndMyImages');
+      return subsManager.subscribe('meAndMyData');
     }
   });
   this.route('abuseAdd', {
     path: '/reportar/:username',
     title: 'Informar de abuso',
     waitOn: function () {
-      return subsManager.subscribe('userAndImages', this.params.username);
+      return subsManager.subscribe('some-user', this.params.username);
     },
     data: function () {
       return Meteor.users.findOne({ username: this.params.username });
@@ -75,7 +75,7 @@ Router.map(function () {
     path: '/yo',
     title: 'Mis datos',
     waitOn: function () {
-      return subsManager.subscribe('meAndMyImages');
+      return subsManager.subscribe('meAndMyData');
     }
   });
 
@@ -84,7 +84,7 @@ Router.map(function () {
     path: '/persona/:_id',
     // title: 'Datos de familiar',
     waitOn: function () {
-      return subsManager.subscribe('userAndImages', this.params._id);
+      return subsManager.subscribe('some-user', this.params._id);
     },
     data: function () {
       var username = Meteor.users.findOne({ username: this.params._id });
@@ -147,7 +147,7 @@ Router.map(function () {
     path: '/edita-bebe-id/:_id',
     title: 'Edita bebe',
     waitOn: function () {
-      return subsManager.subscribe('personAndImages', this.params._id);
+      return subsManager.subscribe('personAndFiles', this.params._id);
     },
     data: function () {
       return Persons.findOne(this.params._id);
@@ -157,7 +157,7 @@ Router.map(function () {
     path: '/edita-bebe/:slug',
     title: 'Edita bebe',
     waitOn: function () {
-      return subsManager.subscribe('personAndImagesViaSlug', this.params.slug);
+      return subsManager.subscribe('personAndFilesViaSlug', this.params.slug);
     },
     data: function () {
       return Persons.findOne({slug: this.params.slug});
@@ -166,7 +166,7 @@ Router.map(function () {
   this.route('viewPerson', {
     path: '/bebe-id/:_id',
     waitOn: function () {
-      return subsManager.subscribe('personAndImages', this.params._id);
+      return subsManager.subscribe('personAndFiles', this.params._id);
     },
     // title: 'Datos sobre bebe',
     data: function () {
@@ -177,7 +177,7 @@ Router.map(function () {
     path: '/bebe/:slug',
     // title: 'Datos sobre bebe',
     waitOn: function () {
-      return subsManager.subscribe('personAndImagesViaSlug', this.params.slug);
+      return subsManager.subscribe('personAndFilesViaSlug', this.params.slug);
     },
     data: function () {
       return Persons.findOne({slug: this.params.slug});

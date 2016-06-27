@@ -1,4 +1,5 @@
-<template name="userGallery">
+<template name="photosGallery">
+  <!-- -*- engine:ctemplate -*- -->
 
   <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
   <div id="blueimp-gallery" class="blueimp-gallery">
@@ -35,17 +36,17 @@
     </div>
   </div>
   {{#if tieneFotos}}
-  <label class="col-sm-3 control-label">Fotos de esta persona y familiares</label>
+    <label class="col-sm-3 control-label">Fotos de esta persona y familiares</label>
   {{else}}
 
   {{/if}}
   <div id="links" class="col-sm-9">
-    {{#each images}}
-    <div>
-      <a href="{{this.url store='images'}}" target="_blank" title="{{this.name store='images'}}" data-gallery>
-        <img src="{{this.url store='thumbs' }}" class="img-fileUpload-thumbnail img-thumbnail img-rounded" alt="{{this.name store='images'}}">
-      </a>
-    </div>
+    {{#each fotos}}
+      <div>
+        <a href="{{this.url store='images'}}" target="_blank" title="{{this.name store='images'}}" data-gallery>
+          <img src="{{this.url store='thumbs' }}" class="img-fileUpload-thumbnail img-thumbnail img-rounded" alt="{{this.name store='images'}}">
+        </a>
+      </div>
     {{/each}}
   </div>
 

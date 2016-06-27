@@ -1,5 +1,7 @@
+/* global Template Router */
+
 Template._loginButtonsLoggedInDropdown.events({
-  'click #login-buttons-open-change-settings': function(event) {
+  'click #login-buttons-open-change-settings': function (event) {
     Router.go('userUpdate');
   }
 });
