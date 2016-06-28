@@ -63,10 +63,13 @@ ul.bebe-tabs li a {
 .Home .year-slider-subheader {
     font-family: 'Roboto', 'Open Sans', sans-serif;
 }
+.header-wrapper .ui.main.header {
+        line-height: 1.5em;
+}
 
 .header-wrapper> div> div> h3 {
-    font-size: 18px;
-    line-height: 1.5em
+    font-size: 22px;
+    line-height: 1.5em;
 }
 
 .PersonsList .jumbotron h1,
@@ -480,11 +483,12 @@ div.meteor-blog-post-meta.text-center {
         padding: 0 30px;
     }
     .header-wrapper .ui.main.header {
-        font-size: 22px;
+        font-size: 28px;
+        line-height: 1.5em;
         padding-top: 80px;
     }
     .header-wrapper> div> div> h3 {
-        font-size: 16px;
+        font-size: 20px;
     }
     .headline,
     .Home .year-slider-subheader {
@@ -533,6 +537,26 @@ div.meteor-blog-post-meta.text-center {
     #personsTable_filter> label> input {
         width: inherit;
     }
+
+    .map-container {
+        height: 270px;
+    }
+    .assistant-comment,
+    .pointer-legend {
+        font-size: 10px;
+    }
+    .pointer-legend-img {
+        width: 8px;
+    }
+    .paddingtop-bottom {
+        margin-top: 10px;
+    }
+    .Home #yearSlider {
+        margin: 10px 10px 10px 10px;
+    }
+    .slider-bottom {
+        top: -5px;
+    }
 }
 
 @media(max-width:767px) {}
@@ -542,6 +566,49 @@ div.meteor-blog-post-meta.text-center {
 @media(min-width:992px) {}
 
 @media(min-width:1200px) {}
+
+@media screen and ( max-height: 800px ){
+    .map-container {
+        height: 400px;
+    }
+    .assistant-comment,
+    .pointer-legend {
+        font-size: 12px;
+    }
+    .pointer-legend-img {
+        width: 10px;
+    }
+}
+
+@media screen and ( max-height: 650px ){
+    .map-container {
+        height: 270px;
+    }
+}
+
+@media screen and ( max-height: 400px ){
+    .map-container {
+        height: 200px;
+    }
+    .assistant-comment,
+    .pointer-legend {
+        display: none;
+        font-size: 10px;
+    }
+    .pointer-legend-img {
+        display: none;
+        width: 8px;
+    }
+    .paddingtop-bottom {
+        margin-top: 10px;
+    }
+    .Home #yearSlider {
+        margin: 10px 10px 10px 10px;
+    }
+    .slider-bottom {
+        top: -5px;
+    }
+}
 
 .assistant-comment {
     margin-top: 5px;
