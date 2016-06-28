@@ -198,40 +198,40 @@ Schema.Persons = new SimpleSchema({
   denunciaEnJuzgado: {type: Boolean, optional: true, label: '¿Ha puesto denuncia en el Juzgado?',
                       autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: 'Sí', falseLabel: 'No'}}},
   denunciaEnJuzgadoEstadoTramitacion: {type: String, optional: true},
-  // photos: {
-  //   type: [String],
-  //   label: 'Fotos tuyas o de familiares que puedan ayudar al reencuentro', optional: true
-  // },
-  // 'photos.$': {
-  //   autoform: {
-  //     afFieldInput: {
-  //       type: 'fileUpload',
-  //       accept: 'image/*',
-  //       collection: 'Photos'
-  //       // onAfterInsert: onAfterUp,
-  //       // label: 'Elige una foto',
-  //       // 'remove-label': 'Borrar',
-  //       // selectFileBtnTemplate: 'selectImageBtn',
-  //       // previewTemplate: 'imagePreview',
-  //     }}
-  // },
-  // attachs: {
-  //   type: [String],
-  //   label: 'Documentos relacionados que quieran aportar', optional: true
-  // },
-  // 'attachs.$': {
-  //   autoform: {
-  //     afFieldInput: {
-  //       type: 'fileUpload',
-  //       collection: 'Attachs'
-  //       // onAfterInsert: onAfterUp,
-  //       // accept: 'image/*',
-  //       // label: 'Elige un documento',
-  //       // 'remove-label': 'Borrar',
-  //       // selectFileBtnTemplate: 'selectImageBtn',
-  //       // previewTemplate: 'imagePreview',
-  //     }}
-  // },
+  photos: {
+    type: [String],
+    label: 'Fotos tuyas o de familiares que puedan ayudar al reencuentro', optional: true
+  },
+  'photos.$': {
+    autoform: {
+      afFieldInput: {
+        type: 'multiFileUpload',
+        accept: 'image/*',
+        collection: 'Photos'
+        // onAfterInsert: onAfterUp,
+        // label: 'Elige una foto',
+        // 'remove-label': 'Borrar',
+        // selectFileBtnTemplate: 'selectImageBtn',
+        // previewTemplate: 'imagePreview',
+      }}
+  },
+  attachs: {
+    type: [String],
+    label: 'Documentos relacionados que quieran aportar', optional: true
+  },
+  'attachs.$': {
+    autoform: {
+      afFieldInput: {
+        type: 'multiFileUpload',
+        collection: 'Attachs'
+        // onAfterInsert: onAfterUp,
+        // accept: 'image/*',
+        // label: 'Elige un documento',
+        // 'remove-label': 'Borrar',
+        // selectFileBtnTemplate: 'selectImageBtn',
+        // previewTemplate: 'imagePreview',
+      }}
+  },
   createdAt: defaultCreatedAt,
   updatedAt: defaultUpdateAt,
   lastModified: { type: Date, optional: true }, /* Used by revisions */

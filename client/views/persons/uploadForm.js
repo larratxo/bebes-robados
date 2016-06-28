@@ -1,4 +1,11 @@
-/* global Template ReactiveVar success $ _ moment filesize Photos Meteor */
+/* global Template ReactiveVar success $ _ moment filesize Photos Meteor AutoForm */
+AutoForm.addInputType('multiFileUpload', {
+  template: 'uploadForm',
+  valueOut: function () {
+    return this.val();
+  }
+});
+
 Template.uploadForm.onCreated(function () {
   this.currentUpload = new ReactiveVar(false);
 });
