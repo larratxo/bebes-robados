@@ -7,3 +7,6 @@ mup.json
 settings.json
 settings-prod.json
 mup-prod.json
+.deploy
+.deploy-prod
+mup-local.json
