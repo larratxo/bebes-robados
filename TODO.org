@@ -3,20 +3,16 @@ Lista de Tareas
 
 * Desarrollo
 ** Última Reu
+*** lists all users in admins fails
 *** wizard en add
-*** Blog vacio? Migración de docker?
 *** Uploads de documentos, mensaje cuando no deja por tipo
-*** Entrada de fechas van mal en Windows, revisar entrada
-*** Solo dejar visible Nacimiento y Fallecimiento a non-logged y otros
 *** Botón Guardar en campañas
-*** Recuperación de contraseñas parece que no funciona
-*** Adjuntar fotos y ficheros no va en Windows
 *** Mapa no va bien en Fallecimiento
 *** You need en comentarios ... al español
 *** Mapa no se actualiza en amarillo
-*** Leyenda de los iconos en el mapa
-*** Un home como dios manda
-*** Upload de campañas: revisar
+*** Upload de campañas: revisar fichero pequeños
+*** Upload de campañas, style button
+*** Slow sign-out
 ** PDF con campañas
 https://github.com/pascoual/meteor-pdfkit
 https://github.com/khronedev/img-qrcode/
@@ -24,7 +20,7 @@ https://github.com/khronedev/img-qrcode/
 ** Añadir /path-camp1/ a los banners para poder cambiar de campañas
 ** Añadir campo sobre donde fue adoptado
 ** Buscar o crear un correo de contacto
-** A hablar: crear tb cuenta twitter
+** A hablar: crear tb cuenta twitte
 ** Conectar usuarios-bebes (links en búsquedas, en formularios, etc) y permisos
 ** Bebe encontrado o no encontrado?
 ** Traducción, sobre todo al catalán e ingles parece que inicialmente

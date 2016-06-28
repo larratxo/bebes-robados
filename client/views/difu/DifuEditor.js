@@ -1,4 +1,4 @@
-/* global Template, ReactiveVar, $, Meteor, AdCampaigns, Persons, _ UniHTML */
+/* global Template, ReactiveVar, $, Meteor, AdCampaigns, Persons, _ UniHTML alertMessage success */
 
 var getAfectado = function () {
   return Persons.find({familiar: Meteor.userId()});
@@ -22,7 +22,7 @@ Template.DifuEditor.helpers({
     return {
       loadImage: { maxWidth: 600, mixHeight: 500, cover: true, aspectRatio: 6 / 5 },
       showInfo: false,
-      showClear: false,
+      showClear: true,
       autoSelectOnJcrop: true,
       crop: true,
       jCrop: { setSelect: [0, 0, 600, 500], minSize: [450, 375], maxSize: [900, 750], aspectRatio: 6 / 5 },
@@ -63,7 +63,15 @@ function refreshTitle (template, newText, save) {
   myAd.text = newText;
   template.myAd.set(myAd);
   if (save) {
-    AdCampaigns.update(myAd._id, {$set: {text: newText, validated: false}});
+   // _.throttle(function () {
+    AdCampaigns.update(myAd._id, {$set: {text: newText, validated: false}}, function (error) {
+      if (error) {
+        alertMessage(error);
+      } else {
+        success('Guardado');
+      }
+    });
+    // }, 5000);
   }
 }
 
@@ -74,7 +82,7 @@ Template.DifuEditor.events({
     template.myAd.set(myAd);
     AdCampaigns.update(myAd._id, {$set: {participate: e.target.checked, validated: false}});
   },
-  'change #adtitle': _.throttle(function (e, template) {
+  'focusout #adtitle, change #adtitle': _.throttle(function (e, template) {
     refreshTitle(template, UniHTML.purify(e.target.value), true);
   }, 300),
   'keyup #adtitle': _.throttle(function (e, template) {
