@@ -62,11 +62,26 @@
         <div class="map-container">
           {{> googleMap name="mainMap" options=mainMapOptions}}
         </div>
-        <div class="assistant-comment">Puedes pulsar en los marcadores del mapa para obtener más información de cada caso</div>
+        <div class="row">
+        {{> personPointer text="Família que busca a un bebe robado" src="/images/gmaps-pointer.png"}}
+        {{> personPointer text="Persona que busca su familia biológica" src="/images/gmaps-pointer-familia.png"}}
+        {{> personPointer text="Nuevo caso reportado" src="/images/gmaps-pointer-new.png"}}
+        </div>
+        <div class="row">
+          <div class="col-xs-12 assistant-comment">Puedes pulsar en los marcadores del mapa para obtener más información de cada caso</div>
+        </div>
       </div>
     </div>
     <div class="section fp-auto-height">
       {{> homeFooter }}
     </div>
+  </div>
+</template>
+
+<template name="personPointer">
+  <div class="col-sm-4 pointer-legend">
+    <span>
+      <img class="pointer-legend-img" src={{src}} alt={{text}} />&nbsp;{{text}}
+    </span>
   </div>
 </template>
