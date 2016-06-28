@@ -10,6 +10,9 @@ Template.home.helpers({
         center: new google.maps.LatLng(36.5270612, -6.2885962), // Cadiz
         // mapTypeId: google.maps.MapTypeId.SATELLITE,
         zoomControl: true,
+        // asi no scrollea el home
+        // https://stackoverflow.com/questions/21992498/disable-mouse-scroll-wheel-zoom-on-embedded-google-maps
+        scrollwheel: false,
         // Sin nombres ni carreteras
         // styles: [{ featureType: 'road', stylers: [  {visibility: 'on'} ] } ],
         styles: [{'featureType': 'all', 'elementType': 'all', 'stylers': [{'saturation': -100}, {'gamma': 0.5}]}],
@@ -33,10 +36,6 @@ Template.home.events({
   },
   'submit form': function (event) {
     event.preventDefault();
-  },
-  'click .map-container': function (event) {
-    // https://stackoverflow.com/questions/21992498/disable-mouse-scroll-wheel-zoom-on-embedded-google-maps
-    $('div.map-container > div').css('pointer-events', 'auto');
   }
 });
 
@@ -78,6 +77,10 @@ Template.home.onRendered(function () {
   });
 });
 
+var personPointer = function (nuevo, buscasBebe) {
+  return nuevo ? '/images/gmaps-pointer-new.png' : buscasBebe ? '/images/gmaps-pointer.png' : '/images/gmaps-pointer-familia.png';
+};
+
 Template.home.onCreated(function () {
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('mainMap', function (map) {
@@ -94,8 +97,9 @@ Template.home.onCreated(function () {
         // console.log('Adding new marker to map');
         var nuevo = isNew(person.updatedAt);
         // https://developers.google.com/maps/documentation/javascript/markers
+        var buscasBebe = person.buscasBebe;
         var image = {
-          url: nuevo ? '/images/gmaps-pointer-new.png' : person.buscasBebe ? '/images/gmaps-pointer.png' : '/images/gmaps-pointer-familia.png',
+          url: personPointer(nuevo, buscasBebe),
           // This marker is 20 pixels wide by 32 pixels high.
           size: new google.maps.Size(29, 50),
           // The origin for this image is (0, 0).

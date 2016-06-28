@@ -38,10 +38,6 @@ ul.bebe-tabs li a {
     height: 500px;
 }
 
-div.map-container> div {
-    pointer-events: none;
-}
-
 .Home .home-header,
 .Home .jumbotron h2 {
     text-transform: uppercase;
@@ -662,3 +658,15 @@ button.btn.btn-xs.validate {
 .map-section {
      // padding: 40px 0;
 }
+
+/* datatable sort icon */
+table.dataTable thead .sorting:after {
+    font-size: 10px;
+}
+
+table.dataTable.table-condensed .sorting:after, table.dataTable.table-condensed .sorting_asc:after, table.dataTable.table-condensed .sorting_desc:after {
+    top: inherit;
+    bottom: 10px !important;
+}
+
+/* end: datatable sort icon */
