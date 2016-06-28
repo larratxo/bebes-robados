@@ -1,4 +1,4 @@
-/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, SEO, webPages */
+/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, SEO, webPages, $ */
 
 // https://iron-meteor.github.io/iron-router/
 
@@ -19,6 +19,12 @@ Router.route('/', {
     this.render('home');
   }, subscriptions: function () {
     return subsManager.subscribe('Persons');
+  },
+  onStop: function () {
+    if (Meteor.isClient) {
+      // Enable again scrolls in other routes
+      $.fn.fullpage.destroy('all');
+    }
   }
 });
 

@@ -48,8 +48,8 @@ var markerVisibility = function (person, min, max) {
 
 Template.home.onRendered(function () {
   $('#fullpage').fullpage({
-    // navigation: true,
-    // navigationPosition: 'right'
+    navigation: true,
+    navigationPosition: 'right'
   });
 
   onSliderRender(function () {
