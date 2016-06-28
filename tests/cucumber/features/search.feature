@@ -12,6 +12,7 @@ Característica: Búsqueda de bebes desde el inicio y desde la página de búsqu
     |Brazil|
     Entonces obtengo una lista de bebes en esos lugares
 
+  @watch
   Escenario: Verifico que ciertas búsquedas no dan resultados
     Dado que estoy en el inicio
     Y que tecleo ciertas búsquedas raras

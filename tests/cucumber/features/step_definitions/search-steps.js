@@ -39,6 +39,9 @@ module.exports = function () {
     search = searchs[i][0];
     client.url(process.env.ROOT_URL + (lugar === 'home' ? '' : '/bebes'));
     var selector = lugar === 'home' ? 'input[id="home-main-search"]': '#personsTable_filter > label > input';
+    var navSelector = '#fp-nav > ul > li:nth-child(3) > a > span';
+    client.waitForVisible(navSelector);
+    client.click(navSelector);
     client.waitForVisible(selector);
     client.setValue(selector, search);
     // http://webdriver.io/api/protocol/keys.html
