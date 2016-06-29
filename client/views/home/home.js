@@ -1,5 +1,5 @@
 /* global Template $ Session Router GoogleMaps google noUndef Persons isNew onSliderRender
- renderSexoAlt renderDate renderAprox renderNuevo calcShowAll isValidLatLng */
+ renderSexoAlt renderDate renderAprox renderNuevo calcShowAll isValidLatLng _ */
 
 Template.home.helpers({
   mainMapOptions: function () {
@@ -46,11 +46,6 @@ var markerVisibility = function (person, min, max) {
 };
 
 Template.home.onRendered(function () {
-  $('#fullpage').fullpage({
-    navigation: true,
-    navigationPosition: 'right'
-  });
-
   onSliderRender(function () {
     // TODO https://stackoverflow.com/questions/19304574/center-set-zoom-of-map-to-cover-all-markers-visible-markers
 
@@ -74,6 +69,12 @@ Template.home.onRendered(function () {
         }
       }
     }
+  });
+  _.defer(function () {
+    $('#fullpage').fullpage({
+      navigation: true,
+      navigationPosition: 'right'
+    });
   });
 });
 
