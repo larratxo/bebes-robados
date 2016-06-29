@@ -5,6 +5,7 @@ Meteor.startup(function () {
   $.fn.datepicker.defaults.language = 'es';
   $.fn.datepicker.defaults.autoclose = true;
   $.fn.datepicker.defaults.clearBtn = true;
+  $.fn.datepicker.defaults.orientation = 'bottom auto';
   $.fn.datepicker.dates['es'] = {
     days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
     daysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
