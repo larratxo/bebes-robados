@@ -26,6 +26,9 @@ Template.DifuEditor.helpers({
   dynHeader: function () {
     return Template.instance().myAd.get().text;
   },
+  cropping: function () {
+    return Template.instance().cropping.get();
+  },
   notCropping: function () {
     return !Template.instance().cropping.get();
   }
@@ -109,16 +112,17 @@ Template.DifuEditor.events({
         /* autoCrop: false, */
         responsive: true,
         dragMode: 'move',
-        // minCropBoxWidth: 450,
-        // minCropBoxHeight: 375,
-        minCropBoxWidth: 300,
-        minCropBoxHeight: 250,
+        minCropBoxWidth: 450,
+        minCropBoxHeight: 375,
+        // minCropBoxWidth: 300,
+        // minCropBoxHeight: 250,
         background: false,
         crop: function (e) {
           template.cropping.set(true);
           var imgCropped = imgCropSelector.cropper('getCroppedCanvas').toDataURL();
           var myAd = template.myAd.get();
           myAd.photo = imgCropped;
+          // TODO photoHD!!
           // myAd.photoHD = photo.img;
           // console.log("foto" + photo.img); Es un HTMLCanvasElement
           updateImg(myAd._id, imgCropped);

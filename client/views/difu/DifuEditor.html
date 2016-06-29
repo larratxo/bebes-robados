@@ -31,7 +31,12 @@
           <h4>Elige y recorta una imagen</h4>
           <div class="row">
             {{#if notCropping}}
-              <input type="file" id="files" />
+              <input type="file" accept="image/*" id="files" />
+            {{/if}}
+            {{#if cropping}}
+              <div class="row img-cropped-legend">
+                Selecciona con el ratón la parte de la foto a usar. Puedes usar el scroll de tu ratón para acercar o alejar la foto.
+              </div>
             {{/if}}
             <img id="cropperimage" />
           </div>

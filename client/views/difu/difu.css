@@ -99,3 +99,12 @@
 .check-red {
     color: red;
 }
+
+.img-cropped-legend {
+  margin: 10px;
+  color: #808080;
+}
+
+#files {
+  margin: 10px;
+}
