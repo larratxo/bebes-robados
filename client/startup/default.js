@@ -1,6 +1,7 @@
 /* global Meteor Bert GoogleMaps $ */
 
 Meteor.startup(function () {
+  // https://eternicode.github.io/bootstrap-datepicker/
   $.fn.datepicker.defaults.format = 'dd/MM/yyyy';
   $.fn.datepicker.defaults.language = 'es';
   $.fn.datepicker.defaults.autoclose = true;
