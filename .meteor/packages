@@ -53,7 +53,6 @@ cfs:filesystem
 cfs:standard-packages
 sacha:spin
 gadicohen:sitemaps
-pfafman:photo-up
 coffeescript
 zimme:active-route
 cfs:graphicsmagick
@@ -97,3 +96,6 @@ mquandalle:jade
 ostrio:templatehelpers
 mrt:filesize
 lawshe:full-page
+modules
+jonblum:jquery-cropper
+softwarerero:accounts-t9n

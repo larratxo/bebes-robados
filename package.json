@@ -1,0 +1,9 @@
+{
+  "name": "bebes-robados",
+  "private": true,
+  "scripts": {
+    "start": "meteor --settings settings.json"
+  },
+  "dependencies": {
+  }
+}
