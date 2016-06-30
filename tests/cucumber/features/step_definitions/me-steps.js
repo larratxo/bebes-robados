@@ -28,8 +28,9 @@ module.exports = function () {
     // Subo imagen
 
     if (!phantomJs) {
-      client.chooseFile("div.autoform-array-item-body > div > div > div > button > input", datos[0][3]);
-      client.waitForVisible("div.autoform-array-item-body > div > div > div > a > img");
+      // TODO
+      // client.chooseFile("div.autoform-array-item-body > div > div > div > button > input", datos[0][3]);
+      // client.waitForVisible("div.autoform-array-item-body > div > div > div > a > img");
     }
 
     client.setValue('input[name="profile.redesSociales.0.url"]', datos[0][4]);
