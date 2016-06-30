@@ -1,4 +1,4 @@
-/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, SEO, webPages, $ */
+/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, Session, webPages, $ */
 
 // https://iron-meteor.github.io/iron-router/
 
@@ -14,7 +14,7 @@ var dataWebPage = function () {
 
 Router.route('/', {
   name: 'home',
-  // title: '',
+  title: Meteor.App.NAME,
   action: function () {
     this.render('home');
   }, subscriptions: function () {
@@ -258,10 +258,7 @@ Router.after(function () {
     var newTitle;
     if (this.route.options.title) {
       newTitle = this.route.options.title + ' - ' + Meteor.App.NAME;
-    } else {
-      newTitle = Meteor.App.NAME;
+      Session.set('DocumentTitle', newTitle);
     }
-    document.title = newTitle;
-    SEO.set({ title: newTitle });
   }
 });

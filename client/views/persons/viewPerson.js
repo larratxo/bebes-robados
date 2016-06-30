@@ -1,7 +1,7 @@
-/* global Template, Session, Router commentsHack success Persons*/
+/* global Template, Session, Router commentsHack success Persons setTimeout */
 Template.viewPerson.onRendered(function () {
-  Session.set('DocumentTitle', 'Datos sobre bebe ' + this.data.nombreCompleto);
-  // Session.set('DocumentTitle', 'Información sobre este bebe');
+  var nombreCompleto = this.data.nombreCompleto;
+  Session.set('DocumentTitle', 'Datos sobre bebe ' + nombreCompleto);
 
   setTimeout(commentsHack, 2000);
 });
