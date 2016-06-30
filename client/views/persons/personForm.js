@@ -1,5 +1,5 @@
 /* global GoogleMaps,google,geocode:true,provincia,municipio,Template, alertMessage, success, Roles
- noUndef, resetMarker:true, Meteor, Router, $ ReactiveVar AutoForm renderProvincias _ */
+ noUndef, resetMarker:true, Meteor, Router, $ ReactiveVar AutoForm renderProvincias _ AutoForm */
 
 var toDelete = new ReactiveVar();
 
@@ -10,6 +10,12 @@ Template.bebeForm.helpers({
   },
   isFamiliarOrAdmin: function () {
     return Roles.userIsInRole(Meteor.userId(), ['admin']) || Meteor.userId() === this.doc.familiar;
+  },
+  buscasBebe: function () {
+    var value = AutoForm.getFieldValue('buscasBebe');
+    // console.log('buscas bebe: ' + value);
+    // Si no definido devolvemos el valor por defecto
+    return typeof value === 'undefined' ? true : value;
   },
   isFamiliar: function () {
     return Meteor.userId() === this.familiar;
@@ -85,6 +91,13 @@ resetMarker = function () {
   }
 };
 
+var resizeCementerioMap = function () {
+  var map = $('#cementerioEnterradoDireccion').geocomplete('map');
+  // var center = map.getCenter();
+  google.maps.event.trigger(map, 'resize');
+  // map.setCenter(center);
+};
+
 geocode = function () {
   // console.log('Trying to geocode');
   var lugar = $('#lugarNacimiento').val();
@@ -135,6 +148,15 @@ geocode = function () {
     $('#lugarNacimientoLongitud').val('');
   }
 };
+
+Template.bebeForm.events({
+  'shown.bs.tab a[href="#fallecimiento"]': function (e) {
+    // console.log('Fallecimiento show');
+    $('#cementerioEnterradoDireccion').trigger('geocode');
+    resizeCementerioMap();
+  }
+});
+
 Template.bebePage.events({
   'blur #lugarNacimiento': function (event, template) {
     geocode(event, template);
@@ -154,9 +176,11 @@ Template.nuevoBebe.events({
 });
 
 Template.bebeForm.onRendered(function () {
+  // listenToTabChange();
+
   this.autorun(function () {
     if (GoogleMaps.loaded()) {
-      $('#cementerioEnterrado').geocomplete({
+      $('#cementerioEnterradoDireccion').geocomplete({
         map: '#cementerioEnterradoMap'
       });
     }

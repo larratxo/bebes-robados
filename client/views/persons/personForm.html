@@ -36,7 +36,7 @@
       {{> queBusca doc=doc}}
     {{else}}
       <div class="form-inline">
-        {{> afQuickField name="buscasBebe" defaultValue=false}}
+        {{> afQuickField name="buscasBebe"}}
       </div>
     {{/if}}
     <span class="help-block"></span>
@@ -44,7 +44,7 @@
     <ul class="nav nav-tabs nav-justified bebe-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
       {{#if isAddingAdminIsFamiliar }}
-        {{#if afFieldValueIs name="buscasBebe" value=true}}
+        {{#if buscasBebe}}
           <li role="presentation"><a href="#fallecimiento" aria-controls="fallecimiento" role="tab" data-toggle="tab">Fallecimiento</a></li>
           <li role="presentation"><a href="#infomedica" aria-controls="infomedica" role="tab" data-toggle="tab">Personal médico</a></li>
           <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
@@ -65,7 +65,7 @@
           <br>
           {{! userGallery data=doc.familiar }}
         {{/if}}
-        {{#if afFieldValueIs name="buscasBebe" value=true}}
+        {{#if buscasBebe}}
           {{> afQuickField name="parentesco" id="parentesco" options="allowed" firstOption="» Selecciona uno" }}
         {{/if}}
 
@@ -125,7 +125,8 @@
           {{/if}}
         {{/if}}
 
-        {{> afQuickField name="cementerioEnterrado" id="cementerioEnterrado" placeholder="Nombre o dirección del cementerio si lo conoce"}}
+        {{> afQuickField name="cementerioEnterrado" id="cementerioEnterrado" placeholder="Nombre del cementerio"}}
+        {{> afQuickField name="cementerioEnterradoDireccion" id="cementerioEnterradoDireccion" placeholder="Dirección del cementerio si lo conoce (o la localidad, si no conoce la dirección)" }}
         <div id="cementerioEnterradoMap"></div>
 
         <div class="form-inline">

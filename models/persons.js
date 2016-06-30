@@ -98,7 +98,8 @@ var defaultAutocomplete = function (field, textarea) {
 };
 
 Schema.Persons = new SimpleSchema({
-  buscasBebe: { type: Boolean, optional: false, label: '¿Qué buscas?',
+  // mismo defaultValue en Template.bebeForm.helpers buscasBebe
+  buscasBebe: { type: Boolean, defaultValue: true, optional: false, label: '¿Qué buscas?',
                 autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: 'a un bebe robado', falseLabel: 'a mi familia biológica'}}},
   parentesco: { type: String, label: 'Parentesco con el presunto niño/a robado:', optional: true, allowedValues: [
     'Madre', 'Padre', 'Cónyuge', 'Abuela', 'Abuelo', 'Hermana', 'Hermano', 'Otro'
@@ -159,6 +160,7 @@ Schema.Persons = new SimpleSchema({
   },
   entierroPorHospitalOtrasRazones: {type: String, optional: true, label: '¿Qué otras razones?'},
   cementerioEnterrado: _.extend(defaultMap('¿En qué cementerio fue enterrado?'), {autoform: defaultAutocomplete('cementerioEnterrado', false)}),
+  cementerioEnterradoDireccion: {type: String, optional: true, label: 'Dirección:'},
   cementerioEnterradoLatitud: {type: String, optional: true, label: 'Latitud:'},
   cementerioEnterradoLongitud: {type: String, optional: true, label: 'Longitud:'},
   posibilidadPruebasADN: {type: Boolean, label: '¿Esta en una sepultura perpetua con posibilidades de exhumación para realizar pruebas de ADN?', optional: true,

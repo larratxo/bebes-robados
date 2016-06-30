@@ -6,12 +6,9 @@ Lista de Tareas
 *** lists all users in admins fails
 *** wizard en add
 *** Uploads de documentos, mensaje cuando no deja por tipo
-*** Botón Guardar en campañas
-*** Mapa no va bien en Fallecimiento
 *** You need en comentarios ... al español
 *** Mapa no se actualiza en amarillo
 *** Upload de campañas: revisar fichero pequeños
-*** Upload de campañas, style button
 *** Slow sign-out
 ** PDF con campañas
 https://github.com/pascoual/meteor-pdfkit
