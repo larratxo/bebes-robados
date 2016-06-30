@@ -3,11 +3,9 @@ Lista de Tareas
 
 * Desarrollo
 ** Última Reu
-*** lists all users in admins fails
 *** wizard en add
 *** Uploads de documentos, mensaje cuando no deja por tipo
 *** You need en comentarios ... al español
-*** Mapa no se actualiza en amarillo
 *** Upload de campañas: revisar fichero pequeños
 *** Slow sign-out
 ** PDF con campañas

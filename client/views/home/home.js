@@ -112,6 +112,7 @@ Template.home.onCreated(function () {
         var moreInfo = 'Pulsa para más info';
         var marker = new google.maps.Marker({
           map: map.instance,
+          zIndex: nuevo ? 10 : 0,
           // https://developers.google.com/maps/documentation/javascript/examples/map-latlng-literal
           icon: image,
           title: moreInfo,
@@ -141,16 +142,20 @@ Template.home.onCreated(function () {
       // http://meteorcapture.com/how-to-create-a-reactive-google-map/
       added: function (document) {
         // console.log('Added new marker');
-        createMarker(map, document);
+        if (document.validated) {
+          createMarker(map, document);
+        }
       },
       changed: function (newDocument, oldDocument) {
-        // console.log('Changed marker');
-        var oldMarker = markers[newDocument._id];
-        if (typeof oldMarker !== 'undefined') {
-          oldMarker.setPosition({ lat: parseFloat(newDocument.lugarNacimientoLatitud),
-                                  lng: parseFloat(newDocument.lugarNacimientoLongitud) });
-        } else {
-          createMarker(map, newDocument);
+        if (newDocument.validated) {
+          // console.log('Changed marker');
+          var oldMarker = markers[newDocument._id];
+          if (typeof oldMarker !== 'undefined') {
+            oldMarker.setPosition({ lat: parseFloat(newDocument.lugarNacimientoLatitud),
+                                    lng: parseFloat(newDocument.lugarNacimientoLongitud) });
+          } else {
+            createMarker(map, newDocument);
+          }
         }
       },
       removed: function (oldDocument) {

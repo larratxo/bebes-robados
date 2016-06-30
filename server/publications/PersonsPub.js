@@ -8,6 +8,10 @@ Meteor.publish('Persons', function () {
   }
 });
 
+Meteor.publish('PersonsForHome', function () {
+  return Persons.find({validated: true});
+});
+
 // https://github.com/CollectionFS/Meteor-CollectionFS#storing-fsfile-references-in-your-objects
 Meteor.publish('personAndFiles', function (id) {
   check(id, String);

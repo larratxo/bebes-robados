@@ -18,7 +18,7 @@ Router.route('/', {
   action: function () {
     this.render('home');
   }, subscriptions: function () {
-    return subsManager.subscribe('Persons');
+    return subsManager.subscribe('PersonsForHome');
   },
   onStop: function () {
     if (Meteor.isClient) {
