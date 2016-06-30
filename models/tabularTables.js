@@ -99,8 +99,9 @@ renderFamiliar = function (val, type, doc) {
   // var hasFam = typeof doc.familiar === 'string';
   var hasFam = typeof val === 'string';
   var quien = doc.buscasBebe ? (hasFam ? val : '&nbsp;') : 'Hijo/a';
-  return '<a href="/persona/' + doc.familiar + '" title="Ir a la página del/la ' +
-         quien + '">' + quien + '</a>';
+  return quien;
+  // return '<a href="/persona/' + doc.familiar + '" title="Ir a la página del/la ' +
+  //       quien + '">' + quien + '</a>';
 };
 
 TabularTables.Persons = new Tabular.Table({

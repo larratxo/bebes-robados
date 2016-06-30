@@ -1,4 +1,4 @@
-/* global Template alertMessage Persons success */
+/* global Template alertMessage Persons success _ */
 Template.bebeAdminOps.helpers({
   text: function () { return this.item.validated ? 'Publicado' : 'No publicado'; },
   icon: function () { return this.item.validated ? 'fa-check' : 'fa-times'; },
@@ -11,14 +11,14 @@ var checkIcon = "<i class='fa fa-check'></i>&nbsp;";
 var uncheckIcon = "<i class='fa fa-times'></i>&nbsp;";
 
 Template.bebeAdminOps.events({
-  'mouseover .validate': function (e, template) {
+  'mouseover .validate': _.throttle(function (e, template) {
     var val = this.item.validated;
     e.currentTarget.innerHTML = val ? uncheckIcon + 'No publicar' : checkIcon + 'Publicar';
-  },
-  'mouseout .validate': function (e, template) {
+  }, 500),
+  'mouseout .validate': _.throttle(function (e, template) {
     var val = this.item.validated;
     e.currentTarget.innerHTML = val ? checkIcon + 'Publicado' : uncheckIcon + 'No publicado';
-  },
+  }, 500),
   'click .erase': function (e, template) {
     alertMessage('En desarrollo');
     e.stopImmediatePropagation();
