@@ -70,12 +70,12 @@ Template.home.onRendered(function () {
       }
     }
   });
- // _.defer(function () {
-    $('#fullpage').fullpage({
-      navigation: true,
-      navigationPosition: 'right'
-    });
- // });
+  // _.defer(function () {
+  $('#fullpage').fullpage({
+    navigation: true,
+    navigationPosition: 'right'
+  });
+  // });
 });
 
 var personPointer = function (nuevo, buscasBebe) {
