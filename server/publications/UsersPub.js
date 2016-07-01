@@ -24,11 +24,18 @@ Meteor.publish('some-user', function (username) {
   return user;
 });
 
-Meteor.publish('meAndMyData', function () {
-  // check(this.userId, String); // sometimes this is 'object'
+Meteor.publish('me', function () {
   var user = Meteor.users.find({_id: this.userId}, allUserFields);
-  var ad = AdCampaigns.find({ group: currentAdCampaign,
+  return user;
+});
+
+Meteor.publish('myCampaigns', function () {
+  var ads = AdCampaigns.find({ group: currentAdCampaign,
                               user: this.userId });
+  return ads;
+});
+
+Meteor.publish('myReports', function () {
   var persons = Persons.find({familiar: this.userId});
-  return [user, ad, persons];
+  return persons;
 });

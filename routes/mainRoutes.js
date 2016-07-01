@@ -15,9 +15,7 @@ var dataWebPage = function () {
 Router.route('/', {
   name: 'home',
   title: Meteor.App.NAME,
-  action: function () {
-    this.render('home');
-  }, subscriptions: function () {
+  waitOn: function () {
     return subsManager.subscribe('PersonsForHome');
   },
   onStop: function () {
@@ -60,7 +58,11 @@ Router.map(function () {
     title: 'Añade un bebe',
     waitOn: function () {
       // Workaround to wait Meter.user login
-      return subsManager.subscribe('meAndMyData');
+      return [
+        subsManager.subscribe('me')
+        // subsManager.subscribe('myCampaigns'),
+        // subsManager.subscribe('myReports')
+      ];
     }
   });
   this.route('abuseAdd', {
@@ -81,7 +83,11 @@ Router.map(function () {
     path: '/yo',
     title: 'Mis datos',
     waitOn: function () {
-      return subsManager.subscribe('meAndMyData');
+      return [
+        subsManager.subscribe('me'),
+        subsManager.subscribe('myCampaigns'),
+        subsManager.subscribe('myReports')
+      ];
     }
   });
 
