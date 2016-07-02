@@ -1,4 +1,5 @@
-/* global siteSettings:true, Mongo, Schema:true, SimpleSchema, Roles AdminSettingsTypes:true siteSettingsTypes Meteor Accounts */
+/* global siteSettings:true, Mongo, Schema:true, SimpleSchema, Roles AdminSettingsTypes:true siteSettingsTypes Meteor Accounts
+ defaultCreatedAt */
 
 siteSettings = new Mongo.Collection('siteSettings');
 
@@ -18,6 +19,7 @@ siteSettings.getSchema = function (type) {
     type: {
       type: String
     },
+    createdAt: defaultCreatedAt,
     value: siteSettingsTypes[type].value
   });
 };

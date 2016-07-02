@@ -21,6 +21,27 @@ Meteor.startup(function () {
   Migrations.add({
     version: 3,
     up: function () {
+    }
+  });
+  Migrations.add({
+    version: 4,
+    up: function () {
+    }
+  });
+  Migrations.add({
+    version: 5,
+    up: function () {
+    }
+  });
+  Migrations.add({
+    version: 6,
+    up: function () {
+    }
+  });
+  Migrations.add({
+    version: 7,
+    up: function () {
+      siteSettings._ensureIndex({name: 1}, {unique: 1});
       siteSettings.insert({
         name: 'site-main-name',
         value: 'REENCONTRAR.SE',
@@ -33,12 +54,6 @@ Meteor.startup(function () {
         description: 'Subtítulo de la web que sale en la cabecera',
         type: 'textarea'
       });
-      siteSettings._ensureIndex({name: 1}, {unique: 1});
-    }
-  });
-  Migrations.add({
-    version: 4,
-    up: function () {
       siteSettings.insert({
         name: 'home-slogan-1',
         value: 'Tras miles de casos de bebes robados',
@@ -57,32 +72,21 @@ Meteor.startup(function () {
         description: 'Texto de la página inicial por debajo del eslogan',
         type: 'textarea'
       });
-    }
-  });
-  Migrations.add({
-    version: 5,
-    up: function () {
       siteSettings.insert({
         name: 'adcampaign-1-slogan',
         value: 'En España hay miles casos de bebes robados, ayúdanos a reencontrarnos',
-        description: 'Eslogan de la campaña de difusión primera',
+        description: 'Eslogan de la primera campaña de difusión',
         type: 'textarea'
       });
-    }
-  });
-  Migrations.add({
-    version: 6,
-    up: function () {
       siteSettings.insert({
         name: 'email-subject-prefix',
         value: 'Red de Bebes Robados',
-        description: 'Nombre corto de esta iniciativa que se usa como prefijo en los títulos de los correos de verificación, etc que se envían a usuarios/as',
+        description: 'Nombre corto de esta iniciativa que se usa como prefijo en los títulos de los correos que se envían a usuarios/as de verificación, recuperación de contraseña, notificaciones, etc',
         type: 'string'
       });
     }
   });
-  Migrations.migrateTo('latest');
 
-  // Migrations.migrateTo('3,rerun');
-  // Migrations.migrateTo('4,rerun');
+  Migrations.migrateTo('latest');
+  // Migrations.migrateTo('7,rerun');
 });

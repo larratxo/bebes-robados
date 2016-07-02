@@ -274,6 +274,7 @@ TabularTables.siteSettings = new Tabular.Table({
   bPaginate: false,
   order: [[0, 'asc']],
   columns: [
+    {data: 'createdAt', title: 'Fecha', render: renderDateTime, className: 'abuse-date', visible: false},
     {data: '_id', title: 'ID', visible: false},
     {data: 'name', title: 'Nombre', visible: false},
     {data: 'description', title: 'Descripción'},

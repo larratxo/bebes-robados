@@ -1,4 +1,4 @@
-/* global abuseReports:true, Mongo, Schema:true, SimpleSchema, Roles */
+/* global abuseReports:true, Mongo, Schema:true, SimpleSchema, Roles defaultCreatedAt defaultUpdateAt */
 
 abuseReports = new Mongo.Collection('abuseReports');
 
