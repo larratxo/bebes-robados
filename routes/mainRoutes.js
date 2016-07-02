@@ -2,8 +2,8 @@
 
 // https://iron-meteor.github.io/iron-router/
 
+// https://github.com/kadirahq/subs-manager
 var subsManager = new SubsManager();
-subsManager.subscribe('siteSettings');
 
 var subWebPage = function () {
   return subsManager.subscribe('webPages', this.route.options.title);
