@@ -3,6 +3,8 @@ body {
     font-size: 16px;
 }
 
+/*  bebe-tabs */
+
 .bebe-tabs {
     margin-bottom: 0px;
 }
@@ -12,14 +14,43 @@ body {
     background-color: #F2F2F2;
 }
 
-ul.bebe-tabs .active a {
-    background-color: #e0e0e0 !important;
-}
-
 ul.bebe-tabs li a {
     overflow: hidden;
     white-space: nowrap;
 }
+
+.bebeform-content {
+    padding: 0px;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.bebeform-tabs {
+    padding-left: 0px;
+}
+
+.bebeform-tabs {
+    border-left: 1px solid #ddd;
+}
+
+.bebeform-tabs > ul {
+    border-left: 0px solid #ddd;
+}
+
+.bebeform-tabs > ul > li.active > a {
+    background-color: #F2F2F2 !important;
+}
+
+.bebe-tab-content {
+    min-height: 350px;
+}
+
+.bebeform-tabs-container {
+    margin-bottom: 30px;
+}y
+
+/* end bebe tabs */
 
 .lugarNacimientoMap-container,
 #cementerioEnterradoMap {
@@ -253,7 +284,8 @@ dropdown-menu a {
 }
 
 #comentarios {
-    height: 60px;
+    clear: both;
+    /* height: 60px; */
 }
 
 .comment-section {

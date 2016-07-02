@@ -1,7 +1,7 @@
 <template name="bebeForm">
   <!-- -*- engine:ctemplate -*- -->
   {{#autoForm collection="Persons" doc=doc id=id type=type }}
- <div class="page-header">
+    <div class="page-header">
       <h2>{{title}}</h2>
 
       <div class="btn-group title-btn" role="group">
@@ -40,173 +40,180 @@
       </div>
     {{/if}}
     <span class="help-block"></span>
+    <div class="bebeform-tabs-container row row-eq-height">
+      <div class="col-xs-9 bebeform-content">
+        <div class="tab-content bebe-tab-content">
+          <div role="tabpanel" class="tab-pane active" id="datosbasicos">
+            <legend>Datos del presunto robo</legend>
+            {{#if isEqual type "disabled"}}
+              <a href="{{pathFor 'viewUser' _id=doc.familiar}}">Persona que denuncia el presunto robo</a>.
+              <br>
+              <br>
+              {{! userGallery data=doc.familiar }}
+            {{/if}}
+            {{#if buscasBebe}}
+              {{> afQuickField name="parentesco" id="parentesco" options="allowed" firstOption="» Selecciona uno" }}
+            {{/if}}
 
-    <ul class="nav nav-tabs nav-justified bebe-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
-      {{#if isAddingAdminIsFamiliar }}
-        {{#if buscasBebe}}
-          <li role="presentation"><a href="#fallecimiento" aria-controls="fallecimiento" role="tab" data-toggle="tab">Fallecimiento</a></li>
-          <li role="presentation"><a href="#infomedica" aria-controls="infomedica" role="tab" data-toggle="tab">Personal médico</a></li>
-          <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
-        {{/if}}
-      {{/if}}
-      <li role="presentation"><a href="#fotos" aria-controls="fotos" role="tab" data-toggle="tab">Fotos</a></li>
-      {{#if isAddingAdminIsFamiliar }}
-        <li role="presentation"><a href="#otros" aria-controls="otros" role="tab" data-toggle="tab">Otras informaciones</a></li>
-      {{/if}}
-    </ul>
+            {{> afQuickField name='nombreCompleto' placeholder="Nombre y apellidos" id="nombreCompleto" }}
+            {{> afQuickField name="sexo" options="allowed" firstOption="» Selecciona uno" id="sexo" }}
 
-    <div class="tab-content bebe-tab-content">
-      <div role="tabpanel" class="tab-pane active" id="datosbasicos">
-        <legend>Datos del presunto robo</legend>
-        {{#if isEqual type "disabled"}}
-          <a href="{{pathFor 'viewUser' _id=doc.familiar}}">Persona que denuncia el presunto robo</a>.
-          <br>
-          <br>
-          {{! userGallery data=doc.familiar }}
-        {{/if}}
-        {{#if buscasBebe}}
-          {{> afQuickField name="parentesco" id="parentesco" options="allowed" firstOption="» Selecciona uno" }}
-        {{/if}}
-
-        {{> afQuickField name='nombreCompleto' placeholder="Nombre y apellidos" id="nombreCompleto" }}
-        {{> afQuickField name="sexo" options="allowed" firstOption="» Selecciona uno" id="sexo" }}
-
-        <div class="form-inline">
-          {{> afQuickField name="fechaNacimiento"}}
-          {{> afQuickField name="fechaNacimientoEsAprox" defaultValue=false}}
-        </div>
-
-        {{> afQuickField name="lugarNacimiento" id="lugarNacimiento" placeholder="Nombre del hospital si lo conoce (puede ser un nombre de un Hospital que ya no exista)" }}
-        {{> afQuickField name="lugarNacimientoDireccion" id="lugarNacimientoDireccion" placeholder="Dirección del lugar de nacimiento si lo conoce (o la localidad, si no conoce la dirección)" }}
-        <div class="form-inline">
-
-          {{> afQuickField name="lugarNacimientoPais" id="lugarNacimientoPais" options="allowed" firstOption=false value="España" label-style="display: none" }}
-          {{#if afFieldValueIs name="lugarNacimientoPais" value="España"}}          {{/if}}
-          {{> afQuickField name="lugarNacimientoProvincia" id="lugarNacimientoProvincia" type="select" firstOption=false class="ps-prov" label-style="display: inline" }}
-          {{> afQuickField name="lugarNacimientoMunicipio" id="lugarNacimientoMunicipio" type="select"  firstOption=false class="ps-mun" label-style="display: inline" }}
-          {{> afQuickField name="lugarNacimientoProvinciaNombre" id="lugarNacimientoProvinciaNombre" label-style="display: none" }}
-          {{> afQuickField name="lugarNacimientoMunicipioNombre" id="lugarNacimientoMunicipioNombre" label-style="display: none" }}
-          {{> afQuickField name="lugarNacimientoLatitud" id="lugarNacimientoLatitud" label-style="display: none" }}
-          {{> afQuickField name="lugarNacimientoLongitud" id="lugarNacimientoLongitud" label-style="display: none" }}
-        </div>
-        <div class="lugarNacimientoMap-container">
-          {{> googleMap name="lugarNacimientoMap" options=mapOptions }}
-        </div>
-
-        {{> afQuickField name="nombreCompletoMadre" placeholder="Nombre y apellidos" }}
-        {{> afQuickField name="nombreCompletoPadreOConyuge" placeholder="Nombre y apellidos" }}
-      </div>
-
-      <div role="tabpanel" class="tab-pane" id="fallecimiento">
-        <div class="form-inline">
-          {{> afQuickField name="fechaFallecimiento" }}
-          {{> afQuickField name="fechaFallecimientoEsAprox"}}
-        </div>
-
-        {{> afQuickField name="motivoMuerte" rows=5}}
-        <div class="form-inline">
-          {{> afQuickField name="vistoCadaver"}}
-        </div>
-        {{#if afFieldValueIs name="vistoCadaver" value=false}}
-          {{> afQuickField name="noVistoCadaverRazon" }}
-          {{#if afFieldValueIs name="noVistoCadaverRazon" value="otras"}}
-            {{> afQuickField name="noVistoCadaverOtrasRazones" rows=4}}
-          {{/if}}
-        {{/if}}
-
-        <div class="form-inline">
-          {{> afQuickField name="entierroPorHospital"}}
-        </div>
-        {{#if afFieldValueIs name="entierroPorHospital" value=true}}
-          {{> afQuickField name="entierroPorHospitalMotivos" }}
-          {{#if afFieldValueIs name="entierroPorHospitalMotivos" value="otras"}}
-            {{> afQuickField name="entierroPorHospitalOtrasRazones" rows=4}}
-          {{/if}}
-        {{/if}}
-
-        {{> afQuickField name="cementerioEnterrado" id="cementerioEnterrado" placeholder="Nombre del cementerio"}}
-        {{> afQuickField name="cementerioEnterradoDireccion" id="cementerioEnterradoDireccion" placeholder="Dirección del cementerio si lo conoce (o la localidad, si no conoce la dirección)" }}
-        <div id="cementerioEnterradoMap"></div>
-
-        <div class="form-inline">
-          {{> afQuickField name="posibilidadPruebasADN"}}
-        </div>
-        <div class="form-inline">
-          {{> afQuickField name="sepulturaTemporalPruebasADN"}}
-        </div>
-        <div class="form-inline">
-          {{> afQuickField name="enOsarioComun"}}
-          {{#if afFieldValueIs name="enOsarioComun" value=true}}
-            {{> afQuickField name="enOsarioComunDesdeFecha" buttonClasses="glyphicon glyphicon-calendar" }}
-          {{/if}}
-        </div>
-        {{> afQuickField name="motivosSospecha" rows=15}}
-      </div>
-
-      {{#if isAddingAdminIsFamiliar }}
-        <div role="tabpanel" class="tab-pane" id="infomedica">
-          <legend>Personal médico que figura en la documentación, trabajó en los establecimientos y/o pudiera tener información:</legend>
-          {{> afQuickField name="nombreCompletoMedico" }}
-          {{> afQuickField name="nombreCompletoMatrona" placeholder="Nombre y apellidos, sobrenombre o apodo"}}
-          {{> afQuickField name="nombreCompletoEnfermera" placeholder="Nombre y apellidos, sobrenombre o apodo"}}
-          {{> afQuickField name="nombreOtroPersonalMedico" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=4}}
-        </div>
-        <div role="tabpanel" class="tab-pane" id="funcionarios">
-          <legend>Funcionarios / trabajadores que figuran en la documentación, trabajaron en los establecimientos y/o pudieran tener información:</legend>
-          {{> afQuickField name="nombreFuncionariosRegCivil" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=2 }}
-          {{> afQuickField name="nombreFuncionariosCementario" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=2 }}
-          {{> afQuickField name="nombreTrabajadoresFuneraria" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=2 }}
-          {{> afQuickField name="nombreOtrosFuncionariosOTrabajadores" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=4 }}
-        </div>
-      {{/if}}
-      <div role="tabpanel" class="tab-pane" id="fotos">
-        {{#if isEqual type "disabled"}}
-          {{> photosGallery doc=this}}
-        {{else}}
-          <div class="form-inline">
-            <legend>Fotos</legend>
-            {{> uploadForm}}
-          </div>
-        {{/if}}
-      </div>
-      {{#if isAddingAdminIsFamiliar }}
-        <div role="tabpanel" class="tab-pane" id="otros">
-          {{> afQuickField name="gestionesRealizadasYDocumentos" rows=4}}
-          <div class="form-inline">
-            {{> afQuickField name="denunciaEnComisaria"}}
-          </div>
-          {{#if afFieldValueIs name="denunciaEnComisaria" value=true}}
-            {{> afQuickField name="denunciaEnComisariaEstadoTramitacion" rows=4}}
-          {{/if}}
-          <div class="form-inline">
-            {{> afQuickField name="denunciaEnGuardiaCivil"}}
-          </div>
-          {{#if afFieldValueIs name="denunciaEnGuardiaCivil" value=true}}
-            {{> afQuickField name="denunciaEnGuardiaCivilEstadoTramitacion" rows=4}}
-          {{/if}}
-          <div class="form-inline">
-            {{> afQuickField name="denunciaEnFiscalia"}}
-          </div>
-          {{#if afFieldValueIs name="denunciaEnFiscalia" value=true}}
-            {{> afQuickField name="denunciaEnFiscaliaEstadoTramitacion" rows=4}}
-          {{/if}}
-          <div class="form-inline">
-            {{> afQuickField name="denunciaEnJuzgado"}}
-          </div>
-          {{#if afFieldValueIs name="denunciaEnJuzgado" value=true}}
-            {{> afQuickField name="denunciaEnJuzgadoEstadoTramitacion" rows=4}}
-          {{/if}}
-          {{#if isEqual type "disabled"}}
-          {{else}}
             <div class="form-inline">
-              <!-- {{> afQuickField name="photos"  }} -->
-              <legend>Otros documentos</legend>
-              {{> uploadForm}}
+              {{> afQuickField name="fechaNacimiento"}}
+              {{> afQuickField name="fechaNacimientoEsAprox" defaultValue=false}}
+            </div>
+
+            {{> afQuickField name="lugarNacimiento" id="lugarNacimiento" placeholder="Nombre del hospital si lo conoce (puede ser un nombre de un Hospital que ya no exista)" }}
+            {{> afQuickField name="lugarNacimientoDireccion" id="lugarNacimientoDireccion" placeholder="Dirección del lugar de nacimiento si lo conoce (o la localidad, si no conoce la dirección)" }}
+            <div class="form-inline">
+
+              {{> afQuickField name="lugarNacimientoPais" id="lugarNacimientoPais" options="allowed" firstOption=false value="España" label-style="display: none" }}
+              {{#if afFieldValueIs name="lugarNacimientoPais" value="España"}}          {{/if}}
+              {{> afQuickField name="lugarNacimientoProvincia" id="lugarNacimientoProvincia" type="select" firstOption=false class="ps-prov" label-style="display: inline" }}
+              {{> afQuickField name="lugarNacimientoMunicipio" id="lugarNacimientoMunicipio" type="select"  firstOption=false class="ps-mun" label-style="display: inline" }}
+              {{> afQuickField name="lugarNacimientoProvinciaNombre" id="lugarNacimientoProvinciaNombre" label-style="display: none" }}
+              {{> afQuickField name="lugarNacimientoMunicipioNombre" id="lugarNacimientoMunicipioNombre" label-style="display: none" }}
+              {{> afQuickField name="lugarNacimientoLatitud" id="lugarNacimientoLatitud" label-style="display: none" }}
+              {{> afQuickField name="lugarNacimientoLongitud" id="lugarNacimientoLongitud" label-style="display: none" }}
+            </div>
+            <div class="lugarNacimientoMap-container">
+              {{> googleMap name="lugarNacimientoMap" options=mapOptions }}
+            </div>
+
+            {{> afQuickField name="nombreCompletoMadre" placeholder="Nombre y apellidos" }}
+            {{> afQuickField name="nombreCompletoPadreOConyuge" placeholder="Nombre y apellidos" }}
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="fallecimiento">
+            <div class="form-inline">
+              {{> afQuickField name="fechaFallecimiento" }}
+              {{> afQuickField name="fechaFallecimientoEsAprox"}}
+            </div>
+
+            {{> afQuickField name="motivoMuerte" rows=5}}
+            <div class="form-inline">
+              {{> afQuickField name="vistoCadaver"}}
+            </div>
+            {{#if afFieldValueIs name="vistoCadaver" value=false}}
+              {{> afQuickField name="noVistoCadaverRazon" }}
+              {{#if afFieldValueIs name="noVistoCadaverRazon" value="otras"}}
+                {{> afQuickField name="noVistoCadaverOtrasRazones" rows=4}}
+              {{/if}}
+            {{/if}}
+
+            <div class="form-inline">
+              {{> afQuickField name="entierroPorHospital"}}
+            </div>
+            {{#if afFieldValueIs name="entierroPorHospital" value=true}}
+              {{> afQuickField name="entierroPorHospitalMotivos" }}
+              {{#if afFieldValueIs name="entierroPorHospitalMotivos" value="otras"}}
+                {{> afQuickField name="entierroPorHospitalOtrasRazones" rows=4}}
+              {{/if}}
+            {{/if}}
+
+            {{> afQuickField name="cementerioEnterrado" id="cementerioEnterrado" placeholder="Nombre del cementerio"}}
+            {{> afQuickField name="cementerioEnterradoDireccion" id="cementerioEnterradoDireccion" placeholder="Dirección del cementerio si lo conoce (o la localidad, si no conoce la dirección)" }}
+            <div id="cementerioEnterradoMap"></div>
+
+            <div class="form-inline">
+              {{> afQuickField name="posibilidadPruebasADN"}}
+            </div>
+            <div class="form-inline">
+              {{> afQuickField name="sepulturaTemporalPruebasADN"}}
+            </div>
+            <div class="form-inline">
+              {{> afQuickField name="enOsarioComun"}}
+              {{#if afFieldValueIs name="enOsarioComun" value=true}}
+                {{> afQuickField name="enOsarioComunDesdeFecha" buttonClasses="glyphicon glyphicon-calendar" }}
+              {{/if}}
+            </div>
+            {{> afQuickField name="motivosSospecha" rows=15}}
+          </div>
+
+          {{#if isAddingAdminIsFamiliar }}
+            <div role="tabpanel" class="tab-pane" id="infomedica">
+              <legend>Personal médico que figura en la documentación, trabajó en los establecimientos y/o pudiera tener información:</legend>
+              {{> afQuickField name="nombreCompletoMedico" }}
+              {{> afQuickField name="nombreCompletoMatrona" placeholder="Nombre y apellidos, sobrenombre o apodo"}}
+              {{> afQuickField name="nombreCompletoEnfermera" placeholder="Nombre y apellidos, sobrenombre o apodo"}}
+              {{> afQuickField name="nombreOtroPersonalMedico" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=4}}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="funcionarios">
+              <legend>Funcionarios / trabajadores que figuran en la documentación, trabajaron en los establecimientos y/o pudieran tener información:</legend>
+              {{> afQuickField name="nombreFuncionariosRegCivil" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=2 }}
+              {{> afQuickField name="nombreFuncionariosCementario" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=2 }}
+              {{> afQuickField name="nombreTrabajadoresFuneraria" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=2 }}
+              {{> afQuickField name="nombreOtrosFuncionariosOTrabajadores" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=4 }}
+            </div>
+          {{/if}}
+          <div role="tabpanel" class="tab-pane" id="fotos">
+            {{#if isEqual type "disabled"}}
+              {{> photosGallery doc=this}}
+            {{else}}
+              <div class="form-inline">
+                <legend>Fotos</legend>
+                {{> uploadForm}}
+              </div>
+            {{/if}}
+          </div>
+          {{#if isAddingAdminIsFamiliar }}
+            <div role="tabpanel" class="tab-pane" id="otros">
+              {{> afQuickField name="gestionesRealizadasYDocumentos" rows=4}}
+              <div class="form-inline">
+                {{> afQuickField name="denunciaEnComisaria"}}
+              </div>
+              {{#if afFieldValueIs name="denunciaEnComisaria" value=true}}
+                {{> afQuickField name="denunciaEnComisariaEstadoTramitacion" rows=4}}
+              {{/if}}
+              <div class="form-inline">
+                {{> afQuickField name="denunciaEnGuardiaCivil"}}
+              </div>
+              {{#if afFieldValueIs name="denunciaEnGuardiaCivil" value=true}}
+                {{> afQuickField name="denunciaEnGuardiaCivilEstadoTramitacion" rows=4}}
+              {{/if}}
+              <div class="form-inline">
+                {{> afQuickField name="denunciaEnFiscalia"}}
+              </div>
+              {{#if afFieldValueIs name="denunciaEnFiscalia" value=true}}
+                {{> afQuickField name="denunciaEnFiscaliaEstadoTramitacion" rows=4}}
+              {{/if}}
+              <div class="form-inline">
+                {{> afQuickField name="denunciaEnJuzgado"}}
+              </div>
+              {{#if afFieldValueIs name="denunciaEnJuzgado" value=true}}
+                {{> afQuickField name="denunciaEnJuzgadoEstadoTramitacion" rows=4}}
+              {{/if}}
+              {{#if isEqual type "disabled"}}
+              {{else}}
+                <div class="form-inline">
+                  <!-- {{> afQuickField name="photos"  }} -->
+                  <legend>Otros documentos</legend>
+                  {{> uploadForm}}
+                </div>
+              {{/if}}
             </div>
           {{/if}}
         </div>
-      {{/if}}
+      </div> <!-- End col-xs-9 content -->
+      <div class="col-xs-3 bebeform-tabs">
+        <ul class="nav nav-tabs tabs-right">
+
+          <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
+          {{#if isAddingAdminIsFamiliar }}
+            {{#if buscasBebe}}
+              <li role="presentation"><a href="#fallecimiento" aria-controls="fallecimiento" role="tab" data-toggle="tab">Fallecimiento</a></li>
+              <li role="presentation"><a href="#infomedica" aria-controls="infomedica" role="tab" data-toggle="tab">Personal médico</a></li>
+              <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
+            {{/if}}
+          {{/if}}
+          <li role="presentation"><a href="#fotos" aria-controls="fotos" role="tab" data-toggle="tab">Fotos</a></li>
+          {{#if isAddingAdminIsFamiliar }}
+            <li role="presentation"><a href="#otros" aria-controls="otros" role="tab" data-toggle="tab">Otras informaciones</a></li>
+          {{/if}}
+
+        </ul>
+      </div> <!-- End tabs-left -->
     </div>
+
   {{/autoForm}}
 </template>
