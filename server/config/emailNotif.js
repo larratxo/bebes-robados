@@ -1,4 +1,4 @@
-/* global Email Roles Meteor check */
+/* global Email Roles Meteor check Accounts process */
 
 Meteor.methods({
   sendNotifToRole: function (role, subject, body) {
@@ -27,7 +27,7 @@ Meteor.methods({
     for (var k = 0; k < verifiedEmails.length; k++) {
       var email = verifiedEmails[k];
       Email.send({
-        from: 'Bebes Robados <noreply@comunes.org>',
+        from: Accounts.emailTemplates.from,
         to: email.address,
         subject: subject,
         text: body + '\n\n(...)\n\Accede en: ' + process.env.ROOT_URL

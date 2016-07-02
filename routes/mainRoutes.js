@@ -3,6 +3,7 @@
 // https://iron-meteor.github.io/iron-router/
 
 var subsManager = new SubsManager();
+subsManager.subscribe('siteSettings');
 
 var subWebPage = function () {
   return subsManager.subscribe('webPages', this.route.options.title);
@@ -215,7 +216,8 @@ Router.map(function () {
       return [
         subsManager.subscribe('AdCampaigns'),
         subsManager.subscribe('abuseReports'),
-        subsManager.subscribe('Persons')
+        subsManager.subscribe('Persons'),
+        subsManager.subscribe('siteSettings')
       ];
     }
   });

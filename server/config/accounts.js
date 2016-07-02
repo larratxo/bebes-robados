@@ -52,10 +52,6 @@ Accounts.onCreateUser(function (options, user) {
   return user;
 });
 
-Accounts.emailTemplates.siteName = 'Registro de Bebes Robados';
-
-Accounts.emailTemplates.from = 'noreply@comunes.org';
-
 Accounts.emailTemplates.enrollAccount.subject = function (user) {
   return 'Bienvenido/a ' + user.profile.name + ',';
 };

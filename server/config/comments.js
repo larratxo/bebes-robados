@@ -1,4 +1,4 @@
-/* global Comments Meteor Email Persons */
+/* global Comments Meteor Email Persons Accounts process */
 
 var sendNotif = function (userId, comment) {
   // console.log(comment);
@@ -11,7 +11,7 @@ var sendNotif = function (userId, comment) {
     var commenter = Meteor.users.findOne({_id: userId});
     if (email.verified) {
       Email.send({
-        from: 'Bebes Robados <noreply@comunes.org>',
+        from: Accounts.emailTemplates.from,
         to: email.address,
         subject: 'Tienes un nuevo comentario de ' + commenter.username,
         text: comment.content + '\n\n(...)\n\Continua leyendo en: ' + process.env.ROOT_URL

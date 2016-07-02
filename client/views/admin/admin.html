@@ -1,25 +1,22 @@
 <template name="bebeAdmin">
+  <!-- -*- engine:ctemplate -*- -->
   <div class="page-header">
     <h1>Administración</h1>
   </div>
 
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#cuentas" aria-controls="cuentas" role="tab" data-toggle="tab">Usuarios/as</a></li>
-    <li role="presentation"><a href="#blog" aria-controls="blog" role="tab" data-toggle="tab">Blog</a></li>
-    <li role="presentation"><a href="#difusion" aria-controls="difusion" role="tab" data-toggle="tab">Difusión</a></li>
-    <li role="presentation"><a href="#reportes" aria-controls="reportes" role="tab" data-toggle="tab">Reportes de abusos</a></li>
-    <li role="presentation"><a href="#backups" aria-controls="backups" role="tab" data-toggle="tab">Backups</a></li>
+    <li role="presentation" class="active"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-gear"></i> Configuración</a></li>
+    <li role="presentation"><a href="#blog" aria-controls="blog" role="tab" data-toggle="tab"><i class="fa fa-newspaper-o"></i> Blog</a></li>
+    <li role="presentation"><a href="#difusion" aria-controls="difusion" role="tab" data-toggle="tab"><i class="fa fa-bullhorn"></i> Difusión</a></li>
+    <li role="presentation"><a href="#reportes" aria-controls="reportes" role="tab" data-toggle="tab"><i class="fa fa-flag"></i> Reportes de abusos</a></li>
+    <li role="presentation"><a href="#cuentas" aria-controls="cuentas" role="tab" data-toggle="tab"><i class="fa fa-user"></i> Usuarios/as</a></li>
+    <li role="presentation"><a href="#backups" aria-controls="backups" role="tab" data-toggle="tab"><i class="fa fa-download"></i> Backups</a></li>
+
   </ul>
 
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in active" id="cuentas">
-      <br>
-      <br>
-      Sobre los roles: <em>adminRole</em> y <em>authorRole</em> se usan solo para la gestión del blog, mientras que el rol <em>admin</em> es el rol general de administración de esta web y que sirve gestionar usuarios/as, roles, etc.
-      <br>
-      <br>
-
-      {{> accountsAdminCustom }}
+    <div role="tabpanel" class="tab-pane fade in active" id="settings">
+      {{> siteSettingsAdmin }}
     </div>
     <div role="tabpanel" class="tab-pane fade" id="blog">
       {{> blogAdmin }}
@@ -29,6 +26,15 @@
     </div>
     <div role="tabpanel" class="tab-pane fade" id="reportes">
       {{> abuseAdmin }}
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="cuentas">
+      <br>
+      <br>
+      Sobre los roles: <em>adminRole</em> y <em>authorRole</em> se usan solo para la gestión del blog, mientras que el rol <em>admin</em> es el rol general de administración de esta web y que sirve gestionar usuarios/as, roles, etc.
+      <br>
+      <br>
+
+      {{> accountsAdminCustom }}
     </div>
     <div role="tabpanel" class="tab-pane fade" id="backups">
       <br>
@@ -40,8 +46,9 @@
         <li>Las imágenes: por ahora no disponemos de una forma pública de hacer backups (y por el volumen, es probable que no sea trivial de hacer)</li>
       </ul>
       <br>
-      {{> appDumpUI}}
+      {{> appDumpUI }}
     </div>
+
   </div>
 
 </template>

@@ -1,7 +1,7 @@
 /* global TabularTables:true,moment, tabLanguageEs:true,renderDate:true,
  isValidLatLng,renderSexo:true, renderSexoAlt:true, renderGeo:true,renderAprox:true,
  decorateNacAprox:true,setEmptyTable:true, renderNuevo:true,renderFamiliar:true, Tabular, isNew, $, Persons, AdCampaigns
- renderCheckbox:true Meteor Template abuseReports Roles */
+ renderCheckbox:true Meteor Template abuseReports Roles siteSettings */
 // https://github.com/aldeed/meteor-tabular
 // Comparison: http://reactive-table.meteor.com/
 
@@ -208,6 +208,10 @@ var renderReporter = function (val, type, doc) {
   return renderPersona(doc.reporter, '');
 };
 
+var renderValue = function (val, type, doc) {
+  return '<span title="Pulsa para editar">' + val + '</val>';
+}
+
 TabularTables.AdCampagins = new Tabular.Table({
   name: 'AdCampaigns',
   collection: AdCampaigns,
@@ -251,7 +255,6 @@ TabularTables.abuseReports = new Tabular.Table({
   name: 'abuseReports',
   collection: abuseReports,
   language: tabLanguageEs,
-  // https://datatables.net/examples/basic_init/table_sorting.htmlv
   order: [[1, 'desc']],
   columns: [
     {data: 'createdAt', title: 'Fecha', render: renderDateTime, className: 'abuse-date'},
@@ -259,5 +262,22 @@ TabularTables.abuseReports = new Tabular.Table({
     {data: 'reported', title: 'Denunciado', render: renderReported, className: 'column-center'},
     {data: 'reporter', title: 'Denuncia', render: renderReporter, className: 'column-center'},
     {data: 'text', title: 'Texto', className: 'abuse-report'}
+  ]
+});
+
+TabularTables.siteSettings = new Tabular.Table({
+  name: 'siteSettings',
+  collection: siteSettings,
+  language: tabLanguageEs,
+  autoWidth: false,
+  limit: 500,
+  bPaginate: false,
+  order: [[0, 'asc']],
+  columns: [
+    {data: '_id', title: 'ID', visible: false},
+    {data: 'name', title: 'Nombre', visible: false},
+    {data: 'description', title: 'Descripción'},
+    {data: 'value', title: 'Valor', render: renderValue, className: 'site-setting-value-column'},
+    {data: 'type', title: 'Tipo', visible: false}
   ]
 });

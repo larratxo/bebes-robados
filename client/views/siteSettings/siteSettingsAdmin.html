@@ -1,0 +1,14 @@
+<template name="siteSettingsAdmin">
+  <!-- -*- engine:ctemplate -*- -->
+  <div class="page-header">
+    <h2>Configuración de esta web</h2>
+  </div>
+  Aquí puedes configurar algunos parámetros de esta web, como los textos de la cabecera, o de la página inicial. Simplemente pulsa en la entrada que quieres modificar, edítala, y sálvala.
+  <br>
+  <br>
+
+  {{> tabular table=TabularTables.siteSettings class="table table-striped table-bordered table-condensed"}}
+  {{#if editing}}
+  {{> siteSettingsForm doc=setting }}
+  {{/if}}
+</template>

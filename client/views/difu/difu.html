@@ -1,4 +1,5 @@
 <template name='difu'>
+  <!-- -*- engine:ctemplate -*- -->
   <a href='{{headerLink}}' target='_blank'>
     <div class='bebepub-main' style='background-image: url("{{backImage}}")'>
       <div class='bebepub-main-wrapper'>
@@ -14,7 +15,7 @@
 	  <div class='bebepub-textarea-subheader bebepub-dark'>
 	    <div class='bebepub-subheader'>
               <a href='{{subHeaderLink}}' target='_blank'>
-	        {{adSubHeader}}
+	        {{siteSetting 'adcampaign-1-slogan'}}
               </a>
             </div>
 	  </div>

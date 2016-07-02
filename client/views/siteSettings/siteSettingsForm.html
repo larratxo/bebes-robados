@@ -1,0 +1,11 @@
+<template name="siteSettingsForm">
+  <!-- -*- engine:ctemplate -*- -->
+
+  {{#autoForm collection="siteSettings" type="update" template="bootstrap3-horizontal" schema=schema label-class="col-sm-3" input-col-class="col-sm-9" doc=doc id="siteSettingEdit" }}
+  <br>
+  <br>
+  {{> afQuickField name="value" label='Editar:' autofocus=''}}
+  <button type="submit" class="settings-save btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+  {{/autoForm}}
+
+</template>
