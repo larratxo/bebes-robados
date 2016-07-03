@@ -216,8 +216,7 @@ Router.map(function () {
       return [
         subsManager.subscribe('AdCampaigns'),
         subsManager.subscribe('abuseReports'),
-        subsManager.subscribe('Persons'),
-        subsManager.subscribe('siteSettings')
+        subsManager.subscribe('Persons')
       ];
     }
   });
