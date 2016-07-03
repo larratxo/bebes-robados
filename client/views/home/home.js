@@ -72,6 +72,7 @@ Template.home.onRendered(function () {
   });
   // _.defer(function () {
   $('#fullpage').fullpage({
+    responsiveHeight: 600, //  normal scroll when the window size gets smaller than 600px width
     navigation: true,
     navigationPosition: 'right'
   });
