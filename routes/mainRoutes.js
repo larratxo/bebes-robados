@@ -16,7 +16,8 @@ var dataWebPage = function () {
 Router.route('/', {
   name: 'home',
   title: Meteor.App.NAME,
-  waitOn: function () {
+  // Using waitOn you get the loading page at startup
+  subscriptions: function () {
     return subsManager.subscribe('PersonsForHome');
   },
   onStop: function () {
