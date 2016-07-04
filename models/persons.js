@@ -202,7 +202,7 @@ Schema.Persons = new SimpleSchema({
   denunciaEnJuzgadoEstadoTramitacion: {type: String, optional: true},
   photos: {
     type: [String],
-    label: 'Fotos tuyas o de familiares que puedan ayudar al reencuentro', optional: true
+    optional: true
   },
   'photos.$': {
     autoform: {

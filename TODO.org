@@ -6,6 +6,11 @@ Lista de Tareas
 *** Uploads de documentos, mensaje cuando no deja por tipo
 *** You need en comentarios ... al español
 *** Upload de campañas: revisar fichero pequeños
+** Usar flags
+Meteor.isDevelopment
+Meteor.isProduction
+Meteor.isTest
+Meteor.isAppTest
 ** PDF con campañas
 https://github.com/pascoual/meteor-pdfkit
 https://github.com/khronedev/img-qrcode/

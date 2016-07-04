@@ -1,33 +1,36 @@
-/* global Template ReactiveVar success $ _ moment filesize Photos Meteor AutoForm */
+/* global Template ReactiveVar $ _ moment filesize aFilesCollection Meteor AutoForm */
+
 AutoForm.addInputType('multiFileUpload', {
   template: 'uploadForm',
   valueOut: function () {
-    return this.val();
+    var value = typeof this.val() === 'string' ? this.val().split(',') : [];
+    // console.log(value);
+    return value;
+  },
+  contextAdjust: function (context) {
+    context.atts['class'] = (context.atts['class'] || '') + ' multiFileUpload-field';
+    return context;
   }
 });
 
 Template.uploadForm.onCreated(function () {
-  this.currentUpload = new ReactiveVar(false);
+  // this.currentUpload = new ReactiveVar(false);
+  this.value = new ReactiveVar([]);
 });
-Template.uploadForm.helpers({
-  currentUpload: function () {
-    return Template.instance().currentUpload.get();
-  }
-});
+
 Template.uploadForm.onCreated(function () {
+  var self = this;
+  // console.log(self);
   this.error = new ReactiveVar(false);
   this.uploadInstance = new ReactiveVar(false);
-  this.initiateUpload = function () {
-    success('En desarrollo');
-  };
-  return this.initiateUpload2 = function (event, files, template) {
+  return this.initiateUpload = function (event, files, template) {
     var cleanUploaded, created_at, i, len, radio, ref, uploads;
     if (!files.length) {
-      template.error.set('Please select a file to upload');
+      template.error.set('Por favor, selecciona un fichero para subir');
       return false;
     }
-    if (files.length > 6) {
-      template.error.set('Please select up to 6 files');
+    if (files.length > 10) {
+      template.error.set('Por favor, selecciona hasta diez ficheros');
       return;
     }
     cleanUploaded = function (current) {
@@ -49,22 +52,27 @@ Template.uploadForm.onCreated(function () {
     var transport = 'ddp'; // http (faster but only works with sticky sessions)
     created_at = +(new Date());
     uploads = [];
+    // console.log(self.data);
+    var collection = aFilesCollection[self.data.atts.collection];
     return _.each(files, function (file) {
-      return Photos.insert({
+      return collection.insert({
         file: file,
         meta: {
           created_at: created_at
-            // person: template.person_id
         },
         streams: 'dynamic',
         chunkSize: 'dynamic',
         transport: transport
       }, false).on('end', function (error, fileObj) {
+        // console.log(fileObj);
         if (!error && files.length === 1) {
           // FlowRouter.go('file', {
           //   _id: fileObj._id
           // });
         }
+        template.value.get().push(fileObj._id);
+        self.data.value = template.value.get();
+        // console.log(template.value.get());
         cleanUploaded(this);
       }).on('abort', function () {
         cleanUploaded(this);
@@ -81,13 +89,19 @@ Template.uploadForm.onCreated(function () {
     });
   };
 });
+
 Template.registerHelper('filesize', function (size) {
   if (size == null) {
     size = 0;
   }
   return filesize(size);
 });
+
 Template.uploadForm.helpers({
+  /* value: function () {
+    console.log(Template.instance().value.get());
+    return Template.instance().value.get();
+  }, */
   error: function () {
     return Template.instance().error.get();
   },
@@ -98,6 +112,10 @@ Template.uploadForm.helpers({
     return filesize(this.estimateSpeed.get(), {
       bits: true
     }) + '/s';
+  },
+  onPause: function () {
+    // console.log(this.onPause.get());
+    return this.onPause.get();
   },
   estimateDuration: function () {
     var duration;
@@ -120,6 +138,7 @@ Template.uploadForm.helpers({
     return hours + ':' + minutes + ':' + seconds;
   }
 });
+
 Template.uploadForm.events({
   'click #pause': function () {
     return this.pause();

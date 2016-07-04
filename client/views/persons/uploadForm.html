@@ -1,0 +1,48 @@
+<template name="uploadForm">
+  <!-- -*- engine:ctemplate -*- -->
+  <form id="uploadFile" class="navbar-form center">
+    {{#if error}}
+      <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+
+    {{#unless uploadInstance}}
+      <div class="input-group select-form">
+        <input title="Selecciona fichero" type="file" name="userfile" multiple class="form-control btn btn-default"/>
+        <input type="hidden" value="{{value}}" {{this.atts}} class="js-value"/>
+        <span class="input-group-btn">
+          <button type="submit" title="Subir fichero" class="btn btn-primary"><i class="fa fa-lg fa-cloud-upload"></i> Subir</button>
+        </span>
+      </div>
+    {{else}}
+      <table class="upload-form-container">
+        <tbody>
+          {{#each uploadInstance}}
+            {{#if compare state.get 'isnt' 'aborted'}}
+              <tr>
+                <!-- <td>
+                     <div class="btn-group"> -->
+                     {{!-- #if onPause --}}
+                <!-- <button id="continue" type="button" title="Restaurar subida" class="btn btn-default btn-sm"><i class="fa fa-fw fa-play"></i></button> -->
+                     {{!-- else--}}
+                <!-- <button id="pause" type="button" title="Pausar subida" class="btn btn-default btn-sm"><i class="fa fa-fw fa-pause"></i></button> -->
+                     {{!-- /if--}}
+                <!-- <button id="abort" type="button" title="Abortar subida" class="btn btn-default btn-sm"><i class="fa fa-fw fa-stop"></i></button>
+                     </div>
+                     </td> -->
+                <td class="progress-td">
+                  <div class="progress center">
+                    <div aria-valuemin="0" aria-valuemax="100" style="width: {{progress.get}}%" class="progress-bar progress-bar-striped active"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="center"><small style="margin-bottom: 10px" class="text-center help-block">Subiendo <b>{{file.name}}</b>
+                  <!-- Tiempo restante: {{estimateDuration}} | Velocidad: {{estimateBitrate}} --></small></td>
+              </tr>
+            {{/if}}
+          {{/each}}
+        </tbody>
+      </table>
+    {{/unless}}
+  </form>
+</template>

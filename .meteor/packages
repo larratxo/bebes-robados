@@ -49,13 +49,10 @@ rzymek:moment-locale-es
 arkham:comments-ui
 email
 utilities:avatar
-cfs:filesystem
-cfs:standard-packages
 sacha:spin
 gadicohen:sitemaps
 coffeescript
 zimme:active-route
-cfs:graphicsmagick
 andruschka:bootstrap-image-gallery
 selaias:cookie-consent
 pcel:loading

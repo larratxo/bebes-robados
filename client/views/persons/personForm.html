@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    {{#if isEqual type "readonly"}}
+    {{#if isEqual type "disabled"}}
       {{> queBusca doc=doc}}
     {{else}}
       <div class="form-inline">
@@ -70,7 +70,8 @@
             <div class="form-inline">
 
               {{> afQuickField name="lugarNacimientoPais" id="lugarNacimientoPais" options="allowed" firstOption=false value="España" label-style="display: none" }}
-              {{#if afFieldValueIs name="lugarNacimientoPais" value="España"}}          {{/if}}
+              {{#if afFieldValueIs name="lugarNacimientoPais" value="España"}}
+              {{/if}}
               {{> afQuickField name="lugarNacimientoProvincia" id="lugarNacimientoProvincia" type="select" firstOption=false class="ps-prov" label-style="display: inline" }}
               {{> afQuickField name="lugarNacimientoMunicipio" id="lugarNacimientoMunicipio" type="select"  firstOption=false class="ps-mun" label-style="display: inline" }}
               {{> afQuickField name="lugarNacimientoProvinciaNombre" id="lugarNacimientoProvinciaNombre" label-style="display: none" }}
@@ -150,11 +151,19 @@
           {{/if}}
           <div role="tabpanel" class="tab-pane" id="fotos">
             {{#if isEqual type "disabled"}}
-              {{> photosGallery doc=this}}
+              {{#if buscasBebe}}
+                <legend>Fotos relacionadas con este caso</legend>
+              {{else}}
+                <legend>Fotos de esta persona</legend>
+              {{/if}}
+              {{> photosGallery collection="Photos" photos=doc.photos}}
             {{else}}
-              <div class="form-inline">
-                <legend>Fotos</legend>
-                {{> uploadForm}}
+              <div class="form-inline form-photos">
+                <legend>Fotos tuyas o de otros familiares que puedan ayudar al reencuentro</legend>
+                {{#if tieneFotos}}
+                  {{> photosGallery collection="Photos" photos=doc.photos }}
+                {{/if}}
+                {{> afQuickField name="photos" collection="Photos" label=false type="multiFileUpload"}}
               </div>
             {{/if}}
           </div>
@@ -186,11 +195,17 @@
                 {{> afQuickField name="denunciaEnJuzgadoEstadoTramitacion" rows=4}}
               {{/if}}
               {{#if isEqual type "disabled"}}
+                {{#if isFamiliarOrAdmin}}
+                <!-- TODO: download links -->
+                {{/if}}
               {{else}}
-                <div class="form-inline">
-                  <!-- {{> afQuickField name="photos"  }} -->
-                  <legend>Otros documentos</legend>
-                  {{> uploadForm}}
+                <div class="form-inline form-attachs">
+                  <hr>
+                  <legend>Otros documentos que quieras aportar</legend>
+                  {{> afQuickField name="attachs" collection="Attachs" label=false type="multiFileUpload"}}
+                  <small class="text-muted">
+                    Estos documentos no se harán públicos
+                  </small>
                 </div>
               {{/if}}
             </div>

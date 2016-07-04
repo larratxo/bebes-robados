@@ -46,8 +46,6 @@ cfs:collection@0.5.5
 cfs:collection-filters@0.2.4
 cfs:data-man@0.0.6
 cfs:file@0.1.17
-cfs:filesystem@0.1.2
-cfs:graphicsmagick@0.0.18
 cfs:gridfs@0.0.33
 cfs:http-methods@0.0.32
 cfs:http-publish@0.0.13
@@ -173,7 +171,7 @@ observe-sequence@1.0.12
 okgrow:router-autoscroll@0.1.8
 ordered-dict@1.0.8
 ostrio:cookies@2.0.4
-ostrio:files@1.5.6
+ostrio:files@1.6.1
 ostrio:meteor-root@1.0.3
 ostrio:templatehelpers@1.1.2
 pcel:loading@1.0.3

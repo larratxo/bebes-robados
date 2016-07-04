@@ -35,16 +35,11 @@
       </div>
     </div>
   </div>
-  {{#if tieneFotos}}
-    <label class="col-sm-3 control-label">Fotos de esta persona y familiares</label>
-  {{else}}
-
-  {{/if}}
-  <div id="links" class="col-sm-9">
-    {{#each fotos}}
+  <div id="links" class="">
+    {{#each fileRef in fotos}}
       <div>
-        <a href="{{this.url store='images'}}" target="_blank" title="{{this.name store='images'}}" data-gallery>
-          <img src="{{this.url store='thumbs' }}" class="img-fileUpload-thumbnail img-thumbnail img-rounded" alt="{{this.name store='images'}}">
+        <a href="{{fileURL fileRef}}" target="_blank" title="{{fileRef.name}}" data-gallery>
+          <img src="{{fileURL fileRef 'thumb'}}" class="img-fileUpload-thumbnail img-thumbnail img-rounded" alt="{{fileRef.name}}">
         </a>
       </div>
     {{/each}}

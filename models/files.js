@@ -1,51 +1,97 @@
-/* global SimpleSchema FilesCollection Meteor _ personPhotos:true personAttachs:true Roles Photos:true Attachs:true */
+/* global FilesCollection Meteor _ aFilesCollection:true personPhotos:true personAttachs:true Roles Photos:true Attachs:true */
+
+var createThumb = function (fileObj, readStream, writeStream) {
+ // // Transform the image into a 200x200px thumbnail
+ //  // TODO check gm.isAvailable
+ //  gm(readStream, fileObj.name()).resize('200', '200')
+ //    .stream().pipe(writeStream);
+};
 
 // https://github.com/VeliovGroup/Meteor-Files/issues/99
-var storePathConfig = function () {
+var storagePathConfig = function () {
   return Meteor.settings.public.isProduction ? '/opt/bebes-uploads/' : '/opt/bebes-uploads/dev';
 };
 
-function checkLimitAndExt (validExt, validSize, megaLimit) {
+var checkLimitAndExt = function (validExt, validSize, megaLimit) {
   if (validSize && validExt) {
     return true;
   } else {
-    if (validSize) {
+    if (!validSize) {
       return 'Tipo de fichero no permitido';
     } else {
       return 'Por favor, sube ficheros con un tamaño máximo de ' + megaLimit + 'MB';
     }
   }
-}
+};
+
+var onlyOwnerAndAdminsAllowed = function () {
+  if (this.userId) {
+    if (this.file.meta.owner === this.userId || Roles.userIsInRole(this.userId, ['admin'])) {
+      // Allow upload only if
+      // current user is signed-in
+      // and has role is `admin` or is the owner
+      return true;
+    }
+  }
+  return false;
+};
+
+var defThrottle = Meteor.isDevelopment ? 1024 * 512 : false; // For downloads
+
+var defCacheControl = 'public, max-age=31536000'; // 1 año
 
 Photos = new FilesCollection({
   collectionName: 'Photos',
+  downloadRoute: '/ficheros/fotos',
   allowClientCode: false, // Disallow remove files from Client
-  storePath: storePathConfig,
+  storagePath: storagePathConfig,
+  throttle: defThrottle,
+  cacheControl: defCacheControl,
   onBeforeUpload: function (file) {
-
     var megaLimit = 10;
-    var validExt = /png|jpg|jpeg/i.test(file.ext);
-    var validSize = file.size <= megaLimit * 1024 * 1024;
+    var validExt = Meteor.isServer ? true : /png|jpg|jpeg/i.test(file.ext);
+    var validSize = file.size <= (megaLimit * 1024 * 1024);
     // console.log('File ext: ' + file.ext);
+    // console.log('File valid ext: ' + validExt);
+    // console.log('File valid size: ' + validSize);
     return checkLimitAndExt(validExt, validSize, megaLimit);
-  }
+  },
+  onBeforeRemove: onlyOwnerAndAdminsAllowed()
 });
 
 Attachs = new FilesCollection({
   collectionName: 'Attachs',
+  downloadRoute: '/ficheros/attachs',
   allowClientCode: false, // Disallow remove files from Client
-  storePath: storePathConfig,
+  storagePath: storagePathConfig,
+  cacheControl: defCacheControl,
+  throttle: defThrottle,
   onBeforeUpload: function (file) {
     var megaLimit = 20;
-    var validExt = /png|jpg|jpeg|pdf|doc|odf|xls/i.test(file.ext);
-    var validSize = file.size <= megaLimit * 1024 * 1024;
+    var validExt = Meteor.isServer ? true : /png|jpg|jpeg|pdf|doc|odf|xls/i.test(file.ext);
+    var validSize = file.size <= (megaLimit * 1024 * 1024);
     return checkLimitAndExt(validExt, validSize, megaLimit);
+  },
+  onBeforeRemove: onlyOwnerAndAdminsAllowed(),
+  // If true - files will be served only to authorized users,
+  protected: function (fileObj) {
+    // Check if user is own this file
+    if (fileObj.meta.owner === this.userId || Roles.userIsInRole(this.userId, ['admin'])) {
+      return true;
+    } else {
+      return false;
+    }
   }
 });
 
-// https://github.com/VeliovGroup/Meteor-Files/wiki/Schema
-Photos.collection.attachSchema(new SimpleSchema(Photos.schema));
-Attachs.collection.attachSchema(new SimpleSchema(Attachs.schema));
+aFilesCollection = {
+  'Attachs': Attachs,
+  'Photos': Photos
+};
+
+// https://github.com/VeliovGroup/Meteor-Files/wiki/Constructor#attach-schema-isomorphic
+/* Photos.collection.attachSchema(new SimpleSchema(Photos.schema));
+Attachs.collection.attachSchema(new SimpleSchema(Attachs.schema)); */
 
 if (Meteor.isServer) {
   Photos.allow({
@@ -63,6 +109,7 @@ if (Meteor.isServer) {
       return false;
     }
   });
+  Photos.allowClient();
 
   Attachs.allow({
     // TODO: more perms here
@@ -79,6 +126,7 @@ if (Meteor.isServer) {
       return false;
     }
   });
+  Attachs.allowClient();
 }
 
 personPhotos = function (person) {
@@ -115,9 +163,9 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.publish('files.photos.all', function () {
-    return Photos.collection.find({});
+    return Photos.find().cursor;
   });
   Meteor.publish('files.attachs.all', function () {
-    return Attachs.collection.find({});
+    return Attachs.find().cursor;
   });
 }

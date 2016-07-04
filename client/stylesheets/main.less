@@ -28,10 +28,8 @@ ul.bebe-tabs li a {
 
 .bebeform-tabs {
     padding-left: 0px;
-}
-
-.bebeform-tabs {
     border-left: 1px solid #ddd;
+    padding-right: 0px;
 }
 
 .bebeform-tabs > ul {
@@ -48,7 +46,7 @@ ul.bebe-tabs li a {
 
 .bebeform-tabs-container {
     margin-bottom: 30px;
-}y
+}
 
 /* end bebe tabs */
 
@@ -733,22 +731,6 @@ button.btn.btn-xs.validate {
     bottom: 70px !important;
 }
 
-#uploadFile> div> span> button,
-#uploadFile> div> input {
-    height: 50px;
-}
-
-#uploadFile> div> input {
-    padding-top: 10px;
-}
-
-#uploadFile> div> input,
-#uploadFile> div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .obj-section h3 {
     padding-bottom: 30px;
     font-size: 26px;
@@ -797,7 +779,7 @@ table.dataTable.table-condensed .sorting:after, table.dataTable.table-condensed 
 /* cropper */
 
 #imagecropper {
-  max-width: 100%; /* This rule is very important, please do not ignore this! */
+    max-width: 100%; /* This rule is very important, please do not ignore this! */
 }
 
 .cropper-container {
@@ -814,3 +796,39 @@ td.site-setting-value-column:hover {
 }
 
 /* end: site settings */
+
+/* upload form */
+
+.progress {
+    margin-bottom: 0px;
+}
+
+.progress-td {
+    width: 100%;
+}
+
+.form-attachs > .form-group,
+.form-photos > .form-group,
+.upload-form-container,
+#uploadFile {
+    width: 100%;
+    padding: 0;
+}
+
+#uploadFile> div> span> button,
+#uploadFile> div> input {
+    height: 50px;
+}
+
+#uploadFile> div> input {
+    padding-top: 10px;
+}
+
+#uploadFile> div> input,
+#uploadFile> div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* end: upload form */

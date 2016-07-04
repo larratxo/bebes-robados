@@ -1,11 +1,14 @@
-/* global Template, _,  */
+/* global Template _ aFilesCollection */
 
 Template.photosGallery.helpers({
-  images: function () {
-    return this.doc.photos;
-  },
   tieneFotos: function () {
-    var fotos = this.doc.photos;
+    var fotos = this.photos;
     return _.isArray(fotos) && fotos.length > 0;
+  },
+  fotos: function () {
+    var fotosIds = this.photos;
+    var fileCollection = aFilesCollection[this.collection];
+    var fotos = fileCollection.collection.find({ _id: { $in: fotosIds } });
+    return fotos;
   }
 });

@@ -1,0 +1,15 @@
+<template name="simpleUploadForm">
+  <!-- -*- engine:ctemplate -*- -->
+  <div id="uploadFile">
+    {{#with currentUpload}}
+    Subiendo <b>{{file.name}}</b>
+    {{else}}
+    <div class="input-group select-form">
+      <input title="Selecciona fichero" id="fileInput" type="file" name="userfile" required="required" multiple="multiple" class="form-control btn btn-default"/>
+ <span class="input-group-btn">
+        <button type="submit" title="Subir fichero" class="btn btn-primary"><i class="fa fa-lg fa-cloud-upload"></i>Subir</button>
+      </span>
+    </div>
+    {{/with}}
+  </div>
+</template>
