@@ -43,9 +43,7 @@ Sample of settings to use Open Web Analytics:
         }
     }
 }
-
 ```
-
 
 ## Desarrolladores
 

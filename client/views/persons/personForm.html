@@ -83,8 +83,27 @@
               {{> googleMap name="lugarNacimientoMap" options=mapOptions }}
             </div>
 
+            {{#if isEqual type "disabled"}}
+              {{#if buscasBebe}}
+                <legend>Fotos relacionadas con este caso</legend>
+              {{else}}
+                <legend>Fotos de esta persona</legend>
+              {{/if}}
+              <div class="row">
+                {{> photosGallery collection="Photos" photos=doc.photos}}
+              </div>
+            {{else}}
+              <div class="form-inline form-photos">
+                <legend>Fotos tuyas o de otros familiares que puedan ayudar al reencuentro</legend>
+                {{> afQuickField name="photos" collection="Photos" label=false type="multiFileUpload"}}
+              </div>
+            {{/if}}
+
+            <legend>Familiares</legend>
+
             {{> afQuickField name="nombreCompletoMadre" placeholder="Nombre y apellidos" }}
             {{> afQuickField name="nombreCompletoPadreOConyuge" placeholder="Nombre y apellidos" }}
+
           </div>
 
           <div role="tabpanel" class="tab-pane" id="fallecimiento">
@@ -149,21 +168,6 @@
               {{> afQuickField name="nombreOtrosFuncionariosOTrabajadores" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=4 }}
             </div>
           {{/if}}
-          <div role="tabpanel" class="tab-pane" id="fotos">
-            {{#if isEqual type "disabled"}}
-              {{#if buscasBebe}}
-                <legend>Fotos relacionadas con este caso</legend>
-              {{else}}
-                <legend>Fotos de esta persona</legend>
-              {{/if}}
-              {{> photosGallery collection="Photos" photos=doc.photos}}
-            {{else}}
-              <div class="form-inline form-photos">
-                <legend>Fotos tuyas o de otros familiares que puedan ayudar al reencuentro</legend>
-                {{> afQuickField name="photos" collection="Photos" label=false type="multiFileUpload"}}
-              </div>
-            {{/if}}
-          </div>
           {{#if isAddingAdminIsFamiliar }}
             <div role="tabpanel" class="tab-pane" id="otros">
               {{> afQuickField name="gestionesRealizadasYDocumentos" rows=4}}
@@ -220,7 +224,7 @@
               <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
             {{/if}}
           {{/if}}
-          <li role="presentation"><a href="#fotos" aria-controls="fotos" role="tab" data-toggle="tab">Fotos</a></li>
+
           {{#if isAddingAdminIsFamiliar }}
             <li role="presentation"><a href="#otros" aria-controls="otros" role="tab" data-toggle="tab">Otras informaciones</a></li>
           {{/if}}

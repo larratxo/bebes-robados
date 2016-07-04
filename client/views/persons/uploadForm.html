@@ -4,9 +4,7 @@
     {{#if error}}
       <div class="alert alert-danger">{{error}}</div>
     {{/if}}
-    {{!-- #if hasPhotos--}}
-    {{!-- > photosGallery collection=collection photos=value --}}
-    {{!-- /if --}}
+
     {{#unless uploadInstance}}
       <div class="input-group select-form">
         <input title="Selecciona fichero" type="file" name="userfile" multiple class="form-control btn btn-default"/>
@@ -15,6 +13,11 @@
           <button type="submit" title="Subir fichero" class="btn btn-primary"><i class="fa fa-lg fa-cloud-upload"></i> Subir</button>
         </span>
       </div>
+      {{#if hasPhotos}}
+        <div class="row">
+          {{> photosGallery collection=collection photos=value }}
+        </div>
+      {{/if}}
     {{else}}
       <table class="upload-form-container">
         <tbody>

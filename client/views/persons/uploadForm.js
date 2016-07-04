@@ -1,4 +1,4 @@
-/* global Template ReactiveVar $ _ moment filesize aFilesCollection Meteor AutoForm */
+/* global Template ReactiveVar $ _ moment filesize aFilesCollection Meteor AutoForm alertMessage */
 
 AutoForm.addInputType('multiFileUpload', {
   template: 'uploadForm',
@@ -23,6 +23,7 @@ Template.uploadForm.onCreated(function () {
   // console.log(self);
   this.error = new ReactiveVar(false);
   this.uploadInstance = new ReactiveVar(false);
+  this.allImages = new ReactiveVar(0); // true if > 0
   this.collectionVar = new ReactiveVar(aFilesCollection[self.data.atts.collection]);
   return this.initiateUpload = function (event, files, template) {
     var cleanUploaded, created_at, i, len, radio, ref, uploads;
@@ -65,16 +66,19 @@ Template.uploadForm.onCreated(function () {
         chunkSize: 'dynamic',
         transport: transport
       }, false).on('end', function (error, fileObj) {
-        // console.log(fileObj);
-        if (!error && files.length === 1) {
-          // FlowRouter.go('file', {
-          //   _id: fileObj._id
-          // });
+        if (error) {
+          alertMessage(error);
+        } else {
+          if (/png|jpg|jpeg/i.test(fileObj.extension)) {
+            template.allImages.set(template.allImages.get() + 1);
+          } else {
+            template.allImages.set(template.allImages.get() - 100);
+          }
+          template.value.get().push(fileObj._id);
+          self.data.value = template.value.get();
+          // console.log(template.value.get());
+          cleanUploaded(this);
         }
-        template.value.get().push(fileObj._id);
-        self.data.value = template.value.get();
-        // console.log(template.value.get());
-        cleanUploaded(this);
       }).on('abort', function () {
         cleanUploaded(this);
       }).on('error', function (error) {
@@ -100,10 +104,12 @@ Template.registerHelper('filesize', function (size) {
 
 Template.uploadForm.helpers({
   hasPhotos: function () {
-    return true;
+    // console.log('All images ' + Template.instance().allImages.get());
+    return Template.instance().allImages.get() > 0;
   },
   collection: function () {
-    return Template.instance().collectionVar.get();
+    // console.log(Template.instance().collectionVar.get().collectionName);
+    return Template.instance().collectionVar.get().collectionName;
   },
   value: function () {
     // console.log(Template.instance().value.get());

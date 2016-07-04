@@ -120,7 +120,7 @@ geocode = function () {
   resetMarker();
   if (direccion.length > 0) {
     var map = GoogleMaps.maps.lugarNacimientoMap.instance;
-    console.log('Buscando ' + direccion);
+    // console.log('Buscando ' + direccion);
     geocoder.geocode({'address': direccion}, function (results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         // console.log(results[0].geometry.location.lat());
