@@ -23,6 +23,7 @@ Template.uploadForm.onCreated(function () {
   // console.log(self);
   this.error = new ReactiveVar(false);
   this.uploadInstance = new ReactiveVar(false);
+  this.collectionVar = new ReactiveVar(aFilesCollection[self.data.atts.collection]);
   return this.initiateUpload = function (event, files, template) {
     var cleanUploaded, created_at, i, len, radio, ref, uploads;
     if (!files.length) {
@@ -53,7 +54,7 @@ Template.uploadForm.onCreated(function () {
     created_at = +(new Date());
     uploads = [];
     // console.log(self.data);
-    var collection = aFilesCollection[self.data.atts.collection];
+    var collection = self.collectionVar.get();
     return _.each(files, function (file) {
       return collection.insert({
         file: file,
@@ -98,10 +99,16 @@ Template.registerHelper('filesize', function (size) {
 });
 
 Template.uploadForm.helpers({
-  /* value: function () {
-    console.log(Template.instance().value.get());
+  hasPhotos: function () {
+    return true;
+  },
+  collection: function () {
+    return Template.instance().collectionVar.get();
+  },
+  value: function () {
+    // console.log(Template.instance().value.get());
     return Template.instance().value.get();
-  }, */
+  },
   error: function () {
     return Template.instance().error.get();
   },

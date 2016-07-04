@@ -9,12 +9,13 @@ Software para facilitar el regitro, búsqueda, difusión y denuncia de casos de 
 Este software está desarrollado con [meteor](https://www.meteor.com/), así que simplemente, bájate el código y ejecuta:
 
 ```bash
+meteor npm install
 meteor --settings settings.json
 ```
 
 ## Instalación
 
-Te recomendamos usar `meteor up` junto con `docker` (mupx).
+Te recomendamos usar `meteor up` junto con `docker` (mup).
 
 ## Tests
 
@@ -35,14 +36,13 @@ Sample of settings to use Open Web Analytics:
 
 ```
     "public": {
-        "isProduction": true, 
+        "isProduction": true,
         "owa": {
             "owaUrl": "https://leguin.comunes.org/owa/",
             "owaSiteId": "someOWAId"
         }
     }
 }
-
 
 ```
 

@@ -1,7 +1,7 @@
 /*global module, require */
 (function () {
 
-  'use strict';
+  // 'use strict'; // this hangs ecmascript https://forums.meteor.com/t/meteor-stuck-in-processing-files-with-ecmascript-for/25227/3
 
   module.exports = function () {
 

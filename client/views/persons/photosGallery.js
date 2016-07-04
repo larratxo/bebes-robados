@@ -9,6 +9,7 @@ Template.photosGallery.helpers({
     var fotosIds = this.photos;
     var fileCollection = aFilesCollection[this.collection];
     var fotos = fileCollection.collection.find({ _id: { $in: fotosIds } });
+    // console.log(fotos.fetch()[0]);
     return fotos;
   }
 });

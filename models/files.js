@@ -1,11 +1,13 @@
 /* global FilesCollection Meteor _ aFilesCollection:true personPhotos:true personAttachs:true Roles Photos:true Attachs:true */
 
-var createThumb = function (fileObj, readStream, writeStream) {
+// var createThumb;
+// = function (fileObj, readStream, writeStream) {
  // // Transform the image into a 200x200px thumbnail
  //  // TODO check gm.isAvailable
  //  gm(readStream, fileObj.name()).resize('200', '200')
  //    .stream().pipe(writeStream);
-};
+// };
+
 
 // https://github.com/VeliovGroup/Meteor-Files/issues/99
 var storagePathConfig = function () {
@@ -55,6 +57,41 @@ Photos = new FilesCollection({
     // console.log('File valid ext: ' + validExt);
     // console.log('File valid size: ' + validSize);
     return checkLimitAndExt(validExt, validSize, megaLimit);
+  },
+  onAfterUpload: function (fileRef) {
+    if (Meteor.isServer) {
+      var asyncCall = function(callback) {
+      // https://www.npmjs.com/package/imagemagick
+      import imagemagick from 'imagemagick';
+      var dest = fileRef.path + '-small.png';
+      imagemagick.convert(
+        [fileRef.path, '-resize', '200x200', dest],
+        function (err, stdout) {
+          if (err) {
+            callback(err, stdout);
+          }
+          callback(null, dest);
+        }
+      );
+      };
+      var syncfunction = Meteor.wrapAsync(asyncCall);
+      var result = syncfunction();
+      if (typeof result === 'string') {
+        upd = {
+          $set: {}
+        };
+        upd['$set']['versions.' + 'thumb'] = {
+          path: result,
+          type: 'image/png',
+          extension: 'png'
+        };
+        Photos.update(fileRef._id, upd, function (error) {
+          if (error) {
+            console.log(error);
+          }
+        });
+      }
+    }
   },
   onBeforeRemove: onlyOwnerAndAdminsAllowed()
 });

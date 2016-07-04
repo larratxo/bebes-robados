@@ -210,11 +210,6 @@ Schema.Persons = new SimpleSchema({
         type: 'multiFileUpload',
         accept: 'image/*',
         collection: 'Photos'
-        // onAfterInsert: onAfterUp,
-        // label: 'Elige una foto',
-        // 'remove-label': 'Borrar',
-        // selectFileBtnTemplate: 'selectImageBtn',
-        // previewTemplate: 'imagePreview',
       }}
   },
   attachs: {
@@ -226,12 +221,6 @@ Schema.Persons = new SimpleSchema({
       afFieldInput: {
         type: 'multiFileUpload',
         collection: 'Attachs'
-        // onAfterInsert: onAfterUp,
-        // accept: 'image/*',
-        // label: 'Elige un documento',
-        // 'remove-label': 'Borrar',
-        // selectFileBtnTemplate: 'selectImageBtn',
-        // previewTemplate: 'imagePreview',
       }}
   },
   createdAt: defaultCreatedAt,

@@ -160,9 +160,6 @@
             {{else}}
               <div class="form-inline form-photos">
                 <legend>Fotos tuyas o de otros familiares que puedan ayudar al reencuentro</legend>
-                {{#if tieneFotos}}
-                  {{> photosGallery collection="Photos" photos=doc.photos }}
-                {{/if}}
                 {{> afQuickField name="photos" collection="Photos" label=false type="multiFileUpload"}}
               </div>
             {{/if}}
