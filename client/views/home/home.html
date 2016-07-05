@@ -25,16 +25,16 @@
           </div>
 
           <div class="col-xs-6 col-sm-3 center aligned column">
-            <a href="{{ pathFor 'personsList'}}" class="ui unstyled no-hover-styles no-underline link icon header">
-              <span class="headline">Facilitar el reencuentro</span>
-              <i class="fa fa-search icon"></i>
+            <a onclick="$.fn.fullpage.moveSectionDown();" style="cursor: pointer;" class="ui unstyled no-hover-styles no-underline link icon header">
+              <span class="headline">Mapearlos</span>
+              <i class="fa fa-map-marker icon"></i>
             </a>
           </div>
 
           <div class="col-xs-6 col-sm-3 center aligned column">
-            <a href="{{ pathFor 'denuncia'}}" class="ui unstyled no-hover-styles no-underline link icon header">
-              <span class="headline">Servir de denuncia</span>
-              <i class="fa fa-shield icon"></i>
+            <a href="{{ pathFor 'personsList'}}" class="ui unstyled no-hover-styles no-underline link icon header">
+              <span class="headline">Facilitar el reencuentro</span>
+              <i class="fa fa-search icon"></i>
             </a>
           </div>
 
@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-    <div class="section map-section">
+    <div id="map" class="section map-section">
       <div class="container">
         <div class="row">
           <div class="col-xs-12">

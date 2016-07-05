@@ -69,7 +69,7 @@ Tracker.autorun(function () {
         : (typeof sessionTitle === 'undefined' || sessionTitle.length === 0)
         ? Meteor.App.NAME
         : (sessionTitle + ' - ' + Meteor.App.NAME);
-  console.log(newTitle);
+  // console.log(newTitle);
   _.defer(function () {
     document.title = newTitle;
     SEO.set({ title: newTitle, meta: { 'description': newTitle + '. ' + Meteor.App.DESCRIPTION } });
