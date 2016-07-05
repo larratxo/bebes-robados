@@ -70,13 +70,13 @@ Template.home.onRendered(function () {
       }
     }
   });
-  // _.defer(function () {
-  $('#fullpage').fullpage({
-    responsiveHeight: 900, //  normal scroll when the window size gets smaller than 900px height
-    navigation: true,
-    navigationPosition: 'right'
+  _.defer(function () {
+    $('#fullpage').fullpage({
+      responsiveHeight: 900, //  normal scroll when the window size gets smaller than 900px height
+      navigation: true,
+      navigationPosition: 'right'
+    });
   });
-  // });
 });
 
 var personPointer = function (nuevo, buscasBebe) {

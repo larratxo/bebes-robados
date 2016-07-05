@@ -1,5 +1,5 @@
 <template name="header">
-
+  <!-- -*- engine:ctemplate -*- -->
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -11,10 +11,10 @@
         </button>
         <a href="#"></a>
         <a class="navbar-brand" href="{{pathFor 'home'}}">
-          <img style="max-width:50%; display: inline; margin-top: -10px;" src="/images/logo60.png">
+          <img style="max-width:50%; display: inline; margin-top: -10px;" src="/images/logo60.png" />
           <div class="navbar-brand-titles">
-            <div class="navbar-brand-main">{{siteSetting 'site-main-name'}}</div>
-            <div class="navbar-brand-sub">{{siteSetting 'site-main-subname'}}</div>
+            <div class="navbar-brand-main">{{siteName}}</div>
+            <div class="navbar-brand-sub">{{siteSubName}}</div>
           </div>
         </a>
       </div>
@@ -29,8 +29,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{_"More"}}<span class="caret"></span></a>
 	    <ul class="dropdown-menu">
               {{#if isInRole 'admin'}}
-              <li><a href="{{ pathFor 'admin'}}"><i class="fa fa-users"></i>{{_"Administration"}}</a></li>
-	      <li role="separator" class="divider"></li>
+                <li><a href="{{ pathFor 'admin'}}"><i class="fa fa-users"></i>{{_"Administration"}}</a></li>
+	        <li role="separator" class="divider"></li>
 	      {{/if}}
               <li><a href="{{ pathFor 'quienes'}}"><i class="icon-bebes"></i>{{_"About"}}</a></li>
               <li><a href="{{ pathFor 'difusion'}}"><i class="fa fa-bullhorn"></i>{{_"MediaCampaigns"}}</a></li>

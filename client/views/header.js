@@ -1,4 +1,14 @@
-/* global Template Router $ */
+/* global Template Router $ siteSettings */
+
+Template.header.helpers({
+  siteName: function () {
+    return siteSettings.get('site-main-name');
+  },
+  siteSubName: function () {
+    return siteSettings.get('site-main-subname');
+  }
+});
+
 Template.header.onRendered(function () {
 });
 
