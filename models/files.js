@@ -61,19 +61,20 @@ Photos = new FilesCollection({
   onAfterUpload: function (fileRef) {
     if (Meteor.isServer) {
       var asyncCall = function(callback) {
-      // https://www.npmjs.com/package/imagemagick
-      import imagemagick from 'imagemagick';
-      var dest = fileRef.path + '-small.png';
-      imagemagick.convert(
-        [fileRef.path, '-resize', '200x200', dest],
-        function (err, stdout) {
-          if (err) {
-            console.log('dir error', err);
-            // callback(err, stdout);
+        // https://www.npmjs.com/package/imagemagick
+        import imagemagick from 'imagemagick';
+        var dest = fileRef.path + '-small.png';
+        imagemagick.convert(
+          [fileRef.path, '-resize', '200x200', dest],
+          function (err, stdout) {
+            if (err) {
+              console.log(err);
+              console.log(stdout);
+              callback(err);
+            }
+            callback(null, dest);
           }
-          callback(null, dest);
-        }
-      );
+        );
       };
       var syncfunction = Meteor.wrapAsync(asyncCall);
       var result = syncfunction();
