@@ -68,7 +68,8 @@ Photos = new FilesCollection({
         [fileRef.path, '-resize', '200x200', dest],
         function (err, stdout) {
           if (err) {
-            callback(err, stdout);
+            console.log('dir error', err);
+            // callback(err, stdout);
           }
           callback(null, dest);
         }
