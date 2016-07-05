@@ -24,6 +24,7 @@ Template.uploadForm.onCreated(function () {
   this.error = new ReactiveVar(false);
   this.uploadInstance = new ReactiveVar(false);
   this.allImages = new ReactiveVar(0); // true if > 0
+  this.fileRefs  = new ReactiveVar([]);
   this.collectionVar = new ReactiveVar(aFilesCollection[self.data.atts.collection]);
   return this.initiateUpload = function (event, files, template) {
     var cleanUploaded, created_at, i, len, radio, ref, uploads;
@@ -76,6 +77,7 @@ Template.uploadForm.onCreated(function () {
           }
           template.value.get().push(fileObj._id);
           self.data.value = template.value.get();
+          template.fileRefs.get().push(fileObj);
           // console.log(template.value.get());
           cleanUploaded(this);
         }
@@ -103,6 +105,12 @@ Template.registerHelper('filesize', function (size) {
 });
 
 Template.uploadForm.helpers({
+  uploadedFiles: function () {
+    return Template.instance().fileRefs.get();
+  },
+  hasOtherFiles: function () {
+    return Template.instance().allImages.get() < 0;
+  },
   hasPhotos: function () {
     // console.log('All images ' + Template.instance().allImages.get());
     return Template.instance().allImages.get() > 0;
