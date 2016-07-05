@@ -16,7 +16,11 @@ Comments.ui.setContent({
 Comments.ui.config({
   limit: 20, // default 10
   loadMoreCount: 20, // default 20
+  generateAvatar: function (user, isAnonymous) {
+    return user.profile.username;
+  },
   template: 'bootstrap', // default 'semantic-ui'
-  defaultAvatar: '/images/default-avatar.png', // default 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'
+  // default 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'
+  defaultAvatar: '/images/default-avatar.png',
   markdown: false
 });
