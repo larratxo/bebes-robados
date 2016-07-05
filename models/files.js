@@ -11,7 +11,7 @@
 
 // https://github.com/VeliovGroup/Meteor-Files/issues/99
 var storagePathConfig = function () {
-  return Meteor.settings.public.isProduction ? '/opt/bebes-uploads/' : '/opt/bebes-uploads/dev';
+  return Meteor.settings.public.isProduction ? '/opt/docker/uploads/' : '/opt/docker/uploads-dev';
 };
 
 var checkLimitAndExt = function (validExt, validSize, megaLimit) {
