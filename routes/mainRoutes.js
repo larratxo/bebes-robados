@@ -17,6 +17,7 @@ Router.route('/', {
   name: 'home',
   // Using waitOn you get the loading page at startup
   subscriptions: function () {
+  // waitOn: function () {
     return subsManager.subscribe('PersonsForHome');
   },
   onStop: function () {
@@ -261,5 +262,7 @@ Router.onAfterAction(function () {
 
 // http://stackoverflow.com/questions/19882687/set-html-title-when-using-iron-router
 Router.after(function () {
-  Session.set('DocumentTitle', this.route.options.title);
+  if (Meteor.isClient) {
+    Session.set('DocumentTitle', this.route.options.title);
+  }
 });
