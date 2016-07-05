@@ -15,7 +15,6 @@ var dataWebPage = function () {
 
 Router.route('/', {
   name: 'home',
-  title: Meteor.App.NAME,
   // Using waitOn you get the loading page at startup
   subscriptions: function () {
     return subsManager.subscribe('PersonsForHome');
@@ -262,11 +261,5 @@ Router.onAfterAction(function () {
 
 // http://stackoverflow.com/questions/19882687/set-html-title-when-using-iron-router
 Router.after(function () {
-  if (typeof document !== 'undefined') {
-    var newTitle;
-    if (this.route.options.title) {
-      newTitle = this.route.options.title + ' - ' + Meteor.App.NAME;
-      Session.set('DocumentTitle', newTitle);
-    }
-  }
+  Session.set('DocumentTitle', this.route.options.title);
 });

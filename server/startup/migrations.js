@@ -1,4 +1,4 @@
-/* global Meteor Migrations Persons siteSettings siteSettingsTypes */
+/* global Meteor Migrations Persons siteSettings Accounts */
 Meteor.startup(function () {
   // https://github.com/percolatestudio/meteor-migrations
 
@@ -86,7 +86,22 @@ Meteor.startup(function () {
       });
     }
   });
+  Migrations.add({
+    version: 8,
+    up: function () {
+      siteSettings.insert({
+        name: 'site-main-description',
+        value: 'Red Ciudadana de Registro, Búsqueda y Denuncia de casos de Bebes Robados.',
+        description: 'Esta es una descripción más detallada de esta iniciativa, de forma que los buscadores de internet, recogen esta información y facilita su clasificación por temática',
+        type: 'textarea'
+      });
+    }
+  });
 
   Migrations.migrateTo('latest');
+
+  Accounts.emailTemplates.siteName = siteSettings.get('email-subject-prefix');
+  Accounts.emailTemplates.from = siteSettings.get('site-main-name') + ' <noreply@comunes.org>';
+
   // Migrations.migrateTo('7,rerun');
 });

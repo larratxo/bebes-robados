@@ -1,4 +1,4 @@
-/* global siteSettings:true, Mongo, SimpleSchema, Roles siteSettingsTypes Meteor Accounts
+/* global siteSettings:true, Mongo, SimpleSchema, Roles siteSettingsTypes Meteor
  defaultCreatedAt */
 
 siteSettings = new Mongo.Collection('siteSettings');
@@ -24,10 +24,20 @@ siteSettings.getSchema = function (type) {
   });
 };
 
-if (Meteor.isServer) {
-  Accounts.emailTemplates.siteName = siteSettings.get('email-subject-prefix');
-  Accounts.emailTemplates.from = siteSettings.get('site-main-name') + ' <noreply@comunes.org>';
+siteSettings.observe = function (name, callback) {
+  siteSettings.find({name: name}).observe({
+    added: function (document) {
+      callback(document.value);
+    }
+  });
+};
 
+siteSettings.observe('site-main-subname',
+                     function (value) { Meteor.App = { NAME: value }; });
+siteSettings.observe('site-main-description',
+                     function (value) { Meteor.App['DESCRIPTION'] = value; });
+
+if (Meteor.isServer) {
   // About null autopublish
   // http://support.kadira.io/knowledgebase/articles/379961-what-is-null-autopublish-publication
   Meteor.publish(null, function () {

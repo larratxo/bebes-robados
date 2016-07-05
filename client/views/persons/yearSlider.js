@@ -1,8 +1,8 @@
-/*global initYear, lastYear, Session, Template, Deps, onSliderRender:true, calcShowAll:true, $ */
-Deps.autorun(function () {
+/*global initYear, lastYear, Session, Template, Tracker, onSliderRender:true, calcShowAll:true, $ */
+// Tracker.autorun(function () {
   // console.log('min: ' + Session.get('minBornYear') +
   //             ', max: ' + Session.get('maxBornYear'));
-});
+// });
 
 Session.setDefault('minBornYear', initYear);
 Session.setDefault('maxBornYear', lastYear);
