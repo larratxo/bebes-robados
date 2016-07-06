@@ -76,7 +76,7 @@ ul.bebe-tabs li a {
 /* Icon titles */
 
 .Home span.headline {
-    min-height: 2.5em;
+    min-height: 3em;
     display: block;
 }
 
@@ -110,6 +110,11 @@ ul.bebe-tabs li a {
 
 
 /* home icons margin */
+
+.main-content > div {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 div.row.ui.four.column.main-content.features.grid {
     margin: 0 0 10px 0;
@@ -483,172 +488,6 @@ div.meteor-blog-post-meta.text-center {
     margin: 0 20px;
 }
 
-
-/* media queries
-   Copied from:
-   https://stackoverflow.com/questions/18424798/twitter-bootstrap-3-how-to-use-media-queries
-   (as we cannot access to bootstrap less variables now) */
-
-
-/* Large desktops and laptops */
-
-@media (min-width: 1200px) {}
-
-
-/* Landscape tablets and medium desktops */
-
-@media (min-width: 992px) and (max-width: 1199px) {}
-
-
-/* Portrait tablets and small desktops */
-
-@media (min-width: 768px) and (max-width: 991px) {}
-
-
-/* Landscape phones and portrait tablets */
-
-@media (max-width: 767px) {
-    .header-wrapper {
-        height: 340px;
-        padding: 0 30px;
-    }
-    .header-wrapper .ui.main.header {
-        font-size: 28px;
-        line-height: 1.5em;
-        padding-top: 80px;
-    }
-    .header-wrapper> div> div> h3 {
-        font-size: 20px;
-    }
-    .headline,
-    .Home .year-slider-subheader {
-        font-size: 16px;
-    }
-}
-
-
-/* Portrait phones and smaller */
-
-@media (max-width: 480px) {
-    body {
-        font-size: 13px;
-    }
-    .navbar-brand-sub {
-        font-size: 9px;
-    }
-    .navbar-brand {
-        font-size: 16px;
-        padding: 15px 3px;
-    }
-    .navbar-brand img {
-        width: 30px;
-    }
-    .header-wrapper {
-        height: 320px;
-        padding: 0 30px;
-    }
-    .header-wrapper .ui.main.header {
-        font-size: 20px;
-        padding-top: 70px;
-    }
-    .header-wrapper> div> div> h3 {
-        font-size: 14px;
-    }
-    .headline,
-    .Home .year-slider-subheader {
-        font-size: 12px;
-    }
-    #main> div.container {
-        padding: 0px 20px;
-    }
-    body> .container {
-        padding: 40px 15px 20px 15px;
-    }
-    #personsTable_filter> label> input {
-        width: inherit;
-    }
-
-    .map-container {
-        height: 270px;
-    }
-    .assistant-comment,
-    .pointer-legend {
-        font-size: 10px;
-    }
-    .pointer-legend-img {
-        width: 8px;
-    }
-    .paddingtop-bottom {
-        margin-top: 10px;
-    }
-    .Home #yearSlider {
-        margin: 10px 10px 10px 10px;
-    }
-    .slider-bottom {
-        top: -5px;
-    }
-    .obj-section h3 {
-        padding-bottom: 18px;
-    }
-    .bebeform-tabs > ul > li > a {
-	padding: 4px;
-    }
-    .bebeform-tabs {
-	padding-right: 0px;
-    }
-}
-
-@media(max-width:767px) {}
-
-@media(min-width:768px) {}
-
-@media(min-width:992px) {}
-
-@media(min-width:1200px) {}
-
-@media screen and ( max-height: 800px ){
-    .map-container {
-        height: 400px;
-    }
-    .assistant-comment,
-    .pointer-legend {
-        font-size: 12px;
-    }
-    .pointer-legend-img {
-        width: 10px;
-    }
-}
-
-@media screen and ( max-height: 650px ){
-    .map-container {
-        height: 270px;
-    }
-}
-
-@media screen and ( max-height: 400px ){
-    .map-container {
-        height: 200px;
-    }
-    .assistant-comment,
-    .pointer-legend {
-        display: none;
-        font-size: 10px;
-    }
-    .pointer-legend-img {
-        display: none;
-        width: 8px;
-    }
-    .paddingtop-bottom {
-        margin-top: 10px;
-    }
-    .Home #yearSlider {
-        margin: 10px 10px 10px 10px;
-    }
-    .slider-bottom {
-        top: -5px;
-    }
-}
-
 .assistant-comment {
     margin-top: 5px;
     color: #808080;
@@ -832,3 +671,176 @@ td.site-setting-value-column:hover {
 }
 
 /* end: upload form */
+
+
+
+
+/* media queries
+   Copied from:
+   https://stackoverflow.com/questions/18424798/twitter-bootstrap-3-how-to-use-media-queries
+   (as we cannot access to bootstrap less variables now) */
+
+
+/* Large desktops and laptops */
+
+@media (min-width: 1200px) {}
+
+
+/* Landscape tablets and medium desktops */
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+
+/* Portrait tablets and small desktops */
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+
+/* Landscape phones and portrait tablets */
+
+@media (max-width: 767px) {
+    .header-wrapper {
+        height: 340px;
+        padding: 0 30px;
+    }
+    .header-wrapper .ui.main.header {
+        font-size: 28px;
+        line-height: 1.5em;
+        padding-top: 80px;
+    }
+    .header-wrapper> div> div> h3 {
+        font-size: 20px;
+    }
+    .headline,
+    .Home .year-slider-subheader {
+        font-size: 16px;
+    }
+}
+
+
+/* Portrait phones and smaller */
+
+@media (max-width: 480px) {
+    body {
+        font-size: 13px;
+    }
+    .navbar-brand-sub {
+        font-size: 9px;
+    }
+    .navbar-brand {
+        font-size: 16px;
+        padding: 15px 3px;
+    }
+    .navbar-brand img {
+        width: 30px;
+    }
+    .header-wrapper {
+        height: 320px;
+        padding: 0 30px;
+    }
+    .obj-section h3 {
+        font-size: 20px;
+    }
+    .header-wrapper .ui.main.header {
+        font-size: 20px;
+        padding-top: 70px;
+    }
+    .header-wrapper> div> div> h3 {
+        font-size: 14px;
+    }
+    .headline,
+    .Home .year-slider-subheader {
+        font-size: 14px;
+    }
+    #main> div.container {
+        padding: 0px 20px;
+    }
+    body> .container {
+        padding: 40px 15px 20px 15px;
+    }
+    #personsTable_filter> label> input {
+        width: inherit;
+    }
+
+    .map-container {
+        height: 270px;
+    }
+    .assistant-comment,
+    .pointer-legend {
+        font-size: 10px;
+    }
+    .pointer-legend-img {
+        width: 8px;
+    }
+    .paddingtop-bottom {
+        margin-top: 10px;
+    }
+    .Home #yearSlider {
+        margin: 10px 10px 10px 10px;
+    }
+    .slider-bottom {
+        top: -5px;
+    }
+    .obj-section h3 {
+        padding-bottom: 18px;
+    }
+    .bebeform-tabs > ul > li > a {
+        padding: 4px;
+    }
+    .bebeform-tabs {
+        padding-right: 0px;
+    }
+}
+
+@media(max-width:767px) {}
+
+@media(min-width:768px) {}
+
+@media(min-width:992px) {}
+
+@media(min-width:1200px) {}
+
+@media screen and ( max-height: 800px ){
+    .map-container {
+        height: 400px;
+    }
+    .assistant-comment,
+    .pointer-legend {
+        font-size: 12px;
+    }
+    .pointer-legend-img {
+        width: 10px;
+    }
+}
+
+@media screen and ( max-height: 650px ){
+    .map-container {
+        height: 270px;
+    }
+}
+
+@media screen and ( max-height: 400px ){
+    .map-container {
+        height: 200px;
+    }
+    .assistant-comment,
+    .pointer-legend {
+        display: none;
+        font-size: 10px;
+    }
+    .pointer-legend-img {
+        display: none;
+        width: 8px;
+    }
+    .paddingtop-bottom {
+        margin-top: 10px;
+    }
+    .Home #yearSlider {
+        margin: 10px 10px 10px 10px;
+    }
+    .slider-bottom {
+        top: -5px;
+    }
+}
+
+/* end media queries */

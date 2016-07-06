@@ -1,20 +1,16 @@
 <template name="basicLayout">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-{{> header}}
+  <!-- -*- engine:ctemplate -*- -->
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  {{> header}}
 
- <section id="lorem-photos" style="display:none">
-    {{#each photos}}
-    <img id="lorem-photo-{{this}}" src="/images/lorem-photos/{{this}}.jpg">
-    {{/each}}
-  </section>
   {{> cookieConsent}}
 
   {{#if currentUser}}
-  {{#unless currentUser.emails.[0].verified}}
-  <p class="alert alert-fixed alert-warning">Necesitas verificar tu correo para un mejor uso de esta web. Comprueba tu correo o <a href="#" class="resend-verification-link">reenvía el correo de verificación</a>.</p>
-  {{/unless}}
+    {{#unless currentUser.emails.[0].verified}}
+      <p class="alert alert-fixed alert-warning">Necesitas verificar tu correo para un mejor uso de esta web. Comprueba tu correo o <a href="#" class="resend-verification-link">reenvía el correo de verificación</a>.</p>
+    {{/unless}}
   {{/if}}
 
   <div class="container {{template}}">
@@ -22,6 +18,12 @@
       {{> yield}}
     </div>
   </div>
+
+  <section id="lorem-photos" style="display:none">
+    {{#each photos}}
+      <img id="lorem-photo-{{this}}" src="/images/lorem-photos/{{this}}.jpg">
+    {{/each}}
+  </section>
 
   <!-- {> owa} -->
 </template>
