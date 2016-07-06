@@ -198,6 +198,7 @@
               {{#if isEqual type "disabled"}}
                 {{#if isFamiliarOrAdmin}}
                 <!-- TODO: download links -->
+                  {{> filesDownload collection="Attachs" uploadedFiles=doc.attachs }}
                 {{/if}}
               {{else}}
                 <div class="form-inline form-attachs">
