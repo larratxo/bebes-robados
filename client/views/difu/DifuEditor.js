@@ -99,17 +99,6 @@ function refreshTitle (e, template, newText, save) {
   }
 }
 
-// https://stackoverflow.com/questions/5007530/how-do-i-scroll-to-an-element-using-javascript
-var findPos = function (obj) {
-  var curtop = 0;
-  if (obj.offsetParent) {
-    do {
-      curtop += obj.offsetTop;
-    } while (obj === obj.offsetParent);
-    return [curtop];
-  }
-};
-
 Template.DifuEditor.events({
   'click button.rotar45': function (e, template) {
     $('#cropperimage').cropper('rotate', 45);
