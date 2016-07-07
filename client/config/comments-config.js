@@ -9,6 +9,10 @@ Comments.ui.setContent({
   'placeholder-textarea': 'Aquí puede comentar y añadir alguna información sobre esta persona',
   'add-button-reply': 'Añadir una respuesta',
   'add-button': 'Añadir comentario',
+  'you-need-to-login': 'Necesitas iniciar sesión para',
+  'add comments': 'añadir comentarios',
+  'like comments': 'puntuar comentarios',
+  'rate comments': 'puntuar comentarios',
   'load-more': 'Más comentarios'
 });
 
