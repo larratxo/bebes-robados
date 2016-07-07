@@ -23,6 +23,7 @@ Router.route('/', {
   onStop: function () {
     if (Meteor.isClient) {
       // Enable again scrolls in other routes
+      console.log('fullpage destroy');
       $.fn.fullpage.destroy('all');
     }
   }

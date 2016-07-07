@@ -71,6 +71,7 @@ Template.home.onRendered(function () {
     }
   });
   _.defer(function () {
+    console.log('fullpage init');
     $('#fullpage').fullpage({
       responsiveHeight: 900, //  normal scroll when the window size gets smaller than 900px height
       navigation: true,
@@ -79,6 +80,7 @@ Template.home.onRendered(function () {
   });
   // Updates the DOM structure to fit the new window size or its content
   _.delay(function () {
+    console.log('fullpage rebuild');
     $.fn.fullpage.reBuild();
   }, 2000);
 });
