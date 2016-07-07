@@ -76,9 +76,11 @@ Template.home.onRendered(function () {
     navigation: true,
     navigationPosition: 'right'
   });
+  // Updates the DOM structure to fit the new window size or its content
   _.delay(function () {
-    // Updates the DOM structure to fit the new window size or its content
     $.fn.fullpage.reBuild();
+  }, 2000);
+  _.delay(function () {
     $.fn.fullpage.reBuild();
   }, 2000);
 });

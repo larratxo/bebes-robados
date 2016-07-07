@@ -2,10 +2,6 @@
 Lista de Tareas
 
 * Desarrollo
-** Última Reu
-*** Uploads de documentos, mensaje cuando no deja por tipo
-*** You need en comentarios ... al español
-*** Upload de campañas: revisar fichero pequeños
 ** Usar flags
 Meteor.isDevelopment
 Meteor.isProduction

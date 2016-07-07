@@ -13,6 +13,7 @@ Comments.ui.setContent({
   'add comments': 'añadir comentarios',
   'like comments': 'puntuar comentarios',
   'rate comments': 'puntuar comentarios',
+  'add replies': 'responder',
   'load-more': 'Más comentarios'
 });
 
