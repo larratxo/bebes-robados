@@ -70,16 +70,14 @@ Template.home.onRendered(function () {
       }
     }
   });
-
-  $('#fullpage').fullpage({
-    responsiveHeight: 900, //  normal scroll when the window size gets smaller than 900px height
-    navigation: true,
-    navigationPosition: 'right'
+  _.defer(function () {
+    $('#fullpage').fullpage({
+      responsiveHeight: 900, //  normal scroll when the window size gets smaller than 900px height
+      navigation: true,
+      navigationPosition: 'right'
+    });
   });
   // Updates the DOM structure to fit the new window size or its content
-  _.delay(function () {
-    $.fn.fullpage.reBuild();
-  }, 2000);
   _.delay(function () {
     $.fn.fullpage.reBuild();
   }, 2000);
