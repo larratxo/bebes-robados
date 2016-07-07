@@ -25,7 +25,7 @@ Meteor.startup(function () {
       title: 'Estamos en pruebas',
       message: 'Puedes meter datos de bebes para testear pero ten en cuenta que durante la fase de pruebas los borraremos de tanto en tanto'});
     Bert.defaults = {
-      hideDelay: 3500
+      hideDelay: 5500
     };
   }
 

@@ -17,30 +17,56 @@
     </div>
 
     <div id="difueditor" class="{{participaClass}}">
-      <div class="form-group">
-        <label for="adtitle">¿Qué título pondrías para describir vuestro caso?</label>
-        <input type="text" class="form-control" value="{{dynHeader}}"  id="adtitle" placeholder="Por ejemplo: Busco a mi hermana, quizás puedas ser tú o la conozcas"/>
-      </div>
-
       <div class="row">
-        <div class="col-md-5">
-          <h4>Previsualización</h4>
-          {{> difu backImage=dynPhoto adHeader=dynHeader headerLink="/bebe/KjsSExbdiFosStrvh" sample="false" subHeaderLink="/" }}
-        </div>
-        <div class="col-md-7">
-          <h4>Elige y recorta una imagen</h4>
-          <div class="row">
-            {{#if notCropping}}
-              <input type="file" accept="image/*" id="files" />
-            {{/if}}
-            {{#if cropping}}
-              <div class="row img-cropped-legend">
-                Selecciona con el ratón la parte de la foto a usar. Puedes usar el scroll de tu ratón para acercar o alejar la foto.
-              </div>
-            {{/if}}
-            <img id="cropperimage" />
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="adtitle">¿Qué título pondrías para describir vuestro caso?</label>
+            <textarea rows="2" class="form-control" value="{{dynHeader}}"  id="adtitle" placeholder="Por ejemplo: Busco a mi hermana, quizás puedas ser tú o la conozcas"></textarea>
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h4>Previsualización</h4>
+              {{> difu backImage=dynPhoto adHeader=dynHeader headerLink="/bebe/KjsSExbdiFosStrvh" sample="false" subHeaderLink="/" }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="elige-recorta" class="row">
+        <h4>Elige y recorta una imagen</h4>
+      </div>
+      <div id="cropper-btns" class="row">
+        {{!-- if notCropping --}}
+        <input type="file" accept="image/*" id="files" />
+        {{!-- /if --}}
+        {{#if cropping}}
+          <div class="row img-cropped-legend">
+            Selecciona con el ratón la parte de la foto a usar. Puedes usar el scroll de tu ratón para acercar o alejar la foto. Puedes ver el resultado arriba en la previsualización.
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="btn-group" role="group" aria-label="zoom-group">
+                <button type="button" title="Mover la imagen" class="btn btn-default fa fa-arrows arrows"></button>
+                <button type="button" title="Recortar la imagen" class="btn btn-default fa fa-crop crop"></button>
+              </div>
+              <div class="btn-group" role="group" aria-label="zoom-group">
+                <button type="button" title="Acercar la imagen" class="btn btn-default fa fa-search-minus zoom-out"></button>
+                <button type="button" title="Alejar la imagen" class="btn btn-default fa fa-search-plus zoom-in"></button>
+              </div>
+              <div class="btn-group" role="group" aria-label="rotar-group">
+                <button type="button" title="Rotar la imagen" class="btn btn-default fa fa-rotate-left rotar-45"></button>
+                <button type="button" title="Rotar la imagen" class="btn btn-default fa fa-rotate-right rotar45"></button>
+              </div>
+              <div class="pull-right btn-group" role="group" aria-label="other">
+                <button type="button" class="btn btn-primary save"><span class="fa fa-floppy-o" aria-hidden="true"></span> Guardar</button>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+
+        <img id="cropperimage" />
+
       </div>
     </div>
   {{/if}}

@@ -15,12 +15,14 @@
   <br>
   {{> quickForm autosave=true collection="Meteor.users" id=id template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" doc=doc type=type buttonContent=btnTitle omitFields=omitFields fields="username, profile.name, emails, profile.dni, profile.telefono, profile.redesSociales" buttonClasses="btn-primary btn btn-form-submit" }}
 
+  <span id="casosreportados"></span>
   {{> casosReportados user=doc}}
 
   {{#if isEqual type "update"}}
   {{#if afectado}}
   <hr>
 
+  <span id="difusion"></span>
   <h2>Campañas de difusión públicas</h2>
 
   {{> DifuEditor }}
