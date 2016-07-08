@@ -113,6 +113,7 @@ jparker:crypto-md5@0.1.1
 jparker:gravatar@0.5.1
 jquery@1.11.9
 kaptron:minimongoid@0.9.8
+khrone:img-qrcode@0.1.1
 lai:collection-extensions@0.2.1_1
 launch-screen@1.0.12
 lawshe:full-page@1.2.7
@@ -205,6 +206,7 @@ srp@1.0.9
 standard-app-packages@1.0.9
 standard-minifier-css@1.0.7_1
 standard-minifier-js@1.0.7_1
+steeve:jquery-qrcode@0.2.2
 stylus@2.512.3_1
 tap:i18n@1.8.2
 templating@1.1.12_1

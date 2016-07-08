@@ -59,6 +59,16 @@ Router.map(function () {
       return subsManager.subscribe('AdCampaigns');
     }
   });
+  this.route('carteles', {
+    path: '/carteles',
+    layoutTemplate: 'blankLayout',
+    title: 'Carteles de nuestras Campañas de Difusión',
+    // https://github.com/iron-meteor/iron-router/issues/1148
+    loadingTemplate: 'loading',
+    waitOn: function () {
+      return subsManager.subscribe('AdCampaigns');
+    }
+  });
   this.route('nuevoBebe', {
     path: '/nuevoBebe',
     title: 'Añade un bebe',

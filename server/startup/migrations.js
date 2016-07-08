@@ -97,6 +97,23 @@ Meteor.startup(function () {
       });
     }
   });
+  Migrations.add({
+    version: 9,
+    up: function () {
+      siteSettings.insert({
+        name: 'site-domain',
+        value: 'http://reencontrar.se',
+        description: 'Este es el dominio de esta iniciativa. Se usa para, por ejemplo, los carteles de las campañas de difusión',
+        type: 'string'
+      });
+      siteSettings.insert({
+        name: 'site-twitter',
+        value: '@twitter',
+        description: 'Esta es la cuenta de twitter. Se usa también en los carteles de las campañas de difusión. Dejar vacio si no vamos a tener twitter',
+        type: 'string'
+      });
+    }
+  });
 
   Migrations.migrateTo('latest');
 
