@@ -1,5 +1,11 @@
+/* global Template Session */
+
 Template.loading.rendered = function () {
-  if ( ! Session.get('loadingSplash') ) {
+  // http://tobiasahlin.com/spinkit/
+  var message = '<p class="loading-message">cargando</p>';
+  var spinner = '<div class="spinner"></div>';
+
+  if (!Session.get('loadingSplash')) {
     this.loading = window.pleaseWait({
       logo: '/images/logo100.png',
       backgroundColor: '#f2f2f2',
@@ -10,11 +16,7 @@ Template.loading.rendered = function () {
 };
 
 Template.loading.destroyed = function () {
-  if ( this.loading ) {
+  if (this.loading) {
     this.loading.finish();
   }
 };
-
-// http://tobiasahlin.com/spinkit/
-var message = '<p class="loading-message">cargando</p>';
-var spinner = '<div class="spinner"></div>';

@@ -1,4 +1,4 @@
-/* global Meteor Bert GoogleMaps $ Template siteSettings */
+/* global Meteor Bert GoogleMaps $ */
 
 Meteor.startup(function () {
   // https://eternicode.github.io/bootstrap-datepicker/
@@ -24,10 +24,10 @@ Meteor.startup(function () {
       style: 'growl-top-right',
       title: 'Estamos en pruebas',
       message: 'Puedes meter datos de bebes para testear pero ten en cuenta que durante la fase de pruebas los borraremos de tanto en tanto'});
-    Bert.defaults = {
-      hideDelay: 5500
-    };
   }
+  Bert.defaults = {
+    hideDelay: 5500
+  };
 
   Meteor.call('getMapKey', function (error, result) {
     // console.log('Your application is running with google maps ' + result + ' key.');

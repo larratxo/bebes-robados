@@ -62,9 +62,8 @@ Router.map(function () {
   this.route('carteles', {
     path: '/carteles',
     layoutTemplate: 'blankLayout',
+    loadingTemplate: 'loadingBlank',
     title: 'Carteles de nuestras Campañas de Difusión',
-    // https://github.com/iron-meteor/iron-router/issues/1148
-    loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('AdCampaigns');
     }
