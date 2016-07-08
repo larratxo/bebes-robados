@@ -45,6 +45,7 @@ Router.map(function () {
   this.route('personsList', {
     path: '/bebes',
     title: 'Busca bebe o familia',
+    loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('Persons');
     }
@@ -52,6 +53,8 @@ Router.map(function () {
   this.route('difusion', {
     path: '/difusion',
     title: 'Campañas de Difusión',
+    // https://github.com/iron-meteor/iron-router/issues/1148
+    loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('AdCampaigns');
     }
@@ -59,6 +62,7 @@ Router.map(function () {
   this.route('nuevoBebe', {
     path: '/nuevoBebe',
     title: 'Añade un bebe',
+    loadingTemplate: 'loading',
     waitOn: function () {
       // Workaround to wait Meter.user login
       return [
@@ -71,6 +75,7 @@ Router.map(function () {
   this.route('abuseAdd', {
     path: '/reportar/:username',
     title: 'Informar de abuso',
+    loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('some-user', this.params.username);
     },
@@ -85,6 +90,7 @@ Router.map(function () {
   this.route('userUpdate', {
     path: '/yo',
     title: 'Mis datos',
+    loadingTemplate: 'loading',
     waitOn: function () {
       return [
         subsManager.subscribe('me'),
@@ -98,6 +104,7 @@ Router.map(function () {
   this.route('viewUser', {
     path: '/persona/:_id',
     // title: 'Datos de familiar',
+    loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('some-user', this.params._id);
     },
@@ -119,48 +126,56 @@ Router.map(function () {
   this.route('quienes', {
     path: '/quienesSomos',
     title: 'Quienes somos',
+    loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('legal', {
     path: '/legal',
     title: 'Información Legal',
+    loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('donaciones', {
     path: '/donaciones',
     title: 'Donaciones',
+    loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('proteccion', {
     path: '/proteccion-datos',
     title: 'Protección de Datos',
+    loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('contacto', {
     path: '/contacto',
     title: 'Contacto',
+    loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('otras', {
     path: '/otras-iniciativas',
     title: 'Otras Iniciativas',
+    loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('denuncia', {
     path: '/denuncia',
     title: 'Denuncia vuestro caso',
+    loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',
     title: 'Edita bebe',
+    loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('personAndFiles', this.params._id);
     },
@@ -171,6 +186,7 @@ Router.map(function () {
   this.route('editPersonSlug', {
     path: '/edita-bebe/:slug',
     title: 'Edita bebe',
+    loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('personAndFilesViaSlug', this.params.slug);
     },
@@ -180,17 +196,17 @@ Router.map(function () {
   });
   this.route('viewPerson', {
     path: '/bebe-id/:_id',
+    loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('personAndFiles', this.params._id);
     },
-    // title: 'Datos sobre bebe',
     data: function () {
       return Persons.findOne(this.params._id);
     }
   });
   this.route('viewPersonSlug', {
     path: '/bebe/:slug',
-    // title: 'Datos sobre bebe',
+    loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('personAndFilesViaSlug', this.params.slug);
     },
@@ -202,7 +218,7 @@ Router.map(function () {
   this.route('admin', {
     path: '/admin',
     title: 'Administración',
-    // template: 'accountsAdmin',
+    loadingTemplate: 'loading',
     template: 'bebeAdmin',
     onBeforeAction: function () {
       if (Meteor.loggingIn()) {
@@ -224,6 +240,7 @@ Router.map(function () {
   });
   this.route('DifuAdmin', {
     path: '/difu-admin/',
+    loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('AdCampaigns');
     }
