@@ -74,7 +74,7 @@ Meteor.startup(function () {
       });
       siteSettings.insert({
         name: 'adcampaign-1-slogan',
-        value: 'En España hay miles casos de bebes robados, ayúdanos a reencontrarnos',
+        value: 'En España hay miles de casos de bebes robados, ayúdanos a reencontrarnos',
         description: 'Eslogan de la primera campaña de difusión',
         type: 'textarea'
       });
