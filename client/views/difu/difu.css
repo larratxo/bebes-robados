@@ -3,8 +3,8 @@
   font-family: 'Roboto', 'Open Sans', sans-serif;
   width: 298px;
   height: 248px;
-  background-size: 300px 250px;
-  background-repeat: no-repeat;
+  background-size: 300px 250px !important;
+  background-repeat: no-repeat !important;
   border: 1px solid #e8e8e8;
   /* B/W */
   -webkit-filter: grayscale(100%);
@@ -18,7 +18,7 @@
 .carteles-main .bebepub-main {
   width: 448px;
   height: 373px;
-  background-size: 450px 375px;
+  background-size: 450px 375px !important;
 }
 
 .bebepub-main-wrapper {
@@ -61,15 +61,15 @@
 }
 
 .bebepub-dark {
-  background-color: black;
+  background-color: black !important;
   /* text-align: right;
      opacity: 0.65;
      filter: alpha(opacity=65); */
-  color: white;
+  color: white !important;
 }
 
 .bebepub-light {
-  background-color: #808080;
+  background-color: #808080 !important;
   opacity: 0.75;
   filter: alpha(opacity=75);
   /* text-align: right; */
@@ -146,16 +146,16 @@
 }
 
 .cartel-footer {
-  background-color: #666666;
+  background-color: #666666 !important;
   width: 1053px;
-  color: white;
+  color: white !important;
   padding: 17px;
   height: 225px;
   text-transform: uppercase;
   display: inline-block;
   font-size: 46px;
   font-family: 'Roboto', 'Open Sans', sans-serif;
-  margin-top: 32px;
+  margin-top: 12px;
 }
 
 .cartel-row {
@@ -167,6 +167,8 @@
   width: 730px;
   line-height: 1.3em;
   padding-top: 10px;
+  /* color: white !important; */
+  color: #e6e6e6 !important;
 }
 
 .cartel-right {
@@ -174,7 +176,6 @@
   float: right;
   font-size: 26px;
   text-transform: lowercase;
-  color: #e6e6e6;
   padding-right: 20px;
 }
 
@@ -198,21 +199,37 @@ div.carteles-casos > div > a:nth-child(2) > div {
 
 .cartel-qr img {
   padding: 10px;
-  background-color: white;
+  background-color: white !important;
 }
 
 .cartel-qr,
 .cartel-domain,
 .cartel-tw {
   text-align: right;
+  color: #e6e6e6 !important;
 }
 
 .caso-qr {
   position: relative;
   z-index: 1;
   padding: 5px;
-  background-color: white;
+  background-color: white !important;
   top: 225px;
   left: 5px;
   width: 80px;
+}
+
+@media print {
+  body {
+    /* https://stackoverflow.com/questions/21964043/can-i-force-phantomjs-to-render-pdfs-with-the-background-images-and-colors */
+    -webkit-print-color-adjust: exact;
+  }
+
+  .loading-message,
+  .spinner,
+  .bert-container,
+  .bert-alert {
+    display: none !important;
+    color: transparent !important;
+  }
 }
