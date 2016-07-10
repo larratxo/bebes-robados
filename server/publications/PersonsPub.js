@@ -33,6 +33,10 @@ Meteor.publish('personAndFiles', function (id) {
   }
 });
 
+Meteor.publish('personsOfThisUser', function (id) {
+  return Persons.find({familiar: this.userId});
+});
+
 Meteor.publish('personAndFilesViaSlug', function (slug) {
   check(slug, String);
   var person = Persons.find({slug: slug});

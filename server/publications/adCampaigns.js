@@ -1,4 +1,10 @@
-/* global Meteor, AdCampaigns Persons */
+/* global Meteor, AdCampaigns currentAdCampaign */
+
 Meteor.publish('AdCampaigns', function () {
-  return [AdCampaigns.find(), Persons.find({familiar: this.userId}) ];
+  return AdCampaigns.find();
+});
+
+Meteor.publish('myCampaigns', function () {
+  return AdCampaigns.find({ group: currentAdCampaign,
+                            user: this.userId });
 });

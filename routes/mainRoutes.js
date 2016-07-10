@@ -56,7 +56,8 @@ Router.map(function () {
     // https://github.com/iron-meteor/iron-router/issues/1148
     loadingTemplate: 'loading',
     waitOn: function () {
-      return subsManager.subscribe('AdCampaigns');
+      return [subsManager.subscribe('AdCampaigns'),
+              subsManager.subscribe('personsOfThisUser')];
     }
   });
   this.route('carteles', {

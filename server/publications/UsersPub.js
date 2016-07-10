@@ -29,12 +29,6 @@ Meteor.publish('me', function () {
   return user;
 });
 
-Meteor.publish('myCampaigns', function () {
-  var ads = AdCampaigns.find({ group: currentAdCampaign,
-                              user: this.userId });
-  return ads;
-});
-
 Meteor.publish('myReports', function () {
   var persons = Persons.find({familiar: this.userId});
   return persons;
