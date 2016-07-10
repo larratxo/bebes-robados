@@ -1,4 +1,4 @@
-/* global Router Random Meteor process */
+/* global Router Random Meteor process Spiderable */
 
 import webshot from 'webshot';
 import fs from 'fs';
@@ -11,17 +11,7 @@ Router.route('cartelesPDF', {
   action: function () {
     var fut = new Future();
     var fileName = 'generated_' + Random.id() + '.pdf';
-    var path = 'carteles?_escaped_fragment_=';
-    var url;
-    if (process.env.PORT === 80) {
-      // In production spiderable fails
-      // Trying this workaround: https://github.com/iron-meteor/iron-router/issues/1192
-      // More info:
-      // https://stackoverflow.com/questions/23637282/meteor-the-application-is-not-spiderable
-      url = 'http://localhost/' + path;
-    } else {
-      url = Meteor.absoluteUrl(path);
-    }
+    var url = Meteor.absoluteUrl('carteles?_escaped_fragment_=');
     // console.log(url);
 
     // https://github.com/brenden/node-webshot
@@ -50,3 +40,17 @@ Router.route('cartelesPDF', {
     this.response.end(fut.wait());
   }
 });
+
+// In production spiderable fails
+// Trying this workaround: https://github.com/iron-meteor/iron-router/issues/1192
+// More info:
+// https://stackoverflow.com/questions/23637282/meteor-the-application-is-not-spiderable
+
+if (process.env.PORT === 80) {
+  var originalFunc = Spiderable._urlForPhantom;
+  Spiderable._urlForPhantom = function (siteAbsoluteUrl, requestUrl) {
+    var url = originalFunc('http://localhost:80/', requestUrl);
+    console.log('Resolved Spiderable request ' + requestUrl + ' to ' + url);
+    return url;
+  };
+}
