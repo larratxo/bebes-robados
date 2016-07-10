@@ -220,6 +220,8 @@ div.carteles-casos > div > a:nth-child(2) > div {
 }
 
 @media print {
+  // TODO https://stackoverflow.com/questions/17685957/excluding-bootstrap-from-specific-routes-in-meteor
+
   body {
     /* https://stackoverflow.com/questions/21964043/can-i-force-phantomjs-to-render-pdfs-with-the-background-images-and-colors */
     -webkit-print-color-adjust: exact;
