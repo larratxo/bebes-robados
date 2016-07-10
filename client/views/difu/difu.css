@@ -163,6 +163,7 @@
 }
 
 .cartel-slogan {
+
   float: left;
   width: 730px;
   line-height: 1.3em;
@@ -177,6 +178,9 @@
   font-size: 26px;
   text-transform: lowercase;
   padding-right: 20px;
+  padding-bottom: 10px;
+  background-color: #e0e0e0 !important;
+  line-height: 1.2em;
 }
 
 .carteles-main {
@@ -199,14 +203,13 @@ div.carteles-casos > div > a:nth-child(2) > div {
 
 .cartel-qr img {
   padding: 10px;
-  background-color: white !important;
 }
 
 .cartel-qr,
 .cartel-domain,
 .cartel-tw {
   text-align: right;
-  color: #e6e6e6 !important;
+  color: #000 !important;
 }
 
 .caso-qr {
@@ -217,6 +220,12 @@ div.carteles-casos > div > a:nth-child(2) > div {
   top: 225px;
   left: 5px;
   width: 80px;
+}
+.cartel-logo {
+  float: right;
+}
+.cartel-logo img {
+  width: 120px;
 }
 
 @media print {
