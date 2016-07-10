@@ -46,11 +46,9 @@ Router.route('cartelesPDF', {
 // More info:
 // https://stackoverflow.com/questions/23637282/meteor-the-application-is-not-spiderable
 
-if (process.env.PORT === 80) {
-  var originalFunc = Spiderable._urlForPhantom;
-  Spiderable._urlForPhantom = function (siteAbsoluteUrl, requestUrl) {
-    var url = originalFunc('http://localhost:80/', requestUrl);
-    console.log('Resolved Spiderable request ' + requestUrl + ' to ' + url);
-    return url;
-  };
-}
+var originalFunc = Spiderable._urlForPhantom;
+Spiderable._urlForPhantom = function (siteAbsoluteUrl, requestUrl) {
+  var url = originalFunc('http://localhost:' + process.env.PORT + '/', requestUrl);
+  console.log('Resolved Spiderable request ' + requestUrl + ' to ' + url);
+  return url;
+};
