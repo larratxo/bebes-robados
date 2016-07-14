@@ -34,7 +34,8 @@ siteSettings.observe = function (name, callback) {
 
 siteSettings.observe('site-main-subname',
                      function (value) {
-                       Meteor.App = { NAME: value };
+                       var main = siteSettings.get('site-main-name');
+                       Meteor.App = { NAME: main + ': ' + value };
                        if (Meteor.isClient) {
                          Session.set('DocumentTitleMain', Meteor.App.NAME);
                        }

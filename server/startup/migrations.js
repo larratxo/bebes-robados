@@ -44,7 +44,7 @@ Meteor.startup(function () {
       siteSettings._ensureIndex({name: 1}, {unique: 1});
       siteSettings.insert({
         name: 'site-main-name',
-        value: 'REENCONTRAR.SE',
+        value: 'REUNE',
         description: 'Nombre principal de la web',
         type: 'string'
       });
@@ -102,7 +102,7 @@ Meteor.startup(function () {
     up: function () {
       siteSettings.insert({
         name: 'site-domain',
-        value: 'http://reencontrar.se',
+        value: 'http://reune.es',
         description: 'Este es el dominio de esta iniciativa. Se usa para, por ejemplo, los carteles de las campañas de difusión',
         type: 'string'
       });

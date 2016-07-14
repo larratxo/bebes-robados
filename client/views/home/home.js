@@ -1,7 +1,16 @@
 /* global Template $ Session Router GoogleMaps google noUndef Persons isNew onSliderRender
- renderSexoAlt renderDate renderAprox renderNuevo calcShowAll isValidLatLng _ */
+ renderSexoAlt renderDate renderAprox renderNuevo calcShowAll isValidLatLng _ siteSettings */
 
 Template.home.helpers({
+  homeSlogan1: function () {
+    return siteSettings.get('home-slogan-1');
+  },
+  homeSlogan2: function () {
+    return siteSettings.get('home-slogan-2');
+  },
+  homeSloganDescription: function () {
+    return siteSettings.get('home-slogan-description');
+  },
   mainMapOptions: function () {
     // Make sure the maps API has loaded
     if (GoogleMaps.loaded()) {
