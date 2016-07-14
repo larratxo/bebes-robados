@@ -149,7 +149,7 @@
   background-color: #666666 !important;
   width: 1053px;
   color: white !important;
-  padding: 17px;
+  padding: 17px 17px 17px 30px;
   height: 225px;
   text-transform: uppercase;
   display: inline-block;
@@ -163,7 +163,6 @@
 }
 
 .cartel-slogan {
-
   float: left;
   width: 730px;
   line-height: 1.3em;
@@ -173,7 +172,7 @@
 }
 
 .cartel-right {
-  width: 280px;
+  width: 240px;
   float: right;
   font-size: 26px;
   text-transform: lowercase;
@@ -181,6 +180,11 @@
   padding-bottom: 10px;
   background-color: #e0e0e0 !important;
   line-height: 1.2em;
+}
+
+.cartel-right img {
+  position: relative;
+  right: -20px;
 }
 
 .carteles-main {
