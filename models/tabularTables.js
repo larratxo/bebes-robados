@@ -208,9 +208,13 @@ var renderReporter = function (val, type, doc) {
   return renderPersona(doc.reporter, '');
 };
 
+var renderDesc = function (val, type, doc) {
+  return '<span class="text-gray" title="' + doc.name + '"">' + val + '</val>';
+};
+
 var renderValue = function (val, type, doc) {
   return '<span title="Pulsa para editar">' + val + '</val>';
-}
+};
 
 TabularTables.AdCampagins = new Tabular.Table({
   name: 'AdCampaigns',
@@ -277,7 +281,7 @@ TabularTables.siteSettings = new Tabular.Table({
     {data: 'createdAt', title: 'Fecha', render: renderDateTime, className: 'abuse-date', visible: false},
     {data: '_id', title: 'ID', visible: false},
     {data: 'name', title: 'Nombre', visible: false},
-    {data: 'description', title: 'Descripción'},
+    {data: 'description', render: renderDesc, title: 'Descripción'},
     {data: 'value', title: 'Valor', render: renderValue, className: 'site-setting-value-column'},
     {data: 'type', title: 'Tipo', visible: false}
   ]
