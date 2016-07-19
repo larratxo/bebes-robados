@@ -26,6 +26,7 @@ Router.route('cartelesPDF', {
         width: 'all',
         height: 'all'
       },
+      zoomFactor: 1,
       captureSelector: '.carteles-main',
       'paperSize': {
         'format': 'A3',
