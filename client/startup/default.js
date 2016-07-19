@@ -40,5 +40,5 @@ Meteor.startup(function () {
     }
   });
 
-  console.log('Página cargada a las' + moment().format('DD-MM-YYYY HH:mm:ss'));
+  console.log('Página cargada a las ' + moment().format('DD-MMMM-YYYY HH:mm:ss'));
 });
