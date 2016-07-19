@@ -18,6 +18,14 @@ Router.route('cartelesPDF', {
     var options = {
       renderDelay: 5000,
       quality: 100,
+      screenSize: {
+        width: 1053,
+        height: 1488
+      },
+      shotSize: {
+        width: 1053,
+        height: 'all'
+      },
       'paperSize': {
         'format': 'A3',
         'orientation': 'portrait',
