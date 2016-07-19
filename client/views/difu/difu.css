@@ -146,16 +146,14 @@
 }
 
 .cartel-footer {
-  background-color: #666666 !important;
   width: 1053px;
   color: white !important;
-  padding: 17px 17px 17px 30px;
   height: 225px;
   text-transform: uppercase;
   display: inline-block;
   font-size: 46px;
   font-family: 'Roboto', 'Open Sans', sans-serif;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 .cartel-row {
@@ -163,16 +161,19 @@
 }
 
 .cartel-slogan {
+  padding: 17px 17px 17px 30px;
+  background-color: #666666 !important;
   float: left;
-  width: 730px;
+  width: 800px;
   line-height: 1.3em;
   padding-top: 10px;
   /* color: white !important; */
   color: #e6e6e6 !important;
+  height: 197px;
 }
 
 .cartel-right {
-  width: 240px;
+  width: 253px;
   float: right;
   font-size: 26px;
   text-transform: lowercase;
@@ -180,6 +181,7 @@
   padding-bottom: 10px;
   background-color: #e0e0e0 !important;
   line-height: 1.2em;
+  height: 197px;
 }
 
 .cartel-right img {

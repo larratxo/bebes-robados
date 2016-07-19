@@ -16,16 +16,17 @@ Router.route('cartelesPDF', {
 
     // https://github.com/brenden/node-webshot
     var options = {
-      renderDelay: 5000,
+      renderDelay: 3000,
       quality: 100,
       screenSize: {
         width: 1053,
         height: 1488
       },
       shotSize: {
-        width: 1053,
+        width: 'all',
         height: 'all'
       },
+      captureSelector: '.carteles-main',
       'paperSize': {
         'format': 'A3',
         'orientation': 'portrait',

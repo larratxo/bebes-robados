@@ -1,4 +1,4 @@
-/* global Meteor Bert GoogleMaps $ */
+/* global Meteor Bert GoogleMaps $ moment */
 
 Meteor.startup(function () {
   // https://eternicode.github.io/bootstrap-datepicker/
@@ -39,4 +39,6 @@ Meteor.startup(function () {
       console.log(error);
     }
   });
+
+  console.log('Página cargada a las' + moment().format('DD-MM-YYYY HH:mm:ss'));
 });
