@@ -7,6 +7,7 @@ BrowserPolicy.content.allowOriginForAll('*.gravatar.com');
 BrowserPolicy.content.allowOriginForAll('*.cloudflare.com');
 BrowserPolicy.content.allowOriginForAll('*.twimg.com');
 BrowserPolicy.content.allowOriginForAll('*.comunes.org');
+BrowserPolicy.content.allowOriginForAll('fry.comunes.org:8080');
 BrowserPolicy.content.allowOriginForAll('*.twitter.com');
 BrowserPolicy.content.allowOriginForAll('*.facebook.net');
 BrowserPolicy.content.allowOriginForAll('*.facebook.com');

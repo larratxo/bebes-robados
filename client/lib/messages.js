@@ -1,4 +1,4 @@
-/* global success:true alertMessage:true Bert successWithTitle:true */
+/* global success:true alertMessage:true Bert successWithTitle:true, RavenLogger */
 
 // https://github.com/themeteorchef/bert
 
@@ -17,5 +17,6 @@ successWithTitle = function (title, message) {
 
 alertMessage = function (message) {
   // error can be an object...
+  RavenLogger.log(message);
   Bert.alert('' + message, 'danger', 'growl-top-right');
 };
