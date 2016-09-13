@@ -27,7 +27,7 @@ Template.simpleUploadForm.events({
 
       upload.on('end', function (error, fileObj) {
         if (error) {
-          alertMessage('Error subiend fichero: ' + error);
+          alertMessage('Error subiendo fichero: ' + error);
         } else {
           success('Fichero "' + fileObj.name + '" subido correctamente');
         }
