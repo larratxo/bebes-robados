@@ -1,4 +1,4 @@
-/* global Template ReactiveVar aFilesCollection _ */
+/* global Template ReactiveVar aFilesCollection _ $ Meteor */
 Template.filesDownload.onCreated(function () {
   this.collection = new ReactiveVar(aFilesCollection[this.data.collection]);
 });
@@ -18,5 +18,12 @@ Template.filesDownload.helpers({
   },
   fileLink: function (fileRef) {
     return Template.instance().collection.get().link(fileRef);
+  }
+});
+
+Template.filesDownload.events({
+  'click [hook="track"]': function (evt) {
+    var downloadUrl = $(evt.currentTarget).attr('href');
+    Meteor.Piwik.trackDownload(downloadUrl);
   }
 });

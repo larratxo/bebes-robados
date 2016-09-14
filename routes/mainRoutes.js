@@ -294,3 +294,16 @@ Router.after(function () {
     Session.set('DocumentTitle', this.route.options.title);
   }
 });
+
+var oldRoute = ''; // fix for onRun Problem of ironRouter
+Router.onBeforeAction(function () {
+  if (Meteor.isClient) {
+    var route = Router.current().url;
+    if (route !== oldRoute) {
+      // console.log(route);
+      Meteor.Piwik.trackPage(route);
+      oldRoute = route;
+    }
+  }
+  this.next();
+});

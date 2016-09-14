@@ -1,4 +1,4 @@
-/* global Template Router $ siteSettings */
+/* global Template Router $ siteSettings Dispatcher */
 
 Template.header.helpers({
   siteName: function () {
@@ -28,3 +28,5 @@ Template.onRendered(function () {
     $navbarAnchors.removeClass('active').filter('[href="' + item + '"]').parent('li').addClass('active');
   });
 });
+
+Template.header.events(Dispatcher.events);
