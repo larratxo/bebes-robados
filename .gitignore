@@ -10,3 +10,4 @@ mup-prod.json
 .deploy
 .deploy-prod
 mup-local.json
+.meteor/dev_bundle
