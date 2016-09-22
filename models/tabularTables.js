@@ -41,7 +41,7 @@ setEmptyTable = function (text) {
 renderDate = function (val) {
   // http://momentjs.com/docs/#/displaying/
   if (val instanceof Date) {
-    return moment(val).format('DD-MMM-YYYY');
+    return moment(val).format('D-MMM-YYYY');
   } else {
     return '';
   }

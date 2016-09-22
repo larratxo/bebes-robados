@@ -2,14 +2,11 @@
 Lista de Tareas
 
 * Desarrollo
+** Fuentes mal en windows/FF en carteles
 ** asistente/wizard
-** al añadir ¿donde va? no queda claro
-** añadiendo bebe parece que con enter se guarda
-** refrescar añadir después de logear!** Fechas, dejar poner mes solamente
+** refrescar añadir después de logear!
 ** Función checheo DNI
 ** En FF windows el subir es un poco raro
-** Multiple formats in date
-http://stackoverflow.com/questions/25450253/bootstrap-datepicker-multiple-formats
 ** Usar flags
 Meteor.isDevelopment
 Meteor.isProduction

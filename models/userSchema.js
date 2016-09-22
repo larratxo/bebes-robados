@@ -1,19 +1,29 @@
 /* global Schema, SimpleSchema, Meteor, $, defaultCreatedAt, Roles
-   defaultUpdateAt, addApiRoute onAfterUp */
+   defaultUpdateAt, addApiRoute nifValido */
 // https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript
 
 /*
 var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
  */
 
+SimpleSchema.messages({dniInvalido: 'DNI invalido'});
+
 Schema.UserProfile = new SimpleSchema({
   name: { type: String, optional: true, label: 'Nombre completo',
           autoform: {afFieldInput:
                      {placeholder: 'Nombre y apellidos'}}},
   dni: { type: String, optional: false, label: 'DNI (número y letra):',
-         regEx: /^\d{8}[A-Z]$/, autoform: { mask: '99999999-A' }},
-    // parentesco: { type: String, optional: true, label:
-    // 'Parentesco con el presunto niño/a robado:' },
+         regEx: /^\d{8}[A-Z]$/, autoform: { mask: '99999999A' },
+         custom: function () {
+           if (Meteor.isClient && this.isSet) {
+             if (!nifValido(this.value)) {
+               // Meteor.users.simpleSchema().namedContext('editUserForm').addInvalidKeys([{name: 'dni', type: 'dniInvalido'}]);
+               return 'dniInvalido';
+             }
+           }
+         }},
+  // parentesco: { type: String, optional: true, label:
+  // 'Parentesco con el presunto niño/a robado:' },
   telefono: { type: String, optional: true, label: 'Teléfono de contacto:',
               autoform: {afFieldInput:
                          {placeholder: 'Teléfono móvil preferiblemente'}}

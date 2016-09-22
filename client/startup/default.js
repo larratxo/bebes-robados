@@ -2,7 +2,19 @@
 
 Meteor.startup(function () {
   // https://eternicode.github.io/bootstrap-datepicker/
-  $.fn.datepicker.defaults.format = 'dd/MM/yyyy';
+  $.fn.datepicker.defaults.format = {
+    // https://bootstrap-datepicker.readthedocs.io/en/stable/options.html#format
+    toDisplay: function (date, format, language) {
+      return moment(date).format('d/MM/YYYY');
+    },
+    toValue: function (date, format, language) {
+      return moment(date, ['dd-mm-yy', 'mm-yy', 'dd-MM-yy', 'MM-yy',
+                           'dd-mm-yyyy', 'mm-yyyy', 'dd-MM-yyyy', 'MM-yyyy',
+                           'dd/mm/yy', 'mm/yy', 'dd/MM/yy', 'MM/yy',
+                           'dd/mm/yyyy', 'mm/yyyy', 'dd/MM/yyyy', 'MM/yyyy'
+                          ]).toDate();
+    }
+  };
   $.fn.datepicker.defaults.language = 'es';
   $.fn.datepicker.defaults.autoclose = true;
   $.fn.datepicker.defaults.clearBtn = true;
@@ -13,7 +25,7 @@ Meteor.startup(function () {
     daysMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
     months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
     monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-    today: 'Hoy', clear: 'Borrar', weekStart: 1, format: 'dd/MM/yyyy'};
+    today: 'Hoy', clear: 'Borrar', weekStart: 1, format: 'd/MM/yyyy'};
 
   if (!Meteor.settings.public.isProduction) {
     Bert.defaults = {
