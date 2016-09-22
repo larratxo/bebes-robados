@@ -29,6 +29,11 @@
 
         {{/if}}
         <a class="btn btn-default" href="{{pathFor 'personsList'}}" role="button">{{_"Cancel"}}</a>
+
+        {{#if noValidado}}
+          <span class="casopdte" title="Caso pendiente de validación por los/as administradores">{{pdteModeracion}}</span>
+        {{/if}}
+
       </div>
     </div>
 

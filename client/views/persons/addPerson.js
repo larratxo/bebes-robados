@@ -1,4 +1,4 @@
-/* global $ Template successWithTitle alertMessage AutoForm Router _ */
+/* global $ Template successWithTitle alertMessage AutoForm Router */
 
 Template.nuevoBebe.onRendered(function () {
   // Commented, this clear default values
@@ -12,10 +12,12 @@ AutoForm.hooks({
       insert: function (error, result) {
         if (typeof error === 'undefined') {
           successWithTitle('Guardado', 'Pendiente de moderación');
-          Router.go('userUpdate');
-          AutoForm.resetForm('nuevoBebeForm');
-          $('#usar').collapse('hide');
-          _.delay(function () { $('body').animate({ scrollTop: $('#casosreportados').offset().top - 100 }, 1000); }, 1000);
+          Router.go('viewPerson', {_id: result});
+          // Antes íbamos a nuestro perfil:
+          // Router.go('userUpdate');
+          // AutoForm.resetForm('nuevoBebeForm');
+          // $('#usar').collapse('hide');
+          // _.delay(function () { $('body').animate({ scrollTop: $('#casosreportados').offset().top - 100 }, 1000); }, 1000);
         } else {
           alertMessage(error);
           console.log('Error inserting ' + error);
