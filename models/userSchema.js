@@ -10,7 +10,7 @@ Schema.UserProfile = new SimpleSchema({
   name: { type: String, optional: true, label: 'Nombre completo',
           autoform: {afFieldInput:
                      {placeholder: 'Nombre y apellidos'}}},
-  dni: { type: String, optional: true, label: 'DNI (número y letra):',
+  dni: { type: String, optional: false, label: 'DNI (número y letra):',
          regEx: /^\d{8}[A-Z]$/, autoform: { mask: '99999999-A' }},
     // parentesco: { type: String, optional: true, label:
     // 'Parentesco con el presunto niño/a robado:' },
