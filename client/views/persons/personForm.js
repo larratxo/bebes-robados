@@ -4,8 +4,8 @@
 var toDelete = new ReactiveVar();
 
 Template.bebeForm.helpers({
-  noValidado: function () { return !this.doc.validated; },
-  pdteModeracion: function () { return this.doc.validated ? '' : 'Caso pendiente de validación'; },
+  noValidado: function () { return this.doc && !this.doc.validated; },
+  pdteModeracion: function () { return this.doc.validated ? '' : 'Caso pendiente de moderación'; },
   publicar: function () { return this.doc.validated ? 'No publicar' : 'Publicar'; },
   isAddingAdminIsFamiliar: function () {
     return this.type === 'insert' || Roles.userIsInRole(Meteor.userId(), ['admin']) || Meteor.userId() === this.doc.familiar;
@@ -156,6 +156,13 @@ Template.bebeForm.events({
     // console.log('Fallecimiento show');
     $('#cementerioEnterradoDireccion').trigger('geocode');
     resizeCementerioMap();
+  },
+  'keydown form input': function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      console.log('Pressed enter');
+      return false;
+    }
   }
 });
 
