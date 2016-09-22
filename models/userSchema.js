@@ -12,7 +12,8 @@ Schema.UserProfile = new SimpleSchema({
   name: { type: String, optional: true, label: 'Nombre completo',
           autoform: {afFieldInput:
                      {placeholder: 'Nombre y apellidos'}}},
-  dni: { type: String, optional: false, label: 'DNI (número y letra):',
+  // dni optional false breaks createUser (we need a workaround)
+  dni: { type: String, optional: true, label: 'DNI (número y letra):',
          regEx: /^\d{8}[A-Z]$/, autoform: { mask: '99999999A' },
          custom: function () {
            if (Meteor.isClient && this.isSet) {
@@ -21,7 +22,8 @@ Schema.UserProfile = new SimpleSchema({
                return 'dniInvalido';
              }
            }
-         }},
+         }
+       },
   // parentesco: { type: String, optional: true, label:
   // 'Parentesco con el presunto niño/a robado:' },
   telefono: { type: String, optional: true, label: 'Teléfono de contacto:',

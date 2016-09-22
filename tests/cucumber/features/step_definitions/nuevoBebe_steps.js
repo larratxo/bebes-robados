@@ -22,7 +22,11 @@ module.exports = function () {
 
       client.waitForExist('#nombreCompleto', 10000);
       expect(client.getTitle()).toBe("Añade un bebe - " + appName);
-      client.waitForVisible("input[name=buscasBebe]");
+
+      // Wait till loading is not visible
+      client.waitForVisible(".pg-loading-center-middle", 10000, true);
+
+      client.waitForVisible("input[name=buscasBebe][value=false]");
 
       if (bebes[i][2] === "F") {
         client.click("input[name=buscasBebe][value=false]");

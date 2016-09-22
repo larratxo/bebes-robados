@@ -10,7 +10,7 @@ Característica: Actualización de datos personales
     Entonces debo estar registrado
     Y debo estar autenticado
     Y unos datos personales
-    | Francisco Javier | 00000000N | +3491000000 | ../../public/images/logo200.png |http://twitter.com/comunes/ |
+    | Francisco Javier | 19577526H | +3491000000 | ../../public/images/logo200.png |http://twitter.com/comunes/ |
     Entonces actualizo mi perfil correctamente
     Y si dejo de estar logeado
     Entonces mi página es visible

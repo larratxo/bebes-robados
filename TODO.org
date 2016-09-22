@@ -2,6 +2,7 @@
 Lista de Tareas
 
 * Desarrollo
+** Quitar login con google/twitter
 ** Fuentes mal en windows/FF en carteles
 ** asistente/wizard
 ** refrescar añadir después de logear!

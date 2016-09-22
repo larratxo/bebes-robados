@@ -13,6 +13,8 @@ module.exports = function () {
       client.click('.bert-content');
     }
     client.waitForVisible("li#login-dropdown-list a");
+    // Wait till alert is not visible
+    client.waitForVisible('.bert-alert', 10000, true);
     client.click("li#login-dropdown-list a");
     client.waitForVisible('#login-buttons-open-change-settings');
     client.click('#login-buttons-open-change-settings');
@@ -48,7 +50,8 @@ module.exports = function () {
     expect(client.getValue('input[name="profile.name"]')).toBe(datos[0][0]);
     expect(client.getValue('input[name="profile.telefono"]')).toBe(datos[0][2]);
     if (!phantomJs) {
-      client.waitForVisible("div.autoform-array-item-body > div > div > div > a > img");
+      // TODO
+      // client.waitForVisible("div.autoform-array-item-body > div > div > div > a > img");
     }
     expect(client.getValue('input[name="profile.redesSociales.0.url"]')).toBe(datos[0][4]);
 

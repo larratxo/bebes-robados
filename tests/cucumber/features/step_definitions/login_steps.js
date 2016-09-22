@@ -4,11 +4,17 @@ module.exports = function () {
   var username;
   var email;
   var passwd;
+  var dni;
 
   var generateUserData = function () {
     username = randomUsername();
     email = randomEmail();
     passwd = randomPassword();
+    var dninumero = Math.floor(Math.random() * 100000000);
+    var numero = dninumero % 23;
+    var letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+    letra = letra.substring(numero, numero + 1);
+    dni = dninumero + letra;
   };
 
   var createAccountAndLogin = function (callback, auth) {
@@ -16,7 +22,7 @@ module.exports = function () {
     goHome(client);
     auth.logout(client);
     generateUserData();
-    auth.createAccount(username, email, passwd);
+    auth.createAccount(username, email, passwd, dni);
     auth.checkCurrentUser(username);
     callback();
   };
@@ -86,7 +92,7 @@ module.exports = function () {
 
   this.Given(/^que me registro con cierto nombre de usuario, contraseña y correo$/, function (callback) {
     generateUserData();
-    this.AuthenticationHelper.registerUsername(username, email, passwd, true);
+    this.AuthenticationHelper.registerUsername(username, email, passwd, dni, true);
     callback();
   });
 
@@ -125,7 +131,7 @@ module.exports = function () {
     // client.click('#login-buttons-open-change-settings');
     client.waitForVisible('.UserUpdate');
     client.waitForExist('input[name="profile.dni"]');
-    client.setValue('input[name="profile.dni"]', "00000000N");
+    client.setValue('input[name="profile.dni"]', "70133390L");
     client.waitForVisible('.btn-form-submit');
     client.click(".btn-form-submit");
     callback();
@@ -133,7 +139,7 @@ module.exports = function () {
 
   this.Given(/^I register with some name, password and email$/, function (callback) {
     generateUserData();
-    this.AuthenticationHelper.registerUsername(username, email, passwd, true);
+    this.AuthenticationHelper.registerUsername(username, email, passwd, dni, true);
     callback();
   });
 
@@ -145,7 +151,7 @@ module.exports = function () {
   this.Given(/^I register with some name, password and email but without accept conditions$/, function (callback) {
     generateUserData();
     this.AuthenticationHelper.logout();
-    this.AuthenticationHelper.registerUsername(username, email, passwd, false);
+    this.AuthenticationHelper.registerUsername(username, email, passwd, dni, false);
     callback();
   });
 

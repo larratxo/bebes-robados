@@ -61,7 +61,7 @@ module.exports = function () {
         loginEnd(client, passwd, shouldFail);
       },
 
-      registerUsername: function (username, email, passwd, conditions) {
+      registerUsername: function (username, email, passwd, dni, conditions) {
         loginBegin(client);
         client.waitForVisible('#signup-link');
         client.click('#signup-link');
@@ -69,6 +69,8 @@ module.exports = function () {
         client.setValue('input[id="login-username"]', username);
         client.setValue('input[id="login-email"]', email);
         client.setValue('input[id="login-password"]', passwd);
+        client.setValue('input[id="login-name"]', username + ' ' + username + ' ' + username + ' ' + username);
+        client.setValue('input[id="login-dni"]', dni);
         if (conditions) {
           client.click('input[id="login-conServicioAceptadas"]');
         }
@@ -99,13 +101,14 @@ module.exports = function () {
           Meteor.logout(done);
         });
       },
-      createAccount: function (username, email, passwd) {
-        client.execute(function (username, email, passwd, done) {
+      createAccount: function (username, email, passwd, dni) {
+        client.execute(function (username, email, passwd, dni, done) {
           Meteor.logout();
           Accounts.createUser({
             username: username,
             email: email,
-            password: passwd
+            password: passwd,
+            profile: {dni: dni}
           }, done);
         }, username, email, passwd);
       }
