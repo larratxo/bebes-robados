@@ -7,10 +7,12 @@ module.exports = function () {
   var dni;
 
   var generateUserData = function () {
+    // https://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
     username = randomUsername();
     email = randomEmail();
     passwd = randomPassword();
-    var dninumero = Math.floor(Math.random() * 100000000);
+    // http://stackoverflow.com/questions/21816595/generate-a-random-number-of-fixed-length-using-javascript
+    var dninumero = Math.floor(10000000 + Math.random() * 90000000);
     var numero = dninumero % 23;
     var letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
     letra = letra.substring(numero, numero + 1);
@@ -18,7 +20,6 @@ module.exports = function () {
   };
 
   var createAccountAndLogin = function (callback, auth) {
-    // https://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
     goHome(client);
     auth.logout(client);
     generateUserData();

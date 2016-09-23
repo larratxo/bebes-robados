@@ -110,7 +110,7 @@ module.exports = function () {
             password: passwd,
             profile: {dni: dni}
           }, done);
-        }, username, email, passwd);
+        }, username, email, passwd, dni);
       }
     };
   });

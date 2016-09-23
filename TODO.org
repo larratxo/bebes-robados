@@ -2,11 +2,9 @@
 Lista de Tareas
 
 * Desarrollo
-** Quitar login con google/twitter
 ** Fuentes mal en windows/FF en carteles
 ** asistente/wizard
 ** refrescar añadir después de logear!
-** Función checheo DNI
 ** En FF windows el subir es un poco raro
 ** Usar flags
 Meteor.isDevelopment

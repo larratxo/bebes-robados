@@ -12,9 +12,13 @@ Schema.UserProfile = new SimpleSchema({
   name: { type: String, optional: true, label: 'Nombre completo',
           autoform: {afFieldInput:
                      {placeholder: 'Nombre y apellidos'}}},
-  // dni optional false breaks createUser (we need a workaround)
-  dni: { type: String, optional: true, label: 'DNI (número y letra):',
-         regEx: /^\d{8}[A-Z]$/, autoform: { mask: '99999999A' },
+  dni: { type: String, optional: false, label: 'DNI (número y letra):',
+
+         regEx: /^\d{8}[A-Z]$/,
+         autoform: {
+           mask: '99999999A',
+           afFieldInput: {placeholder: 'DNI tipo 99999999A'}
+         },
          custom: function () {
            if (Meteor.isClient && this.isSet) {
              if (!nifValido(this.value)) {
