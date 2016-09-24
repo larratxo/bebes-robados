@@ -36,6 +36,16 @@
       "from": "balanced-match@>=0.4.1 <0.5.0",
       "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-0.4.1.tgz"
     },
+    "bcrypt": {
+      "version": "0.8.7",
+      "from": "bcrypt@latest",
+      "resolved": "https://registry.npmjs.org/bcrypt/-/bcrypt-0.8.7.tgz"
+    },
+    "bindings": {
+      "version": "1.2.1",
+      "from": "bindings@1.2.1",
+      "resolved": "https://registry.npmjs.org/bindings/-/bindings-1.2.1.tgz"
+    },
     "bl": {
       "version": "1.0.3",
       "from": "bl@>=1.0.0 <1.1.0",
@@ -889,6 +899,11 @@
       "version": "0.5.0",
       "from": "mkdirp@0.5.0",
       "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.0.tgz"
+    },
+    "nan": {
+      "version": "2.3.5",
+      "from": "nan@2.3.5",
+      "resolved": "https://registry.npmjs.org/nan/-/nan-2.3.5.tgz"
     },
     "node-uuid": {
       "version": "1.4.7",

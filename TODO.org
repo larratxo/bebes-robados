@@ -14,6 +14,8 @@ Meteor.isAppTest
 ** PDF con campañas
 https://github.com/pascoual/meteor-pdfkit
 https://github.com/khronedev/img-qrcode/
+https://commons.wikimedia.org/wiki/Category:PDF_icons
+https://commons.wikimedia.org/wiki/File:Adobe_PDF_icon.svg
 ** Editor vs AuthorRole
 ** Añadir /path-camp1/ a los banners para poder cambiar de campañas
 ** Añadir campo sobre donde fue adoptado
