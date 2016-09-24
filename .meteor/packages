@@ -57,8 +57,6 @@ selaias:cookie-consent
 pcel:loading
 todda00:friendly-slugs
 east5th:package-scan
-meteorhacks:kadira
-meteorhacks:kadira-profiler
 reactive-var@1.0.10
 gwendall:simple-schema-i18n
 meteorhacks:subs-manager
