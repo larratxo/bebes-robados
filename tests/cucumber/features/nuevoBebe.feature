@@ -7,7 +7,6 @@ Característica: Alta de bebes correcta
   Antecedentes:
     Dado que me logeo con el usuario de pruebas
 
-  @watch
   Escenario: Verifico que un bebe que se busca se puede dar de alta con la información básica
     Dado una lista de bebes que se buscan
     | Federico Trino              | Hombre      | B | Cordoba  | Rute      | Hospital | Ana     | Gerardo | 14/7/1943   |

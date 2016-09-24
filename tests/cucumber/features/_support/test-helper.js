@@ -2,7 +2,7 @@
  process */
 
 randomUsername = function () {
-  return Math.random().toString(36).substring(7);
+  return Math.random().toString(16).substring(7);
 };
 
 randomPassword = function () {

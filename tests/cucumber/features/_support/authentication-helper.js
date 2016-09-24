@@ -87,7 +87,7 @@ module.exports = function () {
         var currentname = client.execute(function () {
           return Meteor.user().username;
         }).value;
-        console.log(currentname);
+        // console.log(currentname);
         expect(currentname).toBe(name);
       },
       isLogged: function (client) {
@@ -102,6 +102,8 @@ module.exports = function () {
         });
       },
       createAccount: function (username, email, passwd, dni) {
+        // console.log('username: ' + username);
+        // console.log('dni: ' + dni);
         client.execute(function (username, email, passwd, dni, done) {
           Meteor.logout();
           Accounts.createUser({
