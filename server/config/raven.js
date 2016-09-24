@@ -1,6 +1,6 @@
-/* global RavenLogger, Meteor */
+/* global RavenLogger, Meteor, Raven */
 RavenLogger.initialize({
   server: Meteor.settings.private.ravenServerDSN
 }, {
-  patchGlobal: true
+  patchGlobal: Meteor.settings.public.isProduction
 });
