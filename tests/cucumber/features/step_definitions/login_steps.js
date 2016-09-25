@@ -92,9 +92,7 @@ module.exports = function () {
   });
 
   this.Given(/^que me registro con cierto nombre de usuario, contraseña y correo$/, function (callback) {
-    generateUserData();
-    this.AuthenticationHelper.registerUsername(username, email, passwd, dni, true);
-    callback();
+    createAccountAndLogin(callback);
   });
 
   this.Given(/^debo estar registrado$/, function (callback) {
@@ -139,9 +137,7 @@ module.exports = function () {
   });
 
   this.Given(/^I register with some name, password and email$/, function (callback) {
-    generateUserData();
-    this.AuthenticationHelper.registerUsername(username, email, passwd, dni, true);
-    callback();
+    createAccountAndLogin(callback);
   });
 
   this.Then(/^I should be registered$/, function (callback) {
