@@ -2,6 +2,9 @@
 Lista de Tareas
 
 * Desarrollo
+** Password potentes:
+https://github.com/meteor-useraccounts/core/issues/519
+https://github.com/dropbox/zxcvbn
 ** Fuentes mal en windows/FF en carteles
 ** asistente/wizard
 ** refrescar añadir después de logear!

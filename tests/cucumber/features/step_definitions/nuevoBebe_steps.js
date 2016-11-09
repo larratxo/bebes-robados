@@ -1,8 +1,8 @@
-/*global module, expect, client */
+/*global module, expect, client appName */
 module.exports = function () {
   var bebes;
 
-  var alta = function(callback, shouldFail) {
+  var alta = function (callback, shouldFail) {
     // TODO login
     if (bebes.lenght <= 0) {
       callback(new Error('This is a data failure'));
@@ -15,7 +15,7 @@ module.exports = function () {
       /* client.waitForVisible('#navbar > ul > li:nth-child(1) > a');
       client.click('#navbar > ul > li:nth-child(1) > a');
       client.waitForVisible('#navbar > ul > li:nth-child(2) > a');
-      client.click('#navbar > ul > li:nth-child(2) > a'); */
+       client.click('#navbar > ul > li:nth-child(2) > a'); */
 
       var provinciaNacimiento = bebes[i][3];
       var municipioNacimiento = bebes[i][4];
@@ -64,7 +64,8 @@ module.exports = function () {
       client.click('#person-form-submit');
 
       if (shouldFail) {
-        client.waitForVisible('.danger');
+        // client.waitForVisible('.danger');
+        expect(client.getTitle()).toBe("Añade un bebe - " + appName);
       } else {
         client.waitForText('body', 'Campañas de difusión públicas');
         /* client.waitForExist('#personsTable_filter > label > input');

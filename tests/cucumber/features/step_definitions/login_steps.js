@@ -91,8 +91,18 @@ module.exports = function () {
     callback();
   });
 
+  this.Given(/^I register with some name, password and email$/, function (callback) {
+    generateUserData();
+    this.AuthenticationHelper.logout();
+    this.AuthenticationHelper.registerUsername(username, email, passwd, dni, true);
+    callback();
+  });
+
   this.Given(/^que me registro con cierto nombre de usuario, contraseña y correo$/, function (callback) {
-    createAccountAndLogin(callback);
+    generateUserData();
+    this.AuthenticationHelper.logout();
+    this.AuthenticationHelper.registerUsername(username, email, passwd, dni, true);
+    callback();
   });
 
   this.Given(/^debo estar registrado$/, function (callback) {
@@ -134,10 +144,6 @@ module.exports = function () {
     client.waitForVisible('.btn-form-submit');
     client.click(".btn-form-submit");
     callback();
-  });
-
-  this.Given(/^I register with some name, password and email$/, function (callback) {
-    createAccountAndLogin(callback);
   });
 
   this.Then(/^I should be registered$/, function (callback) {

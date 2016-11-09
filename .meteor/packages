@@ -3,14 +3,14 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-less@2.7.5
-jquery@1.11.9
-underscore@1.0.9
-accounts-password@1.3.0
+less@2.7.6
+jquery@1.11.10
+underscore@1.0.10
+accounts-password@1.3.1
 aldeed:collection2
 iron:router
 raix:handlebar-helpers
-fastclick@1.0.12
+fastclick@1.0.13
 manuelschoebel:ms-seo
 browser-policy@1.0.9
 natestrauser:animate-css
@@ -18,16 +18,16 @@ dburles:collection-helpers
 
 meteor-base@1.0.4
 mobile-experience@1.0.4
-mongo@1.1.12
+mongo@1.1.14
 blaze-html-templates@1.0.4
-session@1.1.6
-tracker@1.1.0
-logging@1.1.15
-reload@1.1.10
+session@1.1.7
+tracker@1.1.1
+logging@1.1.16
+reload@1.1.11
 random@1.0.10
-ejson@1.0.12
+ejson@1.0.13
 spacebars@1.0.12
-check@1.2.3
+check@1.2.4
 aldeed:autoform
 tap:i18n
 ian:accounts-ui-bootstrap-3
@@ -46,18 +46,18 @@ fortawesome:fontawesome
 mpowaga:autoform-autocomplete
 rzymek:moment-locale-es
 arkham:comments-ui
-email@1.1.17
+email@1.1.18
 utilities:avatar
 sacha:spin
 gadicohen:sitemaps
-coffeescript@1.2.4_1
+coffeescript@1.11.1_2
 zimme:active-route
 andruschka:bootstrap-image-gallery
 selaias:cookie-consent
 pcel:loading
 todda00:friendly-slugs
 east5th:package-scan
-reactive-var@1.0.10
+reactive-var@1.0.11
 gwendall:simple-schema-i18n
 meteorhacks:subs-manager
 jazeee:spiderable-longer-timeout
@@ -65,11 +65,11 @@ todda00:collection-revisions
 mrt:accounts-admin-ui-bootstrap-3
 alanning:roles
 ryw:blog
-service-configuration@1.0.10
-accounts-base@1.2.11
+service-configuration@1.0.11
+accounts-base@1.2.14
 francocatena:status
 hitchcott:app-dump
-markdown@1.0.10
+markdown@1.0.11
 aldeed:delete-button
 hinas:meteor-bootstrap-confirmation
 babrahams:editable-text-wysiwyg-bootstrap-3
@@ -79,8 +79,8 @@ vazco:universe-html-purifier
 cosmos:browserify
 msavin:mongol
 percolate:migrations
-standard-minifier-css@1.2.0
-standard-minifier-js@1.2.0
+standard-minifier-css@1.3.2
+standard-minifier-js@1.2.1
 percolate:synced-cron
 liberation:shareit
 ostrio:files
@@ -88,10 +88,10 @@ mquandalle:jade
 ostrio:templatehelpers
 mrt:filesize
 lawshe:full-page
-modules@0.7.6
+modules@0.7.7
 softwarerero:accounts-t9n
-ecmascript@0.5.8
+ecmascript@0.5.9
 khrone:img-qrcode
 deepwell:raven
 davidsichau:piwik
-shell-server
+shell-server@0.2.1

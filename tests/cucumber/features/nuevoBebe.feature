@@ -16,6 +16,7 @@ Característica: Alta de bebes correcta
     |                             | Mujer       | F | Madrid   | Alcorcón  | Hospital | María   | Luis    | 22/Ago/1960 |
     Entonces se debe de poder dar de alta correctamente
 
+  @watch
   Escenario: Verifico que un bebe que se busca no se puede dar de alta sin la información básica
     Dado una lista de bebes que se buscan
     | Francisco Javier |       |   | Murcia | Cartagena | Hospital | Marta | Germán | 22/08/1960  |

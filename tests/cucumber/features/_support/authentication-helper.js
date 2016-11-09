@@ -14,9 +14,13 @@ module.exports = function () {
       return !isLogged(client);
     };
 
-    var openLoginDialog = function (client) {
+    var waitForLogin = function (client) {
       var doesExist = client.waitForVisible('li#login-dropdown-list a');
       expect(doesExist).toBe(true);
+    };
+
+    var openLoginDialog = function (client) {
+      waitForLogin(client);
       client.click('li#login-dropdown-list a');
       client.waitForVisible('#login-username-or-email');
     };
@@ -77,6 +81,7 @@ module.exports = function () {
         client.click('#login-buttons-password');
       },
       checkCurrentUser: function (name) {
+        waitForLogin(client);
         client.waitForText('#login-dropdown-list', name.toUpperCase());
         var currentuser = null;
         while (currentuser === null) {
@@ -97,7 +102,7 @@ module.exports = function () {
         return isNotLogged(client);
       },
       logout: function (done) {
-        client.executeAsync(function (done) {
+        client.execute(function (done) {
           Meteor.logout(done);
         });
       },
