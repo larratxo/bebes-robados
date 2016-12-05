@@ -2,6 +2,51 @@
 Lista de Tareas
 
 * Desarrollo
+** Búsqueda por sexo
+** SSL
+server {
+    listen 80;
+    listen [::]:80;
+    server_name reune.es;
+    return 302 https://$server_name$request_uri;
+}
+
+server {
+        listen 443 ssl http2;
+        listen [::]:443 ssl http2;
+
+        ssl_certificate /etc/letsencrypt/live/reune.es/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/reune.es/privkey.pem;
+        ssl_trusted_certificate /etc/letsencrypt/live/reune.es/chain.pem;
+
+        include /etc/nginx/ssl_params;
+
+        server_name reune.es;
+
+
+        location / {
+                proxy_pass  http://10.0.3.213:8081;
+                include /etc/nginx/proxy.conf;
+         }
+
+        location ~ websocket$ {
+   proxy_pass http://websocket;
+   proxy_http_version 1.1;
+   proxy_set_header Upgrade $http_upgrade;
+   proxy_set_header Connection $connection_upgrade;
+}
+
+}
+
+upstream websocket {
+    server 10.0.3.213:8081;
+}
+
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
 ** Password potentes:
 https://github.com/meteor-useraccounts/core/issues/519
 https://github.com/dropbox/zxcvbn

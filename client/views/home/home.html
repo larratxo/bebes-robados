@@ -13,34 +13,34 @@
       <div class="container">
         <div class="row">
           <div class="center-block text-center">
-            <h3>Esta iniciativa tiene varios objetivos</h3>
+            <h3>{{_"Esta iniciativa tiene varios objetivos"}}</h3>
           </div>
         </div>
         <div class="row ui four column main-content features grid">
           <div class="col-xs-6 col-sm-3 center aligned column">
             <a href="{{ pathFor 'nuevoBebe'}}" class="ui unstyled no-hover-styles no-underline link icon header">
-              <span class="headline">Registrar esos casos</span>
+              <span class="headline">{{_"Registrar esos casos"}}</span>
               <i class="fa fa-archive icon"></i>
             </a>
           </div>
 
           <div class="col-xs-6 col-sm-3 center aligned column">
             <a onclick="$.fn.fullpage.moveSectionDown();" style="cursor: pointer;" class="ui unstyled no-hover-styles no-underline link icon header">
-              <span class="headline">Mapearlos</span>
+              <span class="headline">{{_"Mapearlos"}}</span>
               <i class="fa fa-map-marker icon"></i>
             </a>
           </div>
 
           <div class="col-xs-6 col-sm-3 center aligned column">
             <a href="{{ pathFor 'personsList'}}" class="ui unstyled no-hover-styles no-underline link icon header">
-              <span class="headline">Facilitar el reencuentro</span>
+              <span class="headline">{{_"Facilitar el reencuentro"}}</span>
               <i class="fa fa-search icon"></i>
             </a>
           </div>
 
           <div class="col-xs-6 col-sm-3 center aligned column">
             <a href="{{ pathFor 'difusion'}}" class="ui unstyled no-hover-styles no-underline link icon header">
-              <span class="headline">Facilitar la difusión</span>
+              <span class="headline">{{_"Facilitar la difusión"}}</span>
               <i class="fa fa-bullhorn icon"></i>
             </a>
           </div>
@@ -73,7 +73,7 @@
         {{> personPointer text="Nuevo caso reportado" src="/images/gmaps-pointer-new.png"}}
         </div>
         <div class="row">
-          <div class="col-xs-12 assistant-comment">Puedes pulsar en los marcadores del mapa para obtener más información de cada caso</div>
+          <div class="col-xs-12 assistant-comment">{{_"Puedes pulsar en los marcadores del mapa para obtener más información de cada caso"}}</div>
         </div>
       </div>
     </div>
@@ -81,10 +81,10 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
-            <h3>Participa en nuestras campañas de difusión</h3>
+            <h3>{{_"Participa en nuestras campañas de difusión"}}</h3>
           </div>
           <div class="col-xs-12">
-            <p class="text-center">Puedes incluir nuestros <em>banners</em> en tus webs, blogs, etc de forma que nos ayudes a reencontrar a nuestros familiares dando difusión a nuestros casos. <a href="{{ pathFor 'difusion'}}">Más información</a>.</p>
+            <p class="text-center">{{_"Puedes incluir nuestros 'banners' en tus webs, blogs, etc de forma que nos ayudes a reencontrar a nuestros familiares dando difusión a nuestros casos."}} <a href="{{ pathFor 'difusion'}}">{{_"Más información"}}</a>.</p>
           </div>
         </div>
         <div class="row">

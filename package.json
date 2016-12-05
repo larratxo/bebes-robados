@@ -5,6 +5,7 @@
     "start": "meteor --settings settings.json"
   },
   "dependencies": {
+    "babel-runtime": "^6.18.0",
     "bcrypt": "^0.8.7",
     "cropper": "^2.3.2",
     "fibers": "^1.0.13",
