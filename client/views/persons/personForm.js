@@ -1,12 +1,12 @@
 /* global GoogleMaps,google,geocode:true,provincia,municipio,Template, alertMessage, success, Roles
- noUndef, resetMarker:true, Meteor, Router, $ ReactiveVar AutoForm renderProvincias _ AutoForm */
+ noUndef, resetMarker:true, Meteor, Router, $ ReactiveVar AutoForm renderProvincias _ AutoForm TAPi18n */
 
 var toDelete = new ReactiveVar();
 
 Template.bebeForm.helpers({
   noValidado: function () { return this.doc && !this.doc.validated; },
-  pdteModeracion: function () { return this.doc.validated ? '' : 'Caso pendiente de moderación'; },
-  publicar: function () { return this.doc.validated ? 'No publicar' : 'Publicar'; },
+  pdteModeracion: function () { return this.doc.validated ? '' : TAPi18n.__('Caso pendiente de moderación'); },
+  publicar: function () { return this.doc.validated ? TAPi18n.__('No publicar') : TAPi18n.__('Publicar'); },
   isAddingAdminIsFamiliar: function () {
     return this.type === 'insert' || Roles.userIsInRole(Meteor.userId(), ['admin']) || Meteor.userId() === this.doc.familiar;
   },
@@ -196,9 +196,9 @@ Template.bebeForm.onRendered(function () {
   });
 
   $('#delete-bebe').confirmation({
-    title: '¿Estás seguro?',
-    btnOkLabel: 'Borrar',
-    btnCancelLabel: 'No',
+    title: TAPi18n.__('¿Estás seguro?'),
+    btnOkLabel: TAPi18n.__('Borrar'),
+    btnCancelLabel: TAPi18n.__('No'),
     placement: 'top',
     onConfirm: function () {
       Router.go('personsList');

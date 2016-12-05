@@ -2,17 +2,17 @@
   <!-- -*- engine:ctemplate -*- -->
   {{#autoForm collection="Persons" doc=doc id=id type=type }}
     <div class="page-header">
-      <h2>{{title}}</h2>
+      <h2>{{_ title}}</h2>
 
       <div class="btn-group title-btn" role="group">
         {{#if isEqual type "disabled"}}
 
           {{#if isFamiliarOrAdmin}}
-            <button id="person-form-submit" type="submit" value="Submit" class="btn btn-primary ">{{btnTitle}}</button>
+            <button id="person-form-submit" type="submit" value="Submit" class="btn btn-primary ">{{_ btnTitle}}</button>
           {{/if}}
 
         {{else}}
-          <button id="person-form-submit" type="submit" value="Submit" class="btn btn-primary ">{{btnTitle}}</button>
+          <button id="person-form-submit" type="submit" value="Submit" class="btn btn-primary ">{{_ btnTitle}}</button>
         {{/if}}
 
         {{#if isEqual type "disabled"}}
@@ -24,7 +24,7 @@
           <a class="btn btn-default" href="{{pathFor 'viewPerson'}}#comentarios" role="button"><i class="fa fa-comments"></i> {{_"Comentarios"}}</a>
 
           {{#if isFamiliarOrAdmin}}
-            {{#quickRemoveButton id="delete-bebe" onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger" collection="Persons" _id=doc._id}}Borrar{{/quickRemoveButton}}
+            {{#quickRemoveButton id="delete-bebe" onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger" collection="Persons" _id=doc._id}}{{_"Borrar"}}{{/quickRemoveButton}}
           {{/if}}
 
         {{/if}}
@@ -51,9 +51,9 @@
       <div class="col-xs-9 bebeform-content">
         <div class="tab-content bebe-tab-content">
           <div role="tabpanel" class="tab-pane active" id="datosbasicos">
-            <legend>Datos del presunto robo</legend>
+            <legend>{{_"Datos del presunto robo"}}</legend>
             {{#if isEqual type "disabled"}}
-              <a href="{{pathFor 'viewUser' _id=doc.familiar}}">Persona que denuncia el presunto robo</a>.
+              <a href="{{pathFor 'viewUser' _id=doc.familiar}}">{{_"Persona que denuncia el presunto robo"}}</a>.
               <br>
               <br>
               {{! userGallery data=doc.familiar }}
@@ -90,21 +90,21 @@
 
             {{#if isEqual type "disabled"}}
               {{#if buscasBebe}}
-                <legend>Fotos relacionadas con este caso</legend>
+                <legend>{{_"Fotos relacionadas con este caso"}}</legend>
               {{else}}
-                <legend>Fotos de esta persona</legend>
+                <legend>{{_"Fotos de esta persona"}}</legend>
               {{/if}}
               <div class="row">
                 {{> photosGallery collection="Photos" photos=doc.photos}}
               </div>
             {{else}}
               <div class="form-inline form-photos">
-                <legend>Fotos tuyas o de otros familiares que puedan ayudar al reencuentro</legend>
+                <legend>{{_"Fotos tuyas o de otros familiares que puedan ayudar al reencuentro"}}</legend>
                 {{> afQuickField name="photos" collection="Photos" label=false type="multiFileUpload"}}
               </div>
             {{/if}}
 
-            <legend>Familiares</legend>
+            <legend>{{_"Familiares"}}</legend>
 
             {{> afQuickField name="nombreCompletoMadre" placeholder="Nombre y apellidos" }}
             {{> afQuickField name="nombreCompletoPadreOConyuge" placeholder="Nombre y apellidos" }}
@@ -159,14 +159,14 @@
 
           {{#if isAddingAdminIsFamiliar }}
             <div role="tabpanel" class="tab-pane" id="infomedica">
-              <legend>Personal médico que figura en la documentación, trabajó en los establecimientos y/o pudiera tener información:</legend>
+              <legend>{{_"Personal médico que figura en la documentación, trabajó en los establecimientos y/o pudiera tener información:"}}</legend>
               {{> afQuickField name="nombreCompletoMedico" }}
               {{> afQuickField name="nombreCompletoMatrona" placeholder="Nombre y apellidos, sobrenombre o apodo"}}
               {{> afQuickField name="nombreCompletoEnfermera" placeholder="Nombre y apellidos, sobrenombre o apodo"}}
               {{> afQuickField name="nombreOtroPersonalMedico" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=4}}
             </div>
             <div role="tabpanel" class="tab-pane" id="funcionarios">
-              <legend>Funcionarios / trabajadores que figuran en la documentación, trabajaron en los establecimientos y/o pudieran tener información:</legend>
+              <legend>{{_"Funcionarios / trabajadores que figuran en la documentación, trabajaron en los establecimientos y/o pudieran tener información:"}}</legend>
               {{> afQuickField name="nombreFuncionariosRegCivil" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=2 }}
               {{> afQuickField name="nombreFuncionariosCementario" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=2 }}
               {{> afQuickField name="nombreTrabajadoresFuneraria" placeholder="Lista de nombres y apellidos, sobrenombres o apodos" rows=2 }}
@@ -208,10 +208,10 @@
               {{else}}
                 <div class="form-inline form-attachs">
                   <hr>
-                  <legend>Otros documentos que quieras aportar</legend>
+                  <legend>{{_"Otros documentos que quieras aportar"}}</legend>
                   {{> afQuickField name="attachs" collection="Attachs" label=false type="multiFileUpload"}}
                   <small class="text-muted">
-                    Estos documentos no se harán públicos
+                    {{_"Estos documentos no se harán públicos"}}
                   </small>
                 </div>
               {{/if}}
@@ -222,17 +222,17 @@
       <div class="col-xs-3 bebeform-tabs">
         <ul class="nav nav-tabs tabs-right">
 
-          <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">Datos básicos</a></li>
+          <li role="presentation" class="active"><a href="#datosbasicos" aria-controls="datosbasicos" role="tab" data-toggle="tab">{{_"Datos básicos"}}</a></li>
           {{#if isAddingAdminIsFamiliar }}
             {{#if buscasBebe}}
-              <li role="presentation"><a href="#fallecimiento" aria-controls="fallecimiento" role="tab" data-toggle="tab">Fallecimiento</a></li>
-              <li role="presentation"><a href="#infomedica" aria-controls="infomedica" role="tab" data-toggle="tab">Personal médico</a></li>
-              <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">Funcionarios</a></li>
+              <li role="presentation"><a href="#fallecimiento" aria-controls="fallecimiento" role="tab" data-toggle="tab">{{_"Fallecimiento"}}</a></li>
+              <li role="presentation"><a href="#infomedica" aria-controls="infomedica" role="tab" data-toggle="tab">{{_"Personal médico"}}</a></li>
+              <li role="presentation"><a href="#funcionarios" aria-controls="funcionarios" role="tab" data-toggle="tab">{{_"Funcionarios"}}</a></li>
             {{/if}}
           {{/if}}
 
           {{#if isAddingAdminIsFamiliar }}
-            <li role="presentation"><a href="#otros" aria-controls="otros" role="tab" data-toggle="tab">Otras informaciones</a></li>
+            <li role="presentation"><a href="#otros" aria-controls="otros" role="tab" data-toggle="tab">{{_"Otras informaciones"}}</a></li>
           {{/if}}
 
         </ul>
