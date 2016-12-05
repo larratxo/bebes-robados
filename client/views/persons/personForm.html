@@ -21,14 +21,14 @@
             <button id="person-form-publicar" title="Hacer público este caso" class="btn btn-default">{{publicar}}</button>
           {{/if}}
 
-          <a class="btn btn-default" href="{{pathFor 'viewPerson'}}#comentarios" role="button"><i class="fa fa-comments"></i> {{_"Comments"}}</a>
+          <a class="btn btn-default" href="{{pathFor 'viewPerson'}}#comentarios" role="button"><i class="fa fa-comments"></i> {{_"Comentarios"}}</a>
 
           {{#if isFamiliarOrAdmin}}
             {{#quickRemoveButton id="delete-bebe" onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger" collection="Persons" _id=doc._id}}Borrar{{/quickRemoveButton}}
           {{/if}}
 
         {{/if}}
-        <a class="btn btn-default" href="{{pathFor 'personsList'}}" role="button">{{_"Cancel"}}</a>
+        <a class="btn btn-default" href="{{pathFor 'personsList'}}" role="button">{{_"Cancelar"}}</a>
 
         {{#if noValidado}}
           <span class="casopdte" title="Caso pendiente de moderación por los/as administradores">{{pdteModeracion}}</span>

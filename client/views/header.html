@@ -20,32 +20,32 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{pathFor 'home'}}">{{ _"Home"}}</a></li>
-          <li><a href="{{ pathFor 'nuevoBebe'}}">{{_"add"}}</a></li>
-          <li><a href="{{ pathFor 'personsList'}}">{{_"Search"}}</a></li>
+          <li><a href="{{pathFor 'home'}}">{{ _"Inicio"}}</a></li>
+          <li><a href="{{pathFor 'nuevoBebe'}}">{{_"Añadir"}}</a></li>
+          <li><a href="{{pathFor 'personsList'}}">{{_"Buscar"}}</a></li>
 	  <li><a href="{{blogPathFor 'blogIndex'}}">{{_"Blog"}}</a></li>
 	  {{> loginButtons}}
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{_"More"}}<span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{_"Más"}}<span class="caret"></span></a>
 	    <ul class="dropdown-menu">
               {{#if isInRole 'admin'}}
-                <li><a href="{{ pathFor 'admin'}}"><i class="fa fa-users"></i>{{_"Administration"}}</a></li>
+                <li><a href="{{ pathFor 'admin'}}"><i class="fa fa-users"></i>{{_"Administración"}}</a></li>
 	        <li role="separator" class="divider"></li>
 	      {{/if}}
-              <li><a href="{{ pathFor 'quienes'}}"><i class="icon-bebes"></i>{{_"About"}}</a></li>
-              <li><a href="{{ pathFor 'difusion'}}"><i class="fa fa-bullhorn"></i>{{_"MediaCampaigns"}}</a></li>
-              <li><a href="{{ pathFor 'contacto'}}"><i class="fa fa-envelope"></i>{{_"Contact"}}</a></li>
+              <li><a href="{{ pathFor 'quienes'}}"><i class="icon-bebes"></i>{{_"Quienes somos"}}</a></li>
+              <li><a href="{{ pathFor 'difusion'}}"><i class="fa fa-bullhorn"></i>{{_"Campaña"}}</a></li>
+              <li><a href="{{ pathFor 'contacto'}}"><i class="fa fa-envelope"></i>{{_"Contacto"}}</a></li>
               <li><a href="{{ pathFor 'denuncia'}}">{{_"Denuncia vuestro caso"}}</a></li>
               <li><a href="{{ pathFor 'donaciones'}}">{{_"Donaciones"}}</a></li>
               <li><a href="{{ pathFor 'otras'}}">{{_"Otras Iniciativas"}}</a></li>
               <li role="separator" class="divider"></li>
               <li><a target="_blank" hook="dispatch" href="https://github.com/comunes/bebes-robados/tree/master/i18n"><i class="fa fa-language"></i>{{_"Ayudanos a traducir"}}</a></li>
-              <li><a target="_blank" hook="dispatch" href="https://github.com/comunes/bebes-robados/"><i class="fa fa-code"></i>Nuestro software (libre)</a></li>
-              <li><a target="_blank" hook="dispatch" href="https://github.com/comunes/bebes-robados/wiki/API"><i class="fa fa-area-chart"></i>API para trabajos derivados</a></li>
-              <!-- <li class="dropdown-header">{{_"Others"}}</li> -->
+              <li><a target="_blank" hook="dispatch" href="https://github.com/comunes/bebes-robados/"><i class="fa fa-code"></i>{{_"Nuestro software (libre)"}}</a></li>
+              <li><a target="_blank" hook="dispatch" href="https://github.com/comunes/bebes-robados/wiki/API"><i class="fa fa-area-chart"></i>{{_"API para trabajos derivados"}}</a></li>
+              <!-- <li class="dropdown-header">{{_"Otros"}}</li> -->
               <li role="separator" class="divider"></li>
               <li><a href="{{ pathFor 'legal'}}">{{_"Legal"}}</a></li>
-              <li><a href="{{ pathFor 'proteccion'}}">{{_"Privacy"}}</a></li>
+              <li><a href="{{ pathFor 'proteccion'}}">{{_"Protección de datos"}}</a></li>
             </ul>
           </li>
         </ul>

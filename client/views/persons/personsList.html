@@ -1,25 +1,25 @@
 <template name="personsList">
 
   <div class="page-header">
-    <h2>Búsqueda</h2>
+    <h2>{{_"Búsqueda"}}</h2>
   </div>
   <div class="row">
     <div class="col-md-6">
       <!-- Puedes afinar la búsqueda indicando un rango de años, o por provincia, etc. -->
       {{> yearSlider header="" subheader="Acotar la búsqueda entre los años:" }}
       <p>
-        Subrayado en <span class="row-high">amarillo</span> las entradas nuevas o actualizadas recientemente.
+        {{_"Subrayado en"}} <span class="row-high">{{_"amarillo"}}</span> {{_"las entradas nuevas o actualizadas recientemente."}}
       </p>
       <br>
     </div>
     <div class="col-md-6">
-      <label for="provSelect" class="label-no-bold">Buscar en:</label>
+      <label for="provSelect" class="label-no-bold">{{_"Buscar en:"}}</label>
       <select id="provSelect" class="form-control ps-prov"></select>
       <select id="provSelect" style="display: none;" class="form-control ps-mun"></select>
       {{#if isInRole 'admin'}}
       <br>
       <br>
-      <input id="soloPdtes" type="checkbox" {{soloPdtes}}/> Mostrar solo casos pendientes de publicación
+      <input id="soloPdtes" type="checkbox" {{soloPdtes}}/> {{_"Mostrar solo casos pendientes de publicación"}}
       {{/if}}
     </div>
   </div>
