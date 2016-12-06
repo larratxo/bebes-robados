@@ -49,7 +49,7 @@
     },
     "bcrypt": {
       "version": "0.8.7",
-      "from": "bcrypt@latest",
+      "from": "https://registry.npmjs.org/bcrypt/-/bcrypt-0.8.7.tgz",
       "resolved": "https://registry.npmjs.org/bcrypt/-/bcrypt-0.8.7.tgz"
     },
     "bindings": {

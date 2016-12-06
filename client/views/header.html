@@ -25,6 +25,7 @@
           <li><a href="{{pathFor 'personsList'}}">{{_"Buscar"}}</a></li>
 	  <li><a href="{{blogPathFor 'blogIndex'}}">{{_"Blog"}}</a></li>
 	  {{> loginButtons}}
+          {{> i18nmenu}}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{_"Más"}} <span class="caret"></span></a>
 	    <ul class="dropdown-menu">
@@ -56,4 +57,16 @@
     <div class="meteor-status">{{> status}}</div>
   {{/if}}
 
+</template>
+
+<template name="i18nmenu">
+   <li class="tap-i18n-dropdown dropdown">
+     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-language" aria-hidden="true"></i> {{languageTag}}
+       <span class="caret"></span></a>
+     <ul class="dropdown-menu">
+       {{#each i18n_sortedLanguages}}
+         <li class="kk {{#if i18n_isCurrentLanguage tag}}activelang{{/if}}"><a>{{name}}</a></li>
+       {{/each}}
+     </ul>
+   </li>
 </template>
