@@ -1,4 +1,4 @@
-// @watch (skip right now because fails sometimes in jenkins)
+# @watch (skip right now because fails sometimes in jenkins)
 @skip
 Feature: Allow users to login and logout
 
