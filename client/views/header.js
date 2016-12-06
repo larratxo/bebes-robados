@@ -1,4 +1,4 @@
-/* global Template Router $ siteSettings Dispatcher */
+/* global Template Router $ siteSettings Dispatcher TAPi18n */
 
 Template.header.helpers({
   siteName: function () {
@@ -22,11 +22,19 @@ Template.onRendered(function () {
 
   // find only links in bootstrap navbar
   var $navbarAnchors = $('.navbar a');
-
+  var $lang = $('.navbar li.activelang a');
   paths.forEach(function (item) {
     $navbarAnchors.parent('li').removeClass('active');
     $navbarAnchors.removeClass('active').filter('[href="' + item + '"]').parent('li').addClass('active');
   });
+  $lang.parent('li').addClass('active');
 });
 
 Template.header.events(Dispatcher.events);
+
+Template.i18nmenu.events({
+  // set language to selected option's tag
+  'click .tap-i18n-dropdown ul li a' : function () {
+    return TAPi18n.setLanguageAmplify(this.tag);
+  }
+});
