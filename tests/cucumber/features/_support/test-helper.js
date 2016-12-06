@@ -1,8 +1,20 @@
 /* global randomUsername:true, expect, randomPassword:true, randomEmail:true, goHome:true, phantomJs:true, appName:true
  process */
 
+// https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+function makeid(size)
+{
+    var text = "";
+    var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < size; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
 randomUsername = function () {
-  return Math.random().toString(16).substring(7);
+  return makeid(7);
 };
 
 randomPassword = function () {
