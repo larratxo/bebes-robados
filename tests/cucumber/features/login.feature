@@ -1,5 +1,3 @@
-# @watch (skip right now because fails sometimes in jenkins)
-@skip
 Feature: Allow users to login and logout
 
   As a user
@@ -29,12 +27,14 @@ Feature: Allow users to login and logout
     When I enter incorrect authentication information
     Then I should see a user not found error
 
+  @skip
   Scenario: A user can register and login
     Given I register with some name, password and email
     Then I should be registered
     And I should be logged in
     And I can edit my profile
 
+  @skip
   Scenario: A user cannot register without accepting service conditions
     Given I register with some name, password and email but without accept conditions
     Then I shouldn't be registered
