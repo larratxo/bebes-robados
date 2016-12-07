@@ -1,4 +1,4 @@
-/* global Template Meteor success alertMessage $ Session Tracker Router SEO _ */
+/* global Template Meteor success alertMessage $ Session Tracker Router SEO _ TAPi18n */
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle (array) {
@@ -28,7 +28,7 @@ Template.basicLayout.events({
         alertMessage(error.reason);
       } else {
         var email = Meteor.user().emails[0].address;
-        success('Correo de verificación enviado a ' + email);
+        success(TAPi18n.__('Correo de verificación enviado a ') + email);
       }
     });
   }

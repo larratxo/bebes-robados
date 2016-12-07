@@ -24,7 +24,7 @@ Schema.abuseReports = new SimpleSchema({
   },
   text: {
     type: String,
-    label: '¿Qué problema quiere reportar sobre este usuario/a?',
+    label: TAPi18n.__('¿Qué problema quiere reportar sobre este usuario/a?'),
     optional: false,
     autoform: {
       afFieldInput: {

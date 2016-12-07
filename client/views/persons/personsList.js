@@ -1,4 +1,4 @@
-/* global Roles Meteor Template Session calcShowAll renderProvincias Router $ setEmptyTable onSliderRender Tracker  */
+/* global Roles Meteor Template Session calcShowAll renderProvincias Router $ setEmptyTable onSliderRender Tracker TAPi18n  */
 Template.personsList.helpers({
   soloPdtes: function () { return Session.get('soloPdtes') ? 'checked' : ''; },
   selector: function () {
@@ -80,7 +80,7 @@ Template.personsList.onRendered(function () {
     dataTable.draw();
   });
 
-  setEmptyTable('Ningún dato disponible');
+  setEmptyTable(TAPi18n.__('Ningún dato disponible'));
 
   var search = Session.get('main-home-search');
   if (typeof search === 'string' && searchInput.val() !== search) {
@@ -113,6 +113,6 @@ Template.personsList.onRendered(function () {
   var prevProv = Session.get('buscaEnProvincia');
   var prevMuni = -1;
 
-  renderProvincias(prevProv, prevMuni, onProvSelect, onMuniSelect, '-- todas las provincias --');
+  renderProvincias(prevProv, prevMuni, onProvSelect, onMuniSelect, TAPi18n.__('-- todas las provincias --'));
   // Fin render provincias
 });

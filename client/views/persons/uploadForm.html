@@ -8,10 +8,10 @@
   {{#unless uploadInstance}}
     <form id="uploadFile" class="navbar-form center">
       <div class="input-group select-form">
-        <input title="Selecciona fichero" type="file" name="userfile" multiple class="form-control btn btn-default"/>
+        <input title={{_"Selecciona fichero"}} type="file" name="userfile" multiple class="form-control btn btn-default"/>
         <input type="hidden" value="{{value}}" {{this.atts}} class="js-value"/>
         <span class="input-group-btn">
-          <button type="submit" title="Subir fichero" class="btn btn-primary"><i class="fa fa-lg fa-cloud-upload"></i> Subir</button>
+          <button type="submit" title={{_"Subir fichero"}} class="btn btn-primary"><i class="fa fa-lg fa-cloud-upload"></i> {{_"Subir"}}</button>
         </span>
       </div>
     </form>
@@ -36,7 +36,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2" class="center"><small style="margin-bottom: 10px" class="text-center help-block">Subiendo <b>{{file.name}}</b>
+              <td colspan="2" class="center"><small style="margin-bottom: 10px" class="text-center help-block">{{_"Subiendo"}} <b>{{file.name}}</b>
                 <!-- Tiempo restante: {{estimateDuration}} | Velocidad: {{estimateBitrate}} --></small></td>
             </tr>
           {{/if}}

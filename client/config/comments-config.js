@@ -1,20 +1,20 @@
-/* global Comments */
+/* global Comments TAPi18n */
 
 Comments.ui.setContent({
-  title: 'Comentarios',
-  save: 'Guardar',
-  reply: 'Responder',
-  edit: 'Editar',
-  remove: 'Borrar',
-  'placeholder-textarea': 'Aquí puede comentar y añadir alguna información sobre esta persona',
-  'add-button-reply': 'Añadir una respuesta',
-  'add-button': 'Añadir comentario',
-  'you-need-to-login': 'Necesitas iniciar sesión para',
-  'add comments': 'añadir comentarios',
-  'like comments': 'puntuar comentarios',
-  'rate comments': 'puntuar comentarios',
-  'add replies': 'responder',
-  'load-more': 'Más comentarios'
+  title: TAPi18n.__('Comentarios'),
+  save: TAPi18n.__('Guardar'),
+  reply: TAPi18n.__('Responder'),
+  edit: TAPi18n.__('Editar'),
+  remove: TAPi18n.__('Borrar'),
+  'placeholder-textarea': TAPi18n.__('Aquí puede comentar y añadir alguna información sobre esta persona'),
+  'add-button-reply': TAPi18n.__('Añadir una respuesta'),
+  'add-button': TAPi18n.__('Añadir comentario'),
+  'you-need-to-login': TAPi18n.__('Necesitas iniciar sesión para'),
+  'add comments': TAPi18n.__('añadir comentarios'),
+  'like comments': TAPi18n.__('puntuar comentarios'),
+  'rate comments': TAPi18n.__('puntuar comentarios'),
+  'add replies': TAPi18n.__('responder'),
+  'load-more': TAPi18n.__('Más comentarios')
 });
 
 /* This in client side */

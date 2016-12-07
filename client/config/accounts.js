@@ -1,4 +1,4 @@
-/* global Accounts accountsUIBootstrap3 Router nifValido */
+/* global Accounts accountsUIBootstrap3 Router nifValido TAPi18n */
 Accounts.ui.config({
   passwordSignupFields: 'USERNAME_AND_EMAIL',
   forceEmailLowercase: true,
@@ -6,14 +6,14 @@ Accounts.ui.config({
   extraSignupFields: [
     {
       fieldName: 'name',
-      fieldLabel: 'Nombre completo',
+      fieldLabel: TAPi18n.__('Nombre completo'),
       inputType: 'text',
       visible: true,
       validate: function (value, errorFunction) {
         if (value.length > 10) {
           return true;
         } else {
-          errorFunction('Nombre completo requerido');
+          errorFunction(TAPi18n.__('Nombre completo requerido'));
           return false;
         }
       }
@@ -28,14 +28,14 @@ Accounts.ui.config({
         if (nifValido(value)) {
           return true;
         } else {
-          errorFunction('DNI inválido');
+          errorFunction(TAPi18n.__('DNI inválido'));
           return false;
         }
       }
     },
     {
       fieldName: 'conServicioAceptadas',
-      fieldLabel: 'Acepto las condiciones de servicio de este sitio',
+      fieldLabel: TAPi18n.__('Acepto las condiciones de servicio de este sitio'),
       inputType: 'checkbox',
       visible: true,
       saveToProfile: false,
@@ -43,7 +43,7 @@ Accounts.ui.config({
         if (value) {
           return true;
         } else {
-          errorFunction('Debes aceptar las condiciones de servicio de este sitio.');
+          errorFunction(TAPi18n.__('Debes aceptar las condiciones de servicio de este sitio.'));
           return false;
         }
       }

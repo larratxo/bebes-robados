@@ -1,4 +1,4 @@
-/* global $ Template successWithTitle alertMessage AutoForm Router */
+/* global $ Template successWithTitle alertMessage AutoForm Router TAPi18n */
 
 Template.nuevoBebe.onRendered(function () {
   // Commented, this clear default values
@@ -11,7 +11,7 @@ AutoForm.hooks({
       // Replace `formType` with the form `type` attribute to which this hook applies
       insert: function (error, result) {
         if (typeof error === 'undefined') {
-          successWithTitle('Guardado', 'Pendiente de moderación');
+          successWithTitle(TAPi18n.__('Guardado'), TAPi18n.__('Pendiente de moderación'));
           Router.go('viewPerson', {_id: result});
           // Antes íbamos a nuestro perfil:
           // Router.go('userUpdate');

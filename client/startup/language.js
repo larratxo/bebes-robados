@@ -1,3 +1,4 @@
+/* global Meteor Session TAPi18n */
 if (Meteor.isClient) {
   Meteor.startup(function () {
     Session.set("showLoadingIndicator", true);

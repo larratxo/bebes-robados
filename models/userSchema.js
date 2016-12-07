@@ -9,15 +9,15 @@ var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 SimpleSchema.messages({dniInvalido: 'DNI invalido'});
 
 Schema.UserProfile = new SimpleSchema({
-  name: { type: String, optional: true, label: 'Nombre completo',
+  name: { type: String, optional: true, label: TAPi18n.__('Nombre completo'),
           autoform: {afFieldInput:
-                     {placeholder: 'Nombre y apellidos'}}},
+                     {placeholder: TAPi18n.__('Nombre y apellidos')}}},
   dni: { type: String, optional: false, label: 'DNI (número y letra):',
 
          regEx: /^\d{8}[A-Z]$/,
          autoform: {
            mask: '99999999A',
-           afFieldInput: {placeholder: 'DNI tipo 99999999A'}
+           afFieldInput: {placeholder: TAPi18n.__('DNI tipo 99999999A')}
          },
          custom: function () {
            if (Meteor.isClient && this.isSet) {
@@ -30,22 +30,22 @@ Schema.UserProfile = new SimpleSchema({
        },
   // parentesco: { type: String, optional: true, label:
   // 'Parentesco con el presunto niño/a robado:' },
-  telefono: { type: String, optional: true, label: 'Teléfono de contacto:',
+  telefono: { type: String, optional: true, label: TAPi18n.__('Teléfono de contacto:'),
               autoform: {afFieldInput:
-                         {placeholder: 'Teléfono móvil preferiblemente'}}
+                         {placeholder: TAPi18n.__('Teléfono móvil preferiblemente')}}
   },
   fax: {type: String, optional: true, label: 'Fax:'}, // regEx: phoneRegex},
   redesSociales: {
     type: [Object],
-    label: 'Perfiles en redes sociales (twitter, flickr, facebook, etc). ' +
-          'Pueden ayudar en la búsqueda de familiares',
+    label: TAPi18n.__('Perfiles en redes sociales (twitter, flickr, facebook, etc). ') +
+          TAPi18n.__('Pueden ayudar en la búsqueda de familiares'),
     optional: true
   },
   'redesSociales.$.url': {
     type: String,
     autoform: { afFieldInput: {label: false,
                                type: 'url',
-                               placeholder: 'p.ej: http://twitter.com/tu_usuario'} },
+                               placeholder: TAPi18n.__('p.ej: http://twitter.com/tu_usuario')} },
     regEx: SimpleSchema.RegEx.Url
   },
   // imagenes: {
@@ -71,7 +71,7 @@ Schema.UserProfile = new SimpleSchema({
 Schema.User = new SimpleSchema({
   username: {
     type: String,
-    label: 'Usuario/a',
+    label: TAPi18n.__('Usuario/a'),
     regEx: /^[a-z0-9A-Z_]{3,15}$/,
       // For accounts-password, either emails or username is required,
       // but not both.
@@ -86,7 +86,7 @@ Schema.User = new SimpleSchema({
   emails: {
     type: Array,
     min: 1,
-    label: 'Lista de emails de contacto',
+    label: TAPi18n.__('Lista de emails de contacto'),
       // For accounts-password, either emails or username is required,
       // but not both.
       // It is OK to make this optional here because the accounts-password
@@ -104,7 +104,7 @@ Schema.User = new SimpleSchema({
     type: String,
     label: '',
     autoform: { afFieldInput:
-                  {label: false, placeholder: 'p.ej: fulano@gmail.com'} },
+                  {label: false, placeholder: TAPi18n.__('p.ej: fulano@gmail.com')} },
     regEx: SimpleSchema.RegEx.Email
   },
   'emails.$.verified': {
@@ -113,7 +113,7 @@ Schema.User = new SimpleSchema({
   },
   profile: {
     type: Schema.UserProfile,
-    label: 'Otros datos',
+    label: TAPi18n.__('Otros datos'),
     optional: true
   },
     // Make sure this services field is in your schema

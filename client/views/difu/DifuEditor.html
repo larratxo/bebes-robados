@@ -3,7 +3,7 @@
   {{#if afectado }}
     <div id="difuintro" class="{{noParticipaClass}}">
 
-      ¿Estarías interesado tú o tu familia en participar en nuestras campañas de difusión? Se trata de proporcionar una foto y un breve texto para conformar una especie 'publicidad' que pueda ser incluida en medios de comunicación digitales, junto con otros participantes que también cuenten su caso brevemente. Tienen este aspecto:
+      {{_"¿Estarías interesado tú o tu familia en participar en nuestras campañas de difusión? Se trata de proporcionar una foto y un breve texto para conformar una especie 'publicidad' que pueda ser incluida en medios de comunicación digitales, junto con otros participantes que también cuenten su caso brevemente. Tienen este aspecto:"}}
 
       <div class="container-fluid">
         {{> difu sample="true" backImage="/images/pusample1.jpg" adHeader="Busco a mi hermana, quizás puedas ser tú o la conozcas" headerLink="/bebe/KjsSExbdiFosStrvh" subHeaderLink="/" }}
@@ -12,7 +12,7 @@
 
     <div class="checkbox">
       <label>
-        <input id="participar" type="checkbox" {{participa}}/>Sí, quiero participar en esta campaña de difusión
+        <input id="participar" type="checkbox" {{participa}}/>{{_"Sí, quiero participar en esta campaña de difusión"}}
       </label>
     </div>
 
@@ -20,21 +20,21 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="adtitle">¿Qué título pondrías para describir vuestro caso?</label>
+            <label for="adtitle">{{_"¿Qué título pondrías para describir vuestro caso?"}}</label>
             <textarea rows="2" class="form-control" value="{{dynHeader}}"  id="adtitle" placeholder="Por ejemplo: Busco a mi hermana, quizás puedas ser tú o la conozcas"></textarea>
           </div>
         </div>
         <div class="col-md-6">
           <div class="panel panel-default">
             <div class="panel-body">
-              <h4>Previsualización</h4>
+              <h4>{{_"Previsualización"}}</h4>
               {{> difu backImage=dynPhoto adHeader=dynHeader headerLink="/bebe/KjsSExbdiFosStrvh" sample="false" subHeaderLink="/" }}
             </div>
           </div>
         </div>
       </div>
       <div id="elige-recorta" class="row">
-        <h4>Elige y recorta una imagen para usar en esta campaña</h4>
+        <h4>{{_"Elige y recorta una imagen para usar en esta campaña"}}</h4>
       </div>
       <div id="cropper-btns" class="row">
         {{!-- if notCropping --}}
@@ -42,7 +42,7 @@
         {{!-- /if --}}
         {{#if cropping}}
           <div class="row img-cropped-legend">
-            Selecciona con el ratón la parte de la foto a usar. Puedes usar el scroll de tu ratón para acercar o alejar la foto. Puedes ver el resultado arriba en la previsualización.
+            {{_"Selecciona con el ratón la parte de la foto a usar. Puedes usar el scroll de tu ratón para acercar o alejar la foto. Puedes ver el resultado arriba en la previsualización."}}
           </div>
           <div class="panel panel-default">
             <div class="panel-body">
@@ -59,7 +59,7 @@
                 <button type="button" title="Rotar la imagen" class="btn btn-default fa fa-rotate-right rotar45"></button>
               </div>
               <div class="pull-right btn-group" role="group" aria-label="other">
-                <button type="button" class="btn btn-primary save"><span class="fa fa-floppy-o" aria-hidden="true"></span> Guardar</button>
+                <button type="button" class="btn btn-primary save"><span class="fa fa-floppy-o" aria-hidden="true"></span> {{_"Guardar"}}</button>
               </div>
             </div>
           </div>

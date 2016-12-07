@@ -1,7 +1,7 @@
-/* global Template, Session, Router commentsHack success Persons setTimeout */
+/* global Template, Session, Router commentsHack success Persons setTimeout TAPi18n */
 Template.viewPerson.onRendered(function () {
   var nombreCompleto = this.data.nombreCompleto;
-  Session.set('DocumentTitle', 'Datos sobre bebe ' + nombreCompleto);
+  Session.set('DocumentTitle', TAPi18n.__('Datos sobre bebe ') + nombreCompleto);
 
   setTimeout(commentsHack, 2000);
 });
@@ -11,7 +11,7 @@ Template.viewPerson.events({
     e.currentTarget.disabled = true;
     var value = !this.doc.validated;
     Persons.update(this.doc._id, {$set: {validated: value}}, function () {
-      success(value ? 'Publicado' : 'No publicado');
+      success(value ? TAPi18n.__('Publicado') : TAPi18n.__('No publicado'));
       e.currentTarget.disabled = false;
     });
     e.stopImmediatePropagation();

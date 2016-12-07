@@ -1,4 +1,4 @@
-/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, Session, webPages, $ */
+/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, Session, webPages, $ TAPi18n */
 
 // https://iron-meteor.github.io/iron-router/
 
@@ -44,7 +44,7 @@ Router.map(function () {
   }); // just for testing
   this.route('personsList', {
     path: '/bebes',
-    title: 'Busca bebe o familia',
+    title: TAPi18n.__('Busca bebe o familia'),
     loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('Persons');
@@ -52,7 +52,7 @@ Router.map(function () {
   });
   this.route('difusion', {
     path: '/difusion',
-    title: 'Campañas de Difusión',
+    title: TAPi18n.__('Campañas de Difusión'),
     // https://github.com/iron-meteor/iron-router/issues/1148
     loadingTemplate: 'loading',
     waitOn: function () {
@@ -64,7 +64,7 @@ Router.map(function () {
     path: '/carteles',
     layoutTemplate: 'blankLayout',
     loadingTemplate: 'loadingBlank',
-    title: 'Carteles de nuestras Campañas de Difusión',
+    title: TAPi18n.__('Carteles de nuestras Campañas de Difusión'),
     waitOn: function () {
       return subsManager.subscribe('AdCampaigns');
     }
@@ -84,7 +84,7 @@ Router.map(function () {
   });
   this.route('abuseAdd', {
     path: '/reportar/:username',
-    title: 'Informar de abuso',
+    title: TAPi18n.__('Informar de abuso'),
     loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('some-user', this.params.username);
@@ -95,11 +95,11 @@ Router.map(function () {
   });
   this.route('underConstruction', {
     path: '/en-construccion',
-    title: 'En construcción'
+    title: TAPi18n.__('En construcción')
   });
   this.route('userUpdate', {
     path: '/yo',
-    title: 'Mis datos',
+    title: TAPi18n.__('Mis datos'),
     loadingTemplate: 'loading',
     waitOn: function () {
       return [
@@ -135,56 +135,56 @@ Router.map(function () {
 
   this.route('quienes', {
     path: '/quienesSomos',
-    title: 'Quienes somos',
+    title: TAPi18n.__('Quienes somos'),
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('legal', {
     path: '/legal',
-    title: 'Información Legal',
+    title: TAPi18n.__('Información Legal'),
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('donaciones', {
     path: '/donaciones',
-    title: 'Donaciones',
+    title: TAPi18n.__('Donaciones'),
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('proteccion', {
     path: '/proteccion-datos',
-    title: 'Protección de Datos',
+    title: TAPi18n.__('Protección de Datos'),
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('contacto', {
     path: '/contacto',
-    title: 'Contacto',
+    title: TAPi18n.__('Contacto'),
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('otras', {
     path: '/otras-iniciativas',
-    title: 'Otras Iniciativas',
+    title: TAPi18n.__('Otras Iniciativas'),
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('denuncia', {
     path: '/denuncia',
-    title: 'Denuncia vuestro caso',
+    title: TAPi18n.__('Denuncia vuestro caso'),
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',
-    title: 'Edita bebe',
+    title: TAPi18n.__('Edita bebe'),
     loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('personAndFiles', this.params._id);
@@ -195,7 +195,7 @@ Router.map(function () {
   });
   this.route('editPersonSlug', {
     path: '/edita-bebe/:slug',
-    title: 'Edita bebe',
+    title: TAPi18n.__('Edita bebe'),
     loadingTemplate: 'loading',
     waitOn: function () {
       return subsManager.subscribe('personAndFilesViaSlug', this.params.slug);
@@ -227,7 +227,7 @@ Router.map(function () {
 
   this.route('admin', {
     path: '/admin',
-    title: 'Administración',
+    title: TAPi18n.__('Administración'),
     loadingTemplate: 'loading',
     template: 'bebeAdmin',
     onBeforeAction: function () {

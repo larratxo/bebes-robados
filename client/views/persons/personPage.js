@@ -15,7 +15,7 @@ AutoForm.hooks({
       // Replace `formType` with the form `type` attribute to which this hook applies
       update: function (error, result) {
         if (typeof error === 'undefined') {
-          successWithTitle('Actualizado', 'Pendiente de moderación');
+          successWithTitle(TAPi18n.__('Actualizado'), TAPi18n.__('Pendiente de moderación'));
           Router.go('personsList');
           AutoForm.resetForm('editaBebeForm');
         } else {

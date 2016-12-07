@@ -141,11 +141,11 @@ Template.home.onCreated(function () {
         google.maps.event.addListener(marker, 'click', (function (marker, person) {
           return function () {
             infowindow.setContent('<span style="font-size: 14px">' +
-                                  (person.buscasBebe ? 'Buscamos bebe' : 'Busco a mi familia biológica') + ',<br>' +
+                                  (person.buscasBebe ? TAPi18n.__('Buscamos bebe') : TAPi18n.__('Busco a mi familia biológica')) + ',<br>' +
                                   '<a title="' + moreInfo +
-                                  '" href="/bebe/' + person.slug + '/">' + renderSexoAlt(person.sexo) +
-                                  (person.fechaNacimiento instanceof Date ? (person.buscasBebe ? ' nacido aquí el '
-                                                                             : ' nací aquí el ') : ' nacido aquí ') +
+                                  '" href="/bebe/' + person.slug + '/">' + renderSexoAlt(person.sexo) + ' ' +
+                                  (person.fechaNacimiento instanceof Date ? (person.buscasBebe ? TAPi18n.__('nacido aquí el')
+                                                                             : TAPi18n.__('nací aquí el')) : TAPi18n.__('nacido aquí')) + ' ' +
                                   renderAprox(person.fechaNacimientoEsAprox) + renderDate(person.fechaNacimiento) + ' ' +
                                   renderNuevo(person.updatedAt) + '</a></span>');
             infowindow.open(map.instance, marker);

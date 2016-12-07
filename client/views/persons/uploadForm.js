@@ -29,11 +29,11 @@ Template.uploadForm.onCreated(function () {
   return this.initiateUpload = function (event, files, template) {
     var cleanUploaded, created_at, i, len, radio, ref, uploads;
     if (!files.length) {
-      template.error.set('Por favor, selecciona un fichero para subir');
+      template.error.set(TAPi18n.__('Por favor, selecciona un fichero para subir'));
       return false;
     }
     if (files.length > 10) {
-      template.error.set('Por favor, selecciona hasta diez ficheros');
+      template.error.set(TAPi18n.__('Por favor, selecciona hasta diez ficheros'));
       return;
     }
     cleanUploaded = function (current) {

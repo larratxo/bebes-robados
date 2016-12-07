@@ -1,4 +1,4 @@
-/* global Template $ success alertMessage Router Meteor AutoForm */
+/* global Template $ success alertMessage Router Meteor AutoForm TAPi18n */
 
 Template.abuseAdd.helpers({
   username: function () { return this.data.username; }
@@ -10,15 +10,15 @@ AutoForm.hooks({
       // Replace `formType` with the form `type` attribute to which this hook applies
       insert: function (error, result) {
         if (typeof error === 'undefined') {
-          success('Informe de abuso guardado');
+          success(TAPi18n.__('Informe de abuso guardado'));
           Router.go('home');
           AutoForm.resetForm('addAbuseForm');
           Meteor.apply(
             'sendNotifToRole',
             ['admin',
-             'Nuevo informe de abuso',
-             'Hay un nuevo informe de abuso proporcionado por un usuario.\n\n ' +
-             'Para más información accede al área de administración.'],
+             TAPi18n.__('Nuevo informe de abuso'),
+             TAPi18n.__('Hay un nuevo informe de abuso proporcionado por un usuario.\n\n ') +
+             TAPi18n.__('Para más información accede al área de administración.')],
             true);
           $('#usar').collapse('hide');
         } else {

@@ -1,4 +1,4 @@
-/* global personLabelHack:true Session $ Router alert success Meteor */
+/* global personLabelHack:true Session $ Router success Meteor Session TAPi18n Template */
 
 // http://docs.meteor.com/#accounts_oncreateuser
 
@@ -49,7 +49,7 @@ Template.viewUser.events({
 
 Template.viewUser.onRendered( function () {
   var who = typeof this.data.profile.name == 'undefined' ? this.data.username : this.data.profile.name;
-  Session.set('DocumentTitle', 'Datos sobre ' + who);
+  Session.set('DocumentTitle', TAPi18n.__('Datos sobre ') + who);
   personLabelHack();
   $(".autoform-add-item").click(personLabelHack());
 
@@ -86,7 +86,7 @@ AutoForm.hooks({
     after: {
       update: function(error) {
         if (typeof error === "undefined") {
-          success('Guardado');
+          success(TAPi18n.__('Guardado'));
           // Router.go('home');
         } else {
           alertMessage(error);
