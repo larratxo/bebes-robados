@@ -1,8 +1,8 @@
-/* global Template Session */
+/* global Template Session TAPi18n window */
 
-Template.loading.rendered = function () {
+Template.loading.onRendered = function () {
   // http://tobiasahlin.com/spinkit/
-  var message = '<p class="loading-message">cargando</p>';
+  var message = '<p class="loading-message">' + TAPi18n.__('cargando') + '</p>';
   var spinner = '<div class="spinner"></div>';
 
   if (!Session.get('loadingSplash')) {
@@ -15,7 +15,7 @@ Template.loading.rendered = function () {
   }
 };
 
-Template.loading.destroyed = function () {
+Template.loading.onDestroyed = function () {
   if (this.loading) {
     this.loading.finish();
   }
